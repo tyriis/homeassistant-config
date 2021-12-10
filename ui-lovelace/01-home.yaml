@@ -21,14 +21,14 @@ cards:
           name: latest
           icon: mdi:cloud-download
 
-  - type: button
-    entity: group.lights_living_downstairs
-    name: lights living downstairs
-    tap_action:
-      - action: call_service
-        service: scene.morning_livingroom
-        service_data:
-          transition: 10
+  # - type: button
+  #   entity: group.lights_living_downstairs
+  #   name: lights living downstairs
+  #   tap_action:
+  #     - action: call_service
+  #       service: scene.morning_livingroom
+  #       service_data:
+  #         transition: 10
 
   #- entity: camera.neato_keller_cleaning_map
   #  type: picture-entity
