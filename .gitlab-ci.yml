@@ -1,0 +1,4 @@
+build-job:
+  stage: webhook
+  script:
+    - curl -X POST -d '{ "key": "value"}' ${WEBHOOK}
