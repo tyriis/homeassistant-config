@@ -8,4 +8,4 @@ default:
 webhook:
   stage: webhook
   script:
-    - curl -X POST ${WEBHOOK}
+    - curl -X POST --insecure ${WEBHOOK}
