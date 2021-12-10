@@ -76,7 +76,7 @@ cards:
   #      name: table
   #  show_header_toggle: false
   #  state_color: true
-  
+
 # working!?
 #  - aggregate_func: max
 #    entities:
@@ -135,7 +135,7 @@ cards:
       extrema: true
     update_interval: 60
 
- 
+
   - type: 'custom:bar-card'
     title: nas.home
     entities:
@@ -150,22 +150,22 @@ cards:
     width: 70%
     height: 20px
 
-  - type: thermostat
-    name: office
-    entity: climate.office
-  
-  - type: thermostat
-    name: alex
-    entity: climate.alex
+  # - type: thermostat
+  #   name: office
+  #   entity: climate.office
 
-  - type: thermostat
-    name: domi
-    entity: climate.domi
+  # - type: thermostat
+  #   name: alex
+  #   entity: climate.alex
 
-  - type: thermostat
-    name: livingroom
-    entity: climate.livingroom
+  # - type: thermostat
+  #   name: domi
+  #   entity: climate.domi
 
-  - type: thermostat
-    name: bedroom
-    entity: climate.bedroom
+  # - type: thermostat
+  #   name: livingroom
+  #   entity: climate.livingroom
+
+  # - type: thermostat
+  #   name: bedroom
+  #   entity: climate.bedroom
