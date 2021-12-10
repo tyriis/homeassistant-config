@@ -1,0 +1,270 @@
+title: Office
+path: office
+badges: []
+cards:
+#  - entity: camera.neato_keller_cleaning_map
+#    type: picture-entity
+
+  - entities:
+      - entity: light.office
+      - entity: light.tradfri_light_playroom_ir_cabine_light
+    title: Lights
+    type: entities
+
+  - entities:
+      # currrently inverted and same function then light switch
+      # - switch.switch_playroom
+      - switch.heatness_switch_playroom
+    title: Switches
+    type: entities
+
+  #- entities:
+  #    - color: '#E74C3C'
+  #      entity: sensor.aqara_climate_office_temperature
+  #      name: temperature
+  #      show_legend: false
+  #      show_state: true
+  #    - color: '#3498DB'
+  #      entity: sensor.aqara_climate_office_humidity
+  #      name: humidity
+  #      show_legend: false
+  #      show_state: true
+  #      y_axis: secondary
+  #  hours_to_show: 48
+  #  name: office
+  #  points_per_hour: 0.5
+  #  type: 'custom:mini-graph-card'
+
+  #- entities:
+  #    - entity: sensor.htu21d_temperature_playroom
+  #      color: '#E74C3C'
+  #      name: temperature esphome
+  #      show_legend: false
+  #      show_state: true
+  #    - entity: sensor.htu21d_humidity_playroom
+  #      color: '#3498DB'
+  #      name: humidity esphome
+  #      show_legend: false
+  #      show_state: true
+  #      y_axis: secondary
+  #  hours_to_show: 48
+  #  name: office
+  #  points_per_hour: 0.5
+  #  type: 'custom:mini-graph-card'
+
+
+#  - entity: sensor.austria_coronavirus_current
+#    type: entity
+
+#  - entities:
+#      - entity: sensor.speedtest_ping
+#        name: ping
+#        show_legend: false
+#        show_state: true
+#      - entity: sensor.speedtest_download
+#        name: down
+#        show_legend: false
+#        show_state: true
+#        y_axis: secondary
+#      - entity: sensor.speedtest_upload
+#        name: up
+#        show_legend: false
+#        show_state: true
+#        y_axis: secondary
+#    hours_to_show: 24
+#    name: network
+#    points_per_hour: 0.5
+#    type: 'custom:mini-graph-card'
+
+#  - entities:
+#      - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+#    type: entities
+
+#  - entities:
+#      - color: '#E74C3C'
+#        entity: sensor.aqara_climate_office_temperature
+#        name: temperature
+#        show_legend: false
+#        show_state: true
+#      - color: '#3498DB'
+#        entity: sensor.aqara_climate_office_humidity
+#        name: humidity
+#        show_legend: false
+#        show_state: true
+#        y_axis: secondary
+#    hours_to_show: 48
+#    name: office
+#    points_per_hour: 0.5
+#    type: 'custom:mini-graph-card'
+
+
+
+  #################################################################
+  #                                                               #
+  #                   Home - Temperature Card                     #
+  #                                                               #
+  #################################################################
+  - type: vertical-stack
+    cards:
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.htu21d_temperature_office
+        color: '#E74C3C'
+        name: ESPHome
+      - entity: sensor.aqara_climate_office_temperature
+        color: '#ff9800'
+        name: aqara
+      name: temperature
+      height: 74
+      line_width: 2
+      font_size: 85
+      hours_to_show: 24
+      points_per_hour: 4
+      show:
+        icon: true
+        extrema: true
+        icon_adaptive_color: true
+      color_thresholds:
+        - value: 25
+          color: "#e74c3c"
+        - value: 15
+          color: "#1db954"
+        - value: -1
+          color: "#3498db"
+        - value: -100
+          color: "#e74c3c"
+
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.htu21d_humidity_office
+        color: '#3498DB'
+        name: ESPHome
+      - entity: sensor.aqara_climate_office_humidity
+        color: '#5f37db'
+        name: aqara
+        # name: humidity
+        # show_legend: false
+        # show_state: true
+        # y_axis: secondary
+      name: humidity
+      height: 74
+      line_width: 2
+      font_size: 85
+      hours_to_show: 24
+      points_per_hour: 4
+      show:
+        icon: true
+        extrema: true
+        icon_adaptive_color: true
+      color_thresholds:
+        - value: 50
+          color: "#e74c3c"
+        - value: 35
+          color: "#1db954"
+        - value: 25
+          color: "#3498db"
+        - value: -100
+          color: "#e74c3c"
+
+    - type: custom:mini-graph-card
+      entities:
+        - entity: sensor.tsl2561_ambient_light_office
+          # color: '#ff9800'
+      name: lux
+      height: 74
+      line_width: 2
+      font_size: 85
+      hours_to_show: 24
+      points_per_hour: 4
+      update_interval: 60
+      show:
+        icon: true
+        extrema: true
+        icon_adaptive_color: true
+      color_thresholds:
+        - value: 100
+          color: "#ff9800"
+        - value: 25
+          color: "#8d8d8d"
+        - value: -100
+          color: "#e74c3c"
+
+
+  - type: vertical-stack
+    cards:
+    
+    - type: entities
+      title: motion
+      entities:
+      - entity: binary_sensor.sr501_pir_motion_office
+        name: ESPHome
+        secondary_info: last-changed
+      - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+        name: mijia
+        secondary_info: last-changed
+
+    #- type: history-graph
+    #  title: 'motion last hour'
+    #  entities:
+    #  - entity: binary_sensor.sr501_pir_motion_office
+    #    name: ESPHome
+    #    # secondary_info: last-changed
+    #  - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+    #    name: mijia
+    #    # secondary_info: last-changed
+    #  refresh_interval: 30
+    #  hours_to_show: 1
+
+    - type: 'custom:mini-graph-card'
+      name: motion last hour
+      entities:
+      - entity: binary_sensor.sr501_pir_motion_office
+        name: ESPHome
+        aggregate_func: avg
+      - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+        name: mijia
+        aggregate_func: avg
+      height: 74
+      aggregate_func: max
+      hours_to_show: 1
+      line_width: 2
+      font_size: 85
+      points_per_hour: 60
+      smoothing: false
+      state_map:
+        - label: Clear
+          value: 'on'
+        - label: Detected
+          value: 'off'
+      update_interval: 60
+      show:
+        graph: bar
+        state: false
+        icon: false
+  
+    
+
+  #- entities:
+  #    - vacuum.neato_keller
+  #  title: Vacuum
+  #  type: entities
+
+
+            
+
+
+
+
+#  - type: entities
+#    show_header_toggle: false
+#    entities:
+#      - input_select.heating_control
+#      - entity: sensor.heating_state
+#        type: custom:secondaryinfo-entity-row
+#        secondary_info: "[[ sensor.heating_hvac.state ]]"
+#      - sensor.heating_set_to
+#      - schedy_room.schedy_heating_house
+#      - sensor.heating_rescheduling
+  - type: thermostat
+    name: hisense ac
+    entity: climate.hisense_ac_office

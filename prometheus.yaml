@@ -1,0 +1,41 @@
+# https://deploy-preview-9226--home-assistant-docs.netlify.com/components/prometheus/
+namespace: homeassistant
+filter:
+  exclude_entities:
+    - sensor.current_uv_level
+    - sensor.wifi_bssid_entrance
+    - sensor.wifi_bssid_alex_room
+    - sensor.wifi_bssid_basement
+    - sensor.wifi_bssid_livingroom
+    - sensor.wifi_bssid_bathroom
+    - sensor.wifi_bssid_bedroom
+    - sensor.wifi_bssid_kitchen
+    - sensor.wifi_bssid_stairs
+    - sensor.wifi_bssid_playroom
+    - sensor.wifi_ssid_entrance
+    - sensor.wifi_ssid_alex_room
+    - sensor.wifi_ssid_basement
+    - sensor.wifi_ssid_livingroom
+    - sensor.wifi_ssid_bathroom
+    - sensor.wifi_ssid_bedroom
+    - sensor.wifi_ssid_kitchen
+    - sensor.wifi_ssid_stairs
+    - sensor.wifi_ssid_playroom
+    - sensor.wifi_ip_entrance
+    - sensor.wifi_ip_alex_room
+    - sensor.wifi_ip_basement
+    - sensor.wifi_ip_livingroom
+    - sensor.wifi_ip_bathroom
+    - sensor.wifi_ip_bedroom
+    - sensor.wifi_ip_kitchen
+    - sensor.wifi_ip_stairs
+    - sensor.wifi_ip_playroom
+    - sensor.device_firmware_entrance
+    - sensor.device_firmware_alex_room
+    - sensor.device_firmware_basement
+    - sensor.device_firmware_livingroom
+    - sensor.device_firmware_bathroom
+    - sensor.device_firmware_bedroom
+    - sensor.device_firmware_kitchen
+    - sensor.device_firmware_stairs
+    - sensor.device_firmware_playroom

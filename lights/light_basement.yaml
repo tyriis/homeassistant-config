@@ -1,0 +1,12 @@
+platform: mqtt
+name: led ceiling light basement
+state_topic: ESPurna/sonoff-basement/relay/0
+command_topic: ESPurna/sonoff-basement/relay/0/set
+payload_on: 1
+payload_off: 0
+availability_topic: ESPurna/sonoff-basement/status
+payload_available: 1
+payload_not_available: 0
+qos: 2
+optimistic: false
+unique_id: 0afbbc92-c6b7-39ae-b06c-b0fedeb25c45 # uuid3 led_ceiling_light_basement

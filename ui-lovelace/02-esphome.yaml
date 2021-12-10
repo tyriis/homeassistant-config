@@ -1,0 +1,154 @@
+title: ESPHome
+badges: []
+cards:
+  - entities:
+      - entity: sensor.device_firmware_basement
+      - entity: sensor.wifi_ip_basement
+      - entity: sensor.wifi_ssid_basement
+      - entity: sensor.wifi_signal_basement
+      - entity: sensor.device_uptime_basement
+      - entity: sensor.htu21d_temperature_basement
+      - entity: sensor.htu21d_humidity_basement
+      - entity: sensor.tsl2561_ambient_light_basement
+      - entity: binary_sensor.sr501_pir_motion_basement
+    show_header_toggle: false
+    title: Basement
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_office
+      - entity: sensor.wifi_ip_office
+      - entity: sensor.wifi_ssid_office
+      - entity: sensor.wifi_signal_office
+      - entity: sensor.device_uptime_office
+      - entity: sensor.htu21d_temperature_office
+      - entity: sensor.htu21d_humidity_office
+      - entity: sensor.tsl2561_ambient_light_office
+      - entity: binary_sensor.sr501_pir_motion_office
+    show_header_toggle: false
+    title: Office
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_livingroom
+      - entity: sensor.wifi_ip_livingroom
+      - entity: sensor.wifi_ssid_livingroom
+      - entity: sensor.wifi_signal_livingroom
+      - entity: sensor.device_uptime_livingroom
+      - entity: sensor.htu21d_temperature_livingroom
+      - entity: sensor.htu21d_humidity_livingroom
+      - entity: binary_sensor.sr501_pir_motion_livingroom
+      - entity: sensor.tsl2561_ambient_light_livingroom
+      - entity: light.ws2812b_led_livingroom
+    show_header_toggle: false
+    title: Livingroom
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_bathroom
+      - entity: sensor.wifi_ip_bathroom
+      - entity: sensor.wifi_ssid_bathroom
+      - entity: sensor.wifi_signal_bathroom
+      - entity: sensor.device_uptime_bathroom
+      - entity: sensor.htu21d_temperature_bathroom
+      - entity: sensor.htu21d_humidity_bathroom
+      - entity: sensor.bmp180_pressure_bathroom
+      - entity: sensor.bmp180_temperature_bathroom
+      - entity: binary_sensor.sr501_pir_motion_bathroom
+      - entity: sensor.tsl2561_ambient_light_bathroom
+      - entity: light.ws2812b_led_bathroom
+    show_header_toggle: false
+    title: Bathroom
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_kitchen
+      - entity: sensor.wifi_ip_kitchen
+      - entity: sensor.wifi_ssid_kitchen
+      - entity: sensor.wifi_signal_kitchen
+      - entity: sensor.device_uptime_kitchen
+      - entity: sensor.htu21d_temperature_kitchen
+      - entity: sensor.htu21d_humidity_kitchen
+      - entity: binary_sensor.sr501_pir_motion_kitchen
+      - entity: light.ws2812b_led_kitchen
+    show_header_toggle: false
+    title: Kitchen
+    type: entities
+
+  - entities:
+      - entity: sensor.device_firmware_entrance
+      - entity: sensor.wifi_ip_entrance
+      - entity: sensor.wifi_ssid_entrance
+      - entity: sensor.wifi_signal_entrance
+      - entity: sensor.device_uptime_entrance
+      - entity: sensor.htu21d_temperature_entrance
+      - entity: sensor.htu21d_humidity_entrance
+      - entity: binary_sensor.sr501_pir_motion_entrance
+      - entity: sensor.tsl2561_ambient_light_entrance
+      - entity: light.ws2812b_led_entrance
+    show_header_toggle: false
+    title: Entrance
+    type: entities
+
+  - entities:
+      - entity: sensor.device_firmware_stairs
+      - entity: sensor.wifi_ip_stairs
+      - entity: sensor.wifi_ssid_stairs
+      - entity: sensor.wifi_signal_stairs
+      - entity: sensor.device_uptime_stairs
+      - entity: sensor.htu21d_temperature_stairs
+      - entity: sensor.htu21d_humidity_stairs
+      - entity: sensor.tsl2561_ambient_light_stairs
+      - entity: binary_sensor.sr501_pir_motion_stairs
+    show_header_toggle: false
+    title: Stairs
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_alex_room
+      - entity: sensor.wifi_ip_alex_room
+      - entity: sensor.wifi_ssid_alex_room
+      - entity: sensor.wifi_signal_alex_room
+      - entity: sensor.device_uptime_alex_room
+      - entity: sensor.htu21d_temperature_alex_room
+      - entity: sensor.htu21d_humidity_alex_room
+      - entity: sensor.tsl2561_ambient_light_alex_room
+      - entity: binary_sensor.sr501_pir_motion_alex_room
+    show_header_toggle: false
+    title: Alex Room
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_bedroom
+      - entity: sensor.wifi_ip_bedroom
+      - entity: sensor.wifi_ssid_bedroom
+      - entity: sensor.wifi_signal_bedroom
+      - entity: sensor.device_uptime_bedroom
+      - entity: sensor.htu21d_temperature_bedroom
+      - entity: sensor.htu21d_humidity_bedroom
+      - entity: binary_sensor.sr501_pir_motion_bedroom
+      - entity: light.ws2812b_led_bedroom
+    show_header_toggle: false
+    title: Bedroom
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_domi_room
+      - entity: sensor.wifi_ip_domi_room
+      - entity: sensor.wifi_ssid_domi_room
+      - entity: sensor.wifi_signal_domi_room
+      - entity: sensor.device_uptime_domi_room
+      - entity: sensor.htu21d_temperature_domi_room
+      - entity: sensor.htu21d_humidity_domi_room
+#      - entity: sensor.tsl2561_ambient_light_domi_room
+#      - entity: binary_sensor.sr501_pir_motion_domi_room
+      - entity: light.ws2812b_led_domi_room
+    show_header_toggle: false
+    title: Domi Room
+    type: entities
+  - entities:
+      - entity: sensor.device_firmware_heating
+      - entity: sensor.wifi_ip_heating
+      - entity: sensor.wifi_bssid_heating
+      - entity: sensor.wifi_signal_heating
+      - entity: sensor.device_uptime_heating
+      - entity: sensor.temperature_flow_groundfloor
+      - entity: sensor.temperature_return_groundfloor
+      - entity: sensor.temperature_flow_upstairs
+      - entity: sensor.temperature_return_upstairs
+    show_header_toggle: false
+    title: Heating
+    type: entities

@@ -1,0 +1,171 @@
+title: Home
+path: home
+badges:
+  - entity: binary_sensor.updater
+  - entity: sensor.hacs
+  # - entity: sun.sun
+cards:
+  # only show when update is available
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.up_to_date
+        state: 'off'
+    card:
+      title: software update
+      type: entities
+      entities:
+        - entity: sensor.hass_current_version
+          name: current
+          icon: mdi:home-assistant
+        - entity: sensor.hass_latest_version
+          name: latest
+          icon: mdi:cloud-download
+
+  - type: button
+    entity: group.lights_living_downstairs
+    name: lights living downstairs
+    tap_action:
+      - action: call_service
+        service: scene.morning_livingroom
+        service_data:
+          transition: 10
+
+  #- entity: camera.neato_keller_cleaning_map
+  #  type: picture-entity
+  #- entity: camera.neato_oben_cleaning_map
+  #  type: picture-entity
+  - type: entities
+    title: Light
+    entities:
+      #- entity: light.gateway_light_04cf8ca084d0
+      - entity: light.led_ceiling_light_domiroom
+        name: led ceiling domiroom
+      - entity: light.led_ceiling_light_alexroom
+        name: led ceiling alexroom
+      - entity: light.kitchen
+        name: kitchen
+      - entity: light.table
+        name: table
+      - entity: light.livingroom
+        name: livingroom
+      - entity: light.bedroom
+        name: bedroom
+      - entity: light.office
+        name: office
+      - entity: light.tradfri_light_playroom_ir_cabine_light
+        name: ir sauna
+
+  - type: entities
+    entities:
+      - entity: lock.nuki
+        secondary_info: last-changed
+    title: entrance lock
+    show_name: true
+    state_color: true
+
+  #- type: entities
+  #  title: switches
+  #  entities:
+  #    - entity: switch.innr_sp_120_alex_switch
+  #      name: alex desk
+  #    - entity: switch.innr_sp_120_dominik_switch
+  #      name: domi desk
+  #    - entity: switch.innr_sp_120_fridge_switch
+  #      name: fridge
+  #    - entity: switch.innr_sp_120_livingroom_switch
+  #      name: table
+  #  show_header_toggle: false
+  #  state_color: true
+  
+# working!?
+#  - aggregate_func: max
+#    entities:
+#      - entity: sensor.innr_sp_120_fridge_power
+#    group_by: date
+#    hours_to_show: 168
+#    name: Energy consumption
+#    show:
+#      graph: bar
+#    type: 'custom:mini-graph-card'
+
+# coronavirus
+  - type: 'custom:mini-graph-card'
+    name: covid-19
+    entities:
+      - entity: sensor.austria_coronavirus_current
+        name: current
+        show_legend: false
+        show_state: true
+        color: '#e74c3c'
+    hours_to_show: 168
+    points_per_hour: 0.5
+    height: 74
+    line_width: 2
+    font_size: 85
+    show:
+      icon: true
+      extrema: true
+    update_interval: 3600
+
+# speedtest
+  - type: 'custom:mini-graph-card'
+    name: speedtest.net
+    entities:
+      - entity: sensor.speedtest_ping
+        name: ping
+        show_legend: true
+        show_state: true
+      - entity: sensor.speedtest_download
+        name: down
+        show_legend: true
+        show_state: true
+        y_axis: secondary
+      - entity: sensor.speedtest_upload
+        name: up
+        show_legend: true
+        show_state: true
+        y_axis: secondary
+    hours_to_show: 24
+    points_per_hour: 4
+    height: 74
+    line_width: 2
+    font_size: 85
+    show:
+      icon: true
+      extrema: true
+    update_interval: 60
+
+ 
+  - type: 'custom:bar-card'
+    title: nas.home
+    entities:
+      - entity: sensor.nas_volume_1_volume_used
+        name: NAS disk
+      - entity: sensor.nas_memory_usage_real
+        name: NAS memory
+    positions:
+      # icon: 'off'
+      # indicator: inside
+      name: outside
+    width: 70%
+    height: 20px
+
+  - type: thermostat
+    name: office
+    entity: climate.office
+  
+  - type: thermostat
+    name: alex
+    entity: climate.alex
+
+  - type: thermostat
+    name: domi
+    entity: climate.domi
+
+  - type: thermostat
+    name: livingroom
+    entity: climate.livingroom
+
+  - type: thermostat
+    name: bedroom
+    entity: climate.bedroom

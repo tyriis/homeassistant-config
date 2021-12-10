@@ -1,0 +1,158 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.1.0/24
+    - 10.42.0.0/24
+
+
+# recorder: !include recorder.yaml
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include_dir_named groups/
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+climate:  !include_dir_list climates/
+
+#scence:
+#- name: night livingroom
+#  icon: "mdi:movie"
+#  entities:
+#    group.lights_living_downstairs:
+#      brightness: 1
+      # color_temp: 447
+
+#- name: morning livingroom
+#  icon: "mdi:coffee"
+#  entities:
+#    - entity: group.lights_living_downstairs
+#      brightness: 255
+      # color_temp: 230
+
+# Prometheus configuration
+prometheus: !include prometheus.yaml
+
+# MQTT configuration
+mqtt: !include mqtt.yaml
+
+# neato botvac
+# neato:
+#   username: !secret neato_username
+#   password: !secret neato_password
+
+lock:
+  - platform: nuki
+    host: 192.168.1.9
+    token: !secret nuki_token
+
+# xiaomi_aqara:
+#   discovery_retry: 5
+#    gateways:
+#      - mac: !secret mija_gateway_mac
+#       key: !secret mija_gateway_key
+#       host: 192.168.1.116
+    
+
+# Switch configuration
+switch: !include_dir_list switches/
+sensor: !include_dir_list sensors/
+binary_sensor: !include_dir_list binary_sensors/
+  
+light: !include_dir_list lights/
+camera: !include_dir_list cameras/
+
+device_tracker:
+  - platform: nmap_tracker
+    home_interval: 10 # The number of minutes Nmap will not scan this device, assuming it is home, in order to preserve the device battery.
+    consider_home: 90
+    # interval_seconds: 12
+    hosts:
+      - 192.168.1.21 # s20-nils
+      - 192.168.1.11 # s20-jasmin
+      - 192.168.1.42 # moto-domi
+    new_device_defaults:
+      track_new_devices: true
+
+  - platform: nmap_tracker
+    consider_home: 1
+    interval_seconds: 10
+    hosts:
+      - 192.168.1.109 # samsung-tv-livingroom
+      - 192.168.1.20 # xps13-nils wlan
+      - 192.168.1.12 # xps13-jasmin net
+      - 192.168.1.22 # xps13-nils lan
+    new_device_defaults:
+      track_new_devices: true
+
+
+#speedtestdotnet:
+#  server_id: 12390
+#  scan_interval:
+#    minutes: 30
+#  monitored_conditions:
+#    - ping
+#    - download
+#    - upload
+
+#synology_dsm:
+#  - host: !secret synology_host
+#    username: !secret synology_username
+#    password: !secret synology_password
+#    port: 5001
+#    ssl: true
+
+lovelace:
+  mode: yaml
+  resources:
+  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+    type: module
+  - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
+    type: module
+  - url: /hacsfiles/bar-card/bar-card.js
+    type: module
+
+ # panel_iframe:
+ #  networkmap:
+ #    title: 'Zigbee Map'
+ #    url: '/local/community/zigbee2mqtt_networkmap/map.html'
+ #    icon: 'mdi:graphql'
+
+
+
+#influxdb:
+#  api_version: 2
+#  host: influxdb.k8s.home
+#  port: 443
+#  ssl: true
+#  verify_ssl: false
+#  token: !secret influxdb2_token
+#  organization: 0fd0cb8eb95b578b
+#  bucket: homeassistant
+#  tags:
+#    source: homeassistant
+#  tags_attributes:
+#    - friendly_name
+#  # default_measurement: units
+#  exclude:
+#    entities:
+#      - zone.home
+#    domains:
+#      - persistent_notification
+#      - person
+#  include:
+#    domains:
+#      - sensor
+#      - binary_sensor
+#      - sun
+#    entities:
+#      - weather.home

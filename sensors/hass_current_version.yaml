@@ -1,0 +1,3 @@
+platform: version
+source: local
+name: hass current version

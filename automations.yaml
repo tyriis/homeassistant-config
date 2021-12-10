@@ -1,0 +1,63 @@
+#- alias: Turn on downstairs lights when motion is detected
+#  trigger:
+#    - platform: state
+#      entity_id: 
+#        - binary_sensor.mijia_motion_stairs_occupancy
+#        - binary_sensor.mijia_motion_basement_stairs_occupancy
+#        - binary_sensor.mijia_motion_entrance_occupancy
+#        - binary_sensor.mijia_motion_kitchen_occupancy
+#        - binary_sensor.mijia_motion_livingroom_occupancy
+#        - binary_sensor.mijia_motion_livingroom_tv_occupancy
+#        - binary_sensor.sr501_pir_motion_stairs
+#        - binary_sensor.sr501_pir_motion_livingroom
+#      to: 'on'
+#  action:
+#   - service: light.turn_on
+#      entity_id:
+#        - light.kitchen
+#        - light.table
+#        - light.livingroom
+#
+#- alias: Turn off downstairs lights after 30 minutes of inactivity
+#  trigger:
+#    - platform: state
+#      entity_id:
+#        - group.motion_downstairs
+#      to: 'off'
+#      for:
+#        minutes: 30
+#  action:
+#    - service: light.turn_off
+#      entity_id:
+#        - light.kitchen
+#        - light.table
+#        - light.livingroom
+
+
+
+#- alias: Turn on office light when motion is detected
+#  trigger:
+#    - platform: state
+#      entity_id: 
+#        - binary_sensor.sr501_pir_motion_playroom
+#        - binary_sensor.mijia_motion_basement_stairs_occupancy
+#        - binary_sensor.sr501_pir_motion_basement
+#        - binary_sensor.mijia_motion_office_jasmin_occupancy
+#      to: 'on'
+#  action:
+#    - service: light.turn_on
+#      entity_id:
+#        - light.office_light
+#
+#- alias: Turn off office light 30 minutes after last movement
+#  trigger:
+#    - platform: state
+#      entity_id: 
+#        - group.motion_office
+#      to: 'off'
+#      for:
+#        minutes: 30
+#  action:
+#    - service: light.turn_off
+#      entity_id:
+#        - light.office_light

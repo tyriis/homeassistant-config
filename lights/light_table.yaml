@@ -1,0 +1,16 @@
+platform: mqtt
+name: table
+schema: json
+state_topic: zigbee2mqtt-bridge03/table
+command_topic: zigbee2mqtt-bridge03/table/set
+# payload_on: 1
+# payload_off: 0
+availability_topic: zigbee2mqtt-bridge03/bridge/state
+payload_available: online
+payload_not_available: offline
+qos: 2
+optimistic: false
+unique_id: 7edc4fcc-d68f-3b3c-b8ba-3db5230a6d15 # uuid3(table)
+color_temp: true
+brightness: true
+rgb: false

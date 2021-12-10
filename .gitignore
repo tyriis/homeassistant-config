@@ -1,0 +1,16 @@
+.cloud
+.storage
+.vscode
+*recycle
+secrets.yaml
+__pycache__
+tts
+custom_components
+*.log
+*.db
+.HA_VERSION
+www
+deps
+home-assistant_v2.db*
+*.tar.gz
+*.log*

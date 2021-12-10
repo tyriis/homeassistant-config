@@ -1,0 +1,239 @@
+title: Upstairs
+path: upstairs
+badges: []
+cards:
+  # motion sensor graphs
+  - type: vertical-stack
+    title: motion
+    cards:
+    
+    - type: entities
+      title: sensors
+      entities:
+        - entity: binary_sensor.sr501_pir_motion_alex_room
+          name: ESPHome alex
+          secondary_info: last-changed
+        - entity: binary_sensor.sr501_pir_motion_bedroom
+          name: ESPHome bedroom
+          secondary_info: last-changed
+        - entity: binary_sensor.sr501_pir_motion_bathroom
+          name: ESPHome bathroom
+          secondary_info: last-changed
+        - entity: binary_sensor.mijia_motion_upstairs_stairs_occupancy
+          name: mijia
+          secondary_info: last-changed
+
+    - type: history-graph
+      title: 'last hour'
+      entities:
+        - entity: binary_sensor.sr501_pir_motion_alex_room
+          name: ESPHome alex
+        - entity: binary_sensor.sr501_pir_motion_bedroom
+          name: ESPHome bedroom
+        - entity: binary_sensor.sr501_pir_motion_bathroom
+          name: ESPHome bathroom
+        - entity: binary_sensor.mijia_motion_upstairs_stairs_occupancy
+          name: mijia
+      refresh_interval: 30
+      hours_to_show: 1
+
+    - type: history-graph
+      title: 'last 24 hours'
+      entities:
+        - entity: binary_sensor.sr501_pir_motion_alex_room
+          name: ESPHome alex
+        - entity: binary_sensor.sr501_pir_motion_bedroom
+          name: ESPHome bedroom
+        - entity: binary_sensor.sr501_pir_motion_bathroom
+          name: ESPHome bathroom
+        - entity: binary_sensor.mijia_motion_upstairs_stairs_occupancy
+          name: mijia
+      refresh_interval: 60
+      # hours_to_show: 24
+
+  # bedroom sensor cards
+  - type: vertical-stack
+    title: bedroom
+    cards:
+      - type: custom:mini-graph-card
+        name: temperature
+        entities:
+          - entity: sensor.aqara_climate_bedroom_temperature
+            color: '#ff9800'
+            name: aqara
+          - entity: sensor.htu21d_temperature_bedroom
+            color: '#E74C3C'
+            name: htu21d
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+      - type: custom:mini-graph-card
+        name: humidity
+        entities:
+          - entity: sensor.aqara_climate_bedroom_humidity
+            color: '#5f37db'
+            name: aqara
+          - entity: sensor.htu21d_humidity_bedroom
+            color: '#3498DB'
+            name: htu21d
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+  # alexroom sensor cards
+  - type: vertical-stack
+    title: alexroom
+    cards:
+      - type: custom:mini-graph-card
+        name: temperature
+        entities:
+        - entity: sensor.htu21d_temperature_alex_room
+          color: '#E74C3C'
+          name: ESPHome
+        - entity: sensor.aqara_climate_alexroom_temperature
+          color: '#ff9800'
+          name: aqara
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+      - type: custom:mini-graph-card
+        name: humidity
+        entities:
+        - entity: sensor.htu21d_humidity_alex_room
+          color: '#3498DB'
+          name: ESPHome
+        - entity: sensor.aqara_climate_alexroom_humidity
+          color: '#5f37db'
+          name: aqara
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+      - type: custom:mini-graph-card
+        name: lux
+        entities:
+          - entity: sensor.tsl2561_ambient_light_alex_room
+            color: '#ff9800'
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        update_interval: 60
+        show:
+          icon: true
+          extrema: true
+  # bathroom sensor cards
+  - type: vertical-stack
+    title: bathroom
+    cards:
+      - type: custom:mini-graph-card
+        name: temperature
+        entities:
+          - entity: sensor.htu21d_temperature_bathroom
+            color: '#E74C3C'
+            name: htu21d
+          - entity: sensor.aqara_climate_bathroom_temperature
+            color: '#ff9800'
+            name: aqara
+          - entity: sensor.bmp180_temperature_bathroom
+            name: bmp180
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+      - type: custom:mini-graph-card
+        name: humidity
+        entities:
+          - entity: sensor.htu21d_humidity_bathroom
+            color: '#3498DB'
+            name: htu21d
+          - entity: sensor.aqara_climate_bathroom_humidity
+            color: '#5f37db'
+            name: aqara
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+      - type: custom:mini-graph-card
+        name: lux
+        entities:
+          - entity: sensor.tsl2561_ambient_light_bathroom
+            color: '#ff9800'
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        update_interval: 60
+        show:
+          icon: true
+          extrema: true
+  # domiroom sensor cards
+  - type: vertical-stack
+    title: domiroom
+    cards:
+      - type: custom:mini-graph-card
+        name: temperature
+        entities:
+          - entity: sensor.htu21d_temperature_domi_room
+            color: '#E74C3C'
+            name: ESPHome
+          - entity: sensor.aqara_climate_domi_room_temperature
+            color: '#ff9800'
+            name: aqara
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+      - type: custom:mini-graph-card
+        name: humidity
+        entities:
+          - entity: sensor.htu21d_humidity_domi_room
+            color: '#3498DB'
+            name: ESPHome
+          - entity: sensor.aqara_climate_domi_room_humidity
+            color: '#5f37db'
+            name: aqara
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+  - type: thermostat
+    name: hisense ac domiroom
+    entity: climate.hisense_ac_domiroom
+
