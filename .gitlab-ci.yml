@@ -1,4 +1,11 @@
-build-job:
+---
+stages:
+  - webhook
+
+default:
+  image: curlimages/curl:7.80.0
+
+webhook:
   stage: webhook
   script:
-    - curl -X POST -d '{ "key": "value"}' ${WEBHOOK}
+    - curl -X POST ${WEBHOOK}
