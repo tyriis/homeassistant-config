@@ -89,51 +89,51 @@ cards:
 #    type: 'custom:mini-graph-card'
 
 # coronavirus
-  - type: 'custom:mini-graph-card'
-    name: covid-19
-    entities:
-      - entity: sensor.austria_coronavirus_current
-        name: current
-        show_legend: false
-        show_state: true
-        color: '#e74c3c'
-    hours_to_show: 168
-    points_per_hour: 0.5
-    height: 74
-    line_width: 2
-    font_size: 85
-    show:
-      icon: true
-      extrema: true
-    update_interval: 3600
+  # - type: 'custom:mini-graph-card'
+  #   name: covid-19
+  #   entities:
+  #     - entity: sensor.austria_coronavirus_current
+  #       name: current
+  #       show_legend: false
+  #       show_state: true
+  #       color: '#e74c3c'
+  #   hours_to_show: 168
+  #   points_per_hour: 0.5
+  #   height: 74
+  #   line_width: 2
+  #   font_size: 85
+  #   show:
+  #     icon: true
+  #     extrema: true
+  #   update_interval: 3600
 
 # speedtest
-  - type: 'custom:mini-graph-card'
-    name: speedtest.net
-    entities:
-      - entity: sensor.speedtest_ping
-        name: ping
-        show_legend: true
-        show_state: true
-      - entity: sensor.speedtest_download
-        name: down
-        show_legend: true
-        show_state: true
-        y_axis: secondary
-      - entity: sensor.speedtest_upload
-        name: up
-        show_legend: true
-        show_state: true
-        y_axis: secondary
-    hours_to_show: 24
-    points_per_hour: 4
-    height: 74
-    line_width: 2
-    font_size: 85
-    show:
-      icon: true
-      extrema: true
-    update_interval: 60
+  # - type: 'custom:mini-graph-card'
+  #   name: speedtest.net
+  #   entities:
+  #     - entity: sensor.speedtest_ping
+  #       name: ping
+  #       show_legend: true
+  #       show_state: true
+  #     - entity: sensor.speedtest_download
+  #       name: down
+  #       show_legend: true
+  #       show_state: true
+  #       y_axis: secondary
+  #     - entity: sensor.speedtest_upload
+  #       name: up
+  #       show_legend: true
+  #       show_state: true
+  #       y_axis: secondary
+  #   hours_to_show: 24
+  #   points_per_hour: 4
+  #   height: 74
+  #   line_width: 2
+  #   font_size: 85
+  #   show:
+  #     icon: true
+  #     extrema: true
+  #   update_interval: 60
 
 
   - type: 'custom:bar-card'
