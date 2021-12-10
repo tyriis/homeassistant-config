@@ -156,3 +156,7 @@ lovelace:
 #      - sun
 #    entities:
 #      - weather.home
+
+
+shell_command:
+  update_config: cd /config && git pull
