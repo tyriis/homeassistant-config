@@ -61,13 +61,13 @@ lock:
 #      - mac: !secret mija_gateway_mac
 #       key: !secret mija_gateway_key
 #       host: 192.168.1.116
-    
+
 
 # Switch configuration
 switch: !include_dir_list switches/
 sensor: !include_dir_list sensors/
 binary_sensor: !include_dir_list binary_sensors/
-  
+
 light: !include_dir_list lights/
 camera: !include_dir_list cameras/
 
@@ -93,16 +93,6 @@ device_tracker:
       - 192.168.1.22 # xps13-nils lan
     new_device_defaults:
       track_new_devices: true
-
-
-#speedtestdotnet:
-#  server_id: 12390
-#  scan_interval:
-#    minutes: 30
-#  monitored_conditions:
-#    - ping
-#    - download
-#    - upload
 
 #synology_dsm:
 #  - host: !secret synology_host
