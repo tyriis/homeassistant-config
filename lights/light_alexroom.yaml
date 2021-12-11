@@ -1,7 +1,7 @@
 platform: mqtt
 name: led ceiling light alexroom
 state_topic: ESPHome/switch_alexroom/switch/switch_alexroom_relay/state
-command_topic: ESPHome/switch_alexroom/switch/switch_alexroom_relay/state
+command_topic: ESPHome/switch_alexroom/switch/switch_alexroom_relay/set
 payload_on: "ON"
 payload_off: "OFF"
 availability_topic: ESPHome/switch_alexroom/state

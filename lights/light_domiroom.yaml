@@ -1,7 +1,7 @@
 platform: mqtt
 name: led ceiling light domiroom
 state_topic: ESPHome/switch_domiroom/switch/switch_domiroom_relay/state
-command_topic: ESPHome/switch_domiroom/switch/switch_domiroom_relay/state
+command_topic: ESPHome/switch_domiroom/switch/switch_domiroom_relay/set
 payload_on: "ON"
 payload_off: "OFF"
 availability_topic: ESPHome/switch_domiroom/state
