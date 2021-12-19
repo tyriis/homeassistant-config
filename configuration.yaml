@@ -8,7 +8,7 @@ http:
     - 10.42.0.0/24
 
 
-# recorder: !include recorder.yaml
+recorder: !include recorder.yaml
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
