@@ -94,6 +94,13 @@ device_tracker:
     new_device_defaults:
       track_new_devices: true
 
+  - platform: nmap_tracker
+    consider_home: 120
+    interval_seconds: 60
+    hosts:
+      alex_pc: 192.168.1.30
+      domi_pc: 192.168.1.40
+
 #synology_dsm:
 #  - host: !secret synology_host
 #    username: !secret synology_username

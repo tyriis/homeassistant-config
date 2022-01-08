@@ -90,3 +90,11 @@ f0_2f_74_1d_b5_bf:
   icon:
   picture:
   track: true
+
+alex_pc:
+  name: Alex PC
+  track: true
+
+domi_pc:
+  name: Dominik PC
+  track: true
