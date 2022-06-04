@@ -1,5 +1,5 @@
 # Groups allow the user to combine multiple entities into one.
-# 
+#
 # Check the States  page from the Developer Tools and browse the Current entities: listing for all available entities.
 #
 # Example configuration.yaml entry
@@ -39,6 +39,6 @@
 #
 name: motion office
 entities:
-  - binary_sensor.sr501_pir_motion_playroom
+  - binary_sensor.sensor_office_sr501_pir_motion
   - binary_sensor.mijia_motion_office_occupancy
 # all: true

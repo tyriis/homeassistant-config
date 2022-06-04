@@ -108,7 +108,7 @@ cards:
     cards:
     - type: custom:mini-graph-card
       entities:
-      - entity: sensor.htu21d_temperature_office
+      - entity: sensor.sensor_office_htu21d_temperature
         color: '#E74C3C'
         name: ESPHome
       - entity: sensor.aqara_climate_office_temperature
@@ -136,7 +136,7 @@ cards:
 
     - type: custom:mini-graph-card
       entities:
-      - entity: sensor.htu21d_humidity_office
+      - entity: sensor.sensor_office_htu21d_humidity
         color: '#3498DB'
         name: ESPHome
       - entity: sensor.aqara_climate_office_humidity
@@ -168,7 +168,7 @@ cards:
 
     - type: custom:mini-graph-card
       entities:
-        - entity: sensor.tsl2561_ambient_light_office
+        - entity: sensor.sensor_office_tsl2561_ambient_light
           # color: '#ff9800'
       name: lux
       height: 74
@@ -192,11 +192,11 @@ cards:
 
   - type: vertical-stack
     cards:
-    
+
     - type: entities
       title: motion
       entities:
-      - entity: binary_sensor.sr501_pir_motion_office
+      - entity: binary_sensor.sensor_office_sr501_pir_motion
         name: ESPHome
         secondary_info: last-changed
       - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
@@ -218,7 +218,7 @@ cards:
     - type: 'custom:mini-graph-card'
       name: motion last hour
       entities:
-      - entity: binary_sensor.sr501_pir_motion_office
+      - entity: binary_sensor.sensor_office_sr501_pir_motion
         name: ESPHome
         aggregate_func: avg
       - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
@@ -241,8 +241,8 @@ cards:
         graph: bar
         state: false
         icon: false
-  
-    
+
+
 
   #- entities:
   #    - vacuum.neato_keller
@@ -250,7 +250,7 @@ cards:
   #  type: entities
 
 
-            
+
 
 
 
@@ -268,3 +268,4 @@ cards:
   - type: thermostat
     name: hisense ac
     entity: climate.hisense_ac_office
+

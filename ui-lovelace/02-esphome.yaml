@@ -15,15 +15,14 @@ cards:
     title: Basement
     type: entities
   - entities:
-      - entity: sensor.device_firmware_office
-      - entity: sensor.wifi_ip_office
-      - entity: sensor.wifi_ssid_office
-      - entity: sensor.wifi_signal_office
-      - entity: sensor.device_uptime_office
-      - entity: sensor.htu21d_temperature_office
-      - entity: sensor.htu21d_humidity_office
-      - entity: sensor.tsl2561_ambient_light_office
-      - entity: binary_sensor.sr501_pir_motion_office
+      - entity: sensor.sensor_office_firmware
+      - entity: sensor.sensor_office_wifi_ip
+      - entity: sensor.sensor_office_wifi_strength
+      - entity: sensor.sensor_office_uptime
+      - entity: sensor.sensor_office_htu21d_temperature
+      - entity: sensor.sensor_office_htu21d_humidity
+      - entity: sensor.sensor_office_tsl2561_ambient_light
+      - entity: binary_sensor.sensor_office_sr501_pir_motion
     show_header_toggle: false
     title: Office
     type: entities
