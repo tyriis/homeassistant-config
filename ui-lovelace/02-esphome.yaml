@@ -115,6 +115,20 @@ cards:
       - entity: sensor.switch_basement_power
       - entity: sensor.switch_basement_total_daily_energy
 
+  # ESPHome Sensor Heating
+  - title: Sensor Heating
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.sensor_heating_firmware
+      - entity: sensor_heating_wifi_ip
+      - entity: sensor.sensor_heating_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: sensor.sensor_heating_temperature_flow_groundfloor
+      - entity: sensor.sensor_heating_temperature_return_groundfloor
+      - entity: sensor.sensor_heating_temperature_flow_upstairs
+      - entity: sensor.sensor_heating_temperature_return_upstairs
+
   - entities:
       - entity: sensor.device_firmware_entrance
       - entity: sensor.wifi_ip_entrance
