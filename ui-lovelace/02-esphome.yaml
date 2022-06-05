@@ -100,6 +100,21 @@ cards:
       - entity: sensor.sensor_basement_tsl2561_ambient_light
       - entity: binary_sensor.sensor_basement_sr501_pir_motion
 
+  # ESPHome Switch Basement
+  - title: Switch Basement
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.switch_basement_firmware
+      - entity: sensor.switch_basement_wifi_ip
+      - entity: sensor.switch_basement_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: switch.switch_basement_relay
+      - entity: sensor.switch_basement_current
+      - entity: sensor.switch_basement_voltage
+      - entity: sensor.switch_basement_power
+      - entity: sensor.switch_basement_total_daily_energy
+
   - entities:
       - entity: sensor.device_firmware_entrance
       - entity: sensor.wifi_ip_entrance
