@@ -87,7 +87,7 @@ cards:
       - entity: binary_sensor.switch_office_touchpad
 
   # ESPHome Sensor Basement
-  - title: Sensot Basement
+  - title: Sensor Basement
     type: entities
     show_header_toggle: false
     entities:
