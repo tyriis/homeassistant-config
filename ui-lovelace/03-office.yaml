@@ -268,4 +268,3 @@ cards:
   - type: thermostat
     name: hisense ac
     entity: climate.hisense_ac_office
-

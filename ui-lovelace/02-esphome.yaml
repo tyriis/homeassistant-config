@@ -30,6 +30,18 @@ cards:
       - entity: sensor.sensor_stairs_tsl2561_ambient_light
       - entity: binary_sensor.sensor_stairs_sr501_pir_motion
 
+  # ESPHome Switch Livingroom
+  - title: Switch Livingroom
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.switch_livingroom_firmware
+      - entity: sensor.switch_livingroom_wifi_ip
+      - entity: sensor.switch_livingroom_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: switch.switch_livingroom_relay
+      - entity: binary_sensor.switch_livingroom_touchpad
+
   # ESPHome Sensor Office
   - title: Sensor Office
     type: entities
