@@ -86,19 +86,19 @@ cards:
       - entity: switch.switch_office_relay
       - entity: binary_sensor.switch_office_touchpad
 
-  - entities:
-      - entity: sensor.device_firmware_basement
-      - entity: sensor.wifi_ip_basement
-      - entity: sensor.wifi_ssid_basement
-      - entity: sensor.wifi_signal_basement
-      - entity: sensor.device_uptime_basement
-      - entity: sensor.htu21d_temperature_basement
-      - entity: sensor.htu21d_humidity_basement
-      - entity: sensor.tsl2561_ambient_light_basement
-      - entity: binary_sensor.sr501_pir_motion_basement
-    show_header_toggle: false
-    title: Basement
+  # ESPHome Sensor Basement
+  - title: Sensot Basement
     type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.sensor_basement_firmware
+      - entity: sensor.sensor_basement_wifi_ip
+      - entity: sensor.sensor_basement_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: sensor.sensor_basement_htu21d_temperature
+      - entity: sensor.sensor_basement_htu21d_humidity
+      - entity: sensor.sensor_basement_tsl2561_ambient_light
+      - entity: binary_sensor.sensor_basement_sr501_pir_motion
 
   - entities:
       - entity: sensor.device_firmware_entrance
