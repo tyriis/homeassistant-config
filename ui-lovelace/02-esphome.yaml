@@ -18,14 +18,57 @@ cards:
       - entity: sensor.sensor_office_firmware
       - entity: sensor.sensor_office_wifi_ip
       - entity: sensor.sensor_office_wifi_strength
-      - entity: sensor.sensor_office_uptime
+      # - entity: sensor.sensor_office_uptime
       - entity: sensor.sensor_office_htu21d_temperature
       - entity: sensor.sensor_office_htu21d_humidity
       - entity: sensor.sensor_office_tsl2561_ambient_light
       - entity: binary_sensor.sensor_office_sr501_pir_motion
     show_header_toggle: false
-    title: Office
+    title: Sensor Office
     type: entities
+
+  # ESPHome Switch IRPanel 1
+  - title: Switch IRPanel 1
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.switch_irpanel_1_firmware
+      - entity: sensor.switch_irpanel_1_wifi_ip
+      - entity: sensor.switch_irpanel_1_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: switch.switch_irpanel_1_relay
+      - entity: sensor.switch_irpanel_1_current
+      - entity: sensor.switch_irpanel_1_voltage
+      - entity: sensor.switch_irpanel_1_power
+      - entity: sensor.switch_irpanel_1_total_daily_energy
+
+  # ESPHome Switch IRPanel 2
+  - title: Switch IRPanel 2
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.switch_irpanel_2_firmware
+      - entity: sensor.switch_irpanel_2_wifi_ip
+      - entity: sensor.switch_irpanel_2_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: switch.switch_irpanel_2_relay
+      - entity: sensor.switch_irpanel_2_current
+      - entity: sensor.switch_irpanel_2_voltage
+      - entity: sensor.switch_irpanel_2_power
+      - entity: sensor.switch_irpanel_2_total_daily_energy
+
+  # ESPHome Switch Office
+  - title: Switch Office
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.switch_office_firmware
+      - entity: sensor.switch_office_wifi_ip
+      - entity: sensor.switch_office_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: switch.switch_office_relay
+      - entity: binary_sensor.switch_office_touchpad
+
   - entities:
       - entity: sensor.device_firmware_livingroom
       - entity: sensor.wifi_ip_livingroom
