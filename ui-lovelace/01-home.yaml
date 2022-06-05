@@ -152,9 +152,9 @@ cards:
     width: 70%
     height: 20px
 
-  # - type: thermostat
-  #   name: office
-  #   entity: climate.office
+  - type: thermostat
+    name: office
+    entity: climate.office
 
   # - type: thermostat
   #   name: alex
@@ -164,10 +164,10 @@ cards:
   #   name: domi
   #   entity: climate.domi
 
-  # - type: thermostat
-  #   name: livingroom
-  #   entity: climate.livingroom
+  - type: thermostat
+    name: livingroom
+    entity: climate.livingroom
 
-  # - type: thermostat
-  #   name: bedroom
-  #   entity: climate.bedroom
+  - type: thermostat
+    name: bedroom
+    entity: climate.bedroom
