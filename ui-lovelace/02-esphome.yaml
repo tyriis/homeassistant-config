@@ -133,7 +133,7 @@ cards:
     show_header_toggle: false
     entities:
       - entity: sensor.sensor_heating_firmware
-      - entity: sensor_heating_wifi_ip
+      - entity: sensor.sensor_heating_wifi_ip
       - entity: sensor.sensor_heating_wifi_strength
       # - entity: sensor.sensor_office_uptime
       - entity: sensor.sensor_heating_temperature_flow_groundfloor
@@ -228,17 +228,4 @@ cards:
       - entity: light.ws2812b_led_domi_room
     show_header_toggle: false
     title: Domi Room
-    type: entities
-  - entities:
-      - entity: sensor.device_firmware_heating
-      - entity: sensor.wifi_ip_heating
-      - entity: sensor.wifi_bssid_heating
-      - entity: sensor.wifi_signal_heating
-      - entity: sensor.device_uptime_heating
-      - entity: sensor.temperature_flow_groundfloor
-      - entity: sensor.temperature_return_groundfloor
-      - entity: sensor.temperature_flow_upstairs
-      - entity: sensor.temperature_return_upstairs
-    show_header_toggle: false
-    title: Heating
     type: entities
