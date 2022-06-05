@@ -1,9 +1,9 @@
 # HiSense Air Conditioner
 platform: mqtt
 name: "HiSense AC office"
-current_temperature_topic: "hisense_ac/office/f_temp_in/status"
-fan_mode_command_topic: "hisense_ac/office/t_fan_speed/command"
-fan_mode_state_topic: "hisense_ac/office/t_fan_speed/status"
+current_temperature_topic: "hisense_ac/ca2c4f948ecb/f_temp_in/status"
+fan_mode_command_topic: "hisense_ac/ca2c4f948ecb/t_fan_speed/command"
+fan_mode_state_topic: "hisense_ac/ca2c4f948ecb/t_fan_speed/status"
 fan_modes:
   - "auto"
   - "lower"
@@ -13,8 +13,8 @@ fan_modes:
   - "higher"
 max_temp: "30"
 min_temp: "16"
-mode_command_topic: "hisense_ac/office/t_work_mode/command"
-mode_state_topic: "hisense_ac/office/t_work_mode/status"
+mode_command_topic: "hisense_ac/ca2c4f948ecb/t_work_mode/command"
+mode_state_topic: "hisense_ac/ca2c4f948ecb/t_work_mode/status"
 modes:
   - "off"
   - "fan_only"
@@ -25,11 +25,11 @@ modes:
 swing_modes:
   - "on"
   - "off"
-power_command_topic: "hisense_ac/office/t_power/command"
-power_state_topic: "hisense_ac/office/t_power/status"
+power_command_topic: "hisense_ac/ca2c4f948ecb/t_power/command"
+power_state_topic: "hisense_ac/ca2c4f948ecb/t_power/status"
 precision: 1.0
-swing_mode_command_topic: "hisense_ac/office/t_fan_power/command"
-swing_mode_state_topic: "hisense_ac/office/t_fan_power/status"
-temperature_command_topic: "hisense_ac/office/t_temp/command"
-temperature_state_topic: "hisense_ac/office/t_temp/status"
+swing_mode_command_topic: "hisense_ac/ca2c4f948ecb/t_fan_power/command"
+swing_mode_state_topic: "hisense_ac/ca2c4f948ecb/t_fan_power/status"
+temperature_command_topic: "hisense_ac/ca2c4f948ecb/t_temp/command"
+temperature_state_topic: "hisense_ac/ca2c4f948ecb/t_temp/status"
 temperature_unit: "C"
