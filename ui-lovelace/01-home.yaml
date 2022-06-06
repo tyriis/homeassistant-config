@@ -152,26 +152,6 @@ cards:
     width: 70%
     height: 20px
 
-  - type: thermostat
-    name: office
-    entity: climate.office
-
-  - type: thermostat
-    name: livingroom
-    entity: climate.livingroom
-
-  - type: thermostat
-    name: bedroom
-    entity: climate.bedroom
-
-  - type: thermostat
-    name: alex
-    entity: climate.alex
-
-  - type: thermostat
-    name: domi
-    entity: climate.domi
-
   - type: custom:simple-thermostat
     entity: climate.office
     step_size: 1
@@ -179,6 +159,50 @@ cards:
       step: row
     header:
       name: Office
+    control:
+      - hvac
+      - preset
+
+  - type: custom:simple-thermostat
+    entity: climate.livingroom
+    step_size: 1
+    layout:
+      step: row
+    header:
+      name: Livingroom
+    control:
+      - hvac
+      - preset
+
+  - type: custom:simple-thermostat
+    entity: climate.bedroom
+    step_size: 1
+    layout:
+      step: row
+    header:
+      name: Bedroom
+    control:
+      - hvac
+      - preset
+
+  - type: custom:simple-thermostat
+    entity: climate.alex
+    step_size: 1
+    layout:
+      step: row
+    header:
+      name: Alexroom
+    control:
+      - hvac
+      - preset
+
+  - type: custom:simple-thermostat
+    entity: climate.domi
+    step_size: 1
+    layout:
+      step: row
+    header:
+      name: Domiroom
     control:
       - hvac
       - preset
