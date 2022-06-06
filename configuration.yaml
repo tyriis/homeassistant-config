@@ -117,6 +117,8 @@ lovelace:
     type: module
   - url: /hacsfiles/bar-card/bar-card.js
     type: module
+  - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+    type: module
 
  # panel_iframe:
  #  networkmap:
