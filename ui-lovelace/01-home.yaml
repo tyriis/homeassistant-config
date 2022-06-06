@@ -171,3 +171,14 @@ cards:
   - type: thermostat
     name: domi
     entity: climate.domi
+
+  - type: custom:simple-thermostat
+    entity: climate.office
+    step_size: 1
+    layout:
+      step: row
+    header:
+      name: Office
+    control:
+      - hvac
+      - preset
