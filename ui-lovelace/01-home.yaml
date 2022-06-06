@@ -156,14 +156,6 @@ cards:
     name: office
     entity: climate.office
 
-  # - type: thermostat
-  #   name: alex
-  #   entity: climate.alex
-
-  # - type: thermostat
-  #   name: domi
-  #   entity: climate.domi
-
   - type: thermostat
     name: livingroom
     entity: climate.livingroom
@@ -171,3 +163,11 @@ cards:
   - type: thermostat
     name: bedroom
     entity: climate.bedroom
+
+  - type: thermostat
+    name: alex
+    entity: climate.alex
+
+  - type: thermostat
+    name: domi
+    entity: climate.domi
