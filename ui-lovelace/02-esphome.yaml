@@ -30,6 +30,21 @@ cards:
       - entity: sensor.sensor_stairs_tsl2561_ambient_light
       - entity: binary_sensor.sensor_stairs_sr501_pir_motion
 
+  # ESPHome Sensor Livingroom
+  - title: Sensor Livingroom
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.sensor_livingroom_firmware
+      - entity: sensor.sensor_livingroom_wifi_ip
+      - entity: sensor.sensor_livingroom_wifi_strength
+      # - entity: sensor.sensor_office_uptime
+      - entity: sensor.sensor_livingroom_htu21d_temperature
+      - entity: sensor.sensor_livingroom_htu21d_humidity
+      - entity: sensor.sensor_livingroom_tsl2561_ambient_light
+      - entity: binary_sensor.sensor_livingroom_sr501_pir_motion
+      - entity: light.sensor_livingroom_nightlight
+
   # ESPHome Switch Livingroom
   - title: Switch Livingroom
     type: entities
@@ -155,22 +170,6 @@ cards:
     show_header_toggle: false
     title: Entrance
     type: entities
-
-  - entities:
-      - entity: sensor.device_firmware_livingroom
-      - entity: sensor.wifi_ip_livingroom
-      - entity: sensor.wifi_ssid_livingroom
-      - entity: sensor.wifi_signal_livingroom
-      - entity: sensor.device_uptime_livingroom
-      - entity: sensor.htu21d_temperature_livingroom
-      - entity: sensor.htu21d_humidity_livingroom
-      - entity: binary_sensor.sr501_pir_motion_livingroom
-      - entity: sensor.tsl2561_ambient_light_livingroom
-      - entity: light.ws2812b_led_livingroom
-    show_header_toggle: false
-    title: Livingroom
-    type: entities
-
 
   - entities:
       - entity: sensor.device_firmware_bathroom

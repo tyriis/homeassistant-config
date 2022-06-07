@@ -47,6 +47,5 @@ entities:
   - binary_sensor.mijia_motion_table_occupancy
   - binary_sensor.sensor_stairs_sr501_pir_motion
   - binary_sensor.sensor_kitchen_sr501_pir_motion
-  - binary_sensor.sr501_pir_motion_livingroom
-#  - binary_sensor.sr501_pir_motion_kitchen
+  - binary_sensor.sensor_livingroom_sr501_pir_motion
 # all: true
