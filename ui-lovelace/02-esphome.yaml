@@ -157,21 +157,6 @@ cards:
       - entity: sensor.sensor_heating_temperature_return_upstairs
 
   - entities:
-      - entity: sensor.device_firmware_entrance
-      - entity: sensor.wifi_ip_entrance
-      - entity: sensor.wifi_ssid_entrance
-      - entity: sensor.wifi_signal_entrance
-      - entity: sensor.device_uptime_entrance
-      - entity: sensor.htu21d_temperature_entrance
-      - entity: sensor.htu21d_humidity_entrance
-      - entity: binary_sensor.sr501_pir_motion_entrance
-      - entity: sensor.tsl2561_ambient_light_entrance
-      - entity: light.ws2812b_led_entrance
-    show_header_toggle: false
-    title: Entrance
-    type: entities
-
-  - entities:
       - entity: sensor.device_firmware_bathroom
       - entity: sensor.wifi_ip_bathroom
       - entity: sensor.wifi_ssid_bathroom
@@ -188,32 +173,34 @@ cards:
     title: Bathroom
     type: entities
 
-  - entities:
-      - entity: sensor.device_firmware_alex_room
-      - entity: sensor.wifi_ip_alex_room
-      - entity: sensor.wifi_ssid_alex_room
-      - entity: sensor.wifi_signal_alex_room
-      - entity: sensor.device_uptime_alex_room
-      - entity: sensor.htu21d_temperature_alex_room
-      - entity: sensor.htu21d_humidity_alex_room
-      - entity: sensor.tsl2561_ambient_light_alex_room
-      - entity: binary_sensor.sr501_pir_motion_alex_room
-    show_header_toggle: false
-    title: Alex Room
+  # ESPHome Sensor Alexroom
+  - title: Sensor Alexroom
     type: entities
-  - entities:
-      - entity: sensor.device_firmware_bedroom
-      - entity: sensor.wifi_ip_bedroom
-      - entity: sensor.wifi_ssid_bedroom
-      - entity: sensor.wifi_signal_bedroom
-      - entity: sensor.device_uptime_bedroom
-      - entity: sensor.htu21d_temperature_bedroom
-      - entity: sensor.htu21d_humidity_bedroom
-      - entity: binary_sensor.sr501_pir_motion_bedroom
-      - entity: light.ws2812b_led_bedroom
     show_header_toggle: false
-    title: Bedroom
+    entities:
+      - entity: sensor.sensor_alexroom_firmware
+      - entity: sensor.sensor_alexroom_wifi_ip
+      - entity: sensor.sensor_alexroom_wifi_strength
+      # - entity: sensor.sensor_alexroom_uptime
+      - entity: sensor.sensor_alexroom_htu21d_temperature
+      - entity: sensor.sensor_alexroom_htu21d_humidity
+      - entity: sensor.sensor_alexroom_tsl2561_ambient_light
+      - entity: binary_sensor.sensor_alexroom_sr501_pir_motion
+
+  # ESPHome Sensor Bedroom
+  - title: Sensor Bedroom
     type: entities
+    show_header_toggle: false
+    entities:
+      - entity: sensor.sensor_bedroom_firmware
+      - entity: sensor.sensor_bedroom_wifi_ip
+      - entity: sensor.sensor_bedroom_wifi_strength
+      # - entity: sensor.sensor_kitchen_uptime
+      - entity: sensor.sensor_bedroom_htu21d_temperature
+      - entity: sensor.sensor_bedroom_htu21d_humidity
+      - entity: binary_sensor.sensor_bedroom_sr501_pir_motion
+      - entity: light.sensor_bedroom_nightlight
+
   - entities:
       - entity: sensor.device_firmware_domi_room
       - entity: sensor.wifi_ip_domi_room
