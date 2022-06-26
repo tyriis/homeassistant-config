@@ -183,7 +183,7 @@ cards:
       - entity: binary_sensor.sensor_stairs_sr501_pir_motion
 
   # ESPHome Switch Alexroom
-  - title: Switch Livingroom
+  - title: Switch Alexroom
     type: entities
     show_header_toggle: false
     entities:
