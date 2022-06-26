@@ -2,32 +2,32 @@ title: Office
 path: office
 badges: []
 cards:
-#  - entity: camera.neato_keller_cleaning_map
-#    type: picture-entity
+  - type: vertical-stack
+    cards:
 
-  - title: Lights
-    type: entities
-    show_header_toggle: false
-    entities:
-      - entity: light.office
+      - title: Lights
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: light.office
 
-  - title: Switches
-    type: entities
-    show_header_toggle: false
-    entities:
-      - switch.switch_irpanel_1_relay
-      - switch.switch_irpanel_1_relay
+      - title: Switches
+        type: entities
+        show_header_toggle: false
+        entities:
+          - switch.switch_irpanel_1_relay
+          - switch.switch_irpanel_1_relay
 
-  - type: custom:simple-thermostat
-    entity: climate.office
-    step_size: 1
-    layout:
-      step: row
-    header:
-      name: Climate
-    control:
-      - hvac
-      - preset
+      - type: custom:simple-thermostat
+        entity: climate.office
+        step_size: 1
+        layout:
+          step: row
+        header:
+          name: Climate
+        control:
+          - hvac
+          - preset
 
   #- entities:
   #    - color: '#E74C3C'
@@ -117,88 +117,88 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
-    - type: custom:mini-graph-card
-      entities:
-      - entity: sensor.sensor_office_htu21d_temperature
-        color: '#E74C3C'
-        name: ESPHome
-      - entity: sensor.aqara_climate_office_temperature
-        color: '#ff9800'
-        name: aqara
-      name: temperature
-      height: 74
-      line_width: 2
-      font_size: 85
-      hours_to_show: 24
-      points_per_hour: 4
-      show:
-        icon: true
-        extrema: true
-        icon_adaptive_color: true
-      color_thresholds:
-        - value: 25
-          color: "#e74c3c"
-        - value: 15
-          color: "#1db954"
-        - value: -1
-          color: "#3498db"
-        - value: -100
-          color: "#e74c3c"
+      - type: custom:mini-graph-card
+        entities:
+        - entity: sensor.sensor_office_htu21d_temperature
+          color: '#E74C3C'
+          name: ESPHome
+        - entity: sensor.aqara_climate_office_temperature
+          color: '#ff9800'
+          name: aqara
+        name: temperature
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+        color_thresholds:
+          - value: 25
+            color: "#e74c3c"
+          - value: 15
+            color: "#1db954"
+          - value: -1
+            color: "#3498db"
+          - value: -100
+            color: "#e74c3c"
 
-    - type: custom:mini-graph-card
-      entities:
-      - entity: sensor.sensor_office_htu21d_humidity
-        color: '#3498DB'
-        name: ESPHome
-      - entity: sensor.aqara_climate_office_humidity
-        color: '#5f37db'
-        name: aqara
-        # name: humidity
-        # show_legend: false
-        # show_state: true
-        # y_axis: secondary
-      name: humidity
-      height: 74
-      line_width: 2
-      font_size: 85
-      hours_to_show: 24
-      points_per_hour: 4
-      show:
-        icon: true
-        extrema: true
-        icon_adaptive_color: true
-      color_thresholds:
-        - value: 50
-          color: "#e74c3c"
-        - value: 35
-          color: "#1db954"
-        - value: 25
-          color: "#3498db"
-        - value: -100
-          color: "#e74c3c"
+      - type: custom:mini-graph-card
+        entities:
+        - entity: sensor.sensor_office_htu21d_humidity
+          color: '#3498DB'
+          name: ESPHome
+        - entity: sensor.aqara_climate_office_humidity
+          color: '#5f37db'
+          name: aqara
+          # name: humidity
+          # show_legend: false
+          # show_state: true
+          # y_axis: secondary
+        name: humidity
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+        color_thresholds:
+          - value: 50
+            color: "#e74c3c"
+          - value: 35
+            color: "#1db954"
+          - value: 25
+            color: "#3498db"
+          - value: -100
+            color: "#e74c3c"
 
-    - type: custom:mini-graph-card
-      entities:
-        - entity: sensor.sensor_office_tsl2561_ambient_light
-          # color: '#ff9800'
-      name: lux
-      height: 74
-      line_width: 2
-      font_size: 85
-      hours_to_show: 24
-      points_per_hour: 4
-      update_interval: 60
-      show:
-        icon: true
-        extrema: true
-        icon_adaptive_color: true
-      color_thresholds:
-        - value: 100
-          color: "#ff9800"
-        - value: 25
-          color: "#8d8d8d"
-        - value: -100
-          color: "#e74c3c"
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.sensor_office_tsl2561_ambient_light
+            # color: '#ff9800'
+        name: lux
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        update_interval: 60
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+        color_thresholds:
+          - value: 100
+            color: "#ff9800"
+          - value: 25
+            color: "#8d8d8d"
+          - value: -100
+            color: "#e74c3c"
 
 
   - type: vertical-stack
