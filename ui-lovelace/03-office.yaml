@@ -5,18 +5,29 @@ cards:
 #  - entity: camera.neato_keller_cleaning_map
 #    type: picture-entity
 
-  - entities:
+  - title: Lights
+    type: entities
+    show_header_toggle: false
+    entities:
       - entity: light.office
-      - entity: light.tradfri_light_playroom_ir_cabine_light
-    title: Lights
-    type: entities
 
-  - entities:
-      # currrently inverted and same function then light switch
-      # - switch.switch_playroom
-      - switch.heatness_switch_playroom
-    title: Switches
+  - title: Switches
     type: entities
+    show_header_toggle: false
+    entities:
+      - switch.switch_irpanel_1_relay
+      - switch.switch_irpanel_1_relay
+
+  - type: custom:simple-thermostat
+    entity: climate.office
+    step_size: 1
+    layout:
+      step: row
+    header:
+      name: Climate
+    control:
+      - hvac
+      - preset
 
   #- entities:
   #    - color: '#E74C3C'
@@ -77,7 +88,7 @@ cards:
 #    type: 'custom:mini-graph-card'
 
 #  - entities:
-#      - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+#      - entity: binary_sensor.mijia_motion_office_occupancy
 #    type: entities
 
 #  - entities:
@@ -199,7 +210,7 @@ cards:
       - entity: binary_sensor.sensor_office_sr501_pir_motion
         name: ESPHome
         secondary_info: last-changed
-      - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+      - entity: binary_sensor.mijia_motion_office_occupancy
         name: mijia
         secondary_info: last-changed
 
@@ -209,7 +220,7 @@ cards:
     #  - entity: binary_sensor.sr501_pir_motion_office
     #    name: ESPHome
     #    # secondary_info: last-changed
-    #  - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+    #  - entity: binary_sensor.mijia_motion_office_occupancy
     #    name: mijia
     #    # secondary_info: last-changed
     #  refresh_interval: 30
@@ -221,7 +232,7 @@ cards:
       - entity: binary_sensor.sensor_office_sr501_pir_motion
         name: ESPHome
         aggregate_func: avg
-      - entity: binary_sensor.mijia_motion_office_jasmin_occupancy
+      - entity: binary_sensor.mijia_motion_office_occupancy
         name: mijia
         aggregate_func: avg
       height: 74
@@ -265,6 +276,4 @@ cards:
 #      - sensor.heating_set_to
 #      - schedy_room.schedy_heating_house
 #      - sensor.heating_rescheduling
-  - type: thermostat
-    name: hisense ac
-    entity: climate.hisense_ac_office
+
