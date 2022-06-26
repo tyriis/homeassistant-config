@@ -2,6 +2,32 @@ title: ESPHome
 badges: []
 cards:
 
+  # Overview
+  - title: Status
+    type: entities
+    show_header_toggle: false
+    entities:
+      - entity: binary_sensor.light_alexroom_status
+      - entity: binary_sensor.light_stairs_status
+      - entity: binary_sensor.sensor_alexroom_status
+      - entity: binary_sensor.sensor_basement_status
+      - entity: binary_sensor.sensor_bathroom_status
+      - entity: binary_sensor.sensor_bedroom_status
+      - entity: binary_sensor.sensor_domiroom_status
+      - entity: binary_sensor.sensor_heating_status
+      - entity: binary_sensor.sensor_kitchen_status
+      - entity: binary_sensor.sensor_livingroom_status
+      - entity: binary_sensor.sensor_office_status
+      - entity: binary_sensor.sensor_stairs_status
+      - entity: binary_sensor.switch_alexroom_status
+      - entity: binary_sensor.switch_basement_status
+      - entity: binary_sensor.switch_bedroom_status
+      - entity: binary_sensor.switch_domiroom_status
+      - entity: binary_sensor.switch_irpanel_1_status
+      - entity: binary_sensor.switch_irpanel_2_status
+      - entity: binary_sensor.switch_livingroom_status
+      - entity: binary_sensor.switch_office_status
+
   # ESPHome Sensor Kitchen
   - title: Sensor Kitchen
     type: entities
