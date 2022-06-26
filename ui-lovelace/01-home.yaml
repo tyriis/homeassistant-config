@@ -1,9 +1,9 @@
 title: Home
 path: home
-badges:
-  - entity: binary_sensor.updater
-  - entity: sensor.hacs
-  # - entity: sun.sun
+# badges:
+#   - entity: binary_sensor.updater
+#   - entity: sensor.hacs
+#   # - entity: sun.sun
 cards:
   # only show when update is available
   - type: conditional
