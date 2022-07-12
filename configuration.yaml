@@ -108,6 +108,15 @@ device_tracker:
 #    port: 5001
 #    ssl: true
 
+wake_on_lan:
+
+samsungtv:
+  - host: 192.168.1.109
+    turn_on_action:
+      - service: wake_on_lan.send_magic_packet
+        data:
+          mac: d0:03:df:ff:0d:6f
+
 lovelace:
   mode: yaml
   resources:
