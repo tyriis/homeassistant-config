@@ -167,4 +167,4 @@ lovelace:
 
 
 shell_command:
-  update_config: cd /config && git pull
+  update_config: cd /config && git config --global --add safe.directory /config && git pull
