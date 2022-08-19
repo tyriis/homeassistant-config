@@ -1,12 +1,16 @@
 platform: mqtt
 name: led ceiling light basement
-state_topic: ESPHome/switch_basement/switch/switch_basement_relay/state
-command_topic: ESPHome/switch_basement/switch/switch_basement_relay/set
-payload_on: "ON"
-payload_off: "OFF"
-availability_topic: ESPHome/switch_basement/state
-payload_available: 1
-payload_not_available: 0
+schema: json
+state_topic: zigbee2mqtt-bridge02/basement
+command_topic: zigbee2mqtt-bridge02/basement/set
+# payload_on: 1
+# payload_off: 0
+availability_topic: zigbee2mqtt-bridge02/bridge/state
+payload_available: online
+payload_not_available: offline
 qos: 2
 optimistic: false
 unique_id: 0afbbc92-c6b7-39ae-b06c-b0fedeb25c45 # uuid3 led_ceiling_light_basement
+color_temp: true
+brightness: true
+rgb: false
