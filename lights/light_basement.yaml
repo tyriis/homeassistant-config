@@ -1,5 +1,5 @@
 platform: mqtt
-name: led ceiling light basement
+name: basement
 schema: json
 state_topic: zigbee2mqtt-bridge02/basement
 command_topic: zigbee2mqtt-bridge02/basement/set
@@ -10,7 +10,7 @@ payload_available: online
 payload_not_available: offline
 qos: 2
 optimistic: false
-unique_id: 0afbbc92-c6b7-39ae-b06c-b0fedeb25c45 # uuid3 led_ceiling_light_basement
+unique_id: b98b3512-56d4-57f9-baa7-2f671f289251 # uuid3 basement
 color_temp: true
 brightness: true
 rgb: false

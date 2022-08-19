@@ -52,8 +52,8 @@ cards:
         name: bedroom
       - entity: light.office
         name: office
-      - entity: light.led_ceiling_light_basement
-        name: led ceiling basement
+      - entity: light.basemement
+        name: basement
       # - entity: light.tradfri_light_playroom_ir_cabine_light
       #   name: ir sauna
 
