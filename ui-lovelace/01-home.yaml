@@ -52,7 +52,7 @@ cards:
         name: bedroom
       - entity: light.office
         name: office
-      - entity: light.basemement
+      - entity: light.basement
         name: basement
       # - entity: light.tradfri_light_playroom_ir_cabine_light
       #   name: ir sauna
