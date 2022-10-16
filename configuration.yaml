@@ -6,6 +6,7 @@ http:
   trusted_proxies:
     - 192.168.1.0/24
     - 10.42.0.0/16
+    - 10.244.0.0/16
 
 
 recorder: !include recorder.yaml
