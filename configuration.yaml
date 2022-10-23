@@ -23,7 +23,7 @@ group: !include_dir_named groups/
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-climate:  !include_dir_list climates/
+# climate:  !include_dir_list climates/
 
 #scence:
 #- name: night livingroom
@@ -65,11 +65,11 @@ lock:
 
 
 # Switch configuration
-switch: !include_dir_list switches/
+# switch: !include_dir_list switches/
 sensor: !include_dir_list sensors/
 binary_sensor: !include_dir_list binary_sensors/
 
-light: !include_dir_list lights/
+# light: !include_dir_list lights/
 camera: !include_dir_list cameras/
 
 device_tracker:

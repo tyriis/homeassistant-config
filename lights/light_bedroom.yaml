@@ -1,4 +1,4 @@
-platform: mqtt
+# platform: mqtt
 name: bedroom
 schema: json
 state_topic: zigbee2mqtt-bridge03/bedroom

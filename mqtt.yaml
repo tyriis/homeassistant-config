@@ -1,3 +1,6 @@
 broker: mqtt.home
 discovery: true
 discovery_prefix: homeassistant
+
+climate: !include_dir_list climates/
+light: !include_dir_list lights/

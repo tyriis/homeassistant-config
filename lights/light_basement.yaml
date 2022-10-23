@@ -1,4 +1,4 @@
-platform: mqtt
+# platform: mqtt
 name: basement
 schema: json
 state_topic: zigbee2mqtt-bridge02/basement

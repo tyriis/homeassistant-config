@@ -1,4 +1,4 @@
-platform: mqtt
+# platform: mqtt
 name: kitchen
 schema: json
 state_topic: zigbee2mqtt-bridge03/kitchen

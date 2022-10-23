@@ -1,5 +1,5 @@
 # HiSense Air Conditioner
-platform: mqtt
+# platform: mqtt
 name: "HiSense AC Bedroom"
 current_temperature_topic: "hisense_ac/ca2c4f5ec65c/f_temp_in/status"
 fan_mode_command_topic: "hisense_ac/ca2c4f5ec65c/t_fan_speed/command"

@@ -1,9 +1,0 @@
-name: "Light Switch Bedroom"
-platform: mqtt
-state_topic: ESPurna/bedroom-light/relay/0
-command_topic: ESPurna/bedroom-light/relay/0/set
-payload_on: 0
-payload_off: 1
-availability_topic: ESPurna/bedroom-light/status
-payload_available: 1
-payload_not_available: 0
