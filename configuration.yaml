@@ -51,10 +51,10 @@ mqtt: !include mqtt.yaml
 #   username: !secret neato_username
 #   password: !secret neato_password
 
-lock:
-  - platform: nuki
-    host: 192.168.1.9
-    token: !secret nuki_token
+# lock:
+#   - platform: nuki
+#     host: 192.168.1.9
+#     token: !secret nuki_token
 
 # xiaomi_aqara:
 #   discovery_retry: 5
@@ -130,11 +130,11 @@ lovelace:
   - url: /hacsfiles/simple-thermostat/simple-thermostat.js
     type: module
 
- # panel_iframe:
- #  networkmap:
- #    title: 'Zigbee Map'
- #    url: '/local/community/zigbee2mqtt_networkmap/map.html'
- #    icon: 'mdi:graphql'
+# panel_iframe:
+#  networkmap:
+#    title: 'Zigbee Map'
+#    url: '/local/community/zigbee2mqtt_networkmap/map.html'
+#    icon: 'mdi:graphql'
 
 
 
