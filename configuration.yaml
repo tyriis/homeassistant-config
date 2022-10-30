@@ -66,8 +66,8 @@ lock:
 
 # Switch configuration
 # switch: !include_dir_list switches/
-sensor: !include_dir_list sensors/
-binary_sensor: !include_dir_list binary_sensors/
+# sensor: !include_dir_list sensors/
+# binary_sensor: !include_dir_list binary_sensors/
 
 # light: !include_dir_list lights/
 camera: !include_dir_list cameras/
