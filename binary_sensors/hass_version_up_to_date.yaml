@@ -1,5 +1,0 @@
-platform: template
-sensors:
-  up_to_date:
-    friendly_name: hass up to date
-    value_template: "{{ states('sensor.current_version') == states('sensor.latest_version') }}"
