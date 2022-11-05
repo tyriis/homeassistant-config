@@ -79,3 +79,24 @@ filter:
     - binary_sensor.switch_irpanel_2_status
     - binary_sensor.switch_livingroom_status
     - binary_sensor.switch_office_status
+    # occupancy sensors
+    - binary_sensor.mijia_motion_basement_stairs_down_occupancy
+    - binary_sensor.mijia_motion_basement_stairs_up_occupancy
+    - binary_sensor.mijia_motion_entrance_occupancy
+    - binary_sensor.mijia_motion_garden_occupancy
+    - binary_sensor.mijia_motion_kitchen_occupancy
+    - binary_sensor.mijia_motion_livingroom_occupancy
+    - binary_sensor.mijia_motion_office_occupancy
+    - binary_sensor.mijia_motion_stairs_occupancy
+    - binary_sensor.mijia_motion_table_occupancy
+    - binary_sensor.mijia_motion_upstairs_1_occupancy
+    - binary_sensor.mijia_motion_upstairs_2_occupancy
+    - binary_sensor.sensor_alexroom_sr501_pir_motion
+    - binary_sensor.sensor_basement_sr501_pir_motion
+    - binary_sensor.sensor_bathroom_sr501_pir_motion
+    - binary_sensor.sensor_bedroom_sr501_pir_motion
+    - binary_sensor.sensor_domiroom_sr501_pir_motion
+    - binary_sensor.sensor_kitchen_sr501_pir_motion
+    - binary_sensor.sensor_livingroom_sr501_pir_motion
+    - binary_sensor.sensor_office_sr501_pir_motion
+    - binary_sensor.sensor_stairs_sr501_pir_motion
