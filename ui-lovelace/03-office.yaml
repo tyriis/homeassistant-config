@@ -208,7 +208,7 @@ cards:
       title: motion
       entities:
       - entity: binary_sensor.aqara_motion_office_occupancy
-        name: ESPHome
+        name: aqara
         secondary_info: last-changed
       - entity: binary_sensor.mijia_motion_office_occupancy
         name: mijia
@@ -230,7 +230,7 @@ cards:
       name: motion last hour
       entities:
       - entity: binary_sensor.aqara_motion_office_occupancy
-        name: ESPHome
+        name: aqara
         aggregate_func: avg
       - entity: binary_sensor.mijia_motion_office_occupancy
         name: mijia
