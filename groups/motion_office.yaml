@@ -39,6 +39,6 @@
 #
 name: motion office
 entities:
-  - binary_sensor.sensor_office_sr501_pir_motion
+  - binary_sensor.aqara_motion_office_occupancy
   - binary_sensor.mijia_motion_office_occupancy
 # all: true

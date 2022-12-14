@@ -100,3 +100,4 @@ filter:
     - binary_sensor.sensor_livingroom_sr501_pir_motion
     - binary_sensor.sensor_office_sr501_pir_motion
     - binary_sensor.sensor_stairs_sr501_pir_motion
+    - binary_sensor.aqara_motion_office_occupancy

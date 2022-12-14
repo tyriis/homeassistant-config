@@ -179,7 +179,7 @@ cards:
 
       - type: custom:mini-graph-card
         entities:
-          - entity: sensor.sensor_office_tsl2561_ambient_light
+          - entity: sensor.aqara_motion_office_illuminance_lux
             # color: '#ff9800'
         name: lux
         height: 74
@@ -207,7 +207,7 @@ cards:
     - type: entities
       title: motion
       entities:
-      - entity: binary_sensor.sensor_office_sr501_pir_motion
+      - entity: binary_sensor.aqara_motion_office_occupancy
         name: ESPHome
         secondary_info: last-changed
       - entity: binary_sensor.mijia_motion_office_occupancy
@@ -229,7 +229,7 @@ cards:
     - type: 'custom:mini-graph-card'
       name: motion last hour
       entities:
-      - entity: binary_sensor.sensor_office_sr501_pir_motion
+      - entity: binary_sensor.aqara_motion_office_occupancy
         name: ESPHome
         aggregate_func: avg
       - entity: binary_sensor.mijia_motion_office_occupancy
