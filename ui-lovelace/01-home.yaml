@@ -208,3 +208,34 @@ cards:
       - preset
 
 
+  - type: custom:vacuum-card
+    entity: vacuum.robovac
+    image: default
+    shortcuts:
+      - name: Dock
+        service: script.eufy_g40_downstairs_dock
+        icon: mdi:home-map-marker
+      - name: Auto Clean
+        service: script.eufy_g40_downstairs_autoclean
+        icon: mdi:caps-lock
+      - name: Auto Return
+        service: script.eufy_g40_downstairs_autoreturn
+        icon: mdi:arrow-u-down-left-bold
+      - name: Do Not Disturb
+        service: script.eufy_g40_downstairs_donotdisturb
+        icon: mdi:volume-off
+    stats:
+      default:
+        - attribute: cleaning_area
+          unit: sq meters
+          subtitle: Cleaning Area
+        - attribute: cleaning_time
+          value_template: '{{ (value | float(0) / 60) | round(1) }}'
+          unit: minutes
+          subtitle: Cleaning time
+        - attribute: auto_return
+          subtitle: Auto Ret
+          value_template: '{% if (value == true) %}On{% else %}Off{% endif %}'
+        - attribute: do_not_disturb
+          subtitle: Dnd
+          value_template: '{% if (value == true) %}On{% else %}Off{% endif %}'
