@@ -129,6 +129,8 @@ lovelace:
     type: module
   - url: /hacsfiles/simple-thermostat/simple-thermostat.js
     type: module
+  - url: /hacsfiles/vacuum-card/vacuum-card.js
+    type: module
 
 # panel_iframe:
 #  networkmap:
