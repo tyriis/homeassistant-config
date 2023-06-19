@@ -7,7 +7,7 @@
       color_temp: 447
 
 - name: morning livingroom
-#   icon: "mdi:coffee"
+  #   icon: "mdi:coffee"
   entities:
     group.lights_living_downstairs:
       brightness: 255

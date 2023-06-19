@@ -4,7 +4,6 @@ badges: []
 cards:
   - type: vertical-stack
     cards:
-
       - title: Lights
         type: entities
         show_header_toggle: false
@@ -63,52 +62,49 @@ cards:
   #  points_per_hour: 0.5
   #  type: 'custom:mini-graph-card'
 
+  #  - entity: sensor.austria_coronavirus_current
+  #    type: entity
 
-#  - entity: sensor.austria_coronavirus_current
-#    type: entity
+  #  - entities:
+  #      - entity: sensor.speedtest_ping
+  #        name: ping
+  #        show_legend: false
+  #        show_state: true
+  #      - entity: sensor.speedtest_download
+  #        name: down
+  #        show_legend: false
+  #        show_state: true
+  #        y_axis: secondary
+  #      - entity: sensor.speedtest_upload
+  #        name: up
+  #        show_legend: false
+  #        show_state: true
+  #        y_axis: secondary
+  #    hours_to_show: 24
+  #    name: network
+  #    points_per_hour: 0.5
+  #    type: 'custom:mini-graph-card'
 
-#  - entities:
-#      - entity: sensor.speedtest_ping
-#        name: ping
-#        show_legend: false
-#        show_state: true
-#      - entity: sensor.speedtest_download
-#        name: down
-#        show_legend: false
-#        show_state: true
-#        y_axis: secondary
-#      - entity: sensor.speedtest_upload
-#        name: up
-#        show_legend: false
-#        show_state: true
-#        y_axis: secondary
-#    hours_to_show: 24
-#    name: network
-#    points_per_hour: 0.5
-#    type: 'custom:mini-graph-card'
+  #  - entities:
+  #      - entity: binary_sensor.mijia_motion_office_occupancy
+  #    type: entities
 
-#  - entities:
-#      - entity: binary_sensor.mijia_motion_office_occupancy
-#    type: entities
-
-#  - entities:
-#      - color: '#E74C3C'
-#        entity: sensor.aqara_climate_office_temperature
-#        name: temperature
-#        show_legend: false
-#        show_state: true
-#      - color: '#3498DB'
-#        entity: sensor.aqara_climate_office_humidity
-#        name: humidity
-#        show_legend: false
-#        show_state: true
-#        y_axis: secondary
-#    hours_to_show: 48
-#    name: office
-#    points_per_hour: 0.5
-#    type: 'custom:mini-graph-card'
-
-
+  #  - entities:
+  #      - color: '#E74C3C'
+  #        entity: sensor.aqara_climate_office_temperature
+  #        name: temperature
+  #        show_legend: false
+  #        show_state: true
+  #      - color: '#3498DB'
+  #        entity: sensor.aqara_climate_office_humidity
+  #        name: humidity
+  #        show_legend: false
+  #        show_state: true
+  #        y_axis: secondary
+  #    hours_to_show: 48
+  #    name: office
+  #    points_per_hour: 0.5
+  #    type: 'custom:mini-graph-card'
 
   #################################################################
   #                                                               #
@@ -119,12 +115,12 @@ cards:
     cards:
       - type: custom:mini-graph-card
         entities:
-        - entity: sensor.sensor_office_htu21d_temperature
-          color: '#E74C3C'
-          name: ESPHome
-        - entity: sensor.aqara_climate_office_temperature
-          color: '#ff9800'
-          name: aqara
+          - entity: sensor.sensor_office_htu21d_temperature
+            color: "#E74C3C"
+            name: ESPHome
+          - entity: sensor.aqara_climate_office_temperature
+            color: "#ff9800"
+            name: aqara
         name: temperature
         height: 74
         line_width: 2
@@ -147,16 +143,16 @@ cards:
 
       - type: custom:mini-graph-card
         entities:
-        - entity: sensor.sensor_office_htu21d_humidity
-          color: '#3498DB'
-          name: ESPHome
-        - entity: sensor.aqara_climate_office_humidity
-          color: '#5f37db'
-          name: aqara
-          # name: humidity
-          # show_legend: false
-          # show_state: true
-          # y_axis: secondary
+          - entity: sensor.sensor_office_htu21d_humidity
+            color: "#3498DB"
+            name: ESPHome
+          - entity: sensor.aqara_climate_office_humidity
+            color: "#5f37db"
+            name: aqara
+            # name: humidity
+            # show_legend: false
+            # show_state: true
+            # y_axis: secondary
         name: humidity
         height: 74
         line_width: 2
@@ -200,72 +196,61 @@ cards:
           - value: -100
             color: "#e74c3c"
 
-
   - type: vertical-stack
     cards:
+      - type: entities
+        title: motion
+        entities:
+          - entity: binary_sensor.aqara_motion_office_occupancy
+            name: aqara
+            secondary_info: last-changed
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            name: mijia
+            secondary_info: last-changed
 
-    - type: entities
-      title: motion
-      entities:
-      - entity: binary_sensor.aqara_motion_office_occupancy
-        name: aqara
-        secondary_info: last-changed
-      - entity: binary_sensor.mijia_motion_office_occupancy
-        name: mijia
-        secondary_info: last-changed
+      #- type: history-graph
+      #  title: 'motion last hour'
+      #  entities:
+      #  - entity: binary_sensor.sr501_pir_motion_office
+      #    name: ESPHome
+      #    # secondary_info: last-changed
+      #  - entity: binary_sensor.mijia_motion_office_occupancy
+      #    name: mijia
+      #    # secondary_info: last-changed
+      #  refresh_interval: 30
+      #  hours_to_show: 1
 
-    #- type: history-graph
-    #  title: 'motion last hour'
-    #  entities:
-    #  - entity: binary_sensor.sr501_pir_motion_office
-    #    name: ESPHome
-    #    # secondary_info: last-changed
-    #  - entity: binary_sensor.mijia_motion_office_occupancy
-    #    name: mijia
-    #    # secondary_info: last-changed
-    #  refresh_interval: 30
-    #  hours_to_show: 1
-
-    - type: 'custom:mini-graph-card'
-      name: motion last hour
-      entities:
-      - entity: binary_sensor.aqara_motion_office_occupancy
-        name: aqara
-        aggregate_func: avg
-      - entity: binary_sensor.mijia_motion_office_occupancy
-        name: mijia
-        aggregate_func: avg
-      height: 74
-      aggregate_func: max
-      hours_to_show: 1
-      line_width: 2
-      font_size: 85
-      points_per_hour: 60
-      smoothing: false
-      state_map:
-        - label: Clear
-          value: 'on'
-        - label: Detected
-          value: 'off'
-      update_interval: 60
-      show:
-        graph: bar
-        state: false
-        icon: false
-
-
+      - type: "custom:mini-graph-card"
+        name: motion last hour
+        entities:
+          - entity: binary_sensor.aqara_motion_office_occupancy
+            name: aqara
+            aggregate_func: avg
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            name: mijia
+            aggregate_func: avg
+        height: 74
+        aggregate_func: max
+        hours_to_show: 1
+        line_width: 2
+        font_size: 85
+        points_per_hour: 60
+        smoothing: false
+        state_map:
+          - label: Clear
+            value: "on"
+          - label: Detected
+            value: "off"
+        update_interval: 60
+        show:
+          graph: bar
+          state: false
+          icon: false
 
   #- entities:
   #    - vacuum.neato_keller
   #  title: Vacuum
   #  type: entities
-
-
-
-
-
-
-
 #  - type: entities
 #    show_header_toggle: false
 #    entities:
@@ -276,4 +261,3 @@ cards:
 #      - sensor.heating_set_to
 #      - schedy_room.schedy_heating_house
 #      - sensor.heating_rescheduling
-

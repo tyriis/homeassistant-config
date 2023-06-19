@@ -9,7 +9,7 @@ cards:
   - type: conditional
     conditions:
       - entity: binary_sensor.up_to_date
-        state: 'off'
+        state: "off"
     card:
       title: software update
       type: entities
@@ -79,18 +79,18 @@ cards:
   #  show_header_toggle: false
   #  state_color: true
 
-# working!?
-#  - aggregate_func: max
-#    entities:
-#      - entity: sensor.innr_sp_120_fridge_power
-#    group_by: date
-#    hours_to_show: 168
-#    name: Energy consumption
-#    show:
-#      graph: bar
-#    type: 'custom:mini-graph-card'
+  # working!?
+  #  - aggregate_func: max
+  #    entities:
+  #      - entity: sensor.innr_sp_120_fridge_power
+  #    group_by: date
+  #    hours_to_show: 168
+  #    name: Energy consumption
+  #    show:
+  #      graph: bar
+  #    type: 'custom:mini-graph-card'
 
-# coronavirus
+  # coronavirus
   # - type: 'custom:mini-graph-card'
   #   name: covid-19
   #   entities:
@@ -109,7 +109,7 @@ cards:
   #     extrema: true
   #   update_interval: 3600
 
-# speedtest
+  # speedtest
   # - type: 'custom:mini-graph-card'
   #   name: speedtest.net
   #   entities:
@@ -137,8 +137,7 @@ cards:
   #     extrema: true
   #   update_interval: 60
 
-
-  - type: 'custom:bar-card'
+  - type: "custom:bar-card"
     title: nas.home
     entities:
       - entity: sensor.nas_volume_1_volume_used
@@ -207,7 +206,6 @@ cards:
       - hvac
       - preset
 
-
   - type: custom:vacuum-card
     entity: vacuum.robovac
     image: default
@@ -230,12 +228,12 @@ cards:
           unit: sq meters
           subtitle: Cleaning Area
         - attribute: cleaning_time
-          value_template: '{{ (value | float(0) / 60) | round(1) }}'
+          value_template: "{{ (value | float(0) / 60) | round(1) }}"
           unit: minutes
           subtitle: Cleaning time
         - attribute: auto_return
           subtitle: Auto Ret
-          value_template: '{% if (value == true) %}On{% else %}Off{% endif %}'
+          value_template: "{% if (value == true) %}On{% else %}Off{% endif %}"
         - attribute: do_not_disturb
           subtitle: Dnd
-          value_template: '{% if (value == true) %}On{% else %}Off{% endif %}'
+          value_template: "{% if (value == true) %}On{% else %}Off{% endif %}"

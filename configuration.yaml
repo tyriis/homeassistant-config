@@ -8,7 +8,6 @@ http:
     - 10.42.0.0/16
     - 10.244.0.0/16
 
-
 recorder: !include recorder.yaml
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -31,14 +30,14 @@ scene: !include scenes.yaml
 #  entities:
 #    group.lights_living_downstairs:
 #      brightness: 1
-      # color_temp: 447
+# color_temp: 447
 
 #- name: morning livingroom
 #  icon: "mdi:coffee"
 #  entities:
 #    - entity: group.lights_living_downstairs
 #      brightness: 255
-      # color_temp: 230
+# color_temp: 230
 
 # Prometheus configuration
 prometheus: !include prometheus.yaml
@@ -62,7 +61,6 @@ mqtt: !include mqtt.yaml
 #      - mac: !secret mija_gateway_mac
 #       key: !secret mija_gateway_key
 #       host: 192.168.1.116
-
 
 # Switch configuration
 # switch: !include_dir_list switches/
@@ -121,24 +119,22 @@ samsungtv:
 lovelace:
   mode: yaml
   resources:
-  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-    type: module
-  - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
-    type: module
-  - url: /hacsfiles/bar-card/bar-card.js
-    type: module
-  - url: /hacsfiles/simple-thermostat/simple-thermostat.js
-    type: module
-  - url: /hacsfiles/vacuum-card/vacuum-card.js
-    type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
+      type: module
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: module
+    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+      type: module
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
+      type: module
 
 # panel_iframe:
 #  networkmap:
 #    title: 'Zigbee Map'
 #    url: '/local/community/zigbee2mqtt_networkmap/map.html'
 #    icon: 'mdi:graphql'
-
-
 
 #influxdb:
 #  api_version: 2
@@ -167,7 +163,6 @@ lovelace:
 #      - sun
 #    entities:
 #      - weather.home
-
 
 shell_command:
   update_config: cd /config && git config --global --add safe.directory /config && git pull

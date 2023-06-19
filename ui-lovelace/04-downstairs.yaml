@@ -33,7 +33,7 @@ cards:
             secondary_info: last-changed
 
       - type: history-graph
-        title: 'motion last hour'
+        title: "motion last hour"
         entities:
           - entity: binary_sensor.mijia_motion_stairs_occupancy
             name: mijia stairs
@@ -55,7 +55,7 @@ cards:
         hours_to_show: 1
 
       - type: history-graph
-        title: 'motion last 24 hours'
+        title: "motion last 24 hours"
         entities:
           - entity: binary_sensor.mijia_motion_stairs_occupancy
             name: mijia stairs
@@ -73,5 +73,5 @@ cards:
             name: ESPhome tv
           - entity: binary_sensor.sr501_pir_motion_kitchen
             name: ESPhome kitchen
-        # refresh_interval: 
+        # refresh_interval:
         hours_to_show: 24

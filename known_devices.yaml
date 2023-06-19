@@ -1,45 +1,45 @@
 s20_nils_home:
   name: s20-nils.home # Host name or "Unnamed Device"  the friendly name of the device.
-  mac: '8c:b8:4a:f6:c9:30' # The MAC address of the device. Add this if you are using a network device tracker like Nmap or SNMP.
-  icon: 'mdi:cellphone-android'  # An icon for this device (use as an alternative to picture).
-  # picture: # https://www.home-assistant.io/images/favicon-192x192.png # A picture that you can use to easily identify the person or device. You can also save the image file in a folder “www” in the same location (can be obtained from developer tools) where you have your configuration.yaml file and just use picture: /local/favicon-192x192.png. The path ‘local’ is mapped to the ‘www’ folder you create.
+  mac: "8c:b8:4a:f6:c9:30" # The MAC address of the device. Add this if you are using a network device tracker like Nmap or SNMP.
+  icon: "mdi:cellphone-android" # An icon for this device (use as an alternative to picture).
+  # picture: # https://www.home-assistant.io/images/favicon-192x192.png # A picture that you can use to easily identify the person or device. You can also save the image file in a folder "www" in the same location (can be obtained from developer tools) where you have your configuration.yaml file and just use picture: /local/favicon-192x192.png. The path 'local' is mapped to the 'www' folder you create.
   track: true # If yes/on/true then the device will be tracked. Otherwise its location and state will not update.
-  # gravatar: # An email address for the device’s owner. If provided, it will override picture.
+  # gravatar: # An email address for the device's owner. If provided, it will override picture.
   # consider_home: # Seconds to wait till marking someone as not home after not being seen. Allows you to override the global consider_home setting from the platform configuration on a per device level.
 
 s20_jasmin_home:
   icon:
   mac: 30:AB:6A:1D:53:9F
   name: s20-jasmin.home
-  picture: 'mdi:cellphone-android'
+  picture: "mdi:cellphone-android"
   track: true
 
 samsung_tv_home:
   icon:
   mac: D0:03:DF:FF:0D:6F
   name: samsung-tv.home
-  picture: 'mdi:television-box'
+  picture: "mdi:television-box"
   track: true
 
 xps13_nils_home_wlan:
   icon:
   mac: 04:ED:33:2E:21:B5
   name: xps13-nils.home
-  picture: 'mdi:laptop'
+  picture: "mdi:laptop"
   track: true
 
 xps13_jasmin_home_lan:
   icon:
   mac: A0:CE:C8:D2:97:66
   name: xps13-jasmin.home
-  picture: 'mdi:laptop'
+  picture: "mdi:laptop"
   track: true
 
 xps13_nils_home_lan:
   icon:
   mac: A0:CE:C8:D4:B8:91
   name: xps13-nils.home
-  picture: 'mdi:laptop'
+  picture: "mdi:laptop"
   track: true
 
 moto_domi_home:

@@ -1,7 +1,6 @@
 title: ESPHome
 badges: []
 cards:
-
   # Overview
   - title: Status
     type: entities
@@ -229,7 +228,7 @@ cards:
       - entity: switch.switch_domiroom_relay
       - entity: binary_sensor.switch_domiroom_touchpad
 
- # ESPHome Switch IRPanel 1
+  # ESPHome Switch IRPanel 1
   - title: Switch IRPanel 1
     type: entities
     show_header_toggle: false

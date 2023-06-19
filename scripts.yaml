@@ -1,34 +1,34 @@
 eufy_g40_downstairs_autoclean:
   alias: eufy_G40_downstairs_autoClean
   sequence:
-  - service: vacuum.send_command
-    data:
-      command: autoClean
-    target:
-      entity_id: vacuum.robovac
+    - service: vacuum.send_command
+      data:
+        command: autoClean
+      target:
+        entity_id: vacuum.robovac
   mode: single
 eufy_g40_downstairs_autoreturn:
   alias: eufy_G40_downstairs_autoReturn
   sequence:
-  - service: vacuum.send_command
-    data:
-      command: autoReturn
-    target:
-      entity_id: vacuum.robovac
+    - service: vacuum.send_command
+      data:
+        command: autoReturn
+      target:
+        entity_id: vacuum.robovac
   mode: single
 eufy_g40_downstairs_donotdisturb:
   alias: eufy_G40_downstairs_do_Not_Disturb
   sequence:
-  - service: vacuum.send_command
-    data:
-      command: doNotDisturb
-    target:
-      entity_id: vacuum.robovac
+    - service: vacuum.send_command
+      data:
+        command: doNotDisturb
+      target:
+        entity_id: vacuum.robovac
   mode: single
 eufy_g40_downstairs_dock:
   alias: eufy_G40_downstairs_dock
   sequence:
-  - service: vacuum.return_to_base
-    target:
-      entity_id: vacuum.robovac
+    - service: vacuum.return_to_base
+      target:
+        entity_id: vacuum.robovac
   mode: single

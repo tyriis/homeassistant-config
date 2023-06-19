@@ -33,8 +33,6 @@
 #        - light.table
 #        - light.livingroom
 
-
-
 #- alias: Turn on office light when motion is detected
 #  trigger:
 #    - platform: state
@@ -62,14 +60,13 @@
 #      entity_id:
 #        - light.office_light
 
-
 - alias: Update Configuration on Gitlab Push Event
   id: update_config_gitlab_push_event
 
   trigger:
-  - platform: webhook
-    webhook_id: !secret webhook_id
+    - platform: webhook
+      webhook_id: !secret webhook_id
 
   action:
-  - service: shell_command.update_config
-  - service: homeassistant.restart
+    - service: shell_command.update_config
+    - service: homeassistant.restart

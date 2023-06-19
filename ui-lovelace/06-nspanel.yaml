@@ -1,0 +1,48 @@
+title: NSPanel
+path: nspanel
+# panel: true # this renders the first card on full width, other cards in this view will not be rendered
+cards:
+  - type: custom:auto-entities
+    card:
+      type: custom:layout-card
+      layout_type: custom:grid-layout
+      layout:
+        grid-template-columns: repeat(auto-fit,minmax(clamp(100%/(3 + 1) + 0.1%, 100px,100%),1fr))
+        grid-template-rows: repeat(auto-fit,1fr)
+        align-items: stretch
+        margin: 0
+        padding: 0
+        grid-gap: 0.5rem
+        width: 100%
+        height: 100%
+    card_param: cards
+    filter:
+      include:
+        - area: office
+          options:
+            type: custom:button-card
+            color: auto-no-temperature
+            entity_id: this.entity_id
+            template: nspanel
+      exclude:
+        - domain: /automation|script|scene|camera|select/
+        - state: /unavailable|unknown/
+        - attributes:
+            device_class: battery
+        - entity_category: /diagnostic|config/
+        - hidden_by: /user|integration/
+        - integration: /group/
+    sort:
+      method: friendly_name
+      numeric: false
+      reverse: false
+      ignore_case: true
+    card_mod:
+      style: |
+        :root{
+          height:100%;
+        }
+        ha-card{
+          height:480px;
+          width:480px;
+        }
