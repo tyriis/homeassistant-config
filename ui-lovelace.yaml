@@ -1,2 +1,52 @@
 title: Home
 views: !include_dir_list ui-lovelace/
+
+button_card_templates:
+  nspanel:
+    show_state: true
+    show_name: true
+    use_state_color: true
+    compact: false
+    color: auto
+    layout: vertical
+    color_type: card
+    show_entity_picture: false
+    size: 25%
+    hold_action:
+      action: more-info
+    state:
+      - value: 'off'
+        styles:
+          icon:
+            - color: var(--primary-color)
+      - value: 'on'
+        styles:
+          card:
+            - background-image: >-
+                linear-gradient(var(--primary-color) 0%,
+                var(--button-card-light-color) 50%)
+          icon:
+            - color: var(--primary-background-color)
+          name:
+            - color: var(--primary-background-color)
+            - font: var(--h4-font)
+          state:
+            - display: none
+    styles:
+      card:
+        - background: var(--primary-background-color)
+      icon:
+        - color: var(--primary-color)
+      name:
+        - color: var(--primary-text-color)
+        - font: var(--h4-font)
+      state:
+        - color: var(--primary-text-color)
+        - opacity: 0.5
+        - font: var(--h5-font)
+    card_mod:
+      style: |
+        ha-card{
+          border-radius:8px;
+          height: 100%;
+        }
