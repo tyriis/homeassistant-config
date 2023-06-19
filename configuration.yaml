@@ -109,12 +109,12 @@ camera: !include_dir_list cameras/
 
 wake_on_lan:
 
-samsungtv:
-  - host: 192.168.1.109
-    turn_on_action:
-      - service: wake_on_lan.send_magic_packet
-        data:
-          mac: d0:03:df:ff:0d:6f
+# samsungtv:
+#   - host: 192.168.1.109
+#     turn_on_action:
+#       - service: wake_on_lan.send_magic_packet
+#         data:
+#           mac: d0:03:df:ff:0d:6f
 
 lovelace:
   mode: yaml
@@ -130,6 +130,7 @@ lovelace:
     - url: /hacsfiles/vacuum-card/vacuum-card.js
       type: module
     - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+      type: module
 
 # panel_iframe:
 #  networkmap:
