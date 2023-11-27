@@ -1,0 +1,4 @@
+name: motion alexroom
+entities:
+  - binary_sensor.aqara_motion_alexroom_occupancy
+  - binary_sensor.sensor_alexroom_sr501_pir_motion
