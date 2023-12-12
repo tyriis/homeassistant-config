@@ -1,0 +1,15 @@
+# create a gitub workflow to call a webhook with curl command after push to main branch
+
+name: Reload HomeAssistant
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  call-webhook:
+    runs-on:
+      - arc-runner-set-homeassistant-config
+    steps:
+      - name: Call webhook
+        run: curl -X POST ${{ secrets.WEBHOOK_URL }}
