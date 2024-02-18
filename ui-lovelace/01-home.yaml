@@ -207,7 +207,7 @@ cards:
       - preset
 
   - type: custom:vacuum-card
-    entity: vacuum.robovac
+    entity: vacuum.downstairs
     image: default
     shortcuts:
       - name: Dock
