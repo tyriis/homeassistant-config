@@ -90,12 +90,12 @@ cards:
 
   - type: custom:mini-graph-card
     entities:
-      - entity: sensor.sensor_heating_temperature_return_downstairs
+      - entity: sensor.sensor_heating_temperature_return_groundfloor
         name: Return
         color: var(--blue-color)
         y_axis: secondary
         show_line: false
-      - entity: sensor.sensor_heating_temperature_flow_downstairs
+      - entity: sensor.sensor_heating_temperature_flow_groundfloor
         name: Flow
     name: heating downstairs
     color_thresholds:
