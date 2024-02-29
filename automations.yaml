@@ -66,6 +66,10 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_id
+      allowed_methods:
+        - POST
+        - PUT
+      local_only: true
 
   action:
     - service: shell_command.update_config
