@@ -22,8 +22,6 @@ cards:
       - entity: binary_sensor.switch_basement_status
       - entity: binary_sensor.switch_bedroom_status
       - entity: binary_sensor.switch_domiroom_status
-      - entity: binary_sensor.switch_irpanel_1_status
-      - entity: binary_sensor.switch_irpanel_2_status
       - entity: binary_sensor.switch_livingroom_status
       - entity: binary_sensor.switch_office_status
 
@@ -227,34 +225,6 @@ cards:
       - entity: sensor.switch_domiroom_wifi_strength
       - entity: switch.switch_domiroom_relay
       - entity: binary_sensor.switch_domiroom_touchpad
-
-  # ESPHome Switch IRPanel 1
-  - title: Switch IRPanel 1
-    type: entities
-    show_header_toggle: false
-    entities:
-      - entity: sensor.switch_irpanel_1_firmware
-      - entity: sensor.switch_irpanel_1_wifi_ip
-      - entity: sensor.switch_irpanel_1_wifi_strength
-      - entity: switch.switch_irpanel_1_relay
-      - entity: sensor.switch_irpanel_1_current
-      - entity: sensor.switch_irpanel_1_voltage
-      - entity: sensor.switch_irpanel_1_power
-      - entity: sensor.switch_irpanel_1_total_daily_energy
-
-  # ESPHome Switch IRPanel 2
-  - title: Switch IRPanel 2
-    type: entities
-    show_header_toggle: false
-    entities:
-      - entity: sensor.switch_irpanel_2_firmware
-      - entity: sensor.switch_irpanel_2_wifi_ip
-      - entity: sensor.switch_irpanel_2_wifi_strength
-      - entity: switch.switch_irpanel_2_relay
-      - entity: sensor.switch_irpanel_2_current
-      - entity: sensor.switch_irpanel_2_voltage
-      - entity: sensor.switch_irpanel_2_power
-      - entity: sensor.switch_irpanel_2_total_daily_energy
 
   # ESPHome Switch Livingroom
   - title: Switch Livingroom
