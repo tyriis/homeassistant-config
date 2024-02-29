@@ -66,15 +66,15 @@ cards:
         name: Flow
     name: heating upstairs
     color_thresholds:
-      - value: 18
+      - value: 27.1
         color: '#ff0000'
-      - value: 17
+      - value: 26.5
         color: '#ffba00'
-      - value: 16
+      - value: 25.5
         color: '#00aa99'
-      - value: 15
+      - value: 24.5
         color: '#0090ff'
-      - value: 14
+      - value: 22.5
         color: '#004e8b'
     hours_to_show: 24
     points_per_hour: 1
