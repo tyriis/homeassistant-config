@@ -60,7 +60,7 @@ cards:
     name: home
     show_current: true
     show_forecast: true
-    forecast_type: twice-daily
+    forecast_type: daily
 
   - type: custom:mini-graph-card
     entities:
