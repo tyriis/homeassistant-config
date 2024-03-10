@@ -57,9 +57,10 @@ cards:
 
   - type: weather-forecast
     entity: weather.openweathermap
+    name: home
     show_current: true
     show_forecast: true
-    forecast_type: daily
+    forecast_type: hourly
 
   - type: custom:mini-graph-card
     entities:
