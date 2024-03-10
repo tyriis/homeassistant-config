@@ -55,6 +55,12 @@ cards:
       - entity: light.basement
         name: basement
 
+  - type: weather-forecast
+    entity: weather.openweathermap
+    show_current: true
+    show_forecast: true
+    forecast_type: daily
+
   - type: custom:mini-graph-card
     entities:
       - entity: sensor.sensor_heating_temperature_return_upstairs
