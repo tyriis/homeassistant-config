@@ -17,14 +17,21 @@ cards:
         use_light_color: true
 
       - type: custom:mushroom-entity-card
-        entity: switch.tuya_a1z_irpanel1_office
+        entity: switch.tuya_a1z_irpanel2_office
+        name: IR Panel front
+        icon: mdi:radiator
 
-      - title: Switches
-        type: entities
-        show_header_toggle: false
-        entities:
-          - switch.tuya_a1z_irpanel1_office
-          - switch.tuya_a1z_irpanel2_office
+      - type: custom:mushroom-entity-card
+        entity: switch.tuya_a1z_irpanel1_office
+        name: IR Panel back
+        icon: mdi:radiator
+
+      # - title: Switches
+      #   type: entities
+      #   show_header_toggle: false
+      #   entities:
+      #     - switch.tuya_a1z_irpanel1_office
+      #     - switch.tuya_a1z_irpanel2_office
 
       - type: custom:simple-thermostat
         entity: climate.office
