@@ -4,18 +4,24 @@ badges: []
 cards:
   - type: vertical-stack
     cards:
-      - title: Lights
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: light.office
+      # - title: Lights
+      #   type: entities
+      #   show_header_toggle: false
+      #   entities:
+      #     - entity: light.office
+
+      - type: custom:mushroom-light-card
+        entity: light.office
+        show_brightness_control: true
+        show_color_temp_control: true
+        use_light_color: true
 
       - title: Switches
         type: entities
         show_header_toggle: false
         entities:
-          - switch.switch_irpanel_1_relay
-          - switch.switch_irpanel_1_relay
+          - switch.tuya_a1z_irpanel1_office
+          - switch.tuya_a1z_irpanel2_office
 
       - type: custom:simple-thermostat
         entity: climate.office
