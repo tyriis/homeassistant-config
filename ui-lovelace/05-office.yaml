@@ -121,10 +121,10 @@ cards:
     cards:
       - type: custom:mini-graph-card
         entities:
-          - entity: sensor.sensor_office_htu21d_temperature
+          - entity: sensor.aqara_climate_office_temperature
             color: "#E74C3C"
             name: ESPHome
-          - entity: sensor.aqara_climate_office_temperature
+          - entity: sensor.aqara_climate_office_2_temperature
             color: "#ff9800"
             name: aqara
         name: temperature
@@ -149,10 +149,10 @@ cards:
 
       - type: custom:mini-graph-card
         entities:
-          - entity: sensor.sensor_office_htu21d_humidity
+          - entity: sensor.aqara_climate_office_humidity
             color: "#3498DB"
             name: ESPHome
-          - entity: sensor.aqara_climate_office_humidity
+          - entity: sensor.aqara_climate_office_2_humidity
             color: "#5f37db"
             name: aqara
             # name: humidity
