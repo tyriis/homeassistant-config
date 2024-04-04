@@ -169,7 +169,7 @@ cards:
           icon: false
 
       - type: "custom:mini-graph-card"
-        name: motion last hour
+        name: motion last 24h
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
             name: aqara
@@ -178,6 +178,8 @@ cards:
             name: mijia
             aggregate_func: avg
           - entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
+            name: basement stairs up
+            aggregate_func: avg
         height: 74
         aggregate_func: max
         hours_to_show: 24
