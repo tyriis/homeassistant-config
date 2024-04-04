@@ -128,14 +128,6 @@ cards:
       legend: false
       fill: fade
 
-  - type: entities
-    entities:
-      - entity: lock.nuki
-        secondary_info: last-changed
-    title: entrance lock
-    show_name: true
-    state_color: true
-
   - type: custom:mushroom-lock-card
     entity: lock.nuki
     name: entrance lock
