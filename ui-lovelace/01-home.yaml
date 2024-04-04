@@ -136,6 +136,12 @@ cards:
     show_name: true
     state_color: true
 
+  - type: custom:mushroom-lock-card
+    entity: lock.nuki
+    name: entrance lock
+    show_name: true
+    state_color: true
+
   #- type: entities
   #  title: switches
   #  entities:
