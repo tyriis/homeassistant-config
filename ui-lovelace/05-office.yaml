@@ -16,6 +16,9 @@ cards:
         show_color_temp_control: true
         use_light_color: true
 
+      - type: custom:mushroom-entity-card
+        entity: switch.tuya_a1z_irpanel1_office
+
       - title: Switches
         type: entities
         show_header_toggle: false
@@ -123,10 +126,10 @@ cards:
         entities:
           - entity: sensor.aqara_climate_office_temperature
             color: "#E74C3C"
-            name: ESPHome
+            name: aqara1
           - entity: sensor.aqara_climate_office_2_temperature
             color: "#ff9800"
-            name: aqara
+            name: aqara2
         name: temperature
         height: 74
         line_width: 2
@@ -151,10 +154,10 @@ cards:
         entities:
           - entity: sensor.aqara_climate_office_humidity
             color: "#3498DB"
-            name: ESPHome
+            name: aqara1
           - entity: sensor.aqara_climate_office_2_humidity
             color: "#5f37db"
-            name: aqara
+            name: aqara2
             # name: humidity
             # show_legend: false
             # show_state: true
