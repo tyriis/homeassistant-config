@@ -175,7 +175,7 @@ lovelace:
 shell_command:
   update_config: cd /config && git config --global --add safe.directory /config && git pull
 
-opnsense:
-  url: https://opnsense.techtales.io/api
-  api_secret: !secret opnsense_api_secret
-  api_key: !secret opnsense_api_key
+# opnsense:
+#   url: https://opnsense.techtales.io/api
+#   api_secret: !secret opnsense_api_secret
+#   api_key: !secret opnsense_api_key
