@@ -179,3 +179,7 @@ shell_command:
 #   url: https://opnsense.techtales.io/api
 #   api_secret: !secret opnsense_api_secret
 #   api_key: !secret opnsense_api_key
+
+sensor:
+  platform: rest
+  resource: !secret open_meteo_url
