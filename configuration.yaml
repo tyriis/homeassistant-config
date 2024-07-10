@@ -180,6 +180,6 @@ shell_command:
 #   api_secret: !secret opnsense_api_secret
 #   api_key: !secret opnsense_api_key
 
-sensor:
-  platform: rest
-  resource: !secret open_meteo_url
+# sensor:
+#   platform: rest
+#   resource: !secret open_meteo_url
