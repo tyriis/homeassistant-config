@@ -137,6 +137,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
+    - url: /hacsfiles/ha-heatmap-card/heatmap-card.js
+      type: module
 
 # panel_iframe:
 #  networkmap:
