@@ -74,3 +74,19 @@
   action:
     - service: shell_command.update_config
     - service: homeassistant.restart
+
+
+- alias: Count Motion Active Minutes Aqara Office
+  description: Increments the motion active minutes counter every minute
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.aqara_motion_office_occupancy
+      state: "on"
+  action:
+    - service: input_number.increment
+      target:
+        entity_id: input_number.count_motion_time
+  mode: single
