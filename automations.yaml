@@ -93,10 +93,11 @@
   mode: single
 
 - alias: Reset Motion Active Minutes
-  description: Resets the motion active minutes counter at midnight
+  id: reset_motion_active_minutes
+  description: Resets the motion active minutes counter each hour
   trigger:
-    - platform: time
-      at: "00:00:00"
+    - platform: time_pattern
+      minutes: 0
   action:
     - service: input_number.set_value
       target:
