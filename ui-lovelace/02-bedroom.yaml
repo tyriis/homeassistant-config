@@ -11,6 +11,19 @@ cards:
         show_color_temp_control: true
         use_light_color: true
 
+      - type: custom:mushroom-light-card
+        entity: light.rgbic_pro_strip_lights_2
+        show_brightness_control: true
+        show_color_temp_control: true
+        use_light_color: true
+
+      - type: custom:mushroom-light-card
+        entity: light.galaxy_light_projector_2
+        show_brightness_control: true
+        show_color_temp_control: true
+        use_light_color: true
+
+
       # - type: custom:simple-thermostat
       #   entity: climate.bedroom
       #   step_size: 1
