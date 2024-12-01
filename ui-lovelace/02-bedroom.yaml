@@ -1,0 +1,107 @@
+title: Bedroom
+path: bedroom
+badges: []
+cards:
+  - type: vertical-stack
+    cards:
+
+      - type: custom:mushroom-light-card
+        entity: light.bedroom
+        show_brightness_control: true
+        show_color_temp_control: true
+        use_light_color: true
+
+      # - type: custom:simple-thermostat
+      #   entity: climate.bedroom
+      #   step_size: 1
+      #   layout:
+      #     step: row
+      #   header:
+      #     name: Climate
+      #   control:
+      #     - hvac
+      #     - preset
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.aqara_climate_bedroom_temperature
+            color: "#E74C3C"
+            name: aqara
+        name: temperature
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+        color_thresholds:
+          - value: 25
+            color: "#e74c3c"
+          - value: 15
+            color: "#1db954"
+          - value: -1
+            color: "#3498db"
+          - value: -100
+            color: "#e74c3c"
+
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.aqara_climate_bedroom_humidity
+            color: "#3498DB"
+            name: aqara
+        name: humidity
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+        color_thresholds:
+          - value: 50
+            color: "#e74c3c"
+          - value: 35
+            color: "#1db954"
+          - value: 25
+            color: "#3498db"
+          - value: -100
+            color: "#e74c3c"
+
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.aqara_motion_bedroom_illuminance_lux
+            color: "#ff9800"
+        name: lux
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        update_interval: 60
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+        color_thresholds:
+          - value: 100
+            color: "#ff9800"
+          - value: 25
+            color: "#8d8d8d"
+          - value: -100
+            color: "#e74c3c"
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mushroom-entity-card
+        title: motion
+        entities:
+          - entity: binary_sensor.aqara_motion_bedroom_occupancy
+            name: aqara
+            secondary_info: last-changed
