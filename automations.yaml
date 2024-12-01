@@ -77,6 +77,7 @@
 
 
 - alias: Count Motion Active Minutes Aqara Office
+  id: count_motion_active_minutes_aqara_office
   description: Increments the motion active minutes counter every minute
   trigger:
     - platform: time_pattern
@@ -89,4 +90,17 @@
     - service: input_number.increment
       target:
         entity_id: input_number.count_motion_time
+  mode: single
+
+- alias: Reset Motion Active Minutes
+  description: Resets the motion active minutes counter at midnight
+  trigger:
+    - platform: time
+      at: "00:00:00"
+  action:
+    - service: input_number.set_value
+      target:
+        entity_id: input_number.count_motion_time
+      data:
+        value: 0
   mode: single
