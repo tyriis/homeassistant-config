@@ -207,7 +207,7 @@ cards:
         height: 74
         aggregate_func: max
         hours_to_show: 24
-        line_width: 1
+        line_width: 2
         font_size: 85
         points_per_hour: 1
         smoothing: false
@@ -216,8 +216,16 @@ cards:
           graph: bar
           extrema: true
           icon_adaptive_color: true
-          # state: false
-          # icon: false
+        color_thresholds:
+          - value: 0
+            color: "#A0D8EF"
+          - value: 20
+            color: "#90EE90"
+          - value: 40
+            color: "#FFA500"
+          - value: 60
+            color: "#FF4500"
+
 
       # - type: custom:heatmap-card
       #   entity: binary_sensor.aqara_motion_office_occupancy
