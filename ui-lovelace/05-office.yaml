@@ -287,7 +287,28 @@ cards:
           graph: bar
           legend: true
 
-
+      - type: "custom:mini-graph-card"
+        name: motion last hour
+        entities:
+          - entity: binary_sensor.aqara_motion_office_occupancy
+            name: aqara
+        height: 74
+        aggregate_func: sum
+        hours_to_show: 1
+        line_width: 2
+        font_size: 85
+        points_per_hour: 60
+        smoothing: false
+        hour24: true
+        state_map:
+          - label: Clear
+            value: 1
+          - label: Detected
+            value: 0
+        update_interval: 60
+        show:
+          # graph: bar
+          legend: true
 
       # - type: custom:heatmap-card
       #   entity: binary_sensor.aqara_motion_office_occupancy
