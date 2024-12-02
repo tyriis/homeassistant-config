@@ -288,7 +288,7 @@ cards:
         update_interval: 60
         line_color: "#A0D8EF"
         show:
-          state: false
+          # state: false
           icon: false
           # graph: bar
           # extrema: true
@@ -305,8 +305,8 @@ cards:
         # unit: "%"
         # bar_spacing: 10
         # value_factor: 16.6667
-        value_factor: 0.2227
-        # value_factor: 10
+        # value_factor: 0.2227
+        value_factor: 0.5
         unit: "%"
 
       - type: "custom:mini-graph-card"
