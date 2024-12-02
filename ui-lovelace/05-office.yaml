@@ -289,24 +289,24 @@ cards:
 
 
 
-      - type: custom:heatmap-card
-        entity: binary_sensor.aqara_motion_office_occupancy
-        title: Movement Intensity Heatmap
-        data:
-          max: 60 # Assuming maximum 60 minutes of movement per hour
-        scale:
-          type: relative
-          steps:
-            - value: 0
-              color: '#ebedf0' # Light gray for no movement
-            - value: 0.25
-              color: '#9be9a8' # Light green
-            - value: 0.5
-              color: '#40c463' # Medium green
-            - value: 0.75
-              color: '#30a14e' # Dark green
-            - value: 1
-              color: '#216e39' # Very dark green
+      # - type: custom:heatmap-card
+      #   entity: binary_sensor.aqara_motion_office_occupancy
+      #   title: Movement Intensity Heatmap
+      #   data:
+      #     max: 60 # Assuming maximum 60 minutes of movement per hour
+      #   scale:
+      #     type: relative
+      #     steps:
+      #       - value: 0
+      #         color: '#ebedf0' # Light gray for no movement
+      #       - value: 0.25
+      #         color: '#9be9a8' # Light green
+      #       - value: 0.5
+      #         color: '#40c463' # Medium green
+      #       - value: 0.75
+      #         color: '#30a14e' # Dark green
+      #       - value: 1
+      #         color: '#216e39' # Very dark green
 
   #- entities:
   #    - vacuum.neato_keller
