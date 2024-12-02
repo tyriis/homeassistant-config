@@ -275,7 +275,44 @@ cards:
         line_width: 2
         font_size: 85
         points_per_hour: 6
-        smoothing: false
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+        update_interval: 60
+        show:
+          # graph: bar
+          # extrema: true
+          # icon_adaptive_color: true
+          legend: true
+        # color_thresholds:
+        #   - value: 0
+        #     color: "#A0D8EF"
+        #   - value: 3
+        #     color: "#90EE90"
+        #   - value: 6
+        #     color: "#FFA500"
+        #   - value: 8
+        # unit: "%"
+        # bar_spacing: 10
+        # value_factor: 16.6667
+        # value_factor: 0.2227
+
+      - type: "custom:mini-graph-card"
+        name: motion last hour graph binary bar
+        entities:
+          - entity: binary_sensor.aqara_motion_office_occupancy
+            name: aqara
+        height: 74
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 2
+        font_size: 85
+        points_per_hour: 6
+        smoothing: true
         hour24: true
         state_map:
           - label: Clear
@@ -293,36 +330,12 @@ cards:
         #     color: "#A0D8EF"
         #   - value: 3
         #     color: "#90EE90"
-        #   - value: 5
+        #   - value: 6
         #     color: "#FFA500"
         #   - value: 8
         # unit: "%"
-        bar_spacing: 10
         # value_factor: 16.6667
         # value_factor: 0.2227
-
-      - type: "custom:mini-graph-card"
-        name: motion last hour graph
-        entities:
-          - entity: binary_sensor.mijia_motion_office_occupancy
-            name: aqara
-        height: 74
-        aggregate_func: sum
-        hours_to_show: 1
-        line_width: 2
-        font_size: 85
-        points_per_hour: 60
-        smoothing: false
-        hour24: true
-        state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
-        update_interval: 60
-        show:
-          # graph: bar
-          legend: true
 
       - type: "custom:mini-graph-card"
         name: motion last hour graph inverted
