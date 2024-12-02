@@ -270,13 +270,13 @@ cards:
         name: motion last 24h group all 10 minutes
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
-            name: aqara
+            # name: aqara
         height: 74
         aggregate_func: sum
         hours_to_show: 24
         line_width: 2
         font_size: 85
-        points_per_hour: 1
+        points_per_hour: 6
         smoothing: true
         # group_by: hour
         hour24: true
