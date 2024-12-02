@@ -302,9 +302,9 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: "on"
-          - label: Detected
             value: "off"
+          - label: Detected
+            value: "on"
         update_interval: 60
         show:
           # graph: bar
