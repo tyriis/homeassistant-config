@@ -230,6 +230,41 @@ cards:
           - value: 50
             color: "#FF4500"
 
+      - type: "custom:mini-graph-card"
+        name: motion last hour
+        entities:
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            name: mijia
+        height: 74
+        aggregate_func: max
+        hours_to_show: 1
+        line_width: 2
+        font_size: 85
+        points_per_hour: 60
+        smoothing: false
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "on"
+          - label: Detected
+            value: "off"
+        update_interval: 60
+        show:
+          graph: bar
+          extrema: true
+          icon_adaptive_color: true
+          legend: true
+        color_thresholds:
+          - value: 0
+            color: "#A0D8EF"
+          - value: 15
+            color: "#90EE90"
+          - value: 35
+            color: "#FFA500"
+          - value: 50
+            color: "#FF4500"
+
+
 
       # - type: custom:heatmap-card
       #   entity: binary_sensor.aqara_motion_office_occupancy
