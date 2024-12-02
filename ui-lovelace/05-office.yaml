@@ -230,6 +230,40 @@ cards:
           - value: 50
             color: "#FF4500"
 
+
+      - type: "custom:mini-graph-card"
+        name: motion last 24h
+        entities:
+          - entity: input_number.count_motion_time
+            name: aqara
+            aggregate_func: max
+        unit: "%"
+        height: 74
+        aggregate_func: max
+        hours_to_show: 24
+        line_width: 2
+        bar_spacing: 10
+        font_size: 85
+        points_per_hour: 1
+        smoothing: false
+        update_interval: 60
+        hour24: true
+        value_factor: 0.2227
+        show:
+          # graph: bar
+          extrema: true
+          icon_adaptive_color: true
+          legend: true
+        color_thresholds:
+          - value: 0
+            color: "#A0D8EF"
+          - value: 15
+            color: "#90EE90"
+          - value: 35
+            color: "#FFA500"
+          - value: 50
+            color: "#FF4500"
+
       - type: "custom:mini-graph-card"
         name: motion last hour
         entities:
@@ -251,7 +285,6 @@ cards:
         update_interval: 60
         show:
           graph: bar
-          extrema: true
           legend: true
 
 
