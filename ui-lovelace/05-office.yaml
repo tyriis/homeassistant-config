@@ -212,6 +212,7 @@ cards:
         points_per_hour: 1
         smoothing: false
         update_interval: 60
+        hour24: true
         show:
           graph: bar
           extrema: true
