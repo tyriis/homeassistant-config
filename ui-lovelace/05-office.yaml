@@ -288,7 +288,7 @@ cards:
           legend: true
 
       - type: "custom:mini-graph-card"
-        name: motion last hour
+        name: motion last hour graph
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
             name: aqara
@@ -302,9 +302,9 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: 1
+            value: "on"
           - label: Detected
-            value: 0
+            value: "off"
         update_interval: 60
         show:
           # graph: bar
