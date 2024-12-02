@@ -208,12 +208,13 @@ cards:
         aggregate_func: max
         hours_to_show: 24
         line_width: 2
+        bar_spacing: 10
         font_size: 85
         points_per_hour: 1
         smoothing: false
         update_interval: 60
         hour24: true
-        value_factor: 1.6666666666666667
+        value_factor: 0.2227
         show:
           graph: bar
           extrema: true
