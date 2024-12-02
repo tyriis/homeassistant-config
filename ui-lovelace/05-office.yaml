@@ -291,14 +291,14 @@ cards:
         color_thresholds:
           - value: 0
             color: "#A0D8EF"
-          - value: 15
+          - value: 3
             color: "#90EE90"
-          - value: 35
+          - value: 5
             color: "#FFA500"
-          - value: 50
+          - value: 8
         # unit: "%"
         bar_spacing: 10
-        value_factor: 16.6667
+        # value_factor: 16.6667
         # value_factor: 0.2227
 
       - type: "custom:mini-graph-card"
