@@ -276,6 +276,7 @@ cards:
         font_size: 85
         points_per_hour: 6
         smoothing: true
+        group_by: hour
         hour24: true
         state_map:
           - label: Clear
@@ -283,6 +284,7 @@ cards:
           - label: Detected
             value: "on"
         update_interval: 60
+        line_color: "#A0D8EF"
         show:
           # graph: bar
           # extrema: true
@@ -300,6 +302,8 @@ cards:
         # bar_spacing: 10
         # value_factor: 16.6667
         # value_factor: 0.2227
+        value_factor: 10
+        unit: "%"
 
       - type: "custom:mini-graph-card"
         name: motion last hour graph binary bar
@@ -309,6 +313,7 @@ cards:
         height: 74
         aggregate_func: sum
         hours_to_show: 24
+        group_by: hour
         line_width: 2
         font_size: 85
         points_per_hour: 6
@@ -320,6 +325,7 @@ cards:
           - label: Detected
             value: "on"
         update_interval: 60
+        line_color: "#A0D8EF"
         show:
           graph: bar
           # extrema: true
@@ -336,6 +342,8 @@ cards:
         # unit: "%"
         # value_factor: 16.6667
         # value_factor: 0.2227
+        value_factor: 10
+        unit: "%"
 
       - type: "custom:mini-graph-card"
         name: motion last hour graph inverted
