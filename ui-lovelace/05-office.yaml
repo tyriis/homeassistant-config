@@ -306,7 +306,7 @@ cards:
         # bar_spacing: 10
         # value_factor: 16.6667
         # value_factor: 0.2227
-        value_factor: 0.5
+        value_factor: 1.2227
         unit: "%"
 
       - type: "custom:mini-graph-card"
