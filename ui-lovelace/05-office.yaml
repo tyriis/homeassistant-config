@@ -265,12 +265,12 @@ cards:
             color: "#FF4500"
 
       - type: "custom:mini-graph-card"
-        name: motion last hour
+        name: motion last hour graph binary
         entities:
-          - entity: binary_sensor.aqara_motion_office_occupancy
-            name: mijia
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            name: aqara
         height: 74
-        aggregate_func: max
+        aggregate_func: sum
         hours_to_show: 1
         line_width: 2
         font_size: 85
@@ -279,18 +279,18 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: "on"
+            value: 0
           - label: Detected
-            value: "off"
+            value: 1
         update_interval: 60
         show:
-          graph: bar
+          # graph: bar
           legend: true
 
       - type: "custom:mini-graph-card"
         name: motion last hour graph
         entities:
-          - entity: binary_sensor.aqara_motion_office_occupancy
+          - entity: binary_sensor.mijia_motion_office_occupancy
             name: aqara
         height: 74
         aggregate_func: sum
@@ -305,6 +305,29 @@ cards:
             value: "off"
           - label: Detected
             value: "on"
+        update_interval: 60
+        show:
+          # graph: bar
+          legend: true
+
+      - type: "custom:mini-graph-card"
+        name: motion last hour graph inverted
+        entities:
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            name: aqara
+        height: 74
+        aggregate_func: sum
+        hours_to_show: 1
+        line_width: 2
+        font_size: 85
+        points_per_hour: 60
+        smoothing: false
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "on"
+          - label: Detected
+            value: "off"
         update_interval: 60
         show:
           # graph: bar
