@@ -213,18 +213,20 @@ cards:
         smoothing: false
         update_interval: 60
         hour24: true
+        value_factor: 1.6666666666666667
         show:
           graph: bar
           extrema: true
           icon_adaptive_color: true
+          legend: true
         color_thresholds:
           - value: 0
             color: "#A0D8EF"
-          - value: 20
+          - value: 15
             color: "#90EE90"
-          - value: 40
+          - value: 35
             color: "#FFA500"
-          - value: 60
+          - value: 50
             color: "#FF4500"
 
 
