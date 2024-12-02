@@ -207,15 +207,17 @@ cards:
         height: 74
         aggregate_func: max
         hours_to_show: 24
-        line_width: 2
+        line_width: 1
         font_size: 85
         points_per_hour: 1
         smoothing: false
         update_interval: 60
         show:
           graph: bar
-          state: false
-          icon: false
+          extrema: true
+          icon_adaptive_color: true
+          # state: false
+          # icon: false
 
       # - type: custom:heatmap-card
       #   entity: binary_sensor.aqara_motion_office_occupancy
