@@ -276,7 +276,7 @@ cards:
         font_size: 85
         points_per_hour: 6
         smoothing: true
-        group_by: hour
+        # group_by: hour
         hour24: true
         state_map:
           - label: Clear
@@ -313,7 +313,7 @@ cards:
         height: 74
         aggregate_func: sum
         hours_to_show: 24
-        group_by: hour
+        # group_by: hour
         line_width: 2
         font_size: 85
         points_per_hour: 6
