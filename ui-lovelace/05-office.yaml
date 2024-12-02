@@ -279,9 +279,9 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: 0
+            value: "0"
           - label: Detected
-            value: 1
+            value: "1"
         update_interval: 60
         show:
           # graph: bar
