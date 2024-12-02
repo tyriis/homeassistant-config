@@ -267,7 +267,7 @@ cards:
             color: "#FF4500"
 
       - type: "custom:mini-graph-card"
-        name: motion last hour graph binary
+        name: motion last 24h group all 10 minutes
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
             name: aqara
@@ -276,7 +276,7 @@ cards:
         hours_to_show: 24
         line_width: 2
         font_size: 85
-        points_per_hour: 6
+        points_per_hour: 1
         smoothing: true
         # group_by: hour
         hour24: true
@@ -298,7 +298,7 @@ cards:
           - value: 0
             color: "#A0D8EF"
           - value: 1
-            color: "#FF4500"
+            color: "#90EE90"
         #   - value: 6
         #     color: "#FFA500"
         #   - value: 8
