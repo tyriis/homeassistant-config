@@ -284,18 +284,18 @@ cards:
             value: "on"
         update_interval: 60
         show:
-          # graph: bar
-          extrema: true
-          icon_adaptive_color: true
+          graph: bar
+          # extrema: true
+          # icon_adaptive_color: true
           legend: true
-        color_thresholds:
-          - value: 0
-            color: "#A0D8EF"
-          - value: 3
-            color: "#90EE90"
-          - value: 5
-            color: "#FFA500"
-          - value: 8
+        # color_thresholds:
+        #   - value: 0
+        #     color: "#A0D8EF"
+        #   - value: 3
+        #     color: "#90EE90"
+        #   - value: 5
+        #     color: "#FFA500"
+        #   - value: 8
         # unit: "%"
         bar_spacing: 10
         # value_factor: 16.6667
