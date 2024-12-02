@@ -271,21 +271,24 @@ cards:
             name: aqara
         height: 74
         aggregate_func: sum
-        hours_to_show: 1
+        hours_to_show: 24
         line_width: 2
         font_size: 85
-        points_per_hour: 60
+        points_per_hour: 6
         smoothing: false
         hour24: true
         state_map:
           - label: Clear
-            value: "0"
+            value: "off"
           - label: Detected
-            value: "1"
+            value: "on"
         update_interval: 60
         show:
           # graph: bar
           legend: true
+        unit: "%"
+        bar_spacing: 10
+        value_factor: 0.2227
 
       - type: "custom:mini-graph-card"
         name: motion last hour graph
