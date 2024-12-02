@@ -233,7 +233,7 @@ cards:
       - type: "custom:mini-graph-card"
         name: motion last hour
         entities:
-          - entity: binary_sensor.mijia_motion_office_occupancy
+          - entity: binary_sensor.aqara_motion_office_occupancy
             name: mijia
         height: 74
         aggregate_func: max
@@ -252,17 +252,7 @@ cards:
         show:
           graph: bar
           extrema: true
-          icon_adaptive_color: true
           legend: true
-        color_thresholds:
-          - value: 0
-            color: "#A0D8EF"
-          - value: 15
-            color: "#90EE90"
-          - value: 35
-            color: "#FFA500"
-          - value: 50
-            color: "#FF4500"
 
 
 
