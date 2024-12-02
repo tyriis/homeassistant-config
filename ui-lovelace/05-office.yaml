@@ -267,7 +267,7 @@ cards:
       - type: "custom:mini-graph-card"
         name: motion last hour graph binary
         entities:
-          - entity: binary_sensor.mijia_motion_office_occupancy
+          - entity: binary_sensor.aqara_motion_office_occupancy
             name: aqara
         height: 74
         aggregate_func: sum
@@ -285,10 +285,21 @@ cards:
         update_interval: 60
         show:
           # graph: bar
+          extrema: true
+          icon_adaptive_color: true
           legend: true
-        unit: "%"
+        color_thresholds:
+          - value: 0
+            color: "#A0D8EF"
+          - value: 15
+            color: "#90EE90"
+          - value: 35
+            color: "#FFA500"
+          - value: 50
+        # unit: "%"
         bar_spacing: 10
-        value_factor: 0.2227
+        value_factor: 16.6667
+        # value_factor: 0.2227
 
       - type: "custom:mini-graph-card"
         name: motion last hour graph
