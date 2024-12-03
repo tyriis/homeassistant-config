@@ -304,8 +304,8 @@ cards:
           state: false
           icon: false
           # icon_adaptive_color: true
-          labels: true
-          legend: true
+          labels: false
+          legend: false
           labels_secondary: false
         # color_thresholds:
         #   - value: 0
