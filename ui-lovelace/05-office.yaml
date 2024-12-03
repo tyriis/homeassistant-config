@@ -272,11 +272,11 @@ cards:
           - entity: binary_sensor.aqara_motion_office_occupancy
           - entity: sun.sun
             color: gray
-            name: Sun
+            # name: Sun
             show_line: false
             show_points: false
             show_legend: false
-            y_axis: secondary
+            # y_axis: secondary
 
         height: 74
         aggregate_func: sum
@@ -292,9 +292,9 @@ cards:
           - label: Detected
             value: "on"
           - value: below_horizon
-            label: Night
-          - value: above_horizon
             label: Day
+          - value: above_horizon
+            label: Night
         update_interval: 60
         line_color: "#A0D8EF"
         show:
