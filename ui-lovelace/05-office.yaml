@@ -176,7 +176,7 @@ cards:
         line_color: "#90EE90"
         show:
           state: false
-          icon: false
+          icon: true
           labels: false
           legend: true
           labels_secondary: false
@@ -215,7 +215,7 @@ cards:
         line_color: "#90EE90"
         show:
           state: false
-          icon: false
+          icon: true
           labels: false
           legend: true
           labels_secondary: false
@@ -254,7 +254,7 @@ cards:
         line_color: "#90EE90"
         show:
           state: false
-          icon: false
+          icon: true
           labels: false
           legend: true
           labels_secondary: false
