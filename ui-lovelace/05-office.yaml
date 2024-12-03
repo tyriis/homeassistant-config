@@ -313,7 +313,7 @@ cards:
         #     color: "#A0D8EF"
         #   - value: 1
         #     color: "#90EE90"
-        value_factor: 1.06
+        value_factor: 1.055
         decimals: 0
 
       # - type: "custom:mini-graph-card"
