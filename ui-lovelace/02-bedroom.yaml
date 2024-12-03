@@ -113,7 +113,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: "custom:mini-graph-card"
-        name: motion last 24h group all 10 minutes
+        name: motion last 24h
         entities:
           - entity: binary_sensor.aqara_motion_bedroom_occupancy
             color: "#90EE90"
