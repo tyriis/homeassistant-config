@@ -271,6 +271,7 @@ cards:
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
             color: "#A0D8EF"
+            name: aqara
           - entity: binary_sensor.mijia_motion_office_occupancy
             color: "#90EE90"
           - entity: sun.sun
@@ -304,7 +305,7 @@ cards:
           state: false
           icon: false
           # icon_adaptive_color: true
-          labels: false
+          labels: true
           legend: false
           labels_secondary: false
         # color_thresholds:
