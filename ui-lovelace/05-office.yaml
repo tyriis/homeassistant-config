@@ -270,15 +270,18 @@ cards:
         name: motion last 24h group all 10 minutes
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
+            color: "#A0D8EF"
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            color: "#90EE90"
           - entity: sun.sun
             color: gray
-            # name: Sun
+            name: Sun
             show_line: false
             show_points: false
             show_legend: false
-            # y_axis: secondary
+            y_axis: secondary
 
-        height: 74
+        height: 100
         aggregate_func: sum
         hours_to_show: 24
         line_width: 2
@@ -292,21 +295,23 @@ cards:
           - label: Detected
             value: "on"
           - value: below_horizon
-            label: Day
-          - value: above_horizon
             label: Night
+          - value: above_horizon
+            label: Day
         update_interval: 60
         line_color: "#A0D8EF"
         show:
           state: false
           icon: false
-          icon_adaptive_color: true
+          # icon_adaptive_color: true
+          labels: true
           legend: true
-        color_thresholds:
-          - value: 0
-            color: "#A0D8EF"
-          - value: 1
-            color: "#90EE90"
+          labels_secondary: false
+        # color_thresholds:
+        #   - value: 0
+        #     color: "#A0D8EF"
+        #   - value: 1
+        #     color: "#90EE90"
 
       # - type: "custom:mini-graph-card"
       #   name: motion last hour graph binary bar
