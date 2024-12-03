@@ -313,6 +313,8 @@ cards:
         #     color: "#A0D8EF"
         #   - value: 1
         #     color: "#90EE90"
+        value_factor: 1.1
+        decimals: 0
 
       # - type: "custom:mini-graph-card"
       #   name: motion last hour graph binary bar
@@ -350,8 +352,8 @@ cards:
       #   #   - value: 8
       #   # unit: "%"
       #   # value_factor: 0.2227
-        value_factor: 1.25
-        decimals: 0
+        # value_factor: 1.25
+        # decimals: 0
 
       # - type: custom:heatmap-card
       #   entity: binary_sensor.aqara_motion_office_occupancy
