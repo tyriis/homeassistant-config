@@ -112,9 +112,41 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:mushroom-entity-card
-        title: motion
+      - type: "custom:mini-graph-card"
+        name: motion last 24h group all 10 minutes
         entities:
           - entity: binary_sensor.aqara_motion_bedroom_occupancy
+            color: "#90EE90"
             name: aqara
-            secondary_info: last-changed
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        height: 100
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 2
+        font_size: 85
+        points_per_hour: 6
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: "#90EE90"
+        show:
+          state: false
+          icon: false
+          labels: false
+          legend: true
+          labels_secondary: false
