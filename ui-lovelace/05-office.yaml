@@ -306,7 +306,7 @@ cards:
           icon: false
           # icon_adaptive_color: true
           labels: true
-          legend: false
+          legend: true
           labels_secondary: false
         # color_thresholds:
         #   - value: 0
@@ -350,7 +350,7 @@ cards:
       #   #   - value: 8
       #   # unit: "%"
       #   # value_factor: 0.2227
-        value_factor: 1.35
+        value_factor: 1.25
         decimals: 0
 
       # - type: custom:heatmap-card
