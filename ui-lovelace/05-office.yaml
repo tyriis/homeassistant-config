@@ -141,96 +141,6 @@ cards:
       #  refresh_interval: 30
       #  hours_to_show: 1
 
-      - type: "custom:mini-graph-card"
-        name: motion last hour
-        entities:
-          - entity: binary_sensor.aqara_motion_office_occupancy
-            name: aqara
-            # aggregate_func: avg
-          - entity: binary_sensor.mijia_motion_office_occupancy
-            name: mijia
-            # aggregate_func: avg
-        height: 74
-        aggregate_func: max
-        hours_to_show: 1
-        line_width: 2
-        font_size: 85
-        points_per_hour: 60
-        smoothing: false
-        state_map:
-          - label: Clear
-            value: "on"
-          - label: Detected
-            value: "off"
-        update_interval: 60
-        show:
-          graph: bar
-          state: false
-          icon: false
-
-      - type: "custom:mini-graph-card"
-        name: motion last 24h
-        entities:
-          - entity: binary_sensor.aqara_motion_office_occupancy
-            name: aqara
-            aggregate_func: avg
-          - entity: binary_sensor.mijia_motion_office_occupancy
-            name: mijia
-            aggregate_func: avg
-          - entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
-            name: basement stairs up
-            aggregate_func: avg
-        height: 74
-        aggregate_func: max
-        hours_to_show: 24
-        line_width: 2
-        font_size: 85
-        points_per_hour: 4
-        smoothing: false
-        state_map:
-          - label: Clear
-            value: "on"
-          - label: Detected
-            value: "off"
-        update_interval: 60
-        show:
-          graph: bar
-          state: false
-          icon: false
-
-      - type: "custom:mini-graph-card"
-        name: motion last 24h
-        entities:
-          - entity: input_number.count_motion_time
-            name: aqara
-            aggregate_func: max
-        height: 74
-        aggregate_func: max
-        hours_to_show: 24
-        line_width: 2
-        bar_spacing: 10
-        font_size: 85
-        points_per_hour: 1
-        smoothing: false
-        update_interval: 60
-        hour24: true
-        group_by: hour
-        value_factor: 0.2227
-        show:
-          graph: bar
-          extrema: true
-          icon_adaptive_color: true
-          legend: true
-        color_thresholds:
-          - value: 0
-            color: "#A0D8EF"
-          - value: 15
-            color: "#90EE90"
-          - value: 35
-            color: "#FFA500"
-          - value: 50
-            color: "#FF4500"
-
 
       - type: "custom:mini-graph-card"
         name: motion last 24h
@@ -270,10 +180,8 @@ cards:
         name: motion last 24h group all 10 minutes
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
-            color: "#A0D8EF"
-            name: aqara
-          - entity: binary_sensor.mijia_motion_office_occupancy
             color: "#90EE90"
+            name: aqara
           - entity: sun.sun
             color: gray
             name: Sun
@@ -281,7 +189,6 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-
         height: 100
         aggregate_func: sum
         hours_to_show: 24
@@ -300,60 +207,92 @@ cards:
           - value: above_horizon
             label: Day
         update_interval: 60
-        line_color: "#A0D8EF"
+        line_color: "#90EE90"
         show:
           state: false
           icon: false
-          # icon_adaptive_color: true
-          labels: true
+          labels: false
           legend: true
           labels_secondary: false
-        # color_thresholds:
-        #   - value: 0
-        #     color: "#A0D8EF"
-        #   - value: 1
-        #     color: "#90EE90"
-        value_factor: 1.055
-        decimals: 0
 
-      # - type: "custom:mini-graph-card"
-      #   name: motion last hour graph binary bar
-      #   entities:
-      #     - entity: binary_sensor.aqara_motion_office_occupancy
-      #   height: 74
-      #   aggregate_func: sum
-      #   hours_to_show: 24
-      #   line_width: 2
-      #   font_size: 85
-      #   points_per_hour: 6
-      #   smoothing: true
-      #   hour24: true
-      #   state_map:
-      #     - label: Clear
-      #       value: "off"
-      #     - label: Detected
-      #       value: "on"
-      #   update_interval: 60
-      #   line_color: "#A0D8EF"
-      #   show:
-      #     # state: false
-      #     icon: false
-      #     graph: bar
-      #     # extrema: true
-      #     icon_adaptive_color: true
-      #     legend: true
-      #   color_thresholds:
-      #     - value: 0
-      #       color: "#A0D8EF"
-      #     - value: 1
-      #       color: "#90EE90"
-      #   #   - value: 6
-      #   #     color: "#FFA500"
-      #   #   - value: 8
-      #   # unit: "%"
-      #   # value_factor: 0.2227
-        # value_factor: 1.25
-        # decimals: 0
+      - type: "custom:mini-graph-card"
+        name: motion last 24h group all 10 minutes
+        entities:
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            color: "#90EE90"
+            name: mijia
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        height: 100
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 2
+        font_size: 85
+        points_per_hour: 6
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: "#90EE90"
+        show:
+          state: false
+          icon: false
+          labels: false
+          legend: true
+          labels_secondary: false
+
+      - type: "custom:mini-graph-card"
+        name: motion last 24h group all 10 minutes
+        entities:
+          - entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
+            color: "#90EE90"
+            name: stairs up
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        height: 100
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 2
+        font_size: 85
+        points_per_hour: 6
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: "#90EE90"
+        show:
+          state: false
+          icon: false
+          labels: false
+          legend: true
+          labels_secondary: false
+
 
       # - type: custom:heatmap-card
       #   entity: binary_sensor.aqara_motion_office_occupancy
