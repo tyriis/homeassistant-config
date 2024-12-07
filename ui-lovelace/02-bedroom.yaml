@@ -228,7 +228,7 @@ cards:
       - type: custom:mushroom-entity-card
         entity: binary_sensor.aqara_contact_door_bedroom_contact
         name: door
-        secondary_info: none
+        # secondary_info: state
         # layout: vertical
         # icon: mdi:power
         # icon_color: blue
