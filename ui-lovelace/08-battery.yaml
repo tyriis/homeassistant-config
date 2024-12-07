@@ -9,7 +9,8 @@ cards:
         - attributes:
             device_class: battery
     card:
-      type: custom:mushroom-entity-card
+      # type: custom:mushroom-entity-card
+      type: entities
       # icon: mdi:battery
       # name: "{{ entity.name.split(' ')[-2:] | join(' ') }}"
       # secondary_info: state
@@ -17,3 +18,18 @@ cards:
       #   action: more-info
     sort:
       method: name
+
+
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: entities
+      title: Lights on
+      show_header_toggle: false
+    filter:
+      include:
+        - domain: light
+      exclude:
+        - state: "off"
+        - state: "unavailable"
+        - hidden_by: "user"
