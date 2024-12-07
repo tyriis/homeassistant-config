@@ -10,16 +10,15 @@ cards:
         entity: light.skylight_8905
         show_brightness_control: true
         show_color_temp_control: true
-        use_light_color: false
+        use_light_color: true
         icon: mdi:wall-sconce-flat
-        icon-color: "#ff9800"
         name: Nanoleaf Skylight
 
       - type: custom:mushroom-light-card
         entity: light.rgbic_pro_strip_lights_2
         show_brightness_control: true
         show_color_temp_control: true
-        use_light_color: false
+        use_light_color: true
         icon-color: "#ff9ef3"
         name: Govee LED Strip
 
@@ -27,7 +26,7 @@ cards:
         entity: light.galaxy_light_projector_2
         show_brightness_control: true
         show_color_temp_control: true
-        use_light_color: false
+        use_light_color: true
         icon: mdi:projector
         icon-color: "#ff9800"
 
@@ -101,6 +100,13 @@ cards:
         entities:
           - entity: sensor.aqara_motion_bedroom_illuminance_lux
             color: "#ff9800"
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
         name: lux
         height: 74
         line_width: 2
@@ -108,6 +114,15 @@ cards:
         hours_to_show: 24
         points_per_hour: 4
         update_interval: 60
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
         show:
           icon: true
           extrema: true
@@ -125,7 +140,6 @@ cards:
         entities:
           - entity: binary_sensor.aqara_motion_bedroom_occupancy
             color: "#90EE90"
-            icon: mdi:motion-sensor
             name: aqara
           - entity: sun.sun
             color: gray
