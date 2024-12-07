@@ -54,7 +54,7 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        height: 74
+        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -94,7 +94,7 @@ cards:
             show_legend: false
             y_axis: secondary
         hour24: true
-        height: 74
+        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -135,7 +135,7 @@ cards:
         height: 153 # to allign with other sensor cards
         aggregate_func: sum
         hours_to_show: 24
-        line_width: 2
+        line_width: 1
         font_size: 85
         points_per_hour: 4
         smoothing: true
@@ -172,7 +172,7 @@ cards:
             show_legend: false
             y_axis: secondary
         hour24: true
-        height: 74
+        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -235,7 +235,7 @@ cards:
             color: '#004e8b'
         hours_to_show: 24
         points_per_hour: 4
-        height: 74
+        # height: 74
         line_width: 2
         font_size: 85
         smoothing: true
