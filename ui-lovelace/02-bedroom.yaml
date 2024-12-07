@@ -45,6 +45,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:mini-graph-card
+        name: temperature
         entities:
           - entity: sensor.aqara_climate_bedroom_temperature
             color: "#E74C3C"
@@ -56,17 +57,13 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        name: temperature
         height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
+        hour24: true
         state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
           - value: below_horizon
             label: Night
           - value: above_horizon
@@ -87,6 +84,7 @@ cards:
             color: "#e74c3c"
 
       - type: custom:mini-graph-card
+        name: humidity
         entities:
           - entity: sensor.aqara_climate_bedroom_humidity
             color: "#3498DB"
@@ -98,17 +96,13 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        name: humidity
+        hour24: true
         height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
         state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
           - value: below_horizon
             label: Night
           - value: above_horizon
@@ -171,6 +165,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:mini-graph-card
+        name: lux
         entities:
           - entity: sensor.aqara_motion_bedroom_illuminance_lux
             color: "#ff9800"
@@ -181,7 +176,7 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        name: lux
+        hour24: true
         height: 74
         line_width: 2
         font_size: 85
@@ -189,10 +184,6 @@ cards:
         points_per_hour: 4
         update_interval: 60
         state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
           - value: below_horizon
             label: Night
           - value: above_horizon
@@ -209,3 +200,37 @@ cards:
             color: "#8d8d8d"
           - value: -100
             color: "#e74c3c"
+
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.sensor_heating_temperature_return_upstairs
+            name: Return
+            color: var(--blue-color)
+            y_axis: secondary
+            show_line: false
+          - entity: sensor.sensor_heating_temperature_flow_upstairs
+            name: Flow
+        name: heating upstairs
+        hour24: true
+        color_thresholds:
+          - value: 27.1
+            color: '#ff0000'
+          - value: 26.5
+            color: '#ffba00'
+          - value: 25.5
+            color: '#00aa99'
+          - value: 24.5
+            color: '#0090ff'
+          - value: 22.5
+            color: '#004e8b'
+        hours_to_show: 24
+        points_per_hour: 4
+        line_width: 3
+        font_size: 50
+        smoothing: true
+        show:
+          name: true
+          icon: false
+          state: false
+          legend: false
+          fill: fade
