@@ -110,8 +110,8 @@ cards:
           - value: -100
             color: "#e74c3c"
 
-  - type: vertical-stack
-    cards:
+  # - type: vertical-stack
+  #   cards:
       - type: "custom:mini-graph-card"
         name: motion last 24h
         entities:
@@ -125,7 +125,7 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        height: 200
+        height: 230 # to allign with other sensor cards
         aggregate_func: sum
         hours_to_show: 24
         line_width: 2
