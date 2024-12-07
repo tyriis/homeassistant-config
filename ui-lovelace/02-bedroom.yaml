@@ -228,7 +228,10 @@ cards:
         smoothing: true
         show:
           name: true
-          icon: false
-          state: false
-          legend: false
+          icon: true
+          state: true
+          legend: true
           fill: fade
+          icon_adaptive_color: true
+          labels: false
+          labels_secondary: true
