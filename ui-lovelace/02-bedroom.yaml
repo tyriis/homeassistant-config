@@ -205,8 +205,8 @@ cards:
           - entity: sensor.sensor_heating_temperature_return_upstairs
             name: Return
             color: var(--blue-color)
-            y_axis: secondary
-            show_line: false
+            # y_axis: secondary
+            # show_line: false
           - entity: sensor.sensor_heating_temperature_flow_upstairs
             name: Flow
         hour24: true
