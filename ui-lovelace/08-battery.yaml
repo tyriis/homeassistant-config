@@ -6,7 +6,8 @@ cards:
   - type: custom:auto-entities
     filter:
       include:
-        - entity_id: "sensor.*_battery"
+        - attributes:
+            device_class: battery
     card:
       type: custom:mushroom-entity-card
       # icon: mdi:battery
