@@ -166,6 +166,7 @@ cards:
           labels: false
           legend: true
           labels_secondary: false
+          icon_adaptive_color: true
 
   - type: vertical-stack
     cards:
