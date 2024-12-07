@@ -1,4 +1,5 @@
 title: Home
+icon: mdi:home
 path: home
 # badges:
 #   - entity: binary_sensor.updater
