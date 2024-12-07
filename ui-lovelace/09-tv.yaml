@@ -195,9 +195,9 @@ cards:
       - type: custom:mini-graph-card
         name: heating
         entities:
-          - entity: sensor.sensor_heating_temperature_flow_downstairs
+          - entity: sensor.sensor_heating_temperature_flow_groundfloor
             name: Flow
-          - entity: sensor.sensor_heating_temperature_return_downstairs
+          - entity: sensor.sensor_heating_temperature_return_groundfloor
             name: Return
           - entity: sun.sun
             color: gray
