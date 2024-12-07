@@ -223,15 +223,16 @@ cards:
             color: '#004e8b'
         hours_to_show: 24
         points_per_hour: 4
-        line_width: 3
-        font_size: 50
+        line_width: 2
+        font_size: 85
         smoothing: true
         show:
           name: true
           icon: true
           state: true
-          legend: true
+          legend: false
           fill: fade
           icon_adaptive_color: true
-          labels: false
+          labels: true
           labels_secondary: true
+          extrema: true
