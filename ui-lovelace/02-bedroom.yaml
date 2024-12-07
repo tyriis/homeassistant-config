@@ -247,3 +247,27 @@ cards:
           labels: false
           labels_secondary: false
           extrema: true
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_motion_bedroom_battery
+        name: motion battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_climate_bedroom_battery
+        name: climate battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_switch_bedroom_1_battery
+        name: switch 1 battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_switch_bedroom_2_battery
+        name: switch 2 battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_contact_door_bedroom_battery
+        name: door battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_contact_window_bedroom_battery
+        name: window battery
