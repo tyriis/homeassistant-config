@@ -30,20 +30,43 @@ cards:
         icon: mdi:projector
         icon-color: "#ff9800"
 
-
-      # - type: custom:simple-thermostat
-      #   entity: climate.bedroom
-      #   step_size: 1
-      #   layout:
-      #     step: row
-      #   header:
-      #     name: Climate
-      #   control:
-      #     - hvac
-      #     - preset
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.sensor_heating_temperature_return_upstairs
+            name: Return
+            color: var(--blue-color)
+            y_axis: secondary
+            show_line: false
+          - entity: sensor.sensor_heating_temperature_flow_upstairs
+            name: Flow
+        name: heating upstairs
+        hour24: true
+        color_thresholds:
+          - value: 27.1
+            color: '#ff0000'
+          - value: 26.5
+            color: '#ffba00'
+          - value: 25.5
+            color: '#00aa99'
+          - value: 24.5
+            color: '#0090ff'
+          - value: 22.5
+            color: '#004e8b'
+        hours_to_show: 24
+        points_per_hour: 4
+        line_width: 3
+        font_size: 50
+        smoothing: true
+        show:
+          name: true
+          icon: false
+          state: false
+          legend: false
+          fill: fade
 
   - type: vertical-stack
     cards:
+
       - type: custom:mini-graph-card
         name: temperature
         entities:
@@ -122,6 +145,9 @@ cards:
           - value: -100
             color: "#e74c3c"
 
+  - type: vertical-stack
+    cards:
+
       - type: "custom:mini-graph-card"
         name: motion
         entities:
@@ -162,8 +188,6 @@ cards:
           labels_secondary: false
           icon_adaptive_color: true
 
-  - type: vertical-stack
-    cards:
       - type: custom:mini-graph-card
         name: lux
         entities:
@@ -201,36 +225,3 @@ cards:
           - value: -100
             color: "#e74c3c"
 
-      - type: custom:mini-graph-card
-        entities:
-          - entity: sensor.sensor_heating_temperature_return_upstairs
-            name: Return
-            color: var(--blue-color)
-            y_axis: secondary
-            show_line: false
-          - entity: sensor.sensor_heating_temperature_flow_upstairs
-            name: Flow
-        name: heating upstairs
-        hour24: true
-        color_thresholds:
-          - value: 27.1
-            color: '#ff0000'
-          - value: 26.5
-            color: '#ffba00'
-          - value: 25.5
-            color: '#00aa99'
-          - value: 24.5
-            color: '#0090ff'
-          - value: 22.5
-            color: '#004e8b'
-        hours_to_show: 24
-        points_per_hour: 4
-        line_width: 3
-        font_size: 50
-        smoothing: true
-        show:
-          name: true
-          icon: false
-          state: false
-          legend: false
-          fill: fade
