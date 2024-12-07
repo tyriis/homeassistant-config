@@ -125,7 +125,7 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        height: 230 # to allign with other sensor cards
+        height: 153 # to allign with other sensor cards
         aggregate_func: sum
         hours_to_show: 24
         line_width: 2
