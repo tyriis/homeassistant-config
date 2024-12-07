@@ -4,7 +4,6 @@ badges: []
 cards:
   - type: vertical-stack
     cards:
-
       - type: custom:mushroom-light-card
         entity: light.skylight_8905
         show_brightness_control: true
@@ -24,18 +23,7 @@ cards:
         use_light_color: true
 
 
-      # - type: custom:simple-thermostat
-      #   entity: climate.bedroom
-      #   step_size: 1
-      #   layout:
-      #     step: row
-      #   header:
-      #     name: Climate
-      #   control:
-      #     - hvac
-      #     - preset
-
-  - type: vertical-stack
+  - type: horizontal-stack
     cards:
       - type: custom:mini-graph-card
         entities:
