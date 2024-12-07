@@ -13,10 +13,8 @@ cards:
       - entity: binary_sensor.sensor_heating_status
       - entity: binary_sensor.switch_alexroom_status
       - entity: binary_sensor.switch_basement_status
-      - entity: binary_sensor.switch_bedroom_status
       - entity: binary_sensor.switch_domiroom_status
       - entity: binary_sensor.switch_livingroom_status
-      - entity: binary_sensor.switch_office_status
 
   # ESPHome Light Alexroom
   - title: Light Alexroom
@@ -104,17 +102,6 @@ cards:
       - entity: sensor.switch_basement_power
       - entity: sensor.switch_basement_total_daily_energy
 
-  # ESPHome Switch Bedroom
-  - title: Switch Bedroom
-    type: entities
-    show_header_toggle: false
-    entities:
-      - entity: sensor.switch_bedroom_firmware
-      - entity: sensor.switch_bedroom_wifi_ip
-      - entity: sensor.switch_bedroom_wifi_strength
-      - entity: switch.switch_bedroom_relay
-      - entity: binary_sensor.switch_bedroom_touchpad
-
   # ESPHome Switch Domiroom
   - title: Switch Domiroom
     type: entities
@@ -136,15 +123,3 @@ cards:
       - entity: sensor.switch_livingroom_wifi_strength
       - entity: switch.switch_livingroom_relay
       - entity: binary_sensor.switch_livingroom_touchpad
-
-  # ESPHome Switch Office
-  - title: Switch Office
-    type: entities
-    show_header_toggle: false
-    entities:
-      - entity: sensor.switch_office_firmware
-      - entity: sensor.switch_office_wifi_ip
-      - entity: sensor.switch_office_wifi_strength
-      - entity: switch.switch_office_relay
-      - entity: binary_sensor.switch_office_touchpad
-
