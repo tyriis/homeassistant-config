@@ -154,7 +154,7 @@ cards:
         line_width: 2
         font_size: 85
         points_per_hour: 6
-        smoothing: true
+        smoothing: false
         hour24: true
         state_map:
           - label: Clear
