@@ -255,6 +255,7 @@ cards:
         #   square: false
         filter:
           include:
+            - name: "*bedroom*"
             - entity_id: "sensor.*_bedroom*_battery"
         card:
           type: custom:mushroom-entity-card
