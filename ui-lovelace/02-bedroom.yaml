@@ -256,7 +256,8 @@ cards:
         filter:
           include:
             - entity_id: "sensor.*_bedroom*_battery"
-        card: custom:mushroom-entity-card
+        card:
+          type: custom:mushroom-entity-card
         name: "{{ entity.name.split(' ')[-2:] | join(' ') }}"
           # secondary_info: state
           # tap_action:
