@@ -1,6 +1,7 @@
-title: Bedroom
-path: bedroom
+title: Bedroom2
+path: bedroom2
 badges: []
+type: sidebar
 cards:
   - type: vertical-stack
     cards:
@@ -10,18 +11,24 @@ cards:
         show_brightness_control: true
         show_color_temp_control: true
         use_light_color: true
+        view_layout:
+          position: sidebar
 
       - type: custom:mushroom-light-card
         entity: light.rgbic_pro_strip_lights_2
         show_brightness_control: true
         show_color_temp_control: true
         use_light_color: true
+        view_layout:
+          position: sidebar
 
       - type: custom:mushroom-light-card
         entity: light.galaxy_light_projector_2
         show_brightness_control: true
         show_color_temp_control: true
         use_light_color: true
+        view_layout:
+          position: sidebar
 
 
       # - type: custom:simple-thermostat
