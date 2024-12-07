@@ -8,7 +8,8 @@ cards:
       include:
         - attributes:
             device_class: battery
-            # battery: "< 75"
+            battery: "< 75"
+        - entity_id: sensor.nuki_battery
       exclude:
         - entity_id: sensor.jasmin_s23_battery_level
         - entity_id: sensor.s23_nils_battery_level
