@@ -203,13 +203,10 @@ cards:
       - type: custom:mini-graph-card
         name: heating
         entities:
-          - entity: sensor.sensor_heating_temperature_return_upstairs
-            name: Return
-            # color: var(--blue-color)
-            # y_axis: secondary
-            # show_line: false
           - entity: sensor.sensor_heating_temperature_flow_upstairs
             name: Flow
+          - entity: sensor.sensor_heating_temperature_return_upstairs
+            name: Return
           - entity: sun.sun
             color: gray
             name: Sun
