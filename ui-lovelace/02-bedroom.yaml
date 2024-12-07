@@ -78,7 +78,7 @@ cards:
           - value: -100
             color: "#e74c3c"
 
-  - type: vertical-stack
+  - type: horizontal-stack
     cards:
       - type: custom:mushroom-light-card
         entity: light.skylight_8905
@@ -98,7 +98,7 @@ cards:
         show_color_temp_control: true
         use_light_color: true
 
-  - type: vertical-stack
+  - type: horizontal-stack
     cards:
       - type: "custom:mini-graph-card"
         name: motion last 24h
