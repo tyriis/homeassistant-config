@@ -8,9 +8,11 @@ cards:
       include:
         - attributes:
             device_class: battery
+            battery: "< 75"
       exclude:
         - entity_id: sensor.jasmin_s23_battery_level
         - entity_id: sensor.s23_nils_battery_level
+        - entity_id: binary_sensor.nuki_battery
     card:
       # type: custom:mushroom-entity-card
       type: entities
