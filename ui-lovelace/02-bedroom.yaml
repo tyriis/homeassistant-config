@@ -209,7 +209,19 @@ cards:
             # show_line: false
           - entity: sensor.sensor_heating_temperature_flow_upstairs
             name: Flow
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
         hour24: true
+        state_map:
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
         color_thresholds:
           - value: 27.1
             color: '#ff0000'
@@ -223,6 +235,7 @@ cards:
             color: '#004e8b'
         hours_to_show: 24
         points_per_hour: 4
+        height: 74
         line_width: 2
         font_size: 85
         smoothing: true
@@ -233,6 +246,6 @@ cards:
           legend: false
           fill: fade
           icon_adaptive_color: true
-          labels: true
-          labels_secondary: true
+          labels: false
+          labels_secondary: false
           extrema: true
