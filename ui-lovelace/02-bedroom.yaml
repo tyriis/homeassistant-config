@@ -11,18 +11,25 @@ cards:
         show_brightness_control: true
         show_color_temp_control: true
         use_light_color: true
+        icon: mdi:wall-sconce-flat
+        icon-color: "#ff9800"
+        tap_action: more-info
+        double_tap_action: toggle
 
       - type: custom:mushroom-light-card
         entity: light.rgbic_pro_strip_lights_2
         show_brightness_control: true
         show_color_temp_control: true
         use_light_color: true
+        icon-color: "#ff9800"
 
       - type: custom:mushroom-light-card
         entity: light.galaxy_light_projector_2
         show_brightness_control: true
         show_color_temp_control: true
         use_light_color: true
+        icon: mdi:projector
+        icon-color: "#ff9800"
 
 
       # - type: custom:simple-thermostat
