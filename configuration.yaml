@@ -188,6 +188,6 @@ shell_command:
 #   resource: !secret open_meteo_url
 
 media_player:
-  - platform: android
+  - platform: androidtv
     name: galaxys23-test
     host: 192.168.1.245
