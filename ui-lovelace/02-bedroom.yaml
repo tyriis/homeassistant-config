@@ -125,6 +125,7 @@ cards:
         entities:
           - entity: binary_sensor.aqara_motion_bedroom_occupancy
             color: "#90EE90"
+            icon: mdi:motion-sensor
             name: aqara
           - entity: sun.sun
             color: gray
