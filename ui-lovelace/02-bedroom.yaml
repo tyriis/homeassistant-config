@@ -87,6 +87,8 @@ cards:
           - value: -100
             color: "#e74c3c"
 
+  - type: vertical-stack
+    cards:
       - type: custom:mini-graph-card
         entities:
           - entity: sensor.aqara_motion_bedroom_illuminance_lux
@@ -110,8 +112,6 @@ cards:
           - value: -100
             color: "#e74c3c"
 
-  # - type: vertical-stack
-  #   cards:
       - type: "custom:mini-graph-card"
         name: motion last 24h
         entities:
@@ -145,8 +145,8 @@ cards:
         update_interval: 60
         line_color: "#90EE90"
         show:
-          state: false
-          icon: false
+          state: true
+          icon: true
           labels: false
           legend: true
           labels_secondary: false
