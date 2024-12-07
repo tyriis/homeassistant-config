@@ -78,7 +78,7 @@ cards:
           - value: -100
             color: "#e74c3c"
 
-  - type: horizontal-stack
+  - type: sidebar
     cards:
       - type: custom:mushroom-light-card
         entity: light.skylight_8905
