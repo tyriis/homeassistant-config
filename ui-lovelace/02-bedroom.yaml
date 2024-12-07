@@ -256,13 +256,11 @@ cards:
         filter:
           include:
             - entity_id: "sensor.*_bedroom*_battery"
-        card:
-          type: custom:mushroom-entity-card
-          icon: mdi:battery
-          name: "{{ entity.name.split(' ')[-2:] | join(' ') }}"
-          secondary_info: state
-          tap_action:
-            action: more-info
+        card: custom:mushroom-entity-card
+        name: "{{ entity.name.split(' ')[-2:] | join(' ') }}"
+          # secondary_info: state
+          # tap_action:
+          #   action: more-info
         sort:
           method: name
 
