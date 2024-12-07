@@ -17,7 +17,8 @@ cards:
       # tap_action:
       #   action: more-info
     sort:
-      method: name
+      method: state
+      numeric: true
 
 
   # - type: custom:auto-entities
