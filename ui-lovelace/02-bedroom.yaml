@@ -49,16 +49,33 @@ cards:
           - entity: sensor.aqara_climate_bedroom_temperature
             color: "#E74C3C"
             name: aqara
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
         name: temperature
         height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
         show:
           icon: true
           extrema: true
           icon_adaptive_color: true
+          labels_secondary: false
         color_thresholds:
           - value: 25
             color: "#e74c3c"
@@ -74,32 +91,6 @@ cards:
           - entity: sensor.aqara_climate_bedroom_humidity
             color: "#3498DB"
             name: aqara
-        name: humidity
-        height: 74
-        line_width: 2
-        font_size: 85
-        hours_to_show: 24
-        points_per_hour: 4
-        show:
-          icon: true
-          extrema: true
-          icon_adaptive_color: true
-        color_thresholds:
-          - value: 50
-            color: "#e74c3c"
-          - value: 35
-            color: "#1db954"
-          - value: 25
-            color: "#3498db"
-          - value: -100
-            color: "#e74c3c"
-
-  - type: vertical-stack
-    cards:
-      - type: custom:mini-graph-card
-        entities:
-          - entity: sensor.aqara_motion_bedroom_illuminance_lux
-            color: "#ff9800"
           - entity: sun.sun
             color: gray
             name: Sun
@@ -107,13 +98,12 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        name: lux
+        name: humidity
         height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
-        update_interval: 60
         state_map:
           - label: Clear
             value: "off"
@@ -127,11 +117,14 @@ cards:
           icon: true
           extrema: true
           icon_adaptive_color: true
+          labels_secondary: false
         color_thresholds:
-          - value: 100
-            color: "#ff9800"
+          - value: 50
+            color: "#e74c3c"
+          - value: 35
+            color: "#1db954"
           - value: 25
-            color: "#8d8d8d"
+            color: "#3498db"
           - value: -100
             color: "#e74c3c"
 
@@ -173,3 +166,45 @@ cards:
           labels: false
           legend: true
           labels_secondary: false
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.aqara_motion_bedroom_illuminance_lux
+            color: "#ff9800"
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        name: lux
+        height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        update_interval: 60
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+          labels_secondary: false
+        color_thresholds:
+          - value: 100
+            color: "#ff9800"
+          - value: 25
+            color: "#8d8d8d"
+          - value: -100
+            color: "#e74c3c"
