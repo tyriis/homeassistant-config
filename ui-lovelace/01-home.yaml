@@ -57,7 +57,7 @@ cards:
         name: basement
 
   - type: weather-forecast
-    entity: weather.openweathermap
+    entity: weather.home
     name: home
     show_current: true
     show_forecast: true
