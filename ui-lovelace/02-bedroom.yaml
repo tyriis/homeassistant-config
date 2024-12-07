@@ -136,7 +136,7 @@ cards:
             color: "#e74c3c"
 
       - type: "custom:mini-graph-card"
-        name: motion last 24h
+        name: motion
         entities:
           - entity: binary_sensor.aqara_motion_bedroom_occupancy
             color: "#90EE90"
@@ -153,8 +153,8 @@ cards:
         hours_to_show: 24
         line_width: 2
         font_size: 85
-        points_per_hour: 6
-        smoothing: false
+        points_per_hour: 4
+        smoothing: true
         hour24: true
         state_map:
           - label: Clear
