@@ -1,0 +1,182 @@
+title: Office
+icon: mdi:desk
+path: office
+badges: []
+cards:
+  - type: vertical-stack
+    cards:
+
+      - type: custom:mushroom-light-card
+        entity: light.basement
+        show_brightness_control: true
+        show_color_temp_control: true
+        use_light_color: true
+
+      - type: custom:mushroom-entity-card
+        entity: light.gledopto_dimmer_stairs_basement
+        show_brightness_control: false
+        show_color_temp_control: false
+        use_light_color: false
+
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-graph-card
+        name: temperature
+        entities:
+          - entity: sensor.aqara_climate_basement_temperature
+            color: "#E74C3C"
+            name: aqara
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        # height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        hour24: true
+        state_map:
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+          labels_secondary: false
+        color_thresholds:
+          - value: 25
+            color: "#e74c3c"
+          - value: 15
+            color: "#1db954"
+          - value: -1
+            color: "#3498db"
+          - value: -100
+            color: "#e74c3c"
+
+      - type: custom:mini-graph-card
+        name: humidity
+        entities:
+          - entity: sensor.aqara_climate_basement_humidity
+            color: "#3498DB"
+            name: aqara
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        hour24: true
+        # height: 74
+        line_width: 2
+        font_size: 85
+        hours_to_show: 24
+        points_per_hour: 4
+        state_map:
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        show:
+          icon: true
+          extrema: true
+          icon_adaptive_color: true
+          labels_secondary: false
+        color_thresholds:
+          - value: 50
+            color: "#e74c3c"
+          - value: 35
+            color: "#1db954"
+          - value: 25
+            color: "#3498db"
+          - value: -100
+            color: "#e74c3c"
+
+      - type: "custom:mini-graph-card"
+        name: motion (stairs up)
+        entities:
+          - entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
+            color: "#90EE90"
+            name: aqara
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        # height: 153 # to allign with other sensor cards
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 1
+        font_size: 85
+        points_per_hour: 4
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: "#90EE90"
+        show:
+          state: true
+          icon: true
+          labels: false
+          legend: true
+          labels_secondary: false
+          icon_adaptive_color: true
+          extrema: true
+
+      - type: "custom:mini-graph-card"
+        name: motion (stairs down)
+        entities:
+          - entity: binary_sensor.mijia_motion_basement_stairs_down_occupancy
+            color: "#90EE90"
+            name: aqara
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        # height: 153 # to allign with other sensor cards
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 1
+        font_size: 85
+        points_per_hour: 4
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: "off"
+          - label: Detected
+            value: "on"
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: "#90EE90"
+        show:
+          state: true
+          icon: true
+          labels: false
+          legend: true
+          labels_secondary: false
+          icon_adaptive_color: true
+          extrema: true
