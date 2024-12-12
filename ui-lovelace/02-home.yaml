@@ -43,7 +43,10 @@ sections:
         icon: mdi:hexagon-multiple
         name: Nanoleaf Elements
       - type: tile
-        entity: sensor.aqara_contact_door_livingroom_contact
+        entity: binary_sensor.aqara_contact_door_livingroom_contact
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_livingroom_contact
+
       # - type: tile
       #   entity: light.living_room_spotlights
       #   name: Spotlights
