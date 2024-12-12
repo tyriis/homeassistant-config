@@ -29,6 +29,12 @@ cards:
         entity: binary_sensor.aqara_contact_window_basement_contact
         name: window
 
+      - graph: line
+        type: sensor
+        entity: sensor.aqara_climate_basement_temperature
+        detail: 1
+        hours_to_show: 24
+
   # - type: vertical-stack
   #   cards:
 
