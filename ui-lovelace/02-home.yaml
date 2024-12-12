@@ -7,23 +7,57 @@ type: sections
 #   - entity: sensor.hacs
 #   # - entity: sun.sun
 sections:
-- cards:
-  - type: heading
-    heading: Weather
-    icon: mdi:fridge
-    badges:
-      - type: entity
-        show_state: false
-        show_icon: true
-        entity: binary_sensor.kitchen_motion
-        color: blue
-    heading_style: title
-  - type: weather-forecast
-    entity: weather.home
-    name: home
-    show_current: true
-    show_forecast: true
-    forecast_type: daily
+  - cards:
+      - type: heading
+        heading: Weather
+        # icon: mdi:fridge
+        badges:
+          - type: entity
+            show_state: false
+            show_icon: true
+            entity: weather.home
+            color: blue
+        heading_style: title
+      - type: weather-forecast
+        entity: weather.home
+        name: home
+        show_current: true
+        show_forecast: true
+        forecast_type: daily
+  - cards:
+      - type: heading
+        heading: Living room
+        icon: mdi:sofa
+        badges:
+          - type: entity
+            entity: sensor.aqara_climate_livingroom_temperature
+            color: red
+          - type: entity
+            entity: sensor.aqara_climate_livingroom_humidity
+            color: blue
+      - type: tile
+        entity: group.lights_living_downstairs
+        name: Hue Spots
+      - type: tile
+        entity: light.elements_d689
+        icon: mdi:hexagon-multiple
+        name: Nanoleaf Elements
+      - type: tile
+        entity: sensor.aqara_contact_door_livingroom_contact
+      # - type: tile
+      #   entity: light.living_room_spotlights
+      #   name: Spotlights
+      #   features:
+      #     - type: light-brightness
+      # - type: tile
+      #   entity: light.bar_lamp
+      # - type: tile
+      #   entity: cover.living_room_garden_shutter
+      #   name: Blinds
+      # - type: tile
+      #   entity: media_player.living_room_nest_mini
+
+
 
 
 
