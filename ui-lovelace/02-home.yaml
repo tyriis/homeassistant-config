@@ -10,12 +10,22 @@ sections:
 - cards:
   - type: heading
     heading: Weather
+    icon: mdi:fridge
+    badges:
+      - type: entity
+        show_state: false
+        show_icon: true
+        entity: binary_sensor.kitchen_motion
+        color: blue
+    heading_style: title
   - type: weather-forecast
     entity: weather.home
     name: home
     show_current: true
     show_forecast: true
     forecast_type: daily
+
+
 
 
 

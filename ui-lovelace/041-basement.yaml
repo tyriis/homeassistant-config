@@ -7,34 +7,20 @@ cards:
   - type: vertical-stack
     cards:
 
-      - type: custom:mushroom-light-card
-        name:
-        entity: light.basement
-        show_brightness_control: true
-        show_color_temp_control: true
-        use_light_color: true
+      - type: heading
+        heading: row1
 
   - type: vertical-stack
     cards:
 
-      - type: custom:mushroom-entity-card
-        entity: light.gledopto_dimmer_stairs_basement
-        show_brightness_control: false
-        show_color_temp_control: false
-        use_light_color: false
+      - type: heading
+        heading: row2
 
   - type: vertical-stack
     cards:
 
-      - type: custom:mushroom-entity-card
-        entity: binary_sensor.aqara_contact_window_basement_contact
-        name: window
-
-      - graph: line
-        type: sensor
-        entity: sensor.aqara_climate_basement_temperature
-        detail: 1
-        hours_to_show: 24
+      - type: heading
+        heading: row3
 
 
 
