@@ -1,6 +1,6 @@
-title: Office
-icon: mdi:desk
-path: office
+title: Basement
+icon: mdi:stairs-down
+path: basement
 badges: []
 cards:
   - type: vertical-stack
