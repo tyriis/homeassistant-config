@@ -166,7 +166,7 @@ cards:
       - type: custom:mini-graph-card
         name: lux
         entities:
-          - entity: sensor.aqara_motion_alexroom_lux
+          - entity: sensor.aqara_motion_alexroom_illuminance_lux
             color: "#ff9800"
           - entity: sun.sun
             color: gray
