@@ -18,9 +18,13 @@ cards:
         show_color_temp_control: false
         use_light_color: false
 
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.aqara_contact_window_basement_contact
+        name: window
 
   - type: vertical-stack
     cards:
+
       - type: custom:mini-graph-card
         name: temperature
         entities:
@@ -180,3 +184,22 @@ cards:
           labels_secondary: false
           icon_adaptive_color: true
           extrema: true
+
+  - type: vertical-stack
+    cards:
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.mijia_motion_basement_stairs_up_battery
+        name: motion (stairs up) battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.mijia_motion_basement_stairs_down_battery
+        name: motion (stairs down) battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_climate_basement_battery
+        name: climate battery
+
+      - type: custom:mushroom-entity-card
+        entity: sensor.aqara_contact_window_basement_battery
+        name: window battery
