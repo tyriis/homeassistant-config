@@ -22,6 +22,7 @@ cards:
         show_brightness_control: false
         show_color_temp_control: false
         use_light_color: false
+
   - type: vertical-stack
     cards:
 
@@ -34,6 +35,8 @@ cards:
         entity: sensor.aqara_climate_basement_temperature
         detail: 1
         hours_to_show: 24
+
+
 
   # - type: vertical-stack
   #   cards:

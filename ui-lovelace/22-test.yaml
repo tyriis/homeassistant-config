@@ -1,0 +1,8 @@
+title: Test
+path: test
+# badges:
+#   - entity: binary_sensor.updater
+#   - entity: sensor.hacs
+#   # - entity: sun.sun
+
+type: original-states
