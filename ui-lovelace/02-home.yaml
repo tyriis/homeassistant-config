@@ -1,0 +1,292 @@
+title: Home
+icon: mdi:home-circle-outline
+path: home2
+type: sections
+# badges:
+#   - entity: binary_sensor.updater
+#   - entity: sensor.hacs
+#   # - entity: sun.sun
+sections:
+- cards:
+  - type: heading
+    heading: Weather
+  - type: weather-forecast
+    entity: weather.home
+    name: home
+    show_current: true
+    show_forecast: true
+    forecast_type: daily
+
+
+
+
+  # # only show when update is available
+  # - type: conditional
+  #   conditions:
+  #     - entity: binary_sensor.up_to_date
+  #       state: "off"
+  #   card:
+  #     title: software update
+  #     type: entities
+  #     entities:
+  #       - entity: sensor.hass_current_version
+  #         name: current
+  #         icon: mdi:home-assistant
+  #       - entity: sensor.hass_latest_version
+  #         name: latest
+  #         icon: mdi:cloud-download
+
+  # # - type: button
+  # #   entity: group.lights_living_downstairs
+  # #   name: lights living downstairs
+  # #   tap_action:
+  # #     - action: call_service
+  # #       service: scene.morning_livingroom
+  # #       service_data:
+  # #         transition: 10
+
+  # #- entity: camera.neato_keller_cleaning_map
+  # #  type: picture-entity
+  # #- entity: camera.neato_oben_cleaning_map
+  # #  type: picture-entity
+  # - type: entities
+  #   title: Light
+  #   entities:
+  #     #- entity: light.gateway_light_04cf8ca084d0
+  #     - entity: light.led_ceiling_light_domiroom
+  #       name: led ceiling domiroom
+  #     - entity: light.led_ceiling_light_alexroom
+  #       name: led ceiling alexroom
+  #     - entity: light.kitchen
+  #       name: kitchen
+  #     - entity: light.table
+  #       name: table
+  #     - entity: light.livingroom
+  #       name: livingroom
+  #     - entity: light.bedroom
+  #       name: bedroom
+  #     - entity: light.office
+  #       name: office
+  #     - entity: light.basement
+  #       name: basement
+
+  # - type: weather-forecast
+  #   entity: weather.home
+  #   name: home
+  #   show_current: true
+  #   show_forecast: true
+  #   forecast_type: daily
+
+  # - type: custom:mini-graph-card
+  #   entities:
+  #     - entity: sensor.sensor_heating_temperature_return_upstairs
+  #       name: Return
+  #       color: var(--blue-color)
+  #       y_axis: secondary
+  #       show_line: false
+  #     - entity: sensor.sensor_heating_temperature_flow_upstairs
+  #       name: Flow
+  #   name: heating upstairs
+  #   color_thresholds:
+  #     - value: 27.1
+  #       color: '#ff0000'
+  #     - value: 26.5
+  #       color: '#ffba00'
+  #     - value: 25.5
+  #       color: '#00aa99'
+  #     - value: 24.5
+  #       color: '#0090ff'
+  #     - value: 22.5
+  #       color: '#004e8b'
+  #   hours_to_show: 24
+  #   points_per_hour: 4
+  #   line_width: 3
+  #   font_size: 50
+  #   smoothing: true
+  #   show:
+  #     name: true
+  #     icon: false
+  #     state: false
+  #     legend: false
+  #     fill: fade
+
+  # - type: custom:mini-graph-card
+  #   entities:
+  #     - entity: sensor.sensor_heating_temperature_return_groundfloor
+  #       name: Return
+  #       color: var(--blue-color)
+  #       y_axis: secondary
+  #       show_line: false
+  #     - entity: sensor.sensor_heating_temperature_flow_groundfloor
+  #       name: Flow
+  #   name: heating downstairs
+  #   color_thresholds:
+  #     - value: 27.1
+  #       color: '#ff0000'
+  #     - value: 26.5
+  #       color: '#ffba00'
+  #     - value: 25.5
+  #       color: '#00aa99'
+  #     - value: 24.5
+  #       color: '#0090ff'
+  #     - value: 22.5
+  #       color: '#004e8b'
+  #   hours_to_show: 24
+  #   points_per_hour: 4
+  #   line_width: 3
+  #   font_size: 50
+  #   smoothing: true
+  #   show:
+  #     name: true
+  #     icon: false
+  #     state: false
+  #     legend: false
+  #     fill: fade
+
+  # - type: custom:mushroom-lock-card
+  #   entity: lock.nuki
+  #   name: entrance lock
+  #   show_name: true
+  #   state_color: true
+
+  # #- type: entities
+  # #  title: switches
+  # #  entities:
+  # #    - entity: switch.innr_sp_120_alex_switch
+  # #      name: alex desk
+  # #    - entity: switch.innr_sp_120_dominik_switch
+  # #      name: domi desk
+  # #    - entity: switch.innr_sp_120_fridge_switch
+  # #      name: fridge
+  # #    - entity: switch.innr_sp_120_livingroom_switch
+  # #      name: table
+  # #  show_header_toggle: false
+  # #  state_color: true
+
+  # # working!?
+  # #  - aggregate_func: max
+  # #    entities:
+  # #      - entity: sensor.innr_sp_120_fridge_power
+  # #    group_by: date
+  # #    hours_to_show: 168
+  # #    name: Energy consumption
+  # #    show:
+  # #      graph: bar
+  # #    type: 'custom:mini-graph-card'
+
+  # # coronavirus
+  # # - type: 'custom:mini-graph-card'
+  # #   name: covid-19
+  # #   entities:
+  # #     - entity: sensor.austria_coronavirus_current
+  # #       name: current
+  # #       show_legend: false
+  # #       show_state: true
+  # #       color: '#e74c3c'
+  # #   hours_to_show: 168
+  # #   points_per_hour: 0.5
+  # #   height: 74
+  # #   line_width: 2
+  # #   font_size: 85
+  # #   show:
+  # #     icon: true
+  # #     extrema: true
+  # #   update_interval: 3600
+
+  # # speedtest
+  # # - type: 'custom:mini-graph-card'
+  # #   name: speedtest.net
+  # #   entities:
+  # #     - entity: sensor.speedtest_ping
+  # #       name: ping
+  # #       show_legend: true
+  # #       show_state: true
+  # #     - entity: sensor.speedtest_download
+  # #       name: down
+  # #       show_legend: true
+  # #       show_state: true
+  # #       y_axis: secondary
+  # #     - entity: sensor.speedtest_upload
+  # #       name: up
+  # #       show_legend: true
+  # #       show_state: true
+  # #       y_axis: secondary
+  # #   hours_to_show: 24
+  # #   points_per_hour: 4
+  # #   height: 74
+  # #   line_width: 2
+  # #   font_size: 85
+  # #   show:
+  # #     icon: true
+  # #     extrema: true
+  # #   update_interval: 60
+
+  # - type: "custom:bar-card"
+  #   title: nas.home
+  #   entities:
+  #     - entity: sensor.nas_volume_1_volume_used
+  #       name: NAS disk
+  #     - entity: sensor.nas_memory_usage_real
+  #       name: NAS memory
+  #   positions:
+  #     # icon: 'off'
+  #     # indicator: inside
+  #     name: outside
+  #   width: 70%
+  #   height: 20px
+
+  # - type: custom:simple-thermostat
+  #   entity: climate.office
+  #   step_size: 1
+  #   layout:
+  #     step: row
+  #   header:
+  #     name: Office
+  #   control:
+  #     - hvac
+  #     - preset
+
+  # - type: custom:simple-thermostat
+  #   entity: climate.livingroom
+  #   step_size: 1
+  #   layout:
+  #     step: row
+  #   header:
+  #     name: Livingroom
+  #   control:
+  #     - hvac
+  #     - preset
+
+  # - type: custom:simple-thermostat
+  #   entity: climate.bedroom
+  #   step_size: 1
+  #   layout:
+  #     step: row
+  #   header:
+  #     name: Bedroom
+  #   control:
+  #     - hvac
+  #     - preset
+
+  # - type: custom:simple-thermostat
+  #   entity: climate.alex
+  #   step_size: 1
+  #   layout:
+  #     step: row
+  #   header:
+  #     name: Alexroom
+  #   control:
+  #     - hvac
+  #     - preset
+
+  # - type: custom:simple-thermostat
+  #   entity: climate.domi
+  #   step_size: 1
+  #   layout:
+  #     step: row
+  #   header:
+  #     name: Domiroom
+  #   control:
+  #     - hvac
+  #     - preset
+

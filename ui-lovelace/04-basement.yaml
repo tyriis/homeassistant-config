@@ -14,11 +14,11 @@ cards:
         show_color_temp_control: true
         use_light_color: true
 
-      - type: custom:mushroom-entity-card
-        entity: light.gledopto_dimmer_stairs_basement
-        show_brightness_control: false
-        show_color_temp_control: false
-        use_light_color: false
+      # - type: custom:mushroom-entity-card
+      #   entity: light.gledopto_dimmer_stairs_basement
+      #   show_brightness_control: false
+      #   show_color_temp_control: false
+      #   use_light_color: false
 
       - type: custom:mushroom-entity-card
         entity: binary_sensor.aqara_contact_window_basement_contact
