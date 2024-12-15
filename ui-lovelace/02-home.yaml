@@ -46,6 +46,8 @@ sections:
         entity: binary_sensor.aqara_contact_door_livingroom_contact
       - type: tile
         entity: binary_sensor.aqara_contact_window_livingroom_contact
+      - type: tile
+        entity: media_player.shield_android_tv
 
       # - type: tile
       #   entity: light.living_room_spotlights
