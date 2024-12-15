@@ -42,6 +42,24 @@ sections:
   - type: grid
     cards:
       - type: heading
+        heading: Climate
+        heading_style: title
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_bedroom
+        fill_container: true
+        hvac_modes:
+          - cool
+        show_temperature_control: true
+        collapsible_controls: false
+        layout: horizontal
+        name: AC
+    visibility:
+      - condition: numeric_state
+        entity: sensor.weather_forecast_temperature_forecast
+        above: 24
+  - type: grid
+    cards:
+      - type: heading
         heading: Temperature
         heading_style: title
         badges:
