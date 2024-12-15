@@ -4,7 +4,100 @@ path: bedroom
 type: sections
 max_columns: 4
 subview: false
-badges: []
+badges:
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_door_bedroom_contact
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_door_bedroom_contact
+        state: 'on'
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_window_bedroom_contact
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_window_bedroom_contact
+        state: 'on'
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_bedroom_temperature
+    color: red
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_bedroom_humidity
+    color: blue
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_bedroom_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_bedroom_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_motion_bedroom_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_motion_bedroom_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_switch_bedroom_1_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_switch_bedroom_1_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_switch_bedroom_2_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_switch_bedroom_2_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_door_bedroom_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_contact_door_bedroom_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_window_bedroom_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_contact_window_bedroom_battery
+        below: 70
+    state_content: state
 
 sections:
   - type: grid
@@ -227,7 +320,6 @@ sections:
         name: lux
         entities:
           - entity: sensor.aqara_motion_bedroom_illuminance_lux
-            color: '#ff9800'
           - entity: sun.sun
             color: gray
             name: Sun
@@ -318,97 +410,3 @@ sections:
           labels: false
           labels_secondary: false
           extrema: true
-badges:
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: binary_sensor.aqara_contact_door_bedroom_contact
-    state_content: state
-    visibility:
-      - condition: state
-        entity: binary_sensor.aqara_contact_door_bedroom_contact
-        state: 'on'
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: binary_sensor.aqara_contact_window_bedroom_contact
-    state_content: state
-    visibility:
-      - condition: state
-        entity: binary_sensor.aqara_contact_window_bedroom_contact
-        state: 'on'
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_bedroom_temperature
-    color: red
-    state_content: state
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_bedroom_humidity
-    color: blue
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_bedroom_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_climate_bedroom_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_motion_bedroom_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_motion_bedroom_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_switch_bedroom_1_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_switch_bedroom_1_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_switch_bedroom_2_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_switch_bedroom_2_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_contact_door_bedroom_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_contact_door_bedroom_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_contact_window_bedroom_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_contact_window_bedroom_battery
-        below: 70
-    state_content: state

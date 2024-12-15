@@ -1,296 +1,415 @@
 title: Office
-icon: mdi:desktop-tower-monitor
+type: sections
+max_columns: 4
 path: office
-badges: []
-cards:
-  - type: vertical-stack
+icon: mdi:desktop-tower-monitor
+dense_section_placement: true
+badges:
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_window_office_contact
+    color: ''
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_window_office_contact
+        state: 'on'
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_temperature
+    color: red
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_humidity
+    color: blue
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_office_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_2_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_office_2_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_motion_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_motion_office_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.mijia_motion_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.mijia_motion_office_battery
+        below: 70
+    state_content: state
+
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_window_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_contact_window_office_battery
+        below: 70
+    state_content: state
+
+sections:
+  - type: grid
     cards:
-
-      - type: custom:mushroom-light-card
+      - type: heading
+        heading_style: title
+        heading: Lights
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.office
-        show_brightness_control: true
-        show_color_temp_control: true
-        use_light_color: true
-
-      - type: custom:mushroom-entity-card
+        vertical: false
+        hide_state: true
+        show_entity_picture: false
+        grid_options:
+          rows: 2
+          columns: full
+        name: spots
+      - type: heading
+        heading_style: title
+        heading: IR Panels
+      - type: tile
         entity: switch.tuya_a1z_irpanel2_office
         name: IR Panel front
+        color: red
+        vertical: false
+        icon_tap_action:
+          action: more-info
         icon: mdi:radiator
-
-      - type: custom:mushroom-entity-card
+      - type: tile
         entity: switch.tuya_a1z_irpanel1_office
         name: IR Panel back
         icon: mdi:radiator
-
-      - type: custom:simple-thermostat
-        entity: climate.office
-        step_size: 1
-        layout:
-          step: row
-        header:
-          name: Climate
-        control:
-          - hvac
-          - preset
-
-  - type: vertical-stack
+        color: red
+        show_entity_picture: false
+        vertical: false
+        hide_state: false
+        state_content: state
+        icon_tap_action:
+          action: more-info
+  - type: grid
     cards:
+      - type: heading
+        heading: Climate
+        heading_style: title
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_office
+        name: AC
+        fill_container: false
+        hvac_modes:
+          - cool
+        show_temperature_control: true
+        layout: horizontal
+        collapsible_controls: false
+    visibility:
+      - condition: numeric_state
+        entity: sensor.weather_forecast_temperature_forecast
+        above: 24
+  - type: grid
+    cards:
+      - type: heading
+        heading: Temperature
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_office_temperature
+            color: red
+            state_content: state
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_office_2_temperature
+            color: red
       - type: custom:mini-graph-card
+        name: temperature
         entities:
           - entity: sensor.aqara_climate_office_temperature
-            color: "#E74C3C"
+            color: '#E74C3C'
             name: aqara1
           - entity: sensor.aqara_climate_office_2_temperature
-            color: "#ff9800"
+            color: '#ff9800'
             name: aqara2
-        name: temperature
-        height: 74
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
+        hour24: true
+        state_map:
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
         show:
-          icon: true
+          name: false
+          state: false
+          icon: false
+          legend: true
           extrema: true
           icon_adaptive_color: true
+          labels_secondary: false
         color_thresholds:
           - value: 25
-            color: "#e74c3c"
+            color: '#e74c3c'
           - value: 15
-            color: "#1db954"
+            color: '#1db954'
           - value: -1
-            color: "#3498db"
+            color: '#3498db'
           - value: -100
-            color: "#e74c3c"
-
+            color: '#e74c3c'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Humidity
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_office_humidity
+            color: blue
+            state_content: state
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_office_2_humidity
+            color: blue
+            state_content: state
       - type: custom:mini-graph-card
+        name: humidity
         entities:
           - entity: sensor.aqara_climate_office_humidity
-            color: "#3498DB"
+            color: '#3498DB'
             name: aqara1
           - entity: sensor.aqara_climate_office_2_humidity
-            color: "#5f37db"
+            color: '#5f37db'
             name: aqara2
-            # name: humidity
-            # show_legend: false
-            # show_state: true
-            # y_axis: secondary
-        name: humidity
-        height: 74
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        hour24: true
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
+        state_map:
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
         show:
-          icon: true
+          state: false
+          name: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
+          labels_secondary: false
         color_thresholds:
           - value: 50
-            color: "#e74c3c"
+            color: '#e74c3c'
           - value: 35
-            color: "#1db954"
+            color: '#1db954'
           - value: 25
-            color: "#3498db"
+            color: '#3498db'
           - value: -100
-            color: "#e74c3c"
-
+            color: '#e74c3c'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Motion aqara
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.aqara_motion_office_occupancy
+            color: green
+            state_content:
+              - state
+              - last_changed
       - type: custom:mini-graph-card
+        name: motion
+        entities:
+          - entity: binary_sensor.aqara_motion_office_occupancy
+            color: '#90EE90'
+            name: aqara
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 1
+        font_size: 85
+        points_per_hour: 4
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: 'off'
+          - label: Detected
+            value: 'on'
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: '#90EE90'
+        show:
+          state: false
+          icon: false
+          name: false
+          labels: false
+          legend: true
+          labels_secondary: false
+          icon_adaptive_color: true
+          extrema: true
+      - type: heading
+        heading: Motion mijia
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.mijia_motion_office_occupancy
+            color: green
+            state_content:
+              - state
+              - last_changed
+      - type: custom:mini-graph-card
+        name: motion
+        entities:
+          - entity: binary_sensor.mijia_motion_office_occupancy
+            color: '#90EE90'
+            name: mijia
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        aggregate_func: sum
+        hours_to_show: 24
+        line_width: 1
+        font_size: 85
+        points_per_hour: 4
+        smoothing: true
+        hour24: true
+        state_map:
+          - label: Clear
+            value: 'off'
+          - label: Detected
+            value: 'on'
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
+        update_interval: 60
+        line_color: '#90EE90'
+        show:
+          state: false
+          icon: false
+          name: false
+          labels: false
+          legend: true
+          labels_secondary: false
+          icon_adaptive_color: true
+          extrema: true
+  - type: grid
+    cards:
+      - type: heading
+        heading: Lux
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_motion_office_illuminance_lux
+            color: orange
+      - type: custom:mini-graph-card
+        name: lux
         entities:
           - entity: sensor.aqara_motion_office_illuminance_lux
-            # color: '#ff9800'
-        name: lux
-        height: 74
+          - entity: sun.sun
+            color: gray
+            name: Sun
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        hour24: true
         line_width: 2
         font_size: 85
         hours_to_show: 24
         points_per_hour: 4
         update_interval: 60
+        state_map:
+          - value: below_horizon
+            label: Night
+          - value: above_horizon
+            label: Day
         show:
-          icon: true
+          name: false
+          state: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
+          labels_secondary: false
         color_thresholds:
           - value: 100
-            color: "#ff9800"
+            color: '#ff9800'
           - value: 25
-            color: "#8d8d8d"
+            color: '#8d8d8d'
           - value: -100
-            color: "#e74c3c"
+            color: '#e74c3c'
+cards: []
 
-  - type: vertical-stack
-    cards:
-      - type: entities
-        title: motion
-        entities:
-          - entity: binary_sensor.aqara_motion_office_occupancy
-            name: aqara
-            secondary_info: last-changed
-          - entity: binary_sensor.mijia_motion_office_occupancy
-            name: mijia
-            secondary_info: last-changed
-
-      #- type: history-graph
-      #  title: 'motion last hour'
-      #  entities:
-      #  - entity: binary_sensor.sr501_pir_motion_office
-      #    name: ESPHome
-      #    # secondary_info: last-changed
-      #  - entity: binary_sensor.mijia_motion_office_occupancy
-      #    name: mijia
-      #    # secondary_info: last-changed
-      #  refresh_interval: 30
-      #  hours_to_show: 1
-
-
-      - type: "custom:mini-graph-card"
-        name: motion last 24h aqara
-        entities:
-          - entity: binary_sensor.aqara_motion_office_occupancy
-            color: "#90EE90"
-            name: aqara
-          - entity: sun.sun
-            color: gray
-            name: Sun
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
-        height: 100
-        aggregate_func: sum
-        hours_to_show: 24
-        line_width: 2
-        font_size: 85
-        points_per_hour: 6
-        smoothing: true
-        hour24: true
-        state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
-          - value: below_horizon
-            label: Night
-          - value: above_horizon
-            label: Day
-        update_interval: 60
-        line_color: "#90EE90"
-        show:
-          state: false
-          icon: true
-          labels: false
-          legend: true
-          labels_secondary: false
-
-      - type: "custom:mini-graph-card"
-        name: motion last 24h mijia
-        entities:
-          - entity: binary_sensor.mijia_motion_office_occupancy
-            color: "#90EE90"
-            name: mijia
-          - entity: sun.sun
-            color: gray
-            name: Sun
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
-        height: 100
-        aggregate_func: sum
-        hours_to_show: 24
-        line_width: 2
-        font_size: 85
-        points_per_hour: 6
-        smoothing: true
-        hour24: true
-        state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
-          - value: below_horizon
-            label: Night
-          - value: above_horizon
-            label: Day
-        update_interval: 60
-        line_color: "#90EE90"
-        show:
-          state: false
-          icon: true
-          labels: false
-          legend: true
-          labels_secondary: false
-
-      - type: "custom:mini-graph-card"
-        name: motion last 24h stairs up
-        entities:
-          - entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
-            color: "#90EE90"
-            name: stairs up
-          - entity: sun.sun
-            color: gray
-            name: Sun
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
-        height: 100
-        aggregate_func: sum
-        hours_to_show: 24
-        line_width: 2
-        font_size: 85
-        points_per_hour: 6
-        smoothing: true
-        hour24: true
-        state_map:
-          - label: Clear
-            value: "off"
-          - label: Detected
-            value: "on"
-          - value: below_horizon
-            label: Night
-          - value: above_horizon
-            label: Day
-        update_interval: 60
-        line_color: "#90EE90"
-        show:
-          state: false
-          icon: true
-          labels: false
-          legend: true
-          labels_secondary: false
-
-
-      # - type: custom:heatmap-card
-      #   entity: binary_sensor.aqara_motion_office_occupancy
-      #   title: Movement Intensity Heatmap
-      #   data:
-      #     max: 60 # Assuming maximum 60 minutes of movement per hour
-      #   scale:
-      #     type: relative
-      #     steps:
-      #       - value: 0
-      #         color: '#ebedf0' # Light gray for no movement
-      #       - value: 0.25
-      #         color: '#9be9a8' # Light green
-      #       - value: 0.5
-      #         color: '#40c463' # Medium green
-      #       - value: 0.75
-      #         color: '#30a14e' # Dark green
-      #       - value: 1
-      #         color: '#216e39' # Very dark green
-
-  #- entities:
-  #    - vacuum.neato_keller
-  #  title: Vacuum
-  #  type: entities
-#  - type: entities
-#    show_header_toggle: false
-#    entities:
-#      - input_select.heating_control
-#      - entity: sensor.heating_state
-#        type: custom:secondaryinfo-entity-row
-#        secondary_info: "[[ sensor.heating_hvac.state ]]"
-#      - sensor.heating_set_to
-#      - schedy_room.schedy_heating_house
-#      - sensor.heating_rescheduling
