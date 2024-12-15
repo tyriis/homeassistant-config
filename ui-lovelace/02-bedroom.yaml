@@ -1,51 +1,61 @@
 title: Bedroom
 icon: mdi:bed
 path: bedroom
+type: sections
+max_columns: 4
+subview: false
 badges: []
-cards:
-  - type: vertical-stack
-    cards:
 
-      - type: custom:mushroom-light-card
+sections:
+  - type: grid
+    cards:
+      - type: tile
         entity: light.skylight_8905
-        show_brightness_control: true
-        show_color_temp_control: true
-        use_light_color: true
         icon: mdi:wall-sconce-flat
         name: Nanoleaf Skylight
-
-      - type: custom:mushroom-light-card
+        state_content:
+          - state
+          - effect
+        features:
+          - type: light-brightness
+        grid_options:
+          columns: 12
+          rows: 2
+      - type: tile
         entity: light.rgbic_pro_strip_lights_2
-        show_brightness_control: true
-        show_color_temp_control: true
-        use_light_color: true
-        icon-color: "#ff9ef3"
         name: Govee LED Strip
-
-      - type: custom:mushroom-light-card
+        color: purple
+        show_entity_picture: false
+        state_content:
+          - state
+          - effect
+        features:
+          - type: light-brightness
+      - type: tile
         entity: light.galaxy_light_projector_2
-        show_brightness_control: true
-        show_color_temp_control: true
-        use_light_color: true
         icon: mdi:projector
-        icon-color: "#ff9800"
-
-      - type: custom:mushroom-entity-card
-        entity: binary_sensor.aqara_contact_door_bedroom_contact
-        name: door
-
-      - type: custom:mushroom-entity-card
-        entity: binary_sensor.aqara_contact_window_bedroom_contact
-        name: window
-
-  - type: vertical-stack
+        state_content:
+          - state
+          - effect
+        features:
+          - type: light-brightness
+  - type: grid
     cards:
-
+      - type: heading
+        heading: Temperature
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bedroom_temperature
+            color: red
+            state_content: state
       - type: custom:mini-graph-card
         name: temperature
         entities:
           - entity: sensor.aqara_climate_bedroom_temperature
-            color: "#E74C3C"
+            color: '#E74C3C'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -54,7 +64,6 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -66,25 +75,38 @@ cards:
           - value: above_horizon
             label: Day
         show:
-          icon: true
+          name: false
+          state: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
           labels_secondary: false
         color_thresholds:
           - value: 25
-            color: "#e74c3c"
+            color: '#e74c3c'
           - value: 15
-            color: "#1db954"
+            color: '#1db954'
           - value: -1
-            color: "#3498db"
+            color: '#3498db'
           - value: -100
-            color: "#e74c3c"
-
+            color: '#e74c3c'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Humidity
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bedroom_humidity
+            color: blue
+            state_content: state
       - type: custom:mini-graph-card
         name: humidity
         entities:
           - entity: sensor.aqara_climate_bedroom_humidity
-            color: "#3498DB"
+            color: '#3498DB'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -94,7 +116,6 @@ cards:
             show_legend: false
             y_axis: secondary
         hour24: true
-        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -105,25 +126,38 @@ cards:
           - value: above_horizon
             label: Day
         show:
-          icon: true
+          state: false
+          name: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
           labels_secondary: false
         color_thresholds:
           - value: 50
-            color: "#e74c3c"
+            color: '#e74c3c'
           - value: 35
-            color: "#1db954"
+            color: '#1db954'
           - value: 25
-            color: "#3498db"
+            color: '#3498db'
           - value: -100
-            color: "#e74c3c"
-
-      - type: "custom:mini-graph-card"
+            color: '#e74c3c'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Motion
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.aqara_motion_bedroom_occupancy
+            color: green
+            state_content: state
+      - type: custom:mini-graph-card
         name: motion
         entities:
           - entity: binary_sensor.aqara_motion_bedroom_occupancy
-            color: "#90EE90"
+            color: '#90EE90'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -132,7 +166,6 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        # height: 153 # to allign with other sensor cards
         aggregate_func: sum
         hours_to_show: 24
         line_width: 1
@@ -142,29 +175,41 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: "off"
+            value: 'off'
           - label: Detected
-            value: "on"
+            value: 'on'
           - value: below_horizon
             label: Night
           - value: above_horizon
             label: Day
         update_interval: 60
-        line_color: "#90EE90"
+        line_color: '#90EE90'
         show:
-          state: true
-          icon: true
+          state: false
+          icon: false
+          name: false
           labels: false
           legend: true
           labels_secondary: false
           icon_adaptive_color: true
           extrema: true
-
+  - type: grid
+    cards:
+      - type: heading
+        heading: Lux
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_motion_bedroom_illuminance_lux
+            state_content: state
+            color: orange
       - type: custom:mini-graph-card
         name: lux
         entities:
           - entity: sensor.aqara_motion_bedroom_illuminance_lux
-            color: "#ff9800"
+            color: '#ff9800'
           - entity: sun.sun
             color: gray
             name: Sun
@@ -173,7 +218,6 @@ cards:
             show_legend: false
             y_axis: secondary
         hour24: true
-        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -185,21 +229,31 @@ cards:
           - value: above_horizon
             label: Day
         show:
-          icon: true
+          name: false
+          state: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
           labels_secondary: false
         color_thresholds:
           - value: 100
-            color: "#ff9800"
+            color: '#ff9800'
           - value: 25
-            color: "#8d8d8d"
+            color: '#8d8d8d'
           - value: -100
-            color: "#e74c3c"
-
-  - type: vertical-stack
+            color: '#e74c3c'
+  - type: grid
     cards:
-
+      - type: heading
+        heading: Heating
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.sensor_heating_temperature_flow_upstairs
+            color: lime
+            state_content: state
       - type: custom:mini-graph-card
         name: heating
         entities:
@@ -233,62 +287,110 @@ cards:
             color: '#004e8b'
         hours_to_show: 24
         points_per_hour: 4
-        # height: 74
         line_width: 2
         font_size: 85
         smoothing: true
         show:
-          name: true
-          icon: true
-          state: true
+          name: false
+          icon: false
+          state: false
           legend: false
           fill: fade
           icon_adaptive_color: true
           labels: false
           labels_secondary: false
           extrema: true
-
-      - type: custom:auto-entities
-        # card:
-        #   type: grid
-        #   columns: 3
-        #   square: false
-        filter:
-          include:
-            - name: "*bedroom*"
-            - entity_id: "sensor.*_bedroom*_battery"
-        card:
-          type: custom:mushroom-entity-card
-        # name: "{{ entity.name.split(' ')[-2:] | join(' ') }}"
-          # secondary_info: state
-          # tap_action:
-          #   action: more-info
-        sort:
-          method: name
-
-
-
-
-      - type: custom:mushroom-entity-card
-        entity: sensor.aqara_motion_bedroom_battery
-        name: motion battery
-
-      - type: custom:mushroom-entity-card
+badges:
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_door_bedroom_contact
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_door_bedroom_contact
+        state: 'on'
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_window_bedroom_contact
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_window_bedroom_contact
+        state: 'on'
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_bedroom_temperature
+    color: red
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_bedroom_humidity
+    color: blue
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_bedroom_battery
+    visibility:
+      - condition: numeric_state
         entity: sensor.aqara_climate_bedroom_battery
-        name: climate battery
-
-      - type: custom:mushroom-entity-card
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_motion_bedroom_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_motion_bedroom_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_switch_bedroom_1_battery
+    visibility:
+      - condition: numeric_state
         entity: sensor.aqara_switch_bedroom_1_battery
-        name: switch 1 battery
-
-      - type: custom:mushroom-entity-card
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_switch_bedroom_2_battery
+    visibility:
+      - condition: numeric_state
         entity: sensor.aqara_switch_bedroom_2_battery
-        name: switch 2 battery
-
-      - type: custom:mushroom-entity-card
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_door_bedroom_battery
+    visibility:
+      - condition: numeric_state
         entity: sensor.aqara_contact_door_bedroom_battery
-        name: door battery
-
-      - type: custom:mushroom-entity-card
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_window_bedroom_battery
+    visibility:
+      - condition: numeric_state
         entity: sensor.aqara_contact_window_bedroom_battery
-        name: window battery
+        below: 70
+    state_content: state
