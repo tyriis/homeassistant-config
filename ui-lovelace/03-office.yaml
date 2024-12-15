@@ -69,7 +69,6 @@ badges:
         entity: sensor.mijia_motion_office_battery
         below: 70
     state_content: state
-
   - type: entity
     show_name: true
     show_state: true

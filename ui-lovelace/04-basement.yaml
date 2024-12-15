@@ -1,37 +1,126 @@
 title: Basement
-icon: mdi:stairs-down
+type: sections
+max_columns: 4
 path: basement
-badges: []
-cards:
-
-  - type: vertical-stack
-    cards:
-
-      - type: custom:mushroom-light-card
-        name:
-        entity: light.basement
-        show_brightness_control: true
-        show_color_temp_control: true
-        use_light_color: true
-
-      # - type: custom:mushroom-entity-card
-      #   entity: light.gledopto_dimmer_stairs_basement
-      #   show_brightness_control: false
-      #   show_color_temp_control: false
-      #   use_light_color: false
-
-      - type: custom:mushroom-entity-card
+icon: mdi:stairs-down
+badges:
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_window_basement_contact
+    color: ''
+    state_content: state
+    visibility:
+      - condition: state
         entity: binary_sensor.aqara_contact_window_basement_contact
-        name: window
-
-  - type: vertical-stack
+        state: 'on'
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_basement_temperature
+    color: red
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_basement_humidity
+    color: blue
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_basement_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_basement_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.mijia_motion_basement_stairs_down_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.mijia_motion_basement_stairs_down_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.mijia_motion_basement_stairs_up_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.mijia_motion_basement_stairs_up_battery
+        below: 70
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_window_basement_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_contact_window_basement_battery
+        below: 70
+    state_content: state
+sections:
+  - type: grid
     cards:
-
+      - type: heading
+        heading_style: title
+        heading: Lights
+      - features:
+          - type: light-brightness
+        type: tile
+        entity: light.basement
+        vertical: false
+        hide_state: true
+        show_entity_picture: false
+        grid_options:
+          rows: 2
+          columns: full
+        name: spots
+      - features:
+          - type: light-brightness
+        type: tile
+        entity: light.gledopto_dimmer_stairs_basement
+        vertical: false
+        hide_state: true
+        show_entity_picture: false
+        grid_options:
+          rows: 2
+          columns: full
+        name: stairs
+      - type: tile
+        entity: switch.switch_basement_relay
+        state_content: state
+        visibility:
+          - condition: state
+            entity: switch.switch_basement_relay
+            state: 'off'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Temperature
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_basement_temperature
+            color: red
+            state_content: state
       - type: custom:mini-graph-card
         name: temperature
         entities:
           - entity: sensor.aqara_climate_basement_temperature
-            color: "#E74C3C"
+            color: '#E74C3C'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -40,7 +129,6 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -52,25 +140,38 @@ cards:
           - value: above_horizon
             label: Day
         show:
-          icon: true
+          name: false
+          state: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
           labels_secondary: false
         color_thresholds:
           - value: 25
-            color: "#e74c3c"
+            color: '#e74c3c'
           - value: 15
-            color: "#1db954"
+            color: '#1db954'
           - value: -1
-            color: "#3498db"
+            color: '#3498db'
           - value: -100
-            color: "#e74c3c"
-
+            color: '#e74c3c'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Humidity
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_basement_humidity
+            color: blue
+            state_content: state
       - type: custom:mini-graph-card
         name: humidity
         entities:
           - entity: sensor.aqara_climate_basement_humidity
-            color: "#3498DB"
+            color: '#3498DB'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -80,7 +181,6 @@ cards:
             show_legend: false
             y_axis: secondary
         hour24: true
-        # height: 74
         line_width: 2
         font_size: 85
         hours_to_show: 24
@@ -91,25 +191,38 @@ cards:
           - value: above_horizon
             label: Day
         show:
-          icon: true
+          state: false
+          name: false
+          icon: false
           extrema: true
           icon_adaptive_color: true
           labels_secondary: false
         color_thresholds:
           - value: 50
-            color: "#e74c3c"
+            color: '#e74c3c'
           - value: 35
-            color: "#1db954"
+            color: '#1db954'
           - value: 25
-            color: "#3498db"
+            color: '#3498db'
           - value: -100
-            color: "#e74c3c"
-
-      - type: "custom:mini-graph-card"
-        name: motion (stairs up)
+            color: '#e74c3c'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Motion stairs up
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
+            color: green
+            state_content: state
+      - type: custom:mini-graph-card
+        name: motion
         entities:
           - entity: binary_sensor.mijia_motion_basement_stairs_up_occupancy
-            color: "#90EE90"
+            color: '#90EE90'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -118,7 +231,6 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        # height: 153 # to allign with other sensor cards
         aggregate_func: sum
         hours_to_show: 24
         line_width: 1
@@ -128,29 +240,41 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: "off"
+            value: 'off'
           - label: Detected
-            value: "on"
+            value: 'on'
           - value: below_horizon
             label: Night
           - value: above_horizon
             label: Day
         update_interval: 60
-        line_color: "#90EE90"
+        line_color: '#90EE90'
         show:
-          state: true
-          icon: true
+          state: false
+          icon: false
+          name: false
           labels: false
           legend: true
           labels_secondary: false
           icon_adaptive_color: true
           extrema: true
-
-      - type: "custom:mini-graph-card"
-        name: motion (stairs down)
+  - type: grid
+    cards:
+      - type: heading
+        heading: Motion stairs down
+        heading_style: title
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.mijia_motion_basement_stairs_down_occupancy
+            color: green
+            state_content: state
+      - type: custom:mini-graph-card
+        name: motion
         entities:
           - entity: binary_sensor.mijia_motion_basement_stairs_down_occupancy
-            color: "#90EE90"
+            color: '#90EE90'
             name: aqara
           - entity: sun.sun
             color: gray
@@ -159,7 +283,6 @@ cards:
             show_points: false
             show_legend: false
             y_axis: secondary
-        # height: 153 # to allign with other sensor cards
         aggregate_func: sum
         hours_to_show: 24
         line_width: 1
@@ -169,39 +292,22 @@ cards:
         hour24: true
         state_map:
           - label: Clear
-            value: "off"
+            value: 'off'
           - label: Detected
-            value: "on"
+            value: 'on'
           - value: below_horizon
             label: Night
           - value: above_horizon
             label: Day
         update_interval: 60
-        line_color: "#90EE90"
+        line_color: '#90EE90'
         show:
-          state: true
-          icon: true
+          state: false
+          icon: false
+          name: false
           labels: false
           legend: true
           labels_secondary: false
           icon_adaptive_color: true
           extrema: true
 
-  - type: vertical-stack
-    cards:
-
-      - type: custom:mushroom-entity-card
-        entity: sensor.mijia_motion_basement_stairs_up_battery
-        name: motion (stairs up) battery
-
-      - type: custom:mushroom-entity-card
-        entity: sensor.mijia_motion_basement_stairs_down_battery
-        name: motion (stairs down) battery
-
-      - type: custom:mushroom-entity-card
-        entity: sensor.aqara_climate_basement_battery
-        name: climate battery
-
-      - type: custom:mushroom-entity-card
-        entity: sensor.aqara_contact_window_basement_battery
-        name: window battery
