@@ -1,278 +1,841 @@
 title: Home
-icon: mdi:home
 path: home
-# badges:
-#   - entity: binary_sensor.updater
-#   - entity: sensor.hacs
-#   # - entity: sun.sun
-cards:
-  # only show when update is available
-  - type: conditional
-    conditions:
-      - entity: binary_sensor.up_to_date
-        state: "off"
-    card:
-      title: software update
-      type: entities
-      entities:
-        - entity: sensor.hass_current_version
-          name: current
-          icon: mdi:home-assistant
-        - entity: sensor.hass_latest_version
-          name: latest
-          icon: mdi:cloud-download
-
-  # - type: button
-  #   entity: group.lights_living_downstairs
-  #   name: lights living downstairs
-  #   tap_action:
-  #     - action: call_service
-  #       service: scene.morning_livingroom
-  #       service_data:
-  #         transition: 10
-
-  #- entity: camera.neato_keller_cleaning_map
-  #  type: picture-entity
-  #- entity: camera.neato_oben_cleaning_map
-  #  type: picture-entity
-  - type: entities
-    title: Light
-    entities:
-      #- entity: light.gateway_light_04cf8ca084d0
-      - entity: light.led_ceiling_light_domiroom
-        name: led ceiling domiroom
-      - entity: light.led_ceiling_light_alexroom
-        name: led ceiling alexroom
-      - entity: light.kitchen
-        name: kitchen
-      - entity: light.table
-        name: table
-      - entity: light.livingroom
-        name: livingroom
-      - entity: light.bedroom
-        name: bedroom
-      - entity: light.office
-        name: office
-      - entity: light.basement
-        name: basement
-
-  - type: weather-forecast
-    entity: weather.home
-    name: home
-    show_current: true
-    show_forecast: true
-    forecast_type: daily
-
-  - type: custom:mini-graph-card
-    entities:
-      - entity: sensor.sensor_heating_temperature_return_upstairs
-        name: Return
-        color: var(--blue-color)
-        y_axis: secondary
-        show_line: false
-      - entity: sensor.sensor_heating_temperature_flow_upstairs
-        name: Flow
-    name: heating upstairs
-    color_thresholds:
-      - value: 27.1
-        color: '#ff0000'
-      - value: 26.5
-        color: '#ffba00'
-      - value: 25.5
-        color: '#00aa99'
-      - value: 24.5
-        color: '#0090ff'
-      - value: 22.5
-        color: '#004e8b'
-    hours_to_show: 24
-    points_per_hour: 4
-    line_width: 3
-    font_size: 50
-    smoothing: true
-    show:
-      name: true
-      icon: false
-      state: false
-      legend: false
-      fill: fade
-
-  - type: custom:mini-graph-card
-    entities:
-      - entity: sensor.sensor_heating_temperature_return_groundfloor
-        name: Return
-        color: var(--blue-color)
-        y_axis: secondary
-        show_line: false
-      - entity: sensor.sensor_heating_temperature_flow_groundfloor
-        name: Flow
-    name: heating downstairs
-    color_thresholds:
-      - value: 27.1
-        color: '#ff0000'
-      - value: 26.5
-        color: '#ffba00'
-      - value: 25.5
-        color: '#00aa99'
-      - value: 24.5
-        color: '#0090ff'
-      - value: 22.5
-        color: '#004e8b'
-    hours_to_show: 24
-    points_per_hour: 4
-    line_width: 3
-    font_size: 50
-    smoothing: true
-    show:
-      name: true
-      icon: false
-      state: false
-      legend: false
-      fill: fade
-
-  - type: custom:mushroom-lock-card
-    entity: lock.nuki
-    name: entrance lock
+icon: mdi:home
+type: sections
+max_columns: 4
+subview: false
+badges:
+  - type: entity
     show_name: true
-    state_color: true
-
-  #- type: entities
-  #  title: switches
-  #  entities:
-  #    - entity: switch.innr_sp_120_alex_switch
-  #      name: alex desk
-  #    - entity: switch.innr_sp_120_dominik_switch
-  #      name: domi desk
-  #    - entity: switch.innr_sp_120_fridge_switch
-  #      name: fridge
-  #    - entity: switch.innr_sp_120_livingroom_switch
-  #      name: table
-  #  show_header_toggle: false
-  #  state_color: true
-
-  # working!?
-  #  - aggregate_func: max
-  #    entities:
-  #      - entity: sensor.innr_sp_120_fridge_power
-  #    group_by: date
-  #    hours_to_show: 168
-  #    name: Energy consumption
-  #    show:
-  #      graph: bar
-  #    type: 'custom:mini-graph-card'
-
-  # coronavirus
-  # - type: 'custom:mini-graph-card'
-  #   name: covid-19
-  #   entities:
-  #     - entity: sensor.austria_coronavirus_current
-  #       name: current
-  #       show_legend: false
-  #       show_state: true
-  #       color: '#e74c3c'
-  #   hours_to_show: 168
-  #   points_per_hour: 0.5
-  #   height: 74
-  #   line_width: 2
-  #   font_size: 85
-  #   show:
-  #     icon: true
-  #     extrema: true
-  #   update_interval: 3600
-
-  # speedtest
-  # - type: 'custom:mini-graph-card'
-  #   name: speedtest.net
-  #   entities:
-  #     - entity: sensor.speedtest_ping
-  #       name: ping
-  #       show_legend: true
-  #       show_state: true
-  #     - entity: sensor.speedtest_download
-  #       name: down
-  #       show_legend: true
-  #       show_state: true
-  #       y_axis: secondary
-  #     - entity: sensor.speedtest_upload
-  #       name: up
-  #       show_legend: true
-  #       show_state: true
-  #       y_axis: secondary
-  #   hours_to_show: 24
-  #   points_per_hour: 4
-  #   height: 74
-  #   line_width: 2
-  #   font_size: 85
-  #   show:
-  #     icon: true
-  #     extrema: true
-  #   update_interval: 60
-
-  - type: "custom:bar-card"
-    title: nas.home
-    entities:
-      - entity: sensor.nas_volume_1_volume_used
-        name: NAS disk
-      - entity: sensor.nas_memory_usage_real
-        name: NAS memory
-    positions:
-      # icon: 'off'
-      # indicator: inside
-      name: outside
-    width: 70%
-    height: 20px
-
-  - type: custom:simple-thermostat
-    entity: climate.office
-    step_size: 1
-    layout:
-      step: row
-    header:
-      name: Office
-    control:
-      - hvac
-      - preset
-
-  - type: custom:simple-thermostat
-    entity: climate.livingroom
-    step_size: 1
-    layout:
-      step: row
-    header:
-      name: Livingroom
-    control:
-      - hvac
-      - preset
-
-  - type: custom:simple-thermostat
-    entity: climate.bedroom
-    step_size: 1
-    layout:
-      step: row
-    header:
-      name: Bedroom
-    control:
-      - hvac
-      - preset
-
-  - type: custom:simple-thermostat
-    entity: climate.alex
-    step_size: 1
-    layout:
-      step: row
-    header:
-      name: Alexroom
-    control:
-      - hvac
-      - preset
-
-  - type: custom:simple-thermostat
-    entity: climate.domi
-    step_size: 1
-    layout:
-      step: row
-    header:
-      name: Domiroom
-    control:
-      - hvac
-      - preset
+    show_state: true
+    show_icon: true
+    entity: person.nils
+    color: light-blue
+    name: Nils
+    show_entity_picture: true
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: person.jasmin
+    color: purple
+    name: Jasmin
+    icon: mdi:account
+    show_entity_picture: true
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: lock.nuki
+    color: ''
+    visibility:
+      - condition: state
+        entity: lock.nuki
+        state_not: locked
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.nuki_battery
+    color: ''
+    visibility:
+      - condition: numeric_state
+        entity: sensor.nuki_battery
+        below: 50
+        above: 0
+    name: Nuki
+    state_content:
+      - name
+      - state
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Entrance
+        heading_style: title
+        icon: mdi:door
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.aqara_contact_door_entrance_contact
+            color: primary
+            state_content: state
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_entrance_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_entrance_humidity
+            color: blue
+            state_content: state
+      - type: tile
+        entity: binary_sensor.mijia_motion_entrance_occupancy
+        state_content:
+          - state
+          - last_updated
+      - type: tile
+        entity: lock.nuki
+        state_content:
+          - state
+          - last_changed
+      - type: heading
+        heading: Lights
+        heading_style: title
+        icon: mdi:lightbulb
+        badges: []
+      - type: tile
+        entity: light.basement
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Basement
+        icon: mdi:lightbulb-spot
+        show_entity_picture: false
+        state_content: color_temp_kelvin
+      - type: tile
+        entity: light.office
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Office
+        icon: mdi:lightbulb-spot
+        show_entity_picture: false
+        state_content: color_temp_kelvin
+      - type: tile
+        entity: light.skylight_8905
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Bedroom
+        icon: mdi:wall-sconce-flat
+        show_entity_picture: false
+        state_content: effect
+      - type: tile
+        entity: group.lights_living_downstairs
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Downstairs
+        icon: mdi:lightbulb-spot
+        show_entity_picture: false
+      - type: tile
+        entity: light.led_ceiling_light_domiroom
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Domiroom
+        icon: mdi:lightbulb-variant
+        show_entity_picture: false
+      - type: tile
+        entity: light.led_ceiling_light_alexroom
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Alexroom
+        icon: mdi:lightbulb-variant
+        show_entity_picture: false
+  - type: grid
+    cards:
+      - type: heading
+        heading: Weather
+        heading_style: title
+        icon: mdi:cloud-outline
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: weather.home
+            color: red
+            state_content: temperature
+            icon: mdi:thermometer
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: weather.home
+            state_content: wind_speed
+            icon: mdi:weather-dust
+            color: teal
+      - show_current: true
+        show_forecast: true
+        type: weather-forecast
+        entity: weather.home
+        forecast_type: daily
+        name: Strasshof
+  - type: grid
+    cards:
+      - type: heading
+        heading: Rocky
+        heading_style: title
+        badges:
+          - type: entity
+            entity: sensor.roborock_qrevo_curv_battery
+          - type: entity
+            entity: binary_sensor.roborock_qrevo_curv_water_shortage
+        icon: mdi:robot-vacuum
+      - features:
+          - type: vacuum-commands
+            commands:
+              - return_home
+              - start_pause
+        type: tile
+        entity: vacuum.roborock_qrevo_curv
+        grid_options:
+          columns: 12
+          rows: 2
+        show_entity_picture: false
+        vertical: false
+        hide_state: false
+        state_content: state
+  - type: grid
+    cards:
+      - type: heading
+        heading: Livingroom
+        heading_style: title
+        icon: mdi:sofa-single
+        badges:
+          - type: entity
+            entity: binary_sensor.aqara_presence_livingroom_presence
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_livingroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_livingroom_humidity
+            color: blue
+      - type: tile
+        entity: group.lights_living_downstairs
+        name: Hue Spots
+        show_entity_picture: false
+        vertical: false
+        hide_state: false
+      - type: tile
+        entity: light.elements_d689
+        icon: mdi:hexagon-multiple-outline
+        show_entity_picture: false
+        color: accent
+        vertical: false
+        hide_state: false
+        state_content:
+          - state
+          - effect
+        name: Nanoloeaf Elements
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_livingroom
+        fill_container: false
+        primary_info: name
+        hvac_modes:
+          - 'off'
+          - cool
+        show_temperature_control: false
+        name: AC
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+      - type: tile
+        entity: binary_sensor.aqara_contact_door_livingroom_contact
+        name: door
+        state_content:
+          - state
+          - last_updated
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_livingroom_contact
+        show_entity_picture: false
+        name: window
+        state_content:
+          - state
+          - last_updated
+      - type: media-control
+        entity: media_player.shield_android_tv
+        visibility:
+          - condition: state
+            entity: media_player.shield_android_tv
+            state_not: 'off'
+  - type: grid
+    cards:
+      - type: heading
+        heading: Bedroom
+        heading_style: title
+        icon: mdi:bed
+        badges:
+          - type: entity
+            entity: binary_sensor.aqara_motion_bedroom_occupancy
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bedroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bedroom_humidity
+            color: blue
+      - type: tile
+        entity: light.skylight_8905
+        name: Nanoleaf Skylight
+        icon: mdi:wall-sconce-flat
+        show_entity_picture: false
+        state_content:
+          - state
+          - effect
+      - type: tile
+        entity: light.rgbic_pro_strip_lights_2
+        color: purple
+        name: Govee LED Strip
+        show_entity_picture: false
+        state_content:
+          - state
+          - effect
+      - type: tile
+        entity: light.galaxy_light_projector_2
+        icon: mdi:projector
+        color: deep-purple
+        state_content:
+          - state
+          - effect
+      - type: tile
+        entity: binary_sensor.aqara_motion_bedroom_occupancy
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: motion
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_bedroom
+        fill_container: false
+        primary_info: name
+        hvac_modes:
+          - 'off'
+          - cool
+        show_temperature_control: false
+        name: AC
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_bedroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: window
+      - type: tile
+        entity: binary_sensor.aqara_contact_door_bedroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: door
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:desktop-tower-monitor
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_office_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_office_humidity
+            color: blue
+        heading: Office
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/office
+      - type: tile
+        entity: light.office
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        icon: mdi:lightbulb-spot
+        show_entity_picture: false
+        state_content: color_temp_kelvin
+        name: Spots
+      - type: tile
+        entity: binary_sensor.aqara_motion_office_occupancy
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: jasmin
+        icon: mdi:motion-sensor
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_office_contact
+        state_content:
+          - state
+          - last_updated
+        name: window
+      - type: tile
+        entity: binary_sensor.mijia_motion_office_occupancy
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: nils
+        icon: mdi:motion-sensor
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_office
+        fill_container: false
+        primary_info: name
+        hvac_modes:
+          - 'off'
+          - cool
+        show_temperature_control: false
+        name: AC
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+      - type: tile
+        entity: switch.tuya_a1z_irpanel2_office
+        name: IR Panel front
+        color: red
+        vertical: false
+        icon_tap_action:
+          action: more-info
+        icon: mdi:radiator
+      - type: tile
+        entity: switch.tuya_a1z_irpanel1_office
+        name: IR Panel back
+        icon: mdi:radiator
+        color: red
+        show_entity_picture: false
+        vertical: false
+        hide_state: false
+        state_content: state
+        icon_tap_action:
+          action: more-info
+      - type: tile
+        entity: sensor.tuya_a1z_nils_office_power
+        name: Nils
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:alpha-d-box-outline
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.aqara_motion_domiroom_occupancy
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_domiroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_domiroom_humidity
+            color: blue
+        heading: Domiroom
+      - type: tile
+        entity: light.led_ceiling_light_domiroom
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        icon: mdi:lightbulb-variant
+        show_entity_picture: false
+        state_content: state
+        name: Light
+      - type: tile
+        entity: light.sensor_domiroom_nightlight
+        name: Nightlight
+        icon: mdi:image-filter-drama
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_domi
+        fill_container: false
+        primary_info: name
+        hvac_modes:
+          - 'off'
+          - cool
+        show_temperature_control: false
+        name: AC
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+      - type: tile
+        entity: binary_sensor.aqara_motion_domiroom_occupancy
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: motion
+        icon: mdi:motion-sensor
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_domiroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: window
+      - type: tile
+        entity: sensor.aqara_wall_outlet_dominikroom_power
+        name: Power
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:alpha-a-box-outline
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.aqara_motion_alexroom_occupancy
+            icon: mdi:motion-sensor
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_alexroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_alexroom_humidity
+            color: blue
+        heading: Alexroom
+      - type: tile
+        entity: light.led_ceiling_light_alexroom
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        icon: mdi:lightbulb-variant
+        show_entity_picture: false
+        state_content: state
+        name: Light
+      - type: tile
+        entity: light.shapes_c168
+        icon: mdi:hexagon-multiple
+        state_content:
+          - state
+          - effect
+        name: Nanoleaf Shapes
+      - type: tile
+        entity: light.ambient_desk_alex
+        icon: mdi:led-strip-variant
+        name: desk light
+      - type: tile
+        entity: light.light_alexroom_nightlight
+        name: Nightlight
+        icon: mdi:image-filter-drama
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_alex
+        fill_container: false
+        primary_info: name
+        hvac_modes:
+          - 'off'
+          - cool
+        show_temperature_control: false
+        name: AC
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+      - type: tile
+        entity: binary_sensor.aqara_motion_alexroom_occupancy
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: motion
+        icon: mdi:motion-sensor
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_alexroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: window
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:shower
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.sensor_bathroom_sr501_pir_motion
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bathroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bathroom_humidity
+            color: blue
+        heading: Bathroom
+      - type: tile
+        entity: light.sensor_bathroom_nightlight
+        name: Nightlight
+      - type: tile
+        entity: binary_sensor.sensor_bathroom_sr501_pir_motion
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: motion
+        icon: mdi:motion-sensor
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_bathroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: window
+      - type: tile
+        entity: binary_sensor.aqara_contact_door_bathroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: door
+      - type: picture
+        image: /api/image/serve/7be2e9dfa7f5a7b7fad5286718b33747/512x512
+        alt_text: High humidity
+        visibility:
+          - condition: numeric_state
+            entity: sensor.aqara_climate_bathroom_humidity
+            above: 65
+        grid_options:
+          columns: 6
+          rows: auto
+  - type: grid
+    cards:
+      - type: heading
+        heading: OEBB
+        heading_style: title
+        icon: mdi:train
+        badges: []
+      - type: iframe
+        url: >-
+          https://dave2ooo.github.io/oebb-monitor-v2/?departure_station=1230816&destination_station=1190100&additional_time=0&num_journeys=12&board_type=dep&products_filter=1011111111011&update_interval=15&font_color=&background_color=&font_size=&show_clock=false&show_header=true&show_line=true&show_direction=true&show_platform=false
+        aspect_ratio: 100%
+        grid_options:
+          columns: full
+          rows: 4
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:washing-machine
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.mijia_motion_laundryroom_occupancy
+            icon: mdi:motion-sensor
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_laundryroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_laundryroom_humidity
+            color: blue
+        heading: Laundryroom
+      - type: tile
+        entity: binary_sensor.mijia_motion_laundryroom_occupancy
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: motion
+        icon: mdi:motion-sensor
+      - type: picture
+        image: /api/image/serve/7be2e9dfa7f5a7b7fad5286718b33747/512x512
+        alt_text: High humidity
+        visibility:
+          - condition: numeric_state
+            entity: sensor.aqara_climate_laundryroom_humidity
+            above: 65
+        grid_options:
+          columns: 6
+          rows: auto
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:shower
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.sensor_bathroom_sr501_pir_motion
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bathroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_bathroom_humidity
+            color: blue
+        heading: Bathroom
+      - type: tile
+        entity: light.sensor_bathroom_nightlight
+        name: Nightlight
+      - type: tile
+        entity: binary_sensor.sensor_bathroom_sr501_pir_motion
+        show_entity_picture: false
+        state_content:
+          - state
+          - last_updated
+        name: motion
+        icon: mdi:motion-sensor
+      - type: tile
+        entity: binary_sensor.aqara_contact_window_bathroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: window
+      - type: tile
+        entity: binary_sensor.aqara_contact_door_bathroom_contact
+        state_content:
+          - state
+          - last_updated
+        name: door
+      - type: picture
+        image: /api/image/serve/7be2e9dfa7f5a7b7fad5286718b33747/512x512
+        alt_text: High humidity
+        visibility:
+          - condition: numeric_state
+            entity: sensor.aqara_climate_bathroom_humidity
+            above: 65
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:chef-hat
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.mijia_motion_kitchen_occupancy
+            icon: mdi:motion-sensor
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_kitchen_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_kitchen_humidity
+            color: blue
+        heading: Kitchen
+      - type: tile
+        entity: light.kitchen
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        icon: mdi:lightbulb-spot
+        show_entity_picture: false
+        state_content: color_temp_kelvin
+        name: Spots
+      - type: tile
+        entity: sensor.innr_sp_120_fridge_power
+        name: fridge
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:table-furniture
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.mijia_motion_table_occupancy
+            icon: mdi:motion-sensor
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_livingroom_temperature
+            color: red
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: sensor.aqara_climate_livingroom_humidity
+            color: blue
+        heading: Diningroom
+      - type: tile
+        entity: light.table
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        icon: mdi:lightbulb-spot
+        show_entity_picture: false
+        state_content: color_temp_kelvin
+        name: Spots
+      - type: tile
+        entity: binary_sensor.mijia_motion_table_occupancy
+        name: motion
+        icon: mdi:motion-sensor
+        state_content:
+          - state
+          - last_changed
+      - type: tile
+        entity: binary_sensor.aqara_contact_door_garden_contact
+        state_content:
+          - state
+          - last_updated
+        name: door
 
