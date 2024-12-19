@@ -186,4 +186,7 @@ shell_command:
 # sensor:
 #   platform: rest
 #   resource: !secret open_meteo_url
-
+sensor:
+  platform: oebb
+  evaId: 1230816
+  showJourneys: 12
