@@ -903,15 +903,15 @@ sections:
           - type: entity
             show_state: true
             show_icon: true
-            entity: sensor.sensor_heating_temperature_flow_downstairs
+            entity: sensor.sensor_heating_temperature_flow_groundfloor
             color: lime
             state_content: state
       - type: custom:mini-graph-card
         name: heating
         entities:
-          - entity: sensor.sensor_heating_temperature_flow_downstairs
+          - entity: sensor.sensor_heating_temperature_flow_groundfloor
             name: Flow
-          - entity: sensor.sensor_heating_temperature_return_downstairs
+          - entity: sensor.sensor_heating_temperature_return_groundfloor
             name: Return
           - entity: sun.sun
             color: gray
