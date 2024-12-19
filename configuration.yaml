@@ -190,3 +190,4 @@ sensor:
   platform: oebb
   evaId: 1230816
   showJourneys: 12
+  dirInput: 1292101
