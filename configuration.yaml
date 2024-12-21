@@ -19,7 +19,7 @@ tts:
   - platform: google_translate
 
 group: !include_dir_named groups/
-input_number: !include_dir_merge_named input_number
+# input_number: !include_dir_merge_named input_number
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
@@ -69,7 +69,7 @@ mqtt: !include mqtt.yaml
 # binary_sensor: !include_dir_list binary_sensors/
 
 # light: !include_dir_list lights/
-camera: !include_dir_list cameras/
+# camera: !include_dir_list cameras/
 
 # device_tracker:
 #   - platform: nmap_tracker
