@@ -712,57 +712,7 @@ sections:
   - type: grid
     cards:
       - type: heading
-        heading_style: title
-        icon: mdi:shower
-        badges:
-          - type: entity
-            show_state: true
-            show_icon: true
-            entity: binary_sensor.sensor_bathroom_sr501_pir_motion
-          - type: entity
-            show_state: true
-            show_icon: true
-            entity: sensor.aqara_climate_bathroom_temperature
-            color: red
-          - type: entity
-            show_state: true
-            show_icon: true
-            entity: sensor.aqara_climate_bathroom_humidity
-            color: blue
-        heading: Bathroom
-      - type: tile
-        entity: light.sensor_bathroom_nightlight
-        name: Nightlight
-      - type: tile
-        entity: binary_sensor.sensor_bathroom_sr501_pir_motion
-        show_entity_picture: false
-        state_content:
-          - state
-          - last_updated
-        name: motion
-        icon: mdi:motion-sensor
-      - type: tile
-        entity: binary_sensor.aqara_contact_window_bathroom_contact
-        state_content:
-          - state
-          - last_updated
-        name: window
-      - type: tile
-        entity: binary_sensor.aqara_contact_door_bathroom_contact
-        state_content:
-          - state
-          - last_updated
-        name: door
-      - type: picture
-        image: /api/image/serve/7be2e9dfa7f5a7b7fad5286718b33747/512x512
-        alt_text: High humidity
-        visibility:
-          - condition: numeric_state
-            entity: sensor.aqara_climate_bathroom_humidity
-            above: 65
-  - type: grid
-    cards:
-      - type: heading
+        heading: Kitchen
         heading_style: title
         icon: mdi:chef-hat
         badges:
@@ -781,7 +731,6 @@ sections:
             show_icon: true
             entity: sensor.aqara_climate_kitchen_humidity
             color: blue
-        heading: Kitchen
       - type: tile
         entity: light.kitchen
         icon_tap_action:
