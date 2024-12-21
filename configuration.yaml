@@ -23,7 +23,7 @@ input_number: !include_dir_merge_named input_number
 automation: !include automations.yaml
 script: !include scripts.yaml
 # scene: !include scenes.yaml
-scene: !include_dir_merge_named scenes/
+scene: !include_dir_named  scenes/
 # climate:  !include_dir_list climates/
 
 #scence:
