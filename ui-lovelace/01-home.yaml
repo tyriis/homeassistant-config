@@ -362,7 +362,14 @@ sections:
       - type: heading
         heading_style: title
         icon: mdi:desktop-tower-monitor
+        heading: Office
         badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: binary_sensor.aqara_motion_office_occupancy
+            icon: mdi:motion-sensor
+            color: green
           - type: entity
             show_state: true
             show_icon: true
@@ -373,7 +380,6 @@ sections:
             show_icon: true
             entity: sensor.aqara_climate_office_humidity
             color: blue
-        heading: Office
         tap_action:
           action: navigate
           navigation_path: /lovelace/office
