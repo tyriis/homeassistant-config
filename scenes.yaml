@@ -14,69 +14,90 @@
       color_temp: 230
       state: "on"
 
-- name: Office Everyday
-  entities:
-    light.office:
-      state: 'on'
-      brightness: 203
-      rgb_color: [241, 224, 181]
-
-- name: Office Focus
-  entities:
-    light.office:
-      state: 'on'
-      brightness: 254
-      rgb_color: [245, 250, 246]
-
-- name: Office Relax
-  entities:
-    light.office:
-      state: 'on'
-      brightness: 25
-      rgb_color: [239, 210, 117]
-
-
-
-# File: scenes/white_lights.yaml
+# Office
 
 - name: Office Concentration
   entities:
     light.office:
       state: 'on'
       brightness: 255  # 100%
-      color_temp: 220  # Cool white, closely matching daylight
-
-- name: Office Reading
-  entities:
-    light.office:
-      state: 'on'
-      brightness: 230  # 90%
-      color_temp: 250  # Neutral white, reducing eye strain
+      color_temp: 250  # Coolest white - most energizing (~ 4000K)
 
 - name: Office Working
   entities:
     light.office:
       state: 'on'
-      brightness: 225  # 88%
-      color_temp: 250  # Slightly cool, maintains alertness
+      brightness: 235  # 92%
+      color_temp: 270  # Slightly warmer but still cool (~ 3700K)
+
+- name: Office Reading
+  entities:
+    light.office:
+      state: 'on'
+      brightness: 220  # 86%
+      color_temp: 300  # Balanced neutral (~ 3300K)
 
 - name: Office Evening
   entities:
     light.office:
       state: 'on'
-      brightness: 180  # 70%
-      color_temp: 368  # Warm white, more relaxing
+      brightness: 170  # 67%
+      color_temp: 350  # Warmer (~ 2850K)
 
 - name: Office Relaxation
   entities:
     light.office:
       state: 'on'
-      brightness: 128  # 50%
-      color_temp: 400  # Very warm white
+      brightness: 115  # 45%
+      color_temp: 400  # Very warm (~ 2500K)
 
 - name: Office Night
   entities:
     light.office:
       state: 'on'
-      brightness: 64   # 25%
-      color_temp: 455  # Extra warm, minimizes blue light
+      brightness: 45   # 18%
+      color_temp: 454  # Warmest possible (~ 2200K)
+
+# Basement
+
+- name: Basement Concentration
+  entities:
+    light.basement:
+      state: 'on'
+      brightness: 255  # 100%
+      color_temp: 250  # Coolest white - most energizing (~ 4000K)
+
+- name: Basement Working
+  entities:
+    light.basement:
+      state: 'on'
+      brightness: 235  # 92%
+      color_temp: 270  # Slightly warmer but still cool (~ 3700K)
+
+- name: Basement Reading
+  entities:
+    light.basement:
+      state: 'on'
+      brightness: 220  # 86%
+      color_temp: 300  # Balanced neutral (~ 3300K)
+
+- name: Basement Evening
+  entities:
+    light.basement:
+      state: 'on'
+      brightness: 170  # 67%
+      color_temp: 350  # Warmer (~ 2850K)
+
+- name: Basement Relaxation
+  entities:
+    light.basement:
+      state: 'on'
+      brightness: 115  # 45%
+      color_temp: 400  # Very warm (~ 2500K)
+
+- name: Basement Night
+  entities:
+    light.basement:
+      state: 'on'
+      brightness: 45   # 18%
+      color_temp: 454  # Warmest possible (~ 2200K)
