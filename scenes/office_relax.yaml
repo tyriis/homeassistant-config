@@ -1,0 +1,6 @@
+name: Office Relax
+entities:
+  light.office:
+    state: 'on'
+    brightness: 25
+    rgb_color: [239, 210, 117]
