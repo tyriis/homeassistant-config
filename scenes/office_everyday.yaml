@@ -1,6 +1,0 @@
-name: Office Everyday
-entities:
-  light.office:
-    state: 'on'
-    brightness: 203
-    rgb_color: [241, 224, 181]
