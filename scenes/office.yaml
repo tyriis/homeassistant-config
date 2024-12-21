@@ -1,27 +1,21 @@
 # File: scenes/office.yaml
-office_focus:
-  alias: Living Room Focus
-  sequence:
-    - service: light.turn_on
-      data:
-        entity_id: light.office
-        brightness: 254
-        rgb_color: [245, 250, 246]
+- name: Office Focus
+  entities:
+    light.office:
+      state: 'on'
+      brightness: 254
+      rgb_color: [245, 250, 246]
 
-office_everyday:
-  alias: Living Room Everyday
-  sequence:
-    - service: light.turn_on
-      data:
-        entity_id: light.office
-        brightness: 203
-        rgb_color: [241, 224, 181]
+- name: Office Everyday
+  entities:
+    light.office:
+      state: 'on'
+      brightness: 203
+      rgb_color: [241, 224, 181]
 
-office_relax:
-  alias: Living Room Relax
-  sequence:
-    - service: light.turn_on
-      data:
-        entity_id: light.office
-        brightness: 25
-        rgb_color: [239, 210, 117]
+- name: Office Relax
+  entities:
+    light.office:
+      state: 'on'
+      brightness: 25
+      rgb_color: [239, 210, 117]
