@@ -44,39 +44,39 @@
     light.office:
       state: 'on'
       brightness: 255  # 100%
-      color_temp: 4500  # Cool white, closely matching daylight
+      color_temp_kelvin: 4500  # Cool white, closely matching daylight
 
 - name: Office Reading
   entities:
     light.office:
       state: 'on'
       brightness: 230  # 90%
-      color_temp: 4000  # Neutral white, reducing eye strain
+      color_temp_kelvin: 4000  # Neutral white, reducing eye strain
 
 - name: Office Working
   entities:
     light.office:
       state: 'on'
       brightness: 225  # 88%
-      color_temp: 4200  # Slightly cool, maintains alertness
+      color_temp_kelvin: 4200  # Slightly cool, maintains alertness
 
 - name: Office Evening
   entities:
     light.office:
       state: 'on'
       brightness: 180  # 70%
-      color_temp: 2700  # Warm white, more relaxing
+      color_temp_kelvin: 2700  # Warm white, more relaxing
 
 - name: Office Relaxation
   entities:
     light.office:
       state: 'on'
       brightness: 128  # 50%
-      color_temp: 2500  # Very warm white
+      color_temp_kelvin: 2500  # Very warm white
 
 - name: Office Night
   entities:
     light.office:
       state: 'on'
       brightness: 64   # 25%
-      color_temp: 2200  # Extra warm, minimizes blue light
+      color_temp_kelvin: 2200  # Extra warm, minimizes blue light
