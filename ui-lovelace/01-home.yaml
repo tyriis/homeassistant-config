@@ -127,7 +127,7 @@ sections:
         show_entity_picture: false
         state_content: effect
       - type: tile
-        entity: group.lights_living_downstairs
+        entity: group.lights_downstairs
         icon_tap_action:
           action: toggle
         hold_action:
@@ -231,7 +231,7 @@ sections:
             entity: sensor.aqara_climate_livingroom_humidity
             color: blue
       - type: tile
-        entity: group.lights_living_downstairs
+        entity: group.lights_downstairs
         name: Hue Spots
         show_entity_picture: false
         vertical: false
