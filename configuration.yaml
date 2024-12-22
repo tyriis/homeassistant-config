@@ -18,7 +18,7 @@ recorder: !include recorder.yaml
 tts:
   - platform: google_translate
 
-group: !include_dir_named groups/
+group: !include_dir_list groups/
 # input_number: !include_dir_merge_named input_number
 automation: !include automations.yaml
 script: !include scripts.yaml
