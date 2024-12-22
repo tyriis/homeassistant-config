@@ -38,7 +38,6 @@
 # If you set the all option to true though, this behavior is inverted and all members of the group have to be on for the group to turn on as well.
 #
 name: motion office
-unique_id: f22c3916-ffd1-5521-a045-6f0984948251
 entities:
   - binary_sensor.aqara_motion_office_occupancy
   - binary_sensor.mijia_motion_office_occupancy
