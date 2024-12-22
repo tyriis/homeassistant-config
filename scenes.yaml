@@ -17,6 +17,7 @@
 # Office
 
 - name: Office Concentration
+  icon: mdi:head-snowflake-outline
   entities:
     light.office:
       state: 'on'
