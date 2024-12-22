@@ -25,6 +25,7 @@
       color_temp: 250  # Coolest white - most energizing (~ 4000K)
 
 - name: Office Working
+  icon: mdi:briefcase
   entities:
     light.office:
       state: 'on'
@@ -32,6 +33,7 @@
       color_temp: 270  # Slightly warmer but still cool (~ 3700K)
 
 - name: Office Reading
+  icon: mdi:book-open-page-variant-outline
   entities:
     light.office:
       state: 'on'
@@ -39,6 +41,7 @@
       color_temp: 300  # Balanced neutral (~ 3300K)
 
 - name: Office Evening
+  icon: mdi:weather-sunset-down
   entities:
     light.office:
       state: 'on'
@@ -46,6 +49,7 @@
       color_temp: 350  # Warmer (~ 2850K)
 
 - name: Office Relaxation
+  icon: mdi:sofa
   entities:
     light.office:
       state: 'on'
@@ -53,6 +57,7 @@
       color_temp: 400  # Very warm (~ 2500K)
 
 - name: Office Night
+  icon: mdi:weather-night
   entities:
     light.office:
       state: 'on'
@@ -62,6 +67,7 @@
 # Basement
 
 - name: Basement Concentration
+  icon: mdi:head-snowflake-outline
   entities:
     light.basement:
       state: 'on'
@@ -69,6 +75,7 @@
       color_temp: 250  # Coolest white - most energizing (~ 4000K)
 
 - name: Basement Working
+  icon: mdi:briefcase
   entities:
     light.basement:
       state: 'on'
@@ -76,6 +83,7 @@
       color_temp: 270  # Slightly warmer but still cool (~ 3700K)
 
 - name: Basement Reading
+  icon: mdi:book-open-page-variant-outline
   entities:
     light.basement:
       state: 'on'
@@ -83,6 +91,7 @@
       color_temp: 300  # Balanced neutral (~ 3300K)
 
 - name: Basement Evening
+  icon: mdi:weather-sunset-down
   entities:
     light.basement:
       state: 'on'
@@ -90,6 +99,7 @@
       color_temp: 350  # Warmer (~ 2850K)
 
 - name: Basement Relaxation
+  icon: mdi:sofa
   entities:
     light.basement:
       state: 'on'
@@ -97,6 +107,7 @@
       color_temp: 400  # Very warm (~ 2500K)
 
 - name: Basement Night
+  icon: mdi:weather-night
   entities:
     light.basement:
       state: 'on'
