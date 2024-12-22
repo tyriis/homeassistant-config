@@ -37,7 +37,7 @@
 # Similarly with a device tracker, when any member of the group is home then the group is home.
 # If you set the all option to true though, this behavior is inverted and all members of the group have to be on for the group to turn on as well.
 #
-name: lights living downstairs
+name: lights downstairs
 entities:
   - light.kitchen
   - light.table
