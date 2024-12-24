@@ -257,7 +257,7 @@
 
 - name: Downstairs Working
   entities:
-    lights_downstairs:
+    group.lights_downstairs:
       state: 'on'
       brightness: 235  # 92%
       color_temp: 200  # ~5000K - Cool white, good for productivity
