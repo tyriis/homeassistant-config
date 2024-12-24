@@ -113,3 +113,179 @@
       state: 'on'
       brightness: 45   # 18%
       color_temp: 454  # Warmest possible (~ 2200K)
+
+# livingroom
+
+- name: Living Concentration
+  entities:
+    light.livingroom:
+      state: 'on'
+      brightness: 255  # 100%
+      color_temp: 167  # ~6000K - Very cool white, energizing
+
+- name: Living Working
+  entities:
+    light.livingroom:
+      state: 'on'
+      brightness: 235  # 92%
+      color_temp: 200  # ~5000K - Cool white, good for productivity
+
+- name: Living Reading
+  entities:
+    light.livingroom:
+      state: 'on'
+      brightness: 220  # 86%
+      color_temp: 238  # ~4200K - Neutral white, easy on eyes
+
+- name: Living Evening
+  entities:
+    light.livingroom:
+      state: 'on'
+      brightness: 170  # 67%
+      color_temp: 313  # ~3200K - Warm white, relaxing
+
+- name: Living Relaxation
+  entities:
+    light.livingroom:
+      state: 'on'
+      brightness: 115  # 45%
+      color_temp: 370  # ~2700K - Very warm, cozy
+
+- name: Living Night
+  entities:
+    light.livingroom:
+      state: 'on'
+      brightness: 45   # 18%
+      color_temp: 454  # ~2200K - Extra warm, minimal blue light
+
+# table
+
+- name: Table Concentration
+  entities:
+    light.table:
+      state: 'on'
+      brightness: 255  # 100%
+      color_temp: 167  # ~6000K - Very cool white, energizing
+
+- name: Table Working
+  entities:
+    light.table:
+      state: 'on'
+      brightness: 235  # 92%
+      color_temp: 200  # ~5000K - Cool white, good for productivity
+
+- name: Table Reading
+  entities:
+    light.table:
+      state: 'on'
+      brightness: 220  # 86%
+      color_temp: 238  # ~4200K - Neutral white, easy on eyes
+
+- name: Table Evening
+  entities:
+    light.table:
+      state: 'on'
+      brightness: 170  # 67%
+      color_temp: 313  # ~3200K - Warm white, relaxing
+
+- name: Table Relaxation
+  entities:
+    light.table:
+      state: 'on'
+      brightness: 115  # 45%
+      color_temp: 370  # ~2700K - Very warm, cozy
+
+- name: Table Night
+  entities:
+    light.table:
+      state: 'on'
+      brightness: 45   # 18%
+      color_temp: 454  # ~2200K - Extra warm, minimal blue light
+
+# kitchen
+
+- name: Kitchen Concentration
+  entities:
+    light.kitchen:
+      state: 'on'
+      brightness: 255  # 100%
+      color_temp: 167  # ~6000K - Very cool white, energizing
+
+- name: Kitchen Working
+  entities:
+    light.kitchen:
+      state: 'on'
+      brightness: 235  # 92%
+      color_temp: 200  # ~5000K - Cool white, good for productivity
+
+- name: Kitchen Reading
+  entities:
+    light.kitchen:
+      state: 'on'
+      brightness: 220  # 86%
+      color_temp: 238  # ~4200K - Neutral white, easy on eyes
+
+- name: Kitchen Evening
+  entities:
+    light.kitchen:
+      state: 'on'
+      brightness: 170  # 67%
+      color_temp: 313  # ~3200K - Warm white, relaxing
+
+- name: Kitchen Relaxation
+  entities:
+    light.kitchen:
+      state: 'on'
+      brightness: 115  # 45%
+      color_temp: 370  # ~2700K - Very warm, cozy
+
+- name: Kitchen Night
+  entities:
+    light.kitchen:
+      state: 'on'
+      brightness: 45   # 18%
+      color_temp: 454  # ~2200K - Extra warm, minimal blue light
+
+# downstairs
+
+- name: Downstairs Concentration
+  entities:
+    group.lights_downstairs:
+      state: 'on'
+      brightness: 255  # 100%
+      color_temp: 167  # ~6000K - Very cool white, energizing
+
+- name: Downstairs Working
+  entities:
+    lights_downstairs:
+      state: 'on'
+      brightness: 235  # 92%
+      color_temp: 200  # ~5000K - Cool white, good for productivity
+
+- name: Downstairs Reading
+  entities:
+    group.lights_downstairs:
+      state: 'on'
+      brightness: 220  # 86%
+      color_temp: 238  # ~4200K - Neutral white, easy on eyes
+
+- name: Downstairs Evening
+  entities:
+    group.lights_downstairs:
+      state: 'on'
+      brightness: 170  # 67%
+      color_temp: 313  # ~3200K - Warm white, relaxing
+
+- name: Downstairs Relaxation
+  entities:
+    group.lights_downstairs:
+      state: 'on'
+      brightness: 115  # 45%
+      color_temp: 370  # ~2700K - Very warm, cozy
+
+- name: Downstairs Night
+  entities:
+    group.lights_downstairs:
+      state: 'on'
+      brightness: 45   # 18%
+      color_temp: 454  # ~2200K - Extra warm, minimal blue light
