@@ -122,6 +122,7 @@
       state: 'on'
       brightness: 255  # 100%
       color_temp: 167  # ~6000K - Very cool white, energizing
+      transition: 5
 
 - name: Living Working
   entities:
@@ -129,6 +130,7 @@
       state: 'on'
       brightness: 235  # 92%
       color_temp: 200  # ~5000K - Cool white, good for productivity
+      transition: 5
 
 - name: Living Reading
   entities:
@@ -136,6 +138,7 @@
       state: 'on'
       brightness: 220  # 86%
       color_temp: 238  # ~4200K - Neutral white, easy on eyes
+      transition: 5
 
 - name: Living Evening
   entities:
@@ -143,6 +146,7 @@
       state: 'on'
       brightness: 170  # 67%
       color_temp: 313  # ~3200K - Warm white, relaxing
+      transition: 5
 
 - name: Living Relaxation
   entities:
@@ -150,6 +154,7 @@
       state: 'on'
       brightness: 115  # 45%
       color_temp: 370  # ~2700K - Very warm, cozy
+      transition: 5
 
 - name: Living Night
   entities:
@@ -157,6 +162,7 @@
       state: 'on'
       brightness: 45   # 18%
       color_temp: 454  # ~2200K - Extra warm, minimal blue light
+      transition: 5
 
 # table
 
