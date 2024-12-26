@@ -1,4 +1,4 @@
-living_room_scene_switch:
+room_scene_switch_transition:
   alias: "Switch Room Scene with transition"
   sequence:
     - service: scene.turn_on
