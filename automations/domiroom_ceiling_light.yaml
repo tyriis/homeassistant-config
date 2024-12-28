@@ -1,0 +1,16 @@
+# Automation to turn on the ceiling light when motion is detected in the room
+alias: Domiroom Ceiling Light motion automation
+trigger:
+  - platform: state
+    entity_id: group.motion_domiroom
+    to: "on"
+condition:
+  - condition: time
+    after: "09:00:00"
+    before: "22:00:00"
+  - condition: numeric_state
+    entity_id: sensor.aqara_wall_outlet_dominikroom_power  # Ersetze mit deiner Steckdosen Entity ID
+    below: 50  # TV is off if power is bellow
+  - service: light.turn_on
+    target:
+      entity_id: light.led_ceiling_light_domiroom  # Ersetze mit deiner Deckenlampen Entity ID
