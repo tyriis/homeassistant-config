@@ -1,3 +1,4 @@
+---
 alias: Bathroom Nanoleaf Skylight motion automation
 triggers:
   - trigger: state

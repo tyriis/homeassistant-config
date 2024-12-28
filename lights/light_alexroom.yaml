@@ -1,3 +1,4 @@
+---
 # platform: mqtt
 name: led ceiling light alexroom
 state_topic: ESPHome/switch_alexroom/switch/switch_alexroom_relay/state

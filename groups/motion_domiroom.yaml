@@ -1,3 +1,4 @@
+---
 name: motion domiroom
 entities:
   - binary_sensor.aqara_motion_domiroom_occupancy

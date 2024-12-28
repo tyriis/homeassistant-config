@@ -1,3 +1,4 @@
+---
 name: motion alexroom
 entities:
   - binary_sensor.aqara_motion_alexroom_occupancy

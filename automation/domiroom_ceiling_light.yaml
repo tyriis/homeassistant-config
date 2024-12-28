@@ -1,3 +1,4 @@
+---
 # Automation to turn on the ceiling light when motion is detected in the room
 alias: Domiroom Ceiling Light motion automation
 trigger:

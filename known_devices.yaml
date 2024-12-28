@@ -1,3 +1,4 @@
+---
 s20_nils_home:
   name: s20-nils.home # Host name or "Unnamed Device"  the friendly name of the device.
   mac: "8c:b8:4a:f6:c9:30" # The MAC address of the device. Add this if you are using a network device tracker like Nmap or SNMP.

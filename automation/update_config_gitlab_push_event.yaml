@@ -1,3 +1,4 @@
+---
 alias: Update Configuration on Gitlab Push Event
 id: update_config_gitlab_push_event
 trigger:

@@ -1,3 +1,4 @@
+---
 name: motion downstairs
 entities:
   - binary_sensor.mijia_motion_stairs_occupancy

@@ -1,3 +1,4 @@
+---
 # This stops working in version 2023.4.0. Please address before upgrading.
 # broker: mqtt.home
 # discovery: true

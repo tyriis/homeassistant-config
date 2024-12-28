@@ -1,3 +1,4 @@
+---
 # Automation to turn on the nanoleaf shape when computer is on
 alias: Domiroom Nanoleaf automation
 triggers:
