@@ -1,0 +1,7 @@
+name: Basement Concentration
+icon: mdi:head-snowflake-outline
+entities:
+  light.basement:
+    state: 'on'
+    brightness: 255  # 100%
+    color_temp: 250  # Coolest white - most energizing (~ 4000K)

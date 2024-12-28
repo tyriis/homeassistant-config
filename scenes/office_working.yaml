@@ -1,0 +1,7 @@
+name: Office Working
+icon: mdi:briefcase
+entities:
+  light.office:
+    state: 'on'
+    brightness: 235  # 92%
+    color_temp: 270  # Slightly warmer but still cool (~ 3700K)

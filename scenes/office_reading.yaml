@@ -1,0 +1,7 @@
+name: Office Reading
+icon: mdi:book-open-page-variant-outline
+entities:
+  light.office:
+    state: 'on'
+    brightness: 220  # 86%
+    color_temp: 300  # Balanced neutral (~ 3300K)

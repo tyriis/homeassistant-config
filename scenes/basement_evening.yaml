@@ -1,0 +1,7 @@
+name: Basement Evening
+icon: mdi:weather-sunset-down
+entities:
+  light.basement:
+    state: 'on'
+    brightness: 170  # 67%
+    color_temp: 350  # Warmer (~ 2850K)
