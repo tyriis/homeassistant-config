@@ -1,0 +1,14 @@
+alias: Update Configuration on Gitlab Push Event
+id: update_config_gitlab_push_event
+
+trigger:
+  - platform: webhook
+    webhook_id: !secret webhook_id
+    allowed_methods:
+      - POST
+      - PUT
+    local_only: true
+
+action:
+  - service: shell_command.update_config
+  - service: homeassistant.restart

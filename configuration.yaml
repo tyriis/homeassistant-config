@@ -20,7 +20,8 @@ tts:
 
 group: !include_dir_named groups/
 # input_number: !include_dir_merge_named input_number
-automation: !include automations.yaml
+# automation: !include automations.yaml
+automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 # climate:  !include_dir_list climates/
