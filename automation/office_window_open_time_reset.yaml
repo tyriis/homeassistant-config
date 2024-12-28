@@ -1,0 +1,13 @@
+---
+alias: Reset Office Window Open Time Daily
+description: Resets the window open counter at midnight
+triggers:
+  - platform: time
+    at: "00:00:00"
+actions:
+  - service: input_number.set_value
+    target:
+      entity_id: input_number.office_window_open_counter
+    data:
+      value: 0
+mode: single

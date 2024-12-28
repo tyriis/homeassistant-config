@@ -1,0 +1,15 @@
+---
+alias: Count Office Window Open Time
+description: Increments the window open counter every second when window is open
+triggers:
+  - platform: time_pattern
+    seconds: "/1"
+conditions:
+  - condition: state
+    entity_id: binary_sensor.aqara_contact_window_office_contact
+    state: "on"
+actions:
+  - service: input_number.increment
+    target:
+      entity_id: input_number.office_window_open_counter
+mode: single

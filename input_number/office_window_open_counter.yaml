@@ -1,0 +1,6 @@
+---
+office_window_open_counter:
+  name: Office Window Open Counter
+  initial: 0
+  min: 0
+  step: 1
