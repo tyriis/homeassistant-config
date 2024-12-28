@@ -1,5 +1,6 @@
 ---
 name: Table Relax
+icon: mdi:sofa
 entities:
   light.table:
     state: "on"

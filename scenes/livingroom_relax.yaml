@@ -1,5 +1,6 @@
 ---
 name: Livingroom Relax
+icon: mdi:sofa
 entities:
   light.livingroom:
     state: "on"

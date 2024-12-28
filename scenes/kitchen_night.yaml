@@ -1,5 +1,6 @@
 ---
 name: Kitchen Night
+icon: mdi:weather-night
 entities:
   light.kitchen:
     state: "on"

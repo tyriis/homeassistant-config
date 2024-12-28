@@ -1,5 +1,6 @@
 ---
 name: Downstairs Relax
+icon: mdi:sofa
 entities:
   group.lights_downstairs:
     state: "on"

@@ -1,5 +1,6 @@
 ---
 name: Livingroom Working
+icon: mdi:briefcase
 entities:
   light.livingroom:
     state: "on"

@@ -1,5 +1,6 @@
 ---
 name: Table Working
+icon: mdi:briefcase
 entities:
   light.table:
     state: "on"

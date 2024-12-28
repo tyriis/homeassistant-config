@@ -1,5 +1,6 @@
 ---
 name: Living Night
+icon: mdi:weather-night
 entities:
   light.livingroom:
     state: "on"

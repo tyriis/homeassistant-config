@@ -1,5 +1,6 @@
 ---
 name: Livingroom Concentration
+icon: mdi:head-snowflake-outline
 entities:
   light.livingroom:
     state: "on"

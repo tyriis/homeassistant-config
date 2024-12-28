@@ -1,5 +1,6 @@
 ---
 name: Kitchen Working
+icon: mdi:briefcase
 entities:
   light.kitchen:
     state: "on"

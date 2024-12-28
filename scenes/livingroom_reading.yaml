@@ -1,5 +1,6 @@
 ---
 name: Livingroom Reading
+icon: mdi:book-open-page-variant-outline
 entities:
   light.livingroom:
     state: "on"

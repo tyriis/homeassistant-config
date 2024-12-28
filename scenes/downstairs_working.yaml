@@ -1,5 +1,6 @@
 ---
 name: Downstairs Working
+icon: mdi:briefcase
 entities:
   group.lights_downstairs:
     state: "on"

@@ -1,5 +1,6 @@
 ---
 name: Kitchen Evening
+icon: mdi:weather-sunset-down
 entities:
   light.kitchen:
     state: "on"

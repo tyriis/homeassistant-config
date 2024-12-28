@@ -1,5 +1,6 @@
 ---
 name: Livingroom Evening
+icon: mdi:weather-sunset-down
 entities:
   light.livingroom:
     state: "on"

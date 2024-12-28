@@ -1,5 +1,6 @@
 ---
 name: Downstairs Reading
+icon: mdi:book-open-page-variant-outline
 entities:
   group.lights_downstairs:
     state: "on"

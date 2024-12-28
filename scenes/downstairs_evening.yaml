@@ -1,5 +1,6 @@
 ---
 name: Downstairs Evening
+icon: mdi:weather-sunset-down
 entities:
   group.lights_downstairs:
     state: "on"

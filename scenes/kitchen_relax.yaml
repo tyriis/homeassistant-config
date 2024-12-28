@@ -1,5 +1,6 @@
 ---
 name: Kitchen Relax
+icon: mdi:sofa
 entities:
   light.kitchen:
     state: "on"

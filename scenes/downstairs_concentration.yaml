@@ -1,5 +1,6 @@
 ---
 name: Downstairs Concentration
+icon: mdi:head-snowflake-outline
 entities:
   group.lights_downstairs:
     state: "on"

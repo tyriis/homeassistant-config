@@ -1,5 +1,6 @@
 ---
 name: Kitchen Reading
+icon: mdi:book-open-page-variant-outline
 entities:
   light.kitchen:
     state: "on"

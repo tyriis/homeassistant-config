@@ -1,5 +1,6 @@
 ---
 name: Table Concentration
+icon: mdi:head-snowflake-outline
 entities:
   light.table:
     state: "on"

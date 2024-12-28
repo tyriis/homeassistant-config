@@ -1,5 +1,6 @@
 ---
 name: Table Night
+icon: mdi:weather-night
 entities:
   light.table:
     state: "on"

@@ -1,5 +1,7 @@
 ---
 name: Table Evening
+icon: mdi:weather-sunset-down
+color: "#ff9800"
 entities:
   light.table:
     state: "on"
