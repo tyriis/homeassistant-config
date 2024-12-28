@@ -23,23 +23,9 @@ group: !include_dir_named groups/
 # automation: !include automations.yaml
 automation: !include_dir_list automation/
 script: !include scripts.yaml
-scene: !include scenes.yaml
+# scene: !include scenes.yaml
+scene: !include_dir_list scenes/
 # climate:  !include_dir_list climates/
-
-#scence:
-#- name: night livingroom
-#  icon: "mdi:movie"
-#  entities:
-#    group.lights_living_downstairs:
-#      brightness: 1
-# color_temp: 447
-
-#- name: morning livingroom
-#  icon: "mdi:coffee"
-#  entities:
-#    - entity: group.lights_living_downstairs
-#      brightness: 255
-# color_temp: 230
 
 # Prometheus configuration
 prometheus: !include prometheus.yaml
