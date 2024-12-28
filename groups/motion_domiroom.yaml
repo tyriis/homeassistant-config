@@ -1,4 +1,4 @@
 name: motion domiroom
 entities:
   - binary_sensor.aqara_motion_domiroom_occupancy
-  - binary_sensor.sensor_domiroom_sr501_pir_motion
+  # - binary_sensor.sensor_domiroom_sr501_pir_motion

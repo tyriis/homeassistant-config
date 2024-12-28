@@ -41,5 +41,3 @@ name: motion basement
 entities:
   - binary_sensor.mijia_motion_basement_stairs_down_occupancy
   - binary_sensor.mijia_motion_basement_stairs_up_occupancy
-  - binary_sensor.sensor_basement_sr501_pir_motion
-# all: true
