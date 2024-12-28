@@ -2,6 +2,6 @@ name: Office Evening
 icon: mdi:weather-sunset-down
 entities:
   light.office:
-    state: 'on'
-    brightness: 170  # 67%
-    color_temp: 350  # Warmer (~ 2850K)
+    state: "on"
+    brightness: 170 # 67%
+    color_temp: 350 # Warmer (~ 2850K)

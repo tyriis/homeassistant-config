@@ -15,11 +15,11 @@ button_card_templates:
     hold_action:
       action: more-info
     state:
-      - value: 'off'
+      - value: "off"
         styles:
           icon:
             - color: var(--primary-color)
-      - value: 'on'
+      - value: "on"
         styles:
           card:
             - background-image: >-

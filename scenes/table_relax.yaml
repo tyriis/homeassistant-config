@@ -1,6 +1,6 @@
 name: Table Relax
 entities:
   light.table:
-    state: 'on'
-    brightness: 115  # 45%
-    color_temp: 370  # ~2700K - Very warm, cozy
+    state: "on"
+    brightness: 115 # 45%
+    color_temp: 370 # ~2700K - Very warm, cozy

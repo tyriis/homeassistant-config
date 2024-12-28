@@ -41,4 +41,3 @@ name: motion office
 entities:
   - binary_sensor.aqara_motion_office_occupancy
   - binary_sensor.mijia_motion_office_occupancy
-

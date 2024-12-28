@@ -26,7 +26,6 @@ cards:
       method: state
       numeric: true
 
-
   # - type: custom:auto-entities
   #   show_empty: false
   #   card:

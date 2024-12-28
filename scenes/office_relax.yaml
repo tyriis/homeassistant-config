@@ -2,6 +2,6 @@ name: Office Relax
 icon: mdi:sofa
 entities:
   light.office:
-    state: 'on'
-    brightness: 115  # 45%
-    color_temp: 400  # Very warm (~ 2500K)
+    state: "on"
+    brightness: 115 # 45%
+    color_temp: 400 # Very warm (~ 2500K)

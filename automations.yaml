@@ -75,7 +75,6 @@
     - service: shell_command.update_config
     - service: homeassistant.restart
 
-
 - alias: Count Motion Active Minutes Aqara Office
   id: count_motion_active_minutes_aqara_office
   description: Increments the motion active minutes counter every minute

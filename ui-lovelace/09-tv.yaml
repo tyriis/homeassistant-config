@@ -5,7 +5,6 @@ badges: []
 cards:
   - type: vertical-stack
     cards:
-
       - type: custom:mushroom-light-card
         entity: light.elements_d689
         show_brightness_control: true
@@ -32,7 +31,6 @@ cards:
 
   - type: vertical-stack
     cards:
-
       - type: custom:mini-graph-card
         name: temperature
         entities:
@@ -191,7 +189,6 @@ cards:
 
   - type: vertical-stack
     cards:
-
       - type: custom:mini-graph-card
         name: heating
         entities:
@@ -214,15 +211,15 @@ cards:
             label: Day
         color_thresholds:
           - value: 27.1
-            color: '#ff0000'
+            color: "#ff0000"
           - value: 26.5
-            color: '#ffba00'
+            color: "#ffba00"
           - value: 25.5
-            color: '#00aa99'
+            color: "#00aa99"
           - value: 24.5
-            color: '#0090ff'
+            color: "#0090ff"
           - value: 22.5
-            color: '#004e8b'
+            color: "#004e8b"
         hours_to_show: 24
         points_per_hour: 4
         # height: 74
@@ -252,12 +249,11 @@ cards:
         card:
           type: custom:mushroom-entity-card
         # name: "{{ entity.name.split(' ')[-2:] | join(' ') }}"
-          # secondary_info: state
-          # tap_action:
-          #   action: more-info
+        # secondary_info: state
+        # tap_action:
+        #   action: more-info
         sort:
           method: name
-
 
       - type: custom:mushroom-entity-card
         entity: sensor.aqara_climate_livingroom_battery
@@ -270,4 +266,3 @@ cards:
       - type: custom:mushroom-entity-card
         entity: sensor.aqara_contact_window_livingroom_battery
         name: window battery
-

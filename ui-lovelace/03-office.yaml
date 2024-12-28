@@ -10,12 +10,12 @@ badges:
     show_state: true
     show_icon: true
     entity: binary_sensor.aqara_contact_window_office_contact
-    color: ''
+    color: ""
     state_content: state
     visibility:
       - condition: state
         entity: binary_sensor.aqara_contact_window_office_contact
-        state: 'on'
+        state: "on"
   - type: entity
     show_name: false
     show_state: true
@@ -158,10 +158,10 @@ sections:
         name: temperature
         entities:
           - entity: sensor.aqara_climate_office_temperature
-            color: '#E74C3C'
+            color: "#E74C3C"
             name: aqara1
           - entity: sensor.aqara_climate_office_2_temperature
-            color: '#ff9800'
+            color: "#ff9800"
             name: aqara2
           - entity: sun.sun
             color: gray
@@ -190,13 +190,13 @@ sections:
           labels_secondary: false
         color_thresholds:
           - value: 25
-            color: '#e74c3c'
+            color: "#e74c3c"
           - value: 15
-            color: '#1db954'
+            color: "#1db954"
           - value: -1
-            color: '#3498db'
+            color: "#3498db"
           - value: -100
-            color: '#e74c3c'
+            color: "#e74c3c"
   - type: grid
     cards:
       - type: heading
@@ -219,10 +219,10 @@ sections:
         name: humidity
         entities:
           - entity: sensor.aqara_climate_office_humidity
-            color: '#3498DB'
+            color: "#3498DB"
             name: aqara1
           - entity: sensor.aqara_climate_office_2_humidity
-            color: '#5f37db'
+            color: "#5f37db"
             name: aqara2
           - entity: sun.sun
             color: gray
@@ -250,13 +250,13 @@ sections:
           labels_secondary: false
         color_thresholds:
           - value: 50
-            color: '#e74c3c'
+            color: "#e74c3c"
           - value: 35
-            color: '#1db954'
+            color: "#1db954"
           - value: 25
-            color: '#3498db'
+            color: "#3498db"
           - value: -100
-            color: '#e74c3c'
+            color: "#e74c3c"
   - type: grid
     cards:
       - type: heading
@@ -275,7 +275,7 @@ sections:
         name: motion
         entities:
           - entity: binary_sensor.aqara_motion_office_occupancy
-            color: '#90EE90'
+            color: "#90EE90"
             name: aqara
           - entity: sun.sun
             color: gray
@@ -293,15 +293,15 @@ sections:
         hour24: true
         state_map:
           - label: Clear
-            value: 'off'
+            value: "off"
           - label: Detected
-            value: 'on'
+            value: "on"
           - value: below_horizon
             label: Night
           - value: above_horizon
             label: Day
         update_interval: 60
-        line_color: '#90EE90'
+        line_color: "#90EE90"
         show:
           state: false
           icon: false
@@ -327,7 +327,7 @@ sections:
         name: motion
         entities:
           - entity: binary_sensor.mijia_motion_office_occupancy
-            color: '#90EE90'
+            color: "#90EE90"
             name: mijia
           - entity: sun.sun
             color: gray
@@ -345,15 +345,15 @@ sections:
         hour24: true
         state_map:
           - label: Clear
-            value: 'off'
+            value: "off"
           - label: Detected
-            value: 'on'
+            value: "on"
           - value: below_horizon
             label: Night
           - value: above_horizon
             label: Day
         update_interval: 60
-        line_color: '#90EE90'
+        line_color: "#90EE90"
         show:
           state: false
           icon: false
@@ -405,10 +405,9 @@ sections:
           labels_secondary: false
         color_thresholds:
           - value: 100
-            color: '#ff9800'
+            color: "#ff9800"
           - value: 25
-            color: '#8d8d8d'
+            color: "#8d8d8d"
           - value: -100
-            color: '#e74c3c'
+            color: "#e74c3c"
 cards: []
-

@@ -1,6 +1,6 @@
 name: Downstairs Relaxation
 entities:
   group.lights_downstairs:
-    state: 'on'
-    brightness: 115  # 45%
-    color_temp: 370  # ~2700K - Very warm, cozy
+    state: "on"
+    brightness: 115 # 45%
+    color_temp: 370 # ~2700K - Very warm, cozy

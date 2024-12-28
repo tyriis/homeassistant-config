@@ -1,6 +1,6 @@
 name: Living Night
 entities:
   light.livingroom:
-    state: 'on'
-    brightness: 45   # 18%
-    color_temp: 454  # ~2200K - Extra warm, minimal blue light
+    state: "on"
+    brightness: 45 # 18%
+    color_temp: 454 # ~2200K - Extra warm, minimal blue light

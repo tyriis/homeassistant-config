@@ -1,6 +1,6 @@
 name: Kitchen Evening
 entities:
   light.kitchen:
-    state: 'on'
-    brightness: 170  # 67%
-    color_temp: 313  # ~3200K - Warm white, relaxing
+    state: "on"
+    brightness: 170 # 67%
+    color_temp: 313 # ~3200K - Warm white, relaxing

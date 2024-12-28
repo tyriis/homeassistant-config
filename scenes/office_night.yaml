@@ -2,6 +2,6 @@ name: Office Night
 icon: mdi:weather-night
 entities:
   light.office:
-    state: 'on'
-    brightness: 45   # 18%
-    color_temp: 454  # Warmest possible (~ 2200K)
+    state: "on"
+    brightness: 45 # 18%
+    color_temp: 454 # Warmest possible (~ 2200K)

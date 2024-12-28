@@ -2,6 +2,6 @@ name: Basement Working
 icon: mdi:briefcase
 entities:
   light.basement:
-    state: 'on'
-    brightness: 235  # 92%
-    color_temp: 270  # Slightly warmer but still cool (~ 3700K)
+    state: "on"
+    brightness: 235 # 92%
+    color_temp: 270 # Slightly warmer but still cool (~ 3700K)

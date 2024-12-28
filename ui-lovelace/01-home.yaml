@@ -29,7 +29,7 @@ badges:
     show_state: true
     show_icon: true
     entity: lock.nuki
-    color: ''
+    color: ""
     visibility:
       - condition: state
         entity: lock.nuki
@@ -39,7 +39,7 @@ badges:
     show_state: true
     show_icon: true
     entity: sensor.nuki_battery
-    color: ''
+    color: ""
     visibility:
       - condition: numeric_state
         entity: sensor.nuki_battery
@@ -252,7 +252,7 @@ sections:
         fill_container: false
         primary_info: name
         hvac_modes:
-          - 'off'
+          - "off"
           - cool
         show_temperature_control: false
         name: AC
@@ -280,7 +280,7 @@ sections:
         visibility:
           - condition: state
             entity: media_player.shield_android_tv
-            state_not: 'off'
+            state_not: "off"
   - type: grid
     cards:
       - type: heading
@@ -335,7 +335,7 @@ sections:
         fill_container: false
         primary_info: name
         hvac_modes:
-          - 'off'
+          - "off"
           - cool
         show_temperature_control: false
         name: AC
@@ -422,7 +422,7 @@ sections:
         fill_container: false
         primary_info: name
         hvac_modes:
-          - 'off'
+          - "off"
           - cool
         show_temperature_control: false
         name: AC
@@ -496,7 +496,7 @@ sections:
         fill_container: false
         primary_info: name
         hvac_modes:
-          - 'off'
+          - "off"
           - cool
         show_temperature_control: false
         name: AC
@@ -577,7 +577,7 @@ sections:
         fill_container: false
         primary_info: name
         hvac_modes:
-          - 'off'
+          - "off"
           - cool
         show_temperature_control: false
         name: AC
@@ -827,15 +827,15 @@ sections:
             label: Day
         color_thresholds:
           - value: 27.1
-            color: '#ff0000'
+            color: "#ff0000"
           - value: 26.5
-            color: '#ffba00'
+            color: "#ffba00"
           - value: 25.5
-            color: '#00aa99'
+            color: "#00aa99"
           - value: 24.5
-            color: '#0090ff'
+            color: "#0090ff"
           - value: 22.5
-            color: '#004e8b'
+            color: "#004e8b"
         hours_to_show: 24
         points_per_hour: 4
         line_width: 2
@@ -883,15 +883,15 @@ sections:
             label: Day
         color_thresholds:
           - value: 27.1
-            color: '#ff0000'
+            color: "#ff0000"
           - value: 26.5
-            color: '#ffba00'
+            color: "#ffba00"
           - value: 25.5
-            color: '#00aa99'
+            color: "#00aa99"
           - value: 24.5
-            color: '#0090ff'
+            color: "#0090ff"
           - value: 22.5
-            color: '#004e8b'
+            color: "#004e8b"
         hours_to_show: 24
         points_per_hour: 4
         line_width: 2
@@ -907,7 +907,3 @@ sections:
           labels: false
           labels_secondary: false
           extrema: true
-
-
-
-
