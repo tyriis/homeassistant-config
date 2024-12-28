@@ -1,0 +1,6 @@
+name: Kitchen Concentration
+entities:
+  light.kitchen:
+    state: 'on'
+    brightness: 255  # 100%
+    color_temp: 167  # ~6000K - Very cool white, energizing

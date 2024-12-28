@@ -1,0 +1,6 @@
+name: Table Reading
+entities:
+  light.table:
+    state: 'on'
+    brightness: 220  # 86%
+    color_temp: 238  # ~4200K - Neutral white, easy on eyes

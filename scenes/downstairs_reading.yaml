@@ -1,0 +1,6 @@
+name: Downstairs Reading
+entities:
+  group.lights_downstairs:
+    state: 'on'
+    brightness: 220  # 86%
+    color_temp: 238  # ~4200K - Neutral white, easy on eyes

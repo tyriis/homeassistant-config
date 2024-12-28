@@ -1,0 +1,6 @@
+name: Table Night
+entities:
+  light.table:
+    state: 'on'
+    brightness: 45   # 18%
+    color_temp: 454  # ~2200K - Extra warm, minimal blue light

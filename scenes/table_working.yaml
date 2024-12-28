@@ -1,0 +1,6 @@
+name: Table Working
+entities:
+  light.table:
+    state: 'on'
+    brightness: 235  # 92%
+    color_temp: 200  # ~5000K - Cool white, good for productivity

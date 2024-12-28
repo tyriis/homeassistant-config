@@ -1,0 +1,6 @@
+name: Downstairs Evening
+entities:
+  group.lights_downstairs:
+    state: 'on'
+    brightness: 170  # 67%
+    color_temp: 313  # ~3200K - Warm white, relaxing
