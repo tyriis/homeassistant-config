@@ -8,8 +8,8 @@ triggers:
     to: "on"
   - platform: time_pattern
     minutes: "/1"
-condition: []
-action:
+conditions: []
+actions:
   - choose:
       - conditions:
           - condition: state
