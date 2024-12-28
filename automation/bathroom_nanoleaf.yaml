@@ -13,6 +13,9 @@ actions:
           - condition: state
             entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
             state: "on"
+          - condition: time
+            after: "08:00:00"
+            before: "00:00:00"
           - condition: state
             entity_id: light.skylight_8a41
             state: "off"
@@ -20,6 +23,24 @@ actions:
           - action: light.turn_on
             target:
               entity_id: light.skylight_8a41
+            data:
+              brightness: 255
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
+            state: "on"
+          - condition: time
+            after: "00:00:00"
+            before: "08:00:00"
+          - condition: state
+            entity_id: light.skylight_8a41
+            state: "off"
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.skylight_8a41
+            data:
+              brightness: 77
       - conditions:
           - condition: state
             entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
