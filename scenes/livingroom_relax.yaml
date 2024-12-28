@@ -1,4 +1,5 @@
-name: Livingroom Relaxation
+---
+name: Livingroom Relax
 entities:
   light.livingroom:
     state: "on"
