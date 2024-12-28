@@ -1,14 +1,8 @@
 ---
 alias: Bathroom Nanoleaf Skylight motion automation
 triggers:
-  - trigger: state
-    entity_id:
-      - binary_sensor.sensor_bathroom_sr501_pir_motion
-    to: "off"
-    for:
-      hours: 0
-      minutes: 10
-      seconds: 0
+  - platform: time_pattern
+    minutes: "/1"
   - trigger: state
     entity_id:
       - binary_sensor.sensor_bathroom_sr501_pir_motion
@@ -19,6 +13,9 @@ actions:
           - condition: state
             entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
             state: "on"
+          - condition: state
+            entity_id: light.skylight_8a41
+            state: "off"
         sequence:
           - action: light.turn_on
             target:
@@ -31,6 +28,9 @@ actions:
               hours: 0
               minutes: 10
               seconds: 0
+          - condition: state
+            entity_id: light.skylight_8a41
+            state: "on"
         sequence:
           - action: light.turn_off
             target:
