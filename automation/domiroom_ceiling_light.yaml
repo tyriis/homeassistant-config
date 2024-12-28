@@ -11,6 +11,7 @@ condition:
   - condition: numeric_state
     entity_id: sensor.aqara_wall_outlet_dominikroom_power  # Ersetze mit deiner Steckdosen Entity ID
     below: 50  # TV is off if power is bellow
-  - service: light.turn_on
+actions:
+  - action: light.turn_on
     target:
       entity_id: light.led_ceiling_light_domiroom  # Ersetze mit deiner Deckenlampen Entity ID
