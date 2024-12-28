@@ -1,0 +1,6 @@
+---
+name: lights basement
+entities:
+  - light.basement
+  - light.gledopto_dimmer_stairs_basement
+icon: mdi:lightbulb
