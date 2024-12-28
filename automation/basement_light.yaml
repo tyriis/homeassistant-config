@@ -69,6 +69,10 @@ action:
           - condition: state
             entity_id: group.motion_basement
             state: "off"
+            for:
+              hours: 0
+              minutes: 10
+              seconds: 0
           - condition: or
             conditions:
               - condition: state

@@ -5,14 +5,12 @@ triggers:
   - trigger: numeric_state
     entity_id:
       - sensor.aqara_wall_outlet_dominikroom_power
-    for:
-      seconds: 10
     above: 100
   - trigger: numeric_state
     entity_id:
       - sensor.aqara_wall_outlet_dominikroom_power
     for:
-      minutes: 30
+      seconds: 10
     below: 100
 actions:
   - choose:
