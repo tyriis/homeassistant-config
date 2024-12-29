@@ -160,6 +160,18 @@ sections:
         name: Alexroom
         icon: mdi:lightbulb-variant
         show_entity_picture: false
+      - type: tile
+        entity: light.skylight_8a41
+        icon_tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        vertical: false
+        hide_state: false
+        name: Bathroom
+        icon: mdi:wall-sconce-flat
+        show_entity_picture: false
+        state_content: effect
   - type: grid
     cards:
       - type: heading
@@ -623,6 +635,14 @@ sections:
             entity: sensor.aqara_climate_bathroom_humidity
             color: blue
         heading: Bathroom
+      - type: tile
+        entity: light.skylight_8a41
+        name: Nanoleaf Skylight
+        icon: mdi:wall-sconce-flat
+        show_entity_picture: false
+        state_content:
+          - state
+          - effect
       - type: tile
         entity: light.sensor_bathroom_nightlight
         name: Nightlight
