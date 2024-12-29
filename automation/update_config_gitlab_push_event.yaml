@@ -1,5 +1,6 @@
 ---
 alias: Update Configuration on Gitlab Push Event
+mode: single
 id: update_config_gitlab_push_event
 trigger:
   - platform: webhook

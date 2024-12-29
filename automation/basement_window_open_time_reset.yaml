@@ -1,6 +1,6 @@
 ---
-alias: Reset Office Window Open Time Daily
-id: office_window_open_time_reset
+alias: Reset Basement Window Open Time Daily
+id: basement_window_open_time_reset
 description: Resets the window open counter at midnight
 mode: single
 triggers:
@@ -9,6 +9,6 @@ triggers:
 actions:
   - service: input_number.set_value
     target:
-      entity_id: input_number.office_window_open_counter
+      entity_id: input_number.basement_window_open_counter
     data:
       value: 0

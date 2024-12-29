@@ -1,6 +1,8 @@
 ---
-# Automation to turn on the ceiling light when motion is detected in the room
 alias: Domiroom Ceiling Light motion automation
+id: domiroom_ceiling_light
+description: Turn on the ceiling light when motion is detected in the room
+mode: single
 trigger:
   - platform: state
     entity_id: group.motion_domiroom

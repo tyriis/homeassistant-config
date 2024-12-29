@@ -1,5 +1,6 @@
 ---
 alias: Basement Lighting Control
+id: basement_lighting
 mode: single
 triggers:
   - trigger: state

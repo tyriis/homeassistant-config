@@ -1,5 +1,7 @@
 ---
 alias: Bathroom Nanoleaf Skylight motion automation
+id: bathroom_nanoleaf
+mode: single
 triggers:
   - platform: time_pattern
     minutes: "/1"

@@ -1,6 +1,8 @@
 ---
-# Automation to turn on the nanoleaf shape when computer is on
 alias: Domiroom Nanoleaf automation
+id: domiroom_nanoleaf
+description: Turn on the nanoleaf shape when computer is on
+mode: single
 triggers:
   - trigger: numeric_state
     entity_id:
