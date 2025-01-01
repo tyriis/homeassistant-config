@@ -1,16 +1,18 @@
 ---
 alias: Count Office Window Open Time
 id: office_window_open_time_count
-description: Increments the window open counter every second when window is open
-mode: single
+description: Increments the window open counter by 15 every 15 seconds when window is open
 triggers:
   - platform: time_pattern
-    seconds: "/1"
+    seconds: "/15"
 conditions:
   - condition: state
     entity_id: binary_sensor.aqara_contact_window_office_contact
     state: "on"
 actions:
-  - service: input_number.increment
+  - service: input_number.set_value
     target:
       entity_id: input_number.office_window_open_counter
+    data:
+      value: "{{ states('input_number.office_window_open_counter') | float + 15 }}"
+mode: single
