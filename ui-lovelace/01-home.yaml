@@ -501,9 +501,12 @@ sections:
         state_content: state
         name: Light
       - type: tile
-        entity: light.sensor_domiroom_nightlight
-        name: Nightlight
-        icon: mdi:image-filter-drama
+        entity: light.shapes_a6dc
+        icon: mdi:hexagon-multiple
+        state_content:
+          - state
+          - effect
+        name: Nanoleaf Shapes
       - type: custom:mushroom-climate-card
         entity: climate.hisense_ac_domi
         fill_container: false
@@ -539,6 +542,7 @@ sections:
   - type: grid
     cards:
       - type: heading
+        heading: Alexroom
         heading_style: title
         icon: mdi:alpha-a-box-outline
         badges:
@@ -557,7 +561,6 @@ sections:
             show_icon: true
             entity: sensor.aqara_climate_alexroom_humidity
             color: blue
-        heading: Alexroom
       - type: tile
         entity: light.led_ceiling_light_alexroom
         icon_tap_action:
@@ -581,10 +584,6 @@ sections:
         entity: light.ambient_desk_alex
         icon: mdi:led-strip-variant
         name: desk light
-      - type: tile
-        entity: light.light_alexroom_nightlight
-        name: Nightlight
-        icon: mdi:image-filter-drama
       - type: custom:mushroom-climate-card
         entity: climate.hisense_ac_alex
         fill_container: false
@@ -614,6 +613,9 @@ sections:
           - state
           - last_updated
         name: window
+      - type: tile
+        entity: sensor.aqara_wall_outlet_alexroom_power
+        name: Power
   - type: grid
     cards:
       - type: heading
