@@ -5,82 +5,6 @@ max_columns: 4
 path: office
 icon: mdi:desktop-tower-monitor
 dense_section_placement: true
-badges:
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: binary_sensor.aqara_contact_window_office_contact
-    color: ""
-    state_content: state
-    visibility:
-      - condition: state
-        entity: binary_sensor.aqara_contact_window_office_contact
-        state: "on"
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_office_temperature
-    color: red
-    state_content: state
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_office_humidity
-    color: blue
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_office_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_climate_office_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_office_2_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_climate_office_2_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_motion_office_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_motion_office_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.mijia_motion_office_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.mijia_motion_office_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_contact_window_office_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_contact_window_office_battery
-        below: 70
-    state_content: state
-
 sections:
   - type: grid
     cards:
@@ -92,12 +16,97 @@ sections:
         type: tile
         entity: light.office
         vertical: false
-        hide_state: true
+        hide_state: false
         show_entity_picture: false
         grid_options:
-          rows: 2
-          columns: full
+          rows: 1
+          columns: 12
         name: spots
+        icon: mdi:lightbulb-spot
+        state_content:
+          - state
+          - brightness
+          - color_temp_kelvin
+      - type: heading
+        heading: Scenes
+        heading_style: title
+        icon: mdi:palette
+        badges: []
+      - type: tile
+        entity: scene.office_concentration
+        name: Concentration
+        color: primary
+        hide_state: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.office_evening
+        name: Evening
+        color: deep-orange
+        hide_state: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.office_working
+        color: teal
+        hide_state: true
+        name: Working
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.office_relax
+        name: Relax
+        color: amber
+        hide_state: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.office_reading
+        color: deep-purple
+        hide_state: true
+        name: Reading
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.office_night
+        hide_state: true
+        name: Night
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+  - type: grid
+    cards:
+      - type: heading
+        heading: Climate
+        heading_style: title
+        visibility:
+          - condition: numeric_state
+            entity: sensor.weather_forecast_temperature_forecast
+            above: 24
+      - type: custom:mushroom-climate-card
+        entity: climate.hisense_ac_office
+        name: AC
+        fill_container: false
+        hvac_modes:
+          - cool
+        show_temperature_control: true
+        layout: horizontal
+        collapsible_controls: false
+        visibility:
+          - condition: numeric_state
+            entity: sensor.weather_forecast_temperature_forecast
+            above: 24
       - type: heading
         heading_style: title
         heading: IR Panels
@@ -120,24 +129,16 @@ sections:
         state_content: state
         icon_tap_action:
           action: more-info
-  - type: grid
-    cards:
-      - type: heading
-        heading: Climate
-        heading_style: title
-      - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_office
-        name: AC
-        fill_container: false
-        hvac_modes:
-          - cool
-        show_temperature_control: true
-        layout: horizontal
-        collapsible_controls: false
-    visibility:
-      - condition: numeric_state
-        entity: sensor.weather_forecast_temperature_forecast
-        above: 24
+      - graph: line
+        type: sensor
+        entity: sensor.tuya_a1z_irpanel2_office_power
+        detail: 1
+        name: IR Panel front
+      - graph: line
+        type: sensor
+        entity: sensor.tuya_a1z_irpanel1_office_power
+        detail: 1
+        name: IR Panel back
   - type: grid
     cards:
       - type: heading
@@ -402,13 +403,96 @@ sections:
           state: false
           icon: false
           extrema: true
-          icon_adaptive_color: true
           labels_secondary: false
-        color_thresholds:
-          - value: 100
-            color: "#ff9800"
-          - value: 25
-            color: "#8d8d8d"
-          - value: -100
-            color: "#e74c3c"
+  - type: grid
+    cards:
+      - type: heading
+        heading: Power
+        heading_style: title
+      - graph: line
+        type: sensor
+        entity: sensor.tuya_a1z_nils_office_power
+        detail: 2
+        name: Nils
 cards: []
+badges:
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_window_office_contact
+    color: ""
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_window_office_contact
+        state: "on"
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_temperature
+    color: red
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_humidity
+    color: blue
+    state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_office_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_office_2_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_office_2_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_motion_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_motion_office_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.mijia_motion_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.mijia_motion_office_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_window_office_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_contact_window_office_battery
+        below: 70
+    state_content: state
+    color: ""
