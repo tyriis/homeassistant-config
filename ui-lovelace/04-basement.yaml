@@ -4,72 +4,6 @@ type: sections
 max_columns: 4
 path: basement
 icon: mdi:stairs-down
-badges:
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: binary_sensor.aqara_contact_window_basement_contact
-    color: ""
-    state_content: state
-    visibility:
-      - condition: state
-        entity: binary_sensor.aqara_contact_window_basement_contact
-        state: "on"
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_basement_temperature
-    color: red
-    state_content: state
-  - type: entity
-    show_name: false
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_basement_humidity
-    color: blue
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_climate_basement_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_climate_basement_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.mijia_motion_basement_stairs_down_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.mijia_motion_basement_stairs_down_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.mijia_motion_basement_stairs_up_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.mijia_motion_basement_stairs_up_battery
-        below: 70
-    state_content: state
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: sensor.aqara_contact_window_basement_battery
-    visibility:
-      - condition: numeric_state
-        entity: sensor.aqara_contact_window_basement_battery
-        below: 70
-    state_content: state
 sections:
   - type: grid
     cards:
@@ -80,24 +14,83 @@ sections:
           - type: light-brightness
         type: tile
         entity: light.basement
-        vertical: false
-        hide_state: true
-        show_entity_picture: false
         grid_options:
-          rows: 2
-          columns: full
+          rows: 1
+          columns: 12
         name: spots
-      - features:
-          - type: light-brightness
-        type: tile
+        icon: mdi:lightbulb-spot
+        state_content:
+          - state
+          - brightness
+          - color_temp_kelvin
+      - type: tile
         entity: light.gledopto_dimmer_stairs_basement
         vertical: false
-        hide_state: true
+        hide_state: false
         show_entity_picture: false
         grid_options:
-          rows: 2
-          columns: full
+          rows: 1
+          columns: 6
         name: stairs
+        state_content: state
+      - type: heading
+        heading: Scenes
+        heading_style: title
+        icon: mdi:palette
+        badges: []
+      - type: tile
+        entity: scene.basement_concentration
+        name: Concentration
+        color: primary
+        hide_state: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.basement_evening
+        name: Evening
+        color: deep-orange
+        hide_state: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.basement_working
+        color: teal
+        hide_state: true
+        name: Working
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.basement_relax
+        name: Relax
+        color: amber
+        hide_state: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.basement_reading
+        color: deep-purple
+        hide_state: true
+        name: Reading
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: tile
+        entity: scene.basement_night
+        hide_state: true
+        name: Night
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
       - type: tile
         entity: switch.switch_basement_relay
         state_content: state
@@ -311,3 +304,63 @@ sections:
           labels_secondary: false
           icon_adaptive_color: true
           extrema: true
+  - type: grid
+    cards:
+      - type: heading
+        heading: Power
+        heading_style: title
+      - graph: line
+        type: sensor
+        entity: sensor.switch_basement_power
+        detail: 2
+        name: Light
+        hours_to_show: 24
+      - graph: line
+        type: sensor
+        entity: sensor.innr_sp_120_freezer_power
+        detail: 2
+        name: Freezer
+        hours_to_show: 24
+      - graph: line
+        type: sensor
+        entity: sensor.innr_sp_120_airdryer_basement_power
+        detail: 2
+        name: Air Dryer
+        hours_to_show: 24
+  - type: grid
+    cards:
+      - type: heading
+        heading: Fresh air
+        heading_style: title
+        icon: ""
+      - type: tile
+        entity: input_number.basement_window_open_counter
+        name: Window open time
+        hide_state: false
+        state_content: state
+badges:
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: binary_sensor.aqara_contact_window_basement_contact
+    color: ""
+    state_content: state
+    visibility:
+      - condition: state
+        entity: binary_sensor.aqara_contact_window_basement_contact
+        state: "on"
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_basement_temperature
+    color: red
+    state_content: state
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_basement_humidity
+    color: blue
+    state_content: state
