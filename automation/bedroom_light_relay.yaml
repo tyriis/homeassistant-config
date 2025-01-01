@@ -1,0 +1,16 @@
+---
+alias: Bedroom Power on Light Relay if off
+id: bedroom_light_relay
+description: Turn on the bedroom light relay if it is off
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - switch.aqara_wall_switch_bedroom
+    to: "off"
+conditions: []
+actions:
+  - action: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.aqara_wall_switch_bedroom
