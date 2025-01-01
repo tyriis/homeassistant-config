@@ -1,5 +1,5 @@
 ---
-name: Living Night
+name: Livingroom Night
 icon: mdi:weather-night
 entities:
   light.livingroom:
