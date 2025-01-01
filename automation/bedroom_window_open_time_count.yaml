@@ -1,0 +1,18 @@
+---
+alias: Count Bedroom Window Open Time
+id: bedroom_window_open_time_count
+description: Increments the window open counter by 15 every 15 seconds when window is open
+triggers:
+  - platform: time_pattern
+    seconds: "/15"
+conditions:
+  - condition: state
+    entity_id: binary_sensor.aqara_contact_window_bedroom_contact
+    state: "on"
+actions:
+  - service: input_number.set_value
+    target:
+      entity_id: input_number.bedroom_window_open_counter
+    data:
+      value: "{{ states('input_number.bedroom_window_open_counter') | float + 15 }}"
+mode: single

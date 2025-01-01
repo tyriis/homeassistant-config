@@ -1,0 +1,7 @@
+---
+bedroom_window_open_counter:
+  name: Bedroom Window Open Counter
+  icon: mdi:air-filter
+  min: 0
+  max: 86400
+  step: 1
