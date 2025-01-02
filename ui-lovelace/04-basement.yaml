@@ -91,13 +91,6 @@ sections:
           action: toggle
         hold_action:
           action: more-info
-      - type: tile
-        entity: switch.switch_basement_relay
-        state_content: state
-        visibility:
-          - condition: state
-            entity: switch.switch_basement_relay
-            state: "off"
   - type: grid
     cards:
       - type: heading
@@ -364,3 +357,47 @@ badges:
     entity: sensor.aqara_climate_basement_humidity
     color: blue
     state_content: state
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_contact_window_basement_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_contact_window_basement_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.aqara_climate_basement_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.aqara_climate_basement_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.mijia_motion_basement_stairs_down_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.mijia_motion_basement_stairs_down_battery
+        below: 70
+    state_content: state
+    color: ""
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: sensor.mijia_motion_basement_stairs_up_battery
+    visibility:
+      - condition: numeric_state
+        entity: sensor.mijia_motion_basement_stairs_up_battery
+        below: 70
+    state_content: state
+    color: ""
