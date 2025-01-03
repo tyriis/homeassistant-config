@@ -26,7 +26,7 @@ actions:
               - condition: numeric_state
                 entity_id: light.skylight_8a30
                 attribute: brightness
-                below: 100
+                below: 255
         sequence:
           - action: light.turn_on
             target:
@@ -48,7 +48,7 @@ actions:
             target:
               entity_id: light.skylight_8a30
             data:
-              brightness: 50
+              brightness: 51
       - conditions:
           - condition: state
             entity_id: binary_sensor.mijia_motion_kitchen_occupancy
@@ -60,9 +60,13 @@ actions:
           - condition: state
             entity_id: light.skylight_8a30
             state: "on"
+          - condition: numeric_state
+            entity_id: light.skylight_8a30
+            attribute: brightness
+            above: 51
         sequence:
           - action: light.turn_on
             target:
               entity_id: light.skylight_8a30
             data:
-              brightness: 50
+              brightness: 51
