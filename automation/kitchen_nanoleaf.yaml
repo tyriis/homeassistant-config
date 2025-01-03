@@ -18,9 +18,15 @@ actions:
           - condition: time
             after: "07:00:00"
             before: "00:00:00"
-          - condition: state
-            entity_id: light.skylight_8a30
-            state: "off"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.skylight_8a30
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.skylight_8a30
+                attribute: brightness
+                below: 100
         sequence:
           - action: light.turn_on
             target:
