@@ -755,17 +755,17 @@ sections:
             entity: sensor.aqara_climate_kitchen_humidity
             color: blue
       - type: tile
-        entity: light.kitchen
+        entity: light.skylight_8a30
         icon_tap_action:
           action: toggle
         hold_action:
           action: none
         vertical: false
         hide_state: false
-        icon: mdi:lightbulb-spot
+        icon: mdi:wall-sconce-flat
         show_entity_picture: false
-        state_content: color_temp_kelvin
-        name: Spots
+        state_content: effect
+        name: Nanoleaf Skylight
       - type: tile
         entity: sensor.innr_sp_120_fridge_power
         name: fridge

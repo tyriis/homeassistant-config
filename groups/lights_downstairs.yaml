@@ -40,7 +40,8 @@
 #
 name: lights downstairs
 entities:
-  - light.kitchen
+  # - light.kitchen
+  - light.skylight_8a30 # new kitchen light
   - light.table
   - light.livingroom
 icon: mdi:lightbulb
