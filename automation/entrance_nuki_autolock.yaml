@@ -13,19 +13,17 @@ trigger:
   # Second trigger: Lock has been unlocked
   - platform: state
     entity_id: lock.nuki
-    to: "unlocked"
+    to: unlocked
     for:
       minutes: 2
 condition:
   # Conditions for the door closed trigger
-  - conditions:
-      - condition: state
-        entity_id: lock.nuki
-        state: "unlocked"
-      - condition: state
-        entity_id: binary_sensor.aqara_contact_door_entrance_contact
-        state: "off" # Door is closed
-    alias: "Door closed conditions"
+  - condition: state
+    entity_id: lock.nuki
+    state: unlocked
+  - condition: state
+    entity_id: binary_sensor.aqara_contact_door_entrance_contact
+    state: "off" # Double check door is still closed
 action:
   - service: lock.lock
     target:
