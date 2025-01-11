@@ -8,11 +8,9 @@ value_template: >-
   {% if value_json is defined %}
     {% if value_json.expireAt is defined %}
       locked
-    {% else %}
-      unlocked
     {% endif %}
   {% else %}
-    unavailable
+    unlocked
   {% endif %}
 json_attributes:
   - key
