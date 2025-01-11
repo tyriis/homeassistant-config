@@ -1,0 +1,12 @@
+---
+platform: rest
+name: Office Light Lock Status
+resource: http://locking-service:3000/locks/office_light_on
+method: GET
+value_template: "{{ value_json.state }}"
+json_attributes:
+  - locked
+  - lockedSince
+  - lockedBy
+  - description
+scan_interval: 15

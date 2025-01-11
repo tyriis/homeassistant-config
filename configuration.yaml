@@ -27,6 +27,7 @@ script: !include scripts.yaml
 # scene: !include scenes.yaml
 scene: !include_dir_list scenes/
 # climate:  !include_dir_list climates/
+sensors: !include_dir_list sensors/
 
 # Prometheus configuration
 prometheus: !include prometheus.yaml
