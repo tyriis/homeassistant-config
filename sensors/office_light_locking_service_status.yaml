@@ -1,6 +1,6 @@
 ---
 platform: rest
-id: office_light_locking_service_status
+unique_id: office_light_locking_service_status
 name: Office Light Lock Status
 resource: http://locking-service:3000/locks/office_light_on
 method: GET
