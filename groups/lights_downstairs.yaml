@@ -41,8 +41,8 @@
 name: lights downstairs
 entities:
   # - light.kitchen
-  - light.skylight_8a30 # new kitchen light
-  - light.elements_d689 # nanoleaf elements livingroom
+  # - light.skylight_8a30 # new kitchen light
+  # - light.elements_d689 # nanoleaf elements livingroom
   - light.table
   - light.livingroom
 icon: mdi:lightbulb
