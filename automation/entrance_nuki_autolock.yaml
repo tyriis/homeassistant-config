@@ -1,0 +1,23 @@
+---
+alias: Auto-lock front door when closed
+id: entrance_nuki_autolock
+mode: single
+description: Automatically locks Nuki when door has been closed for 45 seconds
+trigger:
+  - platform: state
+    entity_id: binary_sensor.aqara_contact_door_entrance_contact
+    to: "off" # "off" typically means closed for contact sensors
+    for:
+      seconds: 45
+condition:
+  - condition: state
+    entity_id: lock.nuki
+    state: unlocked
+  - condition: state
+    entity_id: binary_sensor.aqara_contact_door_entrance_contact
+    state: "off" # Double check door is still closed
+action:
+  - service: lock.lock
+    target:
+      entity_id: lock.nuki
+    data: {}
