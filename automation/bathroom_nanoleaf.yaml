@@ -27,6 +27,11 @@ actions:
               entity_id: light.skylight_8a41
             data:
               brightness: 255
+          - action: system_log.write
+            data:
+              level: info
+              message: "light.skylight_8a41 turned on { brightness: 255 }"
+              # logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state
             entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
