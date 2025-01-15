@@ -9,9 +9,16 @@ triggers:
     entity_id:
       - binary_sensor.mijia_motion_kitchen_occupancy
     to: "on"
+  - trigger: state
+    entity_id:
+      - group.motion_downstairs
+    to: "off"
+    for:
+      minutes: 20
 actions:
   - choose:
       - conditions:
+          # turn light on if motion in the kitchen between 8:00 and 00:00
           - condition: state
             entity_id: binary_sensor.mijia_motion_kitchen_occupancy
             state: "on"
@@ -34,6 +41,7 @@ actions:
             data:
               brightness: 255
       - conditions:
+          # turn on light dimmed if motion is detected in the kitchen between 00:00 and 07:00
           - condition: state
             entity_id: binary_sensor.mijia_motion_kitchen_occupancy
             state: "on"
@@ -50,6 +58,7 @@ actions:
             data:
               brightness: 51
       - conditions:
+          # dimm light if no motion for 5 minutes in the kitchen
           - condition: state
             entity_id: binary_sensor.mijia_motion_kitchen_occupancy
             state: "off"
@@ -70,3 +79,17 @@ actions:
               entity_id: light.skylight_8a30
             data:
               brightness: 51
+      - conditions:
+          # turn light off if group.motion_downstairs is off for 20 minutes
+          - condition: state
+            entity_id: group.motion_downstairs
+            state: "off"
+            for:
+              minutes: 20
+          - condition: state
+            entity_id: light.skylight_8a30
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.skylight_8a30
