@@ -4,8 +4,8 @@ id: test_logging
 description: Test the logging
 mode: single
 triggers:
-  - trigger: time_pattern
-    seconds: "15"
+  - platform: time_pattern
+    minutes: "/1"
 actions:
   - action: system_log.write
     data:
