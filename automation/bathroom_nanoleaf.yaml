@@ -1,6 +1,7 @@
 ---
-alias: Bathroom Nanoleaf Skylight motion automation
+alias: bathroom_nanoleaf
 id: bathroom_nanoleaf
+description: Bathroom Nanoleaf Skylight motion automation
 mode: single
 triggers:
   - platform: time_pattern
@@ -31,7 +32,7 @@ actions:
             data:
               level: info
               message: "light.skylight_8a41 turned on { brightness: 255 }"
-              # logger: homeassistant.components.automation.bathroom_nanoleaf
+              logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state
             entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
@@ -48,6 +49,11 @@ actions:
               entity_id: light.skylight_8a41
             data:
               brightness: 77
+          - action: system_log.write
+            data:
+              level: info
+              message: "light.skylight_8a41 turned on { brightness: 77 }"
+              logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state
             entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
@@ -63,3 +69,8 @@ actions:
           - action: light.turn_off
             target:
               entity_id: light.skylight_8a41
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a41 turned off
+              logger: homeassistant.components.automation.bathroom_nanoleaf

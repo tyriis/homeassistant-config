@@ -1,14 +1,14 @@
 ---
-alias: Test Logging
+alias: test_logging
 id: test_logging
 description: Test the logging
 mode: single
-triggers:
-  - platform: time_pattern
-    minutes: "/1"
+triggers: []
+#   - platform: time_pattern
+#     minutes: "/1"
 actions:
   - action: system_log.write
     data:
       level: info
       message: Hello World!
-      # logger: homeassistant.components.automation.test_logging
+      logger: homeassistant.components.automation.test_logging
