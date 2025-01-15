@@ -1,0 +1,14 @@
+---
+alias: Test Logging
+id: test_logging
+description: Test the logging
+mode: single
+triggers:
+  - trigger: time_pattern
+    seconds: "15"
+actions:
+  - action: system_log.write
+    data:
+      level: info
+      message: Hello World :)
+      logger: hello.world.com
