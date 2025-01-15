@@ -7,7 +7,7 @@ triggers:
   - platform: time_pattern
     minutes: "/1"
 actions:
-  - action: system_log.write
+  - service: system_log.write
     data:
       level: info
       message: Hello World!
