@@ -11,4 +11,4 @@ actions:
     data:
       level: info
       message: Hello World!
-      logger: homeassistant.components.test_logging
+      logger: homeassistant.components.automation.test_logging
