@@ -10,5 +10,5 @@ actions:
   - action: system_log.write
     data:
       level: info
-      message: Hello World :)
-      logger: hello.world.com
+      message: "Hello World :)"
+      logger: homeassistant.components.test_logging
