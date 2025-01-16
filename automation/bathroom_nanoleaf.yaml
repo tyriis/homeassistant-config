@@ -16,6 +16,7 @@ triggers:
       hours: 0
       minutes: 10
       seconds: 0
+conditions: []
 actions:
   - choose:
       - conditions:
@@ -37,7 +38,7 @@ actions:
           - action: system_log.write
             data:
               level: info
-              message: "light.skylight_8a41 turned on { brightness: 255 }"
+              message: light.skylight_8a41 turned on (brightness=255)
               logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state
@@ -58,7 +59,7 @@ actions:
           - action: system_log.write
             data:
               level: info
-              message: "light.skylight_8a41 turned on { brightness: 77 }"
+              message: light.skylight_8a41 turned on (brightness=77)
               logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state

@@ -1,20 +1,26 @@
 ---
-alias: Kitchen Nanoleaf Skylight motion automation
+alias: kitchen_nanoleaf
 id: kitchen_nanoleaf
+description: Kitchen Nanoleaf Skylight motion automation
 mode: single
 triggers:
-  - platform: time_pattern
-    minutes: "/1"
   - trigger: state
     entity_id:
       - binary_sensor.mijia_motion_kitchen_occupancy
     to: "on"
   - trigger: state
     entity_id:
+      - binary_sensor.mijia_motion_kitchen_occupancy
+    to: "off"
+    for:
+      minutes: 5
+  - trigger: state
+    entity_id:
       - group.motion_downstairs
     to: "off"
     for:
       minutes: 20
+conditions: []
 actions:
   - choose:
       - conditions:
@@ -40,6 +46,11 @@ actions:
               entity_id: light.skylight_8a30
             data:
               brightness: 255
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a30 turned on (brightness=255)
+              logger: homeassistant.components.automation.kitchen_nanoleaf
       - conditions:
           # turn on light dimmed if motion is detected in the kitchen between 00:00 and 07:00
           - condition: state
@@ -48,15 +59,26 @@ actions:
           - condition: time
             after: "00:00:00"
             before: "07:00:00"
-          - condition: state
-            entity_id: light.skylight_8a30
-            state: "off"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.skylight_8a30
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.skylight_8a30
+                attribute: brightness
+                above: 51
         sequence:
           - action: light.turn_on
             target:
               entity_id: light.skylight_8a30
             data:
               brightness: 51
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a30 turned on (brightness=51)
+              logger: homeassistant.components.automation.kitchen_nanoleaf
       - conditions:
           # dimm light if no motion for 5 minutes in the kitchen
           - condition: state
@@ -79,13 +101,18 @@ actions:
               entity_id: light.skylight_8a30
             data:
               brightness: 51
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a30 turned on (brightness=51)
+              logger: homeassistant.components.automation.kitchen_nanoleaf
       - conditions:
-          # turn light off if group.motion_downstairs is off for 20 minutes
+          # turn light off if group.motion_downstairs is off for 15 minutes
           - condition: state
             entity_id: group.motion_downstairs
             state: "off"
             for:
-              minutes: 20
+              minutes: 15
           - condition: state
             entity_id: light.skylight_8a30
             state: "on"
@@ -93,3 +120,8 @@ actions:
           - action: light.turn_off
             target:
               entity_id: light.skylight_8a30
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a30 turned off
+              logger: homeassistant.components.automation.kitchen_nanoleaf
