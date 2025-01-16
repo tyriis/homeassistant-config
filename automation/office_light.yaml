@@ -107,6 +107,9 @@ actions:
                 entity_id: light.office
                 attribute: brightness
                 above: 220 # scene.office_reading brightness value
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
                 below: 220 # scene.office_reading brightness value
         sequence:
           - action: scene.turn_on
@@ -139,6 +142,9 @@ actions:
                 entity_id: light.office
                 attribute: brightness
                 above: 235 # scene.office_working brightness value
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
                 below: 235 # scene.office_working brightness value
         sequence:
           - action: scene.turn_on
@@ -192,6 +198,9 @@ actions:
                 entity_id: light.office
                 attribute: brightness
                 below: 170 # scene.office_evening brightness value
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
                 above: 170 # scene.office_evening brightness value
         sequence:
           - action: scene.turn_on
@@ -219,6 +228,9 @@ actions:
                 entity_id: light.office
                 attribute: brightness
                 below: 115 # scene.office_relax brightness value
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
                 above: 115 # scene.office_relax brightness value
         sequence:
           - action: scene.turn_on
