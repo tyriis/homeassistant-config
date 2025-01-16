@@ -1,14 +1,23 @@
 ---
-alias: Basement Lighting Control
-id: basement_lighting
+alias: basement_light
+id: basement_light
+description: Turn on the basement light when motion is detected
 mode: single
 triggers:
   - trigger: state
     entity_id:
       - group.motion_basement
     to: "on"
-  - platform: time_pattern
-    minutes: "/1"
+  - trigger: state
+    entity_id:
+      - group.motion_basement
+    to: "off"
+    for:
+      minutes: 10
+  - trigger: time
+    at: "08:00:01"
+  - trigger: time
+    at: "23:00:01"
 conditions: []
 actions:
   - choose:
@@ -18,7 +27,7 @@ actions:
             state: "on"
           - condition: time
             after: "08:00:00"
-            before: "00:00:00"
+            before: "23:00:00"
           - condition: or
             conditions:
               - condition: state
@@ -27,8 +36,13 @@ actions:
               - condition: state
                 entity_id: light.basement
                 state: "off"
+              - condition: numeric_state
+                entity_id: light.basement
+                attribute: brightness
+                below: 235 # scene.basement_working brightness value
+                above: 235 # scene.basement_working brightness value
         sequence:
-          - service: light.turn_on
+          - action: light.turn_on
             target:
               entity_id:
                 - light.gledopto_dimmer_stairs_basement
@@ -37,14 +51,17 @@ actions:
           - action: scene.turn_on
             target:
               entity_id: scene.basement_working
+          - action: system_log.write
             data:
-              transition: 20
+              level: info
+              message: scene.basement_working turned on
+              logger: homeassistant.components.automation.basement_light
       - conditions:
           - condition: state
             entity_id: group.motion_basement
             state: "on"
           - condition: time
-            after: "00:00:00"
+            after: "23:00:00"
             before: "08:00:00"
           - condition: or
             conditions:
@@ -54,8 +71,13 @@ actions:
               - condition: state
                 entity_id: light.basement
                 state: "off"
+              - condition: numeric_state
+                entity_id: light.basement
+                attribute: brightness
+                below: 115 # scene.basement_relax brightness value
+                above: 115 # scene.basement_relax brightness value
         sequence:
-          - service: light.turn_on
+          - action: light.turn_on
             target:
               entity_id:
                 - light.gledopto_dimmer_stairs_basement
@@ -64,8 +86,11 @@ actions:
           - action: scene.turn_on
             target:
               entity_id: scene.basement_relax
+          - action: system_log.write
             data:
-              transition: 20
+              level: info
+              message: scene.basement_relax turned on
+              logger: homeassistant.components.automation.basement_light
       - conditions:
           - condition: state
             entity_id: group.motion_basement
@@ -83,8 +108,13 @@ actions:
                 entity_id: light.basement
                 state: "on"
         sequence:
-          - service: light.turn_off
+          - action: light.turn_off
             target:
               entity_id:
                 - light.basement
                 - light.gledopto_dimmer_stairs_basement
+          - action: system_log.write
+            data:
+              level: info
+              message: light.basement turned off
+              logger: homeassistant.components.automation.basement_light
