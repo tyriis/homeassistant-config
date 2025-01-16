@@ -1,0 +1,296 @@
+---
+# create a new automation for homeassistant:
+# light.office should turn on if one of the motion sensors
+# group.motion_office is on and the light is off
+# light.office should switch to the scene reading between 06:00 and 08:00
+# light.office should switch to the scene working between 08:00 and 12:00
+# light.office should switch to the scene concentration between 12:00 and 14:00
+# light.office should switch to the scene working between 14:00 and 18:00
+# light.office should switch to the scene evening between 18:00 and 20:00
+# light.office should switch to the scene relax between 20:00 and 23:00
+# light.office should switch to the scene night between 23:00 and 06:00
+# when the light is on and there is no motion on the group.motion_office for 15 minutes between 08:00 and 00:00, the light schould switch to scene relax
+# when the light is on and there is no motion on the group.motion_office for 20 minutes between 08:00 and 00:00, the light schould switch off
+# when the light is on and there is no motion on the group.motion_office for 10 minutes between 00:00 and 08:00, the light schould switch off
+
+alias: office_light
+id: office_light
+description: Turn on the office light when motion is detected
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - group.motion_office
+    to: "on"
+  - trigger: state
+    entity_id:
+      - group.motion_office
+    to: "off"
+    for:
+      minutes: 10
+  - trigger: state
+    entity_id:
+      - group.motion_office
+    to: "off"
+    for:
+      minutes: 15
+  - trigger: state
+    entity_id:
+      - group.motion_office
+    to: "off"
+    for:
+      minutes: 20
+  - trigger: time
+    at: "06:00:00"
+  - trigger: time
+    at: "08:00:00"
+  - trigger: time
+    at: "12:00:00"
+  - trigger: time
+    at: "14:00:00"
+  - trigger: time
+    at: "18:00:00"
+  - trigger: time
+    at: "20:00:00"
+  - trigger: time
+    at: "23:00:00"
+  - trigger: time
+    at: "00:00:00"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "on"
+          - condition: or
+            conditions:
+              - condition: time
+                after: "23:00:00"
+                before: "06:00:00"
+              - condition: time
+                after: "00:00:00"
+                before: "06:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.office
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
+                above: 45 # scene.office_night brightness value
+                below: 45 # scene.office_night brightness value
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_night
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_night turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "on"
+          - condition: time
+            after: "06:00:00"
+            before: "08:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.office
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
+                above: 220 # scene.office_reading brightness value
+                below: 220 # scene.office_reading brightness value
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_reading
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_reading turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "on"
+          - condition: or
+            conditions:
+              - condition: time
+                after: "08:00:00"
+                before: "12:00:00"
+              - condition: time
+                after: "14:00:00"
+                before: "18:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.office
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
+                above: 235 # scene.office_working brightness value
+                below: 235 # scene.office_working brightness value
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_working
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_working turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "on"
+          - condition: time
+            after: "12:00:00"
+            before: "14:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.office
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
+                below: 255 # scene.office_concentration brightness value
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_concentration
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_concentration turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "on"
+          - condition: time
+            after: "18:00:00"
+            before: "20:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.office
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
+                below: 170 # scene.office_evening brightness value
+                above: 170 # scene.office_evening brightness value
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_evening
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_evening turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "on"
+          - condition: time
+            after: "20:00:00"
+            before: "23:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: light.office
+                state: "off"
+              - condition: numeric_state
+                entity_id: light.office
+                attribute: brightness
+                below: 115 # scene.office_relax brightness value
+                above: 115 # scene.office_relax brightness value
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_relax
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_relax turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "off"
+            for:
+              minutes: 10
+          - condition: time
+            after: "00:00:00"
+            before: "08:00:00"
+          - condition: state
+            entity_id: light.office
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.office
+          - action: system_log.write
+            data:
+              level: info
+              message: light.office turned off
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "off"
+            for:
+              minutes: 15
+          - condition: time
+            after: "08:00:00"
+            before: "00:00:00"
+          - condition: state
+            entity_id: light.office
+            state: "on"
+        sequence:
+          - action: scene.turn_on
+            data: {}
+            target:
+              entity_id: scene.office_relax
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.office_relax turned on
+              logger: homeassistant.components.automation.office_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_office
+            state: "off"
+            for:
+              minutes: 20
+          - condition: time
+            after: "08:00:00"
+            before: "00:00:00"
+          - condition: state
+            entity_id: light.office
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.office
+          - action: system_log.write
+            data:
+              level: info
+              message: light.office turned off
+              logger: homeassistant.components.automation.office_light
