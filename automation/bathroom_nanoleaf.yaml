@@ -4,12 +4,18 @@ id: bathroom_nanoleaf
 description: Bathroom Nanoleaf Skylight motion automation
 mode: single
 triggers:
-  - platform: time_pattern
-    minutes: "/1"
   - trigger: state
     entity_id:
       - binary_sensor.sensor_bathroom_sr501_pir_motion
     to: "on"
+  - trigger: state
+    entity_id:
+      - binary_sensor.sensor_bathroom_sr501_pir_motion
+    to: "off"
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
 actions:
   - choose:
       - conditions:
