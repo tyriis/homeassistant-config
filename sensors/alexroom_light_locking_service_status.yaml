@@ -1,0 +1,21 @@
+---
+platform: rest
+unique_id: alexroom_light_locking_service_status
+name: Alexroom Light Lock Status
+resource: http://locking-service:3000/locks/alexroom_light_on
+method: GET
+value_template: >-
+  {% if value_json is defined %}
+    {% if value_json.expireAt is defined %}
+      locked
+    {% endif %}
+  {% else %}
+    unlocked
+  {% endif %}
+json_attributes:
+  - key
+  - owner
+  - duration
+  - createdAt
+  - expireAt
+scan_interval: 15
