@@ -1,0 +1,16 @@
+---
+alias: frontdoor_camera_motion_snapshots
+id: frontdoor_camera_motion_snapshots
+description: Take snapshots when front door motion is detected
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.front_door_motion
+    to: "on"
+actions:
+  - action: camera.snapshot
+    data:
+      filename: /config/www/snapshots/{{ now().strftime("%Y-%m-%d_%H-%M-%S") }}.jpg
+    target:
+      entity_id: camera.front_door_snapshot
