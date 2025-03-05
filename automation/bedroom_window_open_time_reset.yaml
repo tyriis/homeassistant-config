@@ -9,6 +9,6 @@ triggers:
 actions:
   - service: input_number.set_value
     target:
-      entity_id: input_number.bbedroom_window_open_counter
+      entity_id: input_number.bedroom_window_open_counter
     data:
       value: 0
