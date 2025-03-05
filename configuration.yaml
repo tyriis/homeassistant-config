@@ -76,3 +76,9 @@ lovelace:
 
 shell_command:
   update_config: cd /config && git config --global --add safe.directory /config && git pull
+
+# assist_pipeline:
+#   debug_recording_dir: /share/assist_pipeline
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
