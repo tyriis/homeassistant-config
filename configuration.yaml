@@ -94,6 +94,7 @@ conversation:
       - "What's the weather like today"
       - "What's the weather today"
 
+# https://www.home-assistant.io/integrations/intent_script
 intent_script:
   EventCountToday:
     action:
@@ -111,7 +112,7 @@ intent_script:
 
   EventWeatherToday:
     action:
-      - action: weather.get
+      - action: weather.get_forecasts
         target:
           entity_id: weather.home
         data_template:
