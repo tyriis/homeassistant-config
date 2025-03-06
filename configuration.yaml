@@ -93,6 +93,8 @@ conversation:
     EventWeatherToday:
       - "What's the weather like today"
       - "What's the weather today"
+    EventBabeToday:
+      - "How is my babe today"
 
 # https://www.home-assistant.io/integrations/intent_script
 intent_script:
@@ -122,3 +124,7 @@ intent_script:
         response_variable: result # and return it
     speech:
       text: "The weather today is {{ action_response['weather.home']['forecast'][0].temperature }} degrees and {{ action_response['weather.home']['forecast'][0].condition }}" # use the action's response
+
+  EventBabeToday:
+    speech:
+      text: "Your babe is doing great today"
