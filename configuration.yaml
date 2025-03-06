@@ -115,10 +115,10 @@ intent_script:
       - action: weather.get_forecasts
         target:
           entity_id: weather.home
-        data_template:
-          date_time: "{{ now() }}"
+        data:
+          type: daily
         response_variable: result # get action response
       - stop: ""
         response_variable: result # and return it
     speech:
-      text: "The weather today is {{ action_response['weather.home'].temperature }} degrees and {{ action_response['weather.home'].condition }}" # use the action's response
+      text: "The weather today is {{ action_response['weather.home']['forecast'][0].temperature }} degrees and {{ action_response['weather.home']['forecast'][0].condition }}" # use the action's response
