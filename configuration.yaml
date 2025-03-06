@@ -2,6 +2,9 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+allowlist_external_dirs:
+  - /data
+
 logger:
   default: info
 
