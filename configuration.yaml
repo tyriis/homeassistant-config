@@ -82,3 +82,6 @@ shell_command:
 
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
+
+# https://rhasspy.readthedocs.io/en/latest/usage/#home-assistant
+intent:
