@@ -6,12 +6,11 @@
 # light.office should switch to the scene working between 08:00 and 12:00
 # light.office should switch to the scene concentration between 12:00 and 14:00
 # light.office should switch to the scene working between 14:00 and 21:00
-# light.office should switch to the scene evening between 18:00 and 20:00
-# light.office should switch to the scene relax between 20:00 and 23:00
+# light.office should switch to the scene evening between 21:00 and 23:00
 # light.office should switch to the scene night between 23:00 and 06:00
-# when the light is on and there is no motion on the group.motion_office for 15 minutes between 08:00 and 00:00, the light schould switch to scene relax
-# when the light is on and there is no motion on the group.motion_office for 20 minutes between 08:00 and 00:00, the light schould switch off
-# when the light is on and there is no motion on the group.motion_office for 10 minutes between 00:00 and 08:00, the light schould switch off
+# when the light is on and there is no motion on the group.motion_office for 15 minutes between 08:00 and 00:00, the light should switch to scene relax
+# when the light is on and there is no motion on the group.motion_office for 20 minutes between 08:00 and 00:00, the light should switch off
+# when the light is on and there is no motion on the group.motion_office for 10 minutes between 00:00 and 08:00, the light should switch off
 
 alias: office_light
 id: office_light
@@ -195,20 +194,20 @@ actions:
               - condition: numeric_state
                 entity_id: light.office
                 attribute: brightness
-                below: 115 # scene.office_relax brightness value
+                below: 170 # scene.office_evening brightness value
               - condition: numeric_state
                 entity_id: light.office
                 attribute: brightness
-                above: 115 # scene.office_relax brightness value
+                above: 170 # scene.office_evening brightness value
         sequence:
           - action: scene.turn_on
             data: {}
             target:
-              entity_id: scene.office_relax
+              entity_id: scene.office_evening
           - action: system_log.write
             data:
               level: info
-              message: scene.office_relax turned on
+              message: scene.office_evening turned on
               logger: homeassistant.components.automation.office_light
       - conditions:
           - condition: state
