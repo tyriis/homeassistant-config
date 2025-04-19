@@ -374,12 +374,12 @@ sections:
           - type: entity
             show_state: true
             show_icon: true
-            entity: sensor.aqara_motion_office_illuminance_lux
+            entity: sensor.aqara_motion_office_illuminance
             color: orange
       - type: custom:mini-graph-card
         name: lux
         entities:
-          - entity: sensor.aqara_motion_office_illuminance_lux
+          - entity: sensor.aqara_motion_office_illuminance
           - entity: sun.sun
             color: gray
             name: Sun
