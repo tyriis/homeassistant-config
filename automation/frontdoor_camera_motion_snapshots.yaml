@@ -27,7 +27,7 @@ actions:
               }}_{{repeat.index}}.jpg
           target:
             entity_id: camera.front_door_snapshot
-        - delay: 12
+        - delay: 15
       while:
         - condition: state
           entity_id: binary_sensor.front_door_motion
