@@ -9,19 +9,22 @@ triggers:
       - binary_sensor.front_door_motion
     to: "on"
 actions:
-  # First request a stream update
-  - service: homeassistant.update_entity
-    target:
-      entity_id: camera.front_door_snapshot
-  # Wait for the stream to update
-  - delay: 3
   # Take multiple snapshots with slight delays to catch the action
-  - repeat:
-      count: 3
+  - while:
+      condition: state
+      entity_id: binary_sensor.front_door_motion
+      state: "on"
       sequence:
+        - action: press.button
+          data:
+            entity_id: button.front_door_take_snapshot
+        - action: homeassistant.update_entity
+          data:
+            entity_id:
+              - camera.front_door_snapshot
         - action: camera.snapshot
           data:
-            filename: /data/ring-snapshots/{{ now().strftime("%Y-%m-%d_%H-%M-%S") }}_{{repeat.index}}.jpg
+            filename: /data/ring-snapshots/{{ now().strftime("%Y-%m-%d_%H-%M-%S") }}.jpg
           target:
             entity_id: camera.front_door_snapshot
-        - delay: 2
+        - delay: 1 # Wait 1 seconds between snapshots
