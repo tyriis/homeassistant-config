@@ -1,5 +1,5 @@
 ---
-alias: frontdoor_camera_motion_snapshots2
+alias: frontdoor_camera_motion_snapshots
 id: frontdoor_camera_motion_snapshots
 description: Take snapshots when front door motion is detected
 mode: single
@@ -15,6 +15,7 @@ actions:
         - action: button.press
           data:
             entity_id: button.front_door_take_snapshot
+        - delay: 5
         - action: homeassistant.update_entity
           data:
             entity_id:
@@ -26,7 +27,6 @@ actions:
               }}_{{repeat.index}}.jpg
           target:
             entity_id: camera.front_door_snapshot
-        - delay: 1
       while:
         - condition: state
           entity_id: binary_sensor.front_door_motion
