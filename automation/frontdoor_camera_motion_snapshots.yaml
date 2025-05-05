@@ -10,10 +10,7 @@ triggers:
     to: "on"
 actions:
   # Take multiple snapshots with slight delays to catch the action
-  - while:
-      condition: state
-      entity_id: binary_sensor.front_door_motion
-      state: "on"
+  - repeat:
       sequence:
         - action: press.button
           data:
@@ -24,7 +21,13 @@ actions:
               - camera.front_door_snapshot
         - action: camera.snapshot
           data:
-            filename: /data/ring-snapshots/{{ now().strftime("%Y-%m-%d_%H-%M-%S") }}.jpg
+            filename: >-
+              /data/ring-snapshots/{{ now().strftime("%Y-%m-%d_%H-%M-%S")
+              }}_{{repeat.index}}.jpg
           target:
             entity_id: camera.front_door_snapshot
-        - delay: 1 # Wait 1 seconds between snapshots
+        - delay: 1
+      while:
+        - condition: state
+          entity_id: binary_sensor.front_door_motion
+          state: "on"
