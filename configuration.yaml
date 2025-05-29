@@ -27,7 +27,6 @@ group: !include_dir_named groups/
 input_number: !include_dir_merge_named input_number/
 # automation: !include automations.yaml
 automation: !include_dir_list automation/
-script: !include scripts.yaml
 
 # Scene configuration
 scene: !include_dir_list scenes/
@@ -43,6 +42,12 @@ mqtt: !include mqtt.yaml
 
 # Sensor configuration
 sensor: !include_dir_list sensors/
+
+# Rest command configuration
+rest_command: !include_dir_merge_named rest_commands/
+
+# Script configuration
+script: !include_dir_merge_named scripts/
 
 # binary_sensor: !include_dir_list binary_sensors/
 

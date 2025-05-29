@@ -1,0 +1,12 @@
+---
+create_lock:
+  url: "http://locking-service:3000/locks"
+  method: POST
+  headers:
+    Content-Type: "application/json"
+  payload: >-
+    {
+      "key": "{{ key }}",
+      "owner": "{{ owner }}",
+      "duration": "{{ duration }}"
+    }
