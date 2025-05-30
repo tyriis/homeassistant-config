@@ -12,7 +12,7 @@ params:
   timezone: Europe/Berlin
 value_template: >-
   {% if value_json.current and value_json.current.precipitation is defined %}
-    {{ value_json.current.precipitation }}
+    {{ value_json.current.precipitation | round(1) }}
   {% else %}
     unknown
   {% endif %}

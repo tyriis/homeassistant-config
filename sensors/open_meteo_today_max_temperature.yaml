@@ -13,7 +13,7 @@ params:
   forecast_days: "1"
 value_template: >-
   {% if value_json.daily and value_json.daily.temperature_2m_max %}
-    {{ value_json.daily.temperature_2m_max | max | round(1) }}
+    {{ value_json.daily.temperature_2m_max | max | round(2) }}
   {% else %}
     unknown
   {% endif %}
