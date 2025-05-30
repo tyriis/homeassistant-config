@@ -26,7 +26,9 @@ group: !include_dir_named groups/
 
 input_number: !include_dir_merge_named input_number/
 # automation: !include automations.yaml
-automation: !include_dir_list automation/
+automation manual: !include_dir_list automation/
+
+automation ui: !include automations.yaml
 
 # Scene configuration
 scene: !include_dir_list scenes/
