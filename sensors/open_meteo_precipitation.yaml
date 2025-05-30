@@ -2,7 +2,7 @@
 platform: rest
 unique_id: openmeteo_precipitation
 name: OpenMeteo Precipitation
-resource: "https://api.open-meteo.com/v1/forecast?latitude={{ state_attr('zone.home', 'latitude') }}&longitude={{ state_attr('zone.home', 'longitude') }}&current=precipitation"
+resource: !secret openmeteo_precipitation_url
 value_template: "{{ value_json.current.precipitation }}"
 unit_of_measurement: "mm"
 icon: >
