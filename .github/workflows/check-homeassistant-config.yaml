@@ -18,6 +18,13 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Update external directory path for CI
+        run: |
+          sed -i 's|- /data|- ./data|g' configuration.yaml
+
+      - name: Create data directory
+        run: mkdir -p ./data
+
       - name: 🚀 Run Home Assistant Configuration Check
         uses: frenck/action-home-assistant@v1.4.1
         with:
