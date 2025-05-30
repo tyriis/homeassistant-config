@@ -1,0 +1,36 @@
+---
+platform: rest
+unique_id: office_light_lock_status
+name: office_light_lock_status
+resource: http://locking-service:3000/locks/office_light
+method: GET
+timeout: 1
+value_template: >-
+  {% if value_json is defined %}
+    {% if value_json != "" and value_json.expireAt is defined %}
+      locked
+    {% else %}
+      unlocked
+    {% endif %}
+  {% else %}
+    unknown
+  {% endif %}
+json_attributes:
+  - key
+  - owner
+  - duration
+  - createdAt
+  - expireAt
+scan_interval: 15
+force_update: true
+verify_ssl: false
+icon: >-
+  {% if value_json is defined %}
+    {% if value_json != "" and value_json.expireAt is defined %}
+      mdi:lock
+    {% else %}
+      mdi:lock-open-variant
+    {% endif %}
+  {% else %}
+    mdi:lock-alert
+  {% endif %}
