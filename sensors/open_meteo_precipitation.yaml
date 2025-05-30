@@ -2,8 +2,20 @@
 platform: rest
 unique_id: openmeteo_precipitation
 name: OpenMeteo Precipitation
-resource: !secret openmeteo_precipitation_url
-value_template: "{{ value_json.current.precipitation }}"
+resource: https://api.open-meteo.com/v1/forecast
+method: GET
+params:
+  latitude: !secret latitude
+  longitude: !secret longitude
+  current: precipitation
+  timeformat: unixtime
+  timezone: Europe/Berlin
+value_template: >-
+  {% if value_json.current and value_json.current.precipitation is defined %}
+    {{ value_json.current.precipitation }}
+  {% else %}
+    unknown
+  {% endif %}
 unit_of_measurement: "mm"
 icon: >
   {% if value_json is defined %}
