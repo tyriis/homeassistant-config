@@ -7,6 +7,10 @@ homeassistant:
 
 logger:
   default: info
+  logs:
+    homeassistant.components.rest: debug
+    homeassistant.util.aiohttp: debug
+    aiohttp.access: debug
 
 http:
   use_x_forwarded_for: true
