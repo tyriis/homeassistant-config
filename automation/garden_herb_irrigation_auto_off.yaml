@@ -13,29 +13,17 @@ condition:
   - condition: state
     entity_id: switch.woox_irrigation_garden
     state: "on"
+  - condition: template
+    value_template: >
+      {{ states('sensor.woox_irrigation_garden_locking_service_status') != 'locked' }}
 
 action:
-  # Debug logging to understand the sensor state
-  - service: system_log.write
-    data:
-      level: info
-      message: >
-        DEBUG: Sensor state check -
-        Direct state: {{ states('sensor.woox_irrigation_garden_locking_service_status') }},
-        State object: {{ states.sensor.woox_irrigation_garden_locking_service_status.state }},
-        Last changed: {{ states.sensor.woox_irrigation_garden_locking_service_status.last_changed }},
-        Last updated: {{ states.sensor.woox_irrigation_garden_locking_service_status.last_updated }},
-        Available: {{ states.sensor.woox_irrigation_garden_locking_service_status.state not in ['unavailable', 'unknown'] }}
-      logger: homeassistant.components.automation.garden_herb_irrigation_auto_off_debug
-
   - choose:
       # Case 1: Normal lock expiration - turn off immediately
       - conditions:
           - condition: template
             value_template: >
-              {% set sensor_state = states('sensor.woox_irrigation_garden_locking_service_status') %}
-              {% set fallback_state = states.sensor.woox_irrigation_garden_locking_service_status.state %}
-              {{ (sensor_state == 'unlocked') or (sensor_state == 'unknown' and fallback_state == 'unlocked') }}
+              {{ states('sensor.woox_irrigation_garden_locking_service_status') == 'unlocked' }}
         sequence:
           - service: switch.turn_off
             target:
@@ -51,12 +39,10 @@ action:
           - condition: template
             value_template: >
               {% set lock_status = states('sensor.woox_irrigation_garden_locking_service_status') %}
-              {% set fallback_status = states.sensor.woox_irrigation_garden_locking_service_status.state %}
-              {% set actual_status = lock_status if lock_status != 'unknown' else fallback_status %}
               {% set lock_last_changed = state_attr('sensor.woox_irrigation_garden_locking_service_status', 'last_changed') %}
-              {{ actual_status not in ['locked', 'unlocked'] and
-                 lock_last_changed is not none and
-                 (as_timestamp(now()) - as_timestamp(lock_last_changed)) > 180 }}
+              {{  lock_status not in ['locked', 'unlocked'] and
+                  lock_last_changed is not none and
+                  (as_timestamp(now()) - as_timestamp(lock_last_changed)) > 180 }}
         sequence:
           - service: switch.turn_off
             target:

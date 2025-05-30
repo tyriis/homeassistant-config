@@ -1,11 +1,11 @@
 ---
 # Automatic irrigation cleanup after lock expiration
 # This automation gently turns off irrigation when the protective lock has been expired
-# for more than 5 minutes, allowing for normal lock expiration cleanup.
+# for more than 3 minutes, allowing for normal lock expiration cleanup.
 
 alias: Garden Irrigation Cleanup After Lock Expiration
 id: garden_irrigation_auto_off
-description: Turn off irrigation system when lock has been expired for more than 5 minutes
+description: Turn off irrigation system when lock has been expired for more than 3 minutes
 mode: single
 trigger:
   # Check every minute for cleanup opportunities
@@ -16,7 +16,7 @@ condition:
   # Only act if the valve is currently on
   - condition: state
     entity_id: switch.woox_irrigation_garden2
-    state: "on"
+    state: on
   - condition: template
     value_template: >
       {{ states('sensor.woox_irrigation_garden2_locking_service_status') != 'locked' }}
