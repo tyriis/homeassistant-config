@@ -1,0 +1,176 @@
+---
+# | Scenario            | Context Pattern                                                          | Action             |
+# |---------------------|--------------------------------------------------------------------------|--------------------|
+# | UI/App Control      | user_id is present                                                       | ✅ Treat as manual |
+# | Physical Button     | context.id is None                                                       | ✅ Treat as manual |
+# | Our Automation      | context.id contains "office_light"                                       | ❌ Ignore          |
+# | Other Automations   | Other context.id values                                                  | ✅ Treat as manual |
+#
+# | Scenario            | Previous State      | Action      |
+# |---------------------|---------------------|-------------|
+# | Startup restoration | unknown → on        | ❌ Blocked  |
+# | Device reconnection | unavailable → on    | ❌ Blocked  |
+# | Network recovery    | unknown → off       | ❌ Blocked  |
+# | Genuine manual use  | off → on (stable)   | ✅ Allowed  |
+# | Scene changes       | stable → stable     | ✅ Allowed  |
+
+alias: Office Light Manual Control
+id: office_light_manual_control
+description: Handle manual scene changes and override automation for 1 hour
+mode: restart
+triggers:
+  # Office scene changes - using event triggers for better detection
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_reading
+    id: scene_change
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_working
+    id: scene_change
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_concentration
+    id: scene_change
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_evening
+    id: scene_change
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_night
+    id: scene_change
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_relax
+    id: scene_change
+
+  # Light turned on manually
+  - trigger: state
+    entity_id: light.office
+    to: "on"
+    id: light_on
+
+  # Light turned off manually
+  - trigger: state
+    entity_id: light.office
+    to: "off"
+    id: light_off
+
+conditions:
+  - condition: template
+    value_template: >
+      {% macro is_manual_control(context_id, user_id) %}
+        {# Manual UI/App control - user_id is present #}
+        {% if user_id is not none %}
+          true
+        {# Physical button or external control - context.id is None #}
+        {% elif context_id is none %}
+          true
+        {# Exclude our own automation contexts #}
+        {% elif 'office_light' in (context_id or '') %}
+          false
+        {# Allow other automations to be treated as manual #}
+        {% else %}
+          true
+        {% endif %}
+      {% endmacro %}
+
+      {% if trigger.id == 'scene_change' %}
+        {# Scene change event #}
+        {{ is_manual_control(trigger.event.context.id, trigger.event.context.user_id) }}
+      {% elif trigger.id in ['light_on', 'light_off'] %}
+        {# Light state change - check valid transitions and manual control #}
+        {% set valid_transition = trigger.from_state is not none and
+                                  trigger.from_state.state in ['on', 'off'] and
+                                  trigger.to_state.state in ['on', 'off'] and
+                                  trigger.from_state.state != trigger.to_state.state %}
+        {{ valid_transition and is_manual_control(trigger.to_state.context.id, trigger.to_state.context.user_id) }}
+      {% else %}
+        false
+      {% endif %}
+
+actions:
+  # Debug logging to understand the context
+  - choose:
+      # For scene change events
+      - conditions:
+          - condition: trigger
+            id: scene_change
+        sequence:
+          - service: system_log.write
+            data:
+              level: info
+              message: >
+                Office scene change detected -
+                Context ID: {{ trigger.event.context.id }},
+                User ID: {{ trigger.event.context.user_id }},
+                Scene: {{ trigger.event.data.service_data.entity_id }}
+              logger: homeassistant.components.automation.office_light_manual_control
+
+      # For light state changes
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: trigger
+                id: light_on
+              - condition: trigger
+                id: light_off
+        sequence:
+          - service: system_log.write
+            data:
+              level: info
+              message: >
+                Office light state change detected -
+                Context ID: {{ trigger.to_state.context.id }},
+                User ID: {{ trigger.to_state.context.user_id }},
+                Entity: {{ trigger.entity_id }},
+                New state: {{ trigger.to_state.state }},
+                Old state: {{ trigger.from_state.state }}
+              logger: homeassistant.components.automation.office_light_manual_control
+
+  # Create lock for all manual changes
+  - service: rest_command.release_lock
+    data:
+      name: office_light
+
+  - service: rest_command.create_lock
+    data:
+      name: office_light
+      owner: >
+        {% if trigger.id == 'scene_change' %}
+          homeassistant-{{ trigger.event.context.user_id }}
+        {% else %}
+          homeassistant-{{ trigger.to_state.context.user_id }}
+        {% endif %}
+      duration: 1h
+
+  - service: system_log.write
+    data:
+      level: info
+      message: Manual office light/scene control detected - automation blocked for 1 hour
+      logger: homeassistant.components.automation.office_light_manual_control
