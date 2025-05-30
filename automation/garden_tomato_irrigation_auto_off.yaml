@@ -33,7 +33,7 @@ action:
             data:
               level: info
               message: "Irrigation cleanup: Valve turned off after lock expiration"
-              logger: homeassistant.components.automation.garden_irrigation_auto_off
+              logger: homeassistant.components.automation.garden_tomato_irrigation_auto_off
 
       # Case 2: System malfunction - turn off after 3 minutes in unknown state
       - conditions:
@@ -52,4 +52,4 @@ action:
             data:
               level: warning
               message: "Irrigation emergency shutdown: Lock service in unknown state ({{ states('sensor.woox_irrigation_garden2_locking_service_status') }}) for 3+ minutes"
-              logger: homeassistant.components.automation.garden_irrigation_auto_off
+              logger: homeassistant.components.automation.garden_tomato_irrigation_auto_off

@@ -1,0 +1,51 @@
+---
+alias: Garden Herb Irrigation Cleanup After Lock Expiration
+id: garden_herb_irrigation_auto_off
+description: Turn off garden irrigation system when lock has been expired or in malfunction state
+mode: single
+trigger:
+  # Check every minute for cleanup opportunities
+  - platform: time_pattern
+    minutes: "/1"
+
+condition:
+  # Only act if the valve is currently on
+  - condition: state
+    entity_id: switch.woox_irrigation_garden
+    state: "on"
+
+action:
+  - choose:
+      # Case 1: Normal lock expiration - turn off immediately
+      - conditions:
+          - condition: template
+            value_template: >
+              {{ states('sensor.woox_irrigation_garden_locking_service_status') == 'unlocked' }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.woox_irrigation_garden
+          - service: system_log.write
+            data:
+              level: info
+              message: "Irrigation cleanup: Garden valve turned off after normal lock expiration"
+              logger: homeassistant.components.automation.garden_herb_irrigation_auto_off
+
+      # Case 2: System malfunction - turn off after 3 minutes in unknown state
+      - conditions:
+          - condition: template
+            value_template: >
+              {% set lock_status = states('sensor.woox_irrigation_garden_locking_service_status') %}
+              {% set lock_last_changed = state_attr('sensor.woox_irrigation_garden_locking_service_status', 'last_changed') %}
+              {{  lock_status not in ['locked', 'unlocked'] and
+                  lock_last_changed is not none and
+                  (as_timestamp(now()) - as_timestamp(lock_last_changed)) > 180 }}
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.woox_irrigation_garden
+          - service: system_log.write
+            data:
+              level: warning
+              message: "Irrigation emergency shutdown: Garden lock service in unknown state ({{ states('sensor.woox_irrigation_garden_locking_service_status') }}) for 3+ minutes"
+              logger: homeassistant.components.automation.garden_herb_irrigation_auto_off

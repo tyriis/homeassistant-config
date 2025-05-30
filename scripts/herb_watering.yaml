@@ -1,0 +1,46 @@
+---
+start_herb_watering:
+  alias: Start Herb Watering
+  mode: single
+  sequence:
+    # Check if it is raining
+    - if:
+        - condition: template
+          value_template: "{{ not (states('sensor.openmeteo_precipitation') | float(0) > 0) }}"
+      then:
+        # Release existing lock if it exists
+        - service: rest_command.release_lock
+          data:
+            name: woox_irrigation_garden
+
+        # Create 30-minute lock for automation
+        - service: rest_command.create_lock
+          data:
+            name: woox_irrigation_garden
+            owner: homeassistant-automation
+            duration: 15m
+
+        # Turn on irrigation
+        - service: switch.turn_on
+          target:
+            entity_id: switch.woox_irrigation_garden
+
+        # Log the watering event
+        - service: system_log.write
+          data:
+            level: info
+            message: "Started herb watering: {{ reason | default('Manual') }}"
+            logger: homeassistant.components.script.start_herb_watering
+
+        # Increment daily counter
+        - service: counter.increment
+          target:
+            entity_id: counter.daily_herb_watering_count
+
+      else:
+        # Log that automation is blocked
+        - service: system_log.write
+          data:
+            level: info
+            message: "Canceled herb watering: {{ reason | default('Manual') }} due to precipitation"
+            logger: homeassistant.components.script.start_herb_watering

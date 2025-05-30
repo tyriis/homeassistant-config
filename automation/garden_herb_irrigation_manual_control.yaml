@@ -3,7 +3,7 @@
 # |---------------------|--------------------------------------------------------------------------|--------------------|
 # | UI/App Control      | user_id is present                                                       | ✅ Treat as manual |
 # | Physical Button     | context.id is None                                                       | ✅ Treat as manual |
-# | Our Automation      | context.id contains "garden_tomato_irrigation" or "start_tomato_watering"| ❌ Ignore          |
+# | Our Automation      | context.id contains "garden_herb_irrigation" or "start_herb_watering"    | ❌ Ignore          |
 # | Other Automations   | Other context.id values                                                  | ✅ Treat as manual |
 #
 # | Scenario            | Previous State      | Action      |
@@ -14,20 +14,20 @@
 # | Genuine manual use  | off → on (stable)   | ✅ Allowed  |
 # | Physical button     | on → off (stable)   | ✅ Allowed  |
 
-alias: Garden Manual Irrigation Control
-id: garden_manual_irrigation_control
+alias: Garden Herb Irrigation Manual Control
+id: garden_herb_irrigation_manual_control
 description: Handle manual irrigation button presses and override automation
 mode: restart
 triggers:
   # Manual switch turned on
   - platform: state
-    entity_id: switch.woox_irrigation_garden2
+    entity_id: switch.woox_irrigation_garden
     to: "on"
     id: manual_on
 
   # Manual switch turned off
   - platform: state
-    entity_id: switch.woox_irrigation_garden2
+    entity_id: switch.woox_irrigation_garden
     to: "off"
     id: manual_off
 
@@ -56,11 +56,11 @@ conditions:
       {% elif context_id is none %}
         true
       {# Exclude our own automation contexts #}
-      {% elif 'garden_irrigation_auto_off' in (context_id or '') %}
+      {% elif 'garden_herb_irrigation_auto_off' in (context_id or '') %}
         false
-      {% elif 'garden_tomato_irrigation' in (context_id or '') %}
+      {% elif 'garden_herb_irrigation' in (context_id or '') %}
         false
-      {% elif 'start_tomato_watering' in (context_id or '') %}
+      {% elif 'start_herb_watering' in (context_id or '') %}
         false
       {# Allow other automations to be treated as manual (e.g., other irrigation scripts) #}
       {% else %}
@@ -79,7 +79,7 @@ actions:
         Parent ID: {{ trigger.to_state.context.parent_id }},
         New state: {{ trigger.to_state.state }},
         Old state: {{ trigger.from_state.state }}
-      logger: homeassistant.components.automation.garden_manual_irrigation_control
+      logger: homeassistant.components.automation.garden_herb_irrigation_manual_control
 
   - choose:
       # Manual switch turned ON
@@ -90,26 +90,26 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              name: woox_irrigation_garden2
+              name: woox_irrigation_garden
 
           # Create 30-minute watering lock
           - service: rest_command.create_lock
             data:
-              name: woox_irrigation_garden2
-              owner: "Manual Irrigation"
-              duration: 30m
+              name: woox_irrigation_garden
+              owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
+              duration: 15m
 
           # Increment daily counter
           - service: counter.increment
             target:
-              entity_id: counter.daily_tomato_watering_count
+              entity_id: counter.daily_herb_watering_count
 
           # Log manual start
           - service: system_log.write
             data:
               level: info
               message: Manual irrigation started by user
-              logger: homeassistant.components.automation.garden_manual_irrigation_control
+              logger: homeassistant.components.automation.garden_herb_irrigation_manual_control
 
       # Manual switch turned OFF
       - conditions:
@@ -119,13 +119,13 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              name: woox_irrigation_garden2
+              name: woox_irrigation_garden
 
           # Create 1-hour automation block lock (replaces any existing lock)
           - service: rest_command.create_lock
             data:
-              name: woox_irrigation_garden2
-              owner: Manual Override Block
+              name: woox_irrigation_garden
+              owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
               duration: 1h
 
           # Log manual stop
@@ -133,4 +133,4 @@ actions:
             data:
               level: info
               message: Manual irrigation stopped by user - automation blocked for 1 hour
-              logger: homeassistant.components.automation.garden_manual_irrigation_control
+              logger: homeassistant.components.automation.garden_herb_irrigation_manual_control
