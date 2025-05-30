@@ -6,7 +6,7 @@ create_lock:
     Content-Type: "application/json"
   payload: >-
     {
-      "key": "{{ key }}",
+      "key": "{{ name }}",
       "owner": "{{ owner }}",
       "duration": "{{ duration }}"
     }
