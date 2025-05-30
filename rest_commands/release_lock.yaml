@@ -1,0 +1,4 @@
+---
+release_lock:
+  url: "http://locking-service:3000/locks/{{ key }}"
+  method: DELETE
