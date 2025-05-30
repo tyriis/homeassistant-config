@@ -8,8 +8,8 @@ start_tomato_watering:
         - condition: template
           value_template: "{{ not (states('sensor.openmeteo_precipitation') | float(0) > 0) }}"
       then:
-        # Delete existing lock if it exists
-        - service: rest_command.delete_lock
+        # Release existing lock if it exists
+        - service: rest_command.release_lock
           data:
             name: woox_irrigation_garden2
 
