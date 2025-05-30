@@ -88,14 +88,14 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              key: "woox_irrigation_garden2"
+              key: woox_irrigation_garden2
 
           # Create 30-minute watering lock
           - service: rest_command.create_lock
             data:
-              key: "woox_irrigation_garden2"
+              key: woox_irrigation_garden2
               owner: "Manual Irrigation"
-              duration: "30m"
+              duration: 30m
 
           # Increment daily counter
           - service: counter.increment
@@ -106,7 +106,7 @@ actions:
           - service: system_log.write
             data:
               level: info
-              message: "Manual irrigation started by user"
+              message: Manual irrigation started by user
               logger: homeassistant.components.automation.garden_manual_irrigation_control
 
       # Manual switch turned OFF
@@ -117,18 +117,18 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              key: "woox_irrigation_garden2"
+              key: woox_irrigation_garden2
 
           # Create 1-hour automation block lock (replaces any existing lock)
           - service: rest_command.create_lock
             data:
-              key: "woox_irrigation_garden2"
-              owner: "Manual Override Block"
-              duration: "1h"
+              key: woox_irrigation_garden2
+              owner: Manual Override Block
+              duration: 1h
 
           # Log manual stop
           - service: system_log.write
             data:
               level: info
-              message: "Manual irrigation stopped by user - automation blocked for 1 hour"
+              message: Manual irrigation stopped by user - automation blocked for 1 hour
               logger: homeassistant.components.automation.garden_manual_irrigation_control
