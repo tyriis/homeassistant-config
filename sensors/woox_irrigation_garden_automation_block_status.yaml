@@ -2,7 +2,7 @@
 platform: template
 sensors:
   woox_irrigation_garden_automation_block_status:
-    friendly_name: "Woox Irrigation Garden2 Automation Block Status"
+    friendly_name: "Woox Irrigation Garden Automation Block Status"
     value_template: >-
       {% set lock_status = states('sensor.woox_irrigation_garden_locking_service_status') %}
       {% set lock_owner = state_attr('sensor.woox_irrigation_garden_locking_service_status', 'owner') %}
