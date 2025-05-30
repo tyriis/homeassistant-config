@@ -1,9 +1,18 @@
 ---
-# Scenario            Context Pattern                                                             Action
-# UI/App Control      user_id is present                                                          ✅ Treat as manual
-# Physical Button     context.id is None                                                          ✅ Treat as manual
-# Our Automation      context.id contains "garden_tomato_irrigation" or "start_tomato_watering"   ❌ Ignore (not manual)
-# Other Automations   Other context.id values                                                     ✅ Treat as manual
+# | Scenario            | Context Pattern                                                          | Action             |
+# |---------------------|--------------------------------------------------------------------------|--------------------|
+# | UI/App Control      | user_id is present                                                       | ✅ Treat as manual |
+# | Physical Button     | context.id is None                                                       | ✅ Treat as manual |
+# | Our Automation      | context.id contains "garden_tomato_irrigation" or "start_tomato_watering"| ❌ Ignore          |
+# | Other Automations   | Other context.id values                                                  | ✅ Treat as manual |
+#
+# | Scenario            | Previous State      | Action      |
+# |---------------------|---------------------|-------------|
+# | Startup restoration | unknown → on        | ❌ Blocked  |
+# | Device reconnection | unavailable → on    | ❌ Blocked  |
+# | Network recovery    | unknown → off       | ❌ Blocked  |
+# | Genuine manual use  | off → on (stable)   | ✅ Allowed  |
+# | Physical button     | on → off (stable)   | ✅ Allowed  |
 
 alias: Garden Manual Irrigation Control
 id: garden_manual_irrigation_control
@@ -15,20 +24,23 @@ triggers:
     entity_id: switch.woox_irrigation_garden2
     to: "on"
     id: manual_on
-    # Prevent triggering on startup by requiring a minimum duration in previous state
-    for:
-      seconds: 2
 
   # Manual switch turned off
   - platform: state
     entity_id: switch.woox_irrigation_garden2
     to: "off"
     id: manual_off
-    # Prevent triggering on startup by requiring a minimum duration in previous state
-    for:
-      seconds: 2
 
 conditions:
+  # Only allow transitions between actual operational states (on ↔ off)
+  # Block startup/reconnection scenarios (unknown/unavailable → on/off)
+  - condition: template
+    value_template: >
+      {{  trigger.from_state is not none and
+          trigger.from_state.state in ['on', 'off'] and
+          trigger.to_state.state in ['on', 'off'] and
+          trigger.from_state.state != trigger.to_state.state }}
+
   # Only trigger if this is a manual change (not from our automation system)
   # This checks for physical button presses or UI control, but excludes our own automations
   - condition: template
@@ -53,14 +65,6 @@ conditions:
         true
       {% endif %}
 
-  # Prevent execution during Home Assistant startup
-  # Check that the previous state existed for more than 30 seconds (not a startup restoration)
-  - condition: template
-    value_template: >
-      {{  trigger.from_state is not none and
-          trigger.from_state.last_changed is not none and
-          (as_timestamp(now()) - as_timestamp(trigger.from_state.last_changed)) > 30 }}
-
 actions:
   # Debug logging to understand the context
   - service: system_log.write
@@ -84,14 +88,14 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              key: "woox_irrigation_garden2"
+              name: woox_irrigation_garden2
 
           # Create 30-minute watering lock
           - service: rest_command.create_lock
             data:
-              key: "woox_irrigation_garden2"
+              name: woox_irrigation_garden2
               owner: "Manual Irrigation"
-              duration: "30m"
+              duration: 30m
 
           # Increment daily counter
           - service: counter.increment
@@ -102,7 +106,7 @@ actions:
           - service: system_log.write
             data:
               level: info
-              message: "Manual irrigation started by user"
+              message: Manual irrigation started by user
               logger: homeassistant.components.automation.garden_manual_irrigation_control
 
       # Manual switch turned OFF
@@ -113,18 +117,18 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              key: "woox_irrigation_garden2"
+              name: woox_irrigation_garden2
 
           # Create 1-hour automation block lock (replaces any existing lock)
           - service: rest_command.create_lock
             data:
-              key: "woox_irrigation_garden2"
-              owner: "Manual Override Block"
-              duration: "1h"
+              name: woox_irrigation_garden2
+              owner: Manual Override Block
+              duration: 1h
 
           # Log manual stop
           - service: system_log.write
             data:
               level: info
-              message: "Manual irrigation stopped by user - automation blocked for 1 hour"
+              message: Manual irrigation stopped by user - automation blocked for 1 hour
               logger: homeassistant.components.automation.garden_manual_irrigation_control

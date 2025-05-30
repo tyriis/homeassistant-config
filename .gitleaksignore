@@ -1,4 +1,0 @@
-# Ignore false positives for locking service key parameters
-# These are configuration keys for the locking service, not actual API keys
-automation/garden_manual_irrigation_control.yaml:generic-api-key:73
-automation/garden_manual_irrigation_control.yaml:generic-api-key:97
