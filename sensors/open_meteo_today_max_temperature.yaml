@@ -1,7 +1,7 @@
 ---
 platform: rest
 unique_id: open_meteo_today_max_temperature
-name: OpenMeteo Today Max Temperature
+name: open_meteo_today_max_temperature
 resource: https://api.open-meteo.com/v1/forecast
 method: GET
 params:

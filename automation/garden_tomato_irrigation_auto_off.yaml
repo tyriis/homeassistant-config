@@ -15,7 +15,7 @@ condition:
     state: "on"
   - condition: template
     value_template: >
-      {{ states('sensor.woox_irrigation_garden2_locking_service_status') != 'locked' }}
+      {{ states('sensor.woox_irrigation_garden2_lock_status') != 'locked' }}
 
 action:
   - choose:
@@ -23,7 +23,7 @@ action:
       - conditions:
           - condition: template
             value_template: >
-              {{ states('sensor.woox_irrigation_garden2_locking_service_status') == 'unlocked' }}
+              {{ states('sensor.woox_irrigation_garden2_lock_status') == 'unlocked' }}
         sequence:
           - service: switch.turn_off
             target:
@@ -38,8 +38,8 @@ action:
       - conditions:
           - condition: template
             value_template: >
-              {% set lock_status = states('sensor.woox_irrigation_garden2_locking_service_status') %}
-              {% set lock_last_changed = state_attr('sensor.woox_irrigation_garden2_locking_service_status', 'last_changed') %}
+              {% set lock_status = states('sensor.woox_irrigation_garden2_lock_status') %}
+              {% set lock_last_changed = state_attr('sensor.woox_irrigation_garden2_lock_status', 'last_changed') %}
               {{  lock_status not in ['locked', 'unlocked'] and
                   lock_last_changed is not none and
                   (as_timestamp(now()) - as_timestamp(lock_last_changed)) > 180 }}
@@ -50,5 +50,5 @@ action:
           - service: system_log.write
             data:
               level: warning
-              message: "Irrigation emergency shutdown: Garden lock service in unknown state ({{ states('sensor.woox_irrigation_garden2_locking_service_status') }}) for 3+ minutes"
+              message: "Irrigation emergency shutdown: Garden lock service in unknown state ({{ states('sensor.woox_irrigation_garden2_lock_status') }}) for 3+ minutes"
               logger: homeassistant.components.automation.garden_tomato_irrigation_auto_off

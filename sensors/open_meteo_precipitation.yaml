@@ -1,7 +1,7 @@
 ---
 platform: rest
 unique_id: openmeteo_precipitation
-name: OpenMeteo Precipitation
+name: openmeteo_precipitation
 resource: https://api.open-meteo.com/v1/forecast
 method: GET
 params:
