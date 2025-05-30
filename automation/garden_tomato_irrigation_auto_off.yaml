@@ -17,6 +17,9 @@ condition:
   - condition: state
     entity_id: switch.woox_irrigation_garden2
     state: "on"
+  - condition: template
+    value_template: >
+      {{ states('sensor.woox_irrigation_garden2_locking_service_status') != 'locked' }}
 
 action:
   - choose:
