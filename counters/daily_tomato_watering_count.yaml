@@ -1,0 +1,6 @@
+---
+daily_tomato_watering_count:
+  name: Daily Tomato Watering Count
+  icon: mdi:watering-can
+  initial: 0
+  restore: true
