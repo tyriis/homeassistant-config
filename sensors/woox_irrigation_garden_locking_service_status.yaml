@@ -1,7 +1,7 @@
 ---
 platform: rest
 unique_id: woox_irrigation_garden_locking_service_status
-name: Woox Irrigation Garden Locking Service Status
+name: woox_irrigation_garden_locking_service_status
 resource: http://locking-service:3000/locks/woox_irrigation_garden
 method: GET
 timeout: 1
