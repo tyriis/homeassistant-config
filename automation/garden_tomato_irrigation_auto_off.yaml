@@ -1,5 +1,5 @@
 ---
-alias: Garden Tomato Irrigation Cleanup After Lock Expiration
+alias: Garden Tomato Irrigation Auto Off
 id: garden_tomato_irrigation_auto_off
 description: Turn off garden irrigation system when lock has been expired or in malfunction state
 mode: single

@@ -1,5 +1,5 @@
 ---
-alias: Garden Herb Irrigation Cleanup After Lock Expiration
+alias: Garden Herb Irrigation Auto Off
 id: garden_herb_irrigation_auto_off
 description: Turn off garden irrigation system when lock has been expired or in malfunction state
 mode: single
