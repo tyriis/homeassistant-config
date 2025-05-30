@@ -4,7 +4,7 @@
 # for more than 3 minutes, allowing for normal lock expiration cleanup.
 
 alias: Garden Irrigation Cleanup After Lock Expiration
-id: garden_irrigation_auto_off
+id: garden_tomato_irrigation_auto_off
 description: Turn off irrigation system when lock has been expired for more than 3 minutes
 mode: single
 trigger:
