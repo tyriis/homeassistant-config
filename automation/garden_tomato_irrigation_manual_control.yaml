@@ -56,7 +56,7 @@ conditions:
       {% elif context_id is none %}
         true
       {# Exclude our own automation contexts #}
-      {% elif 'garden_irrigation_auto_off' in (context_id or '') %}
+      {% elif 'garden_tomato_irrigation_auto_off' in (context_id or '') %}
         false
       {% elif 'garden_tomato_irrigation' in (context_id or '') %}
         false
