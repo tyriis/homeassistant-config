@@ -1,0 +1,8 @@
+---
+platform: rest
+unique_id: open_meteo_precipitation
+name: OpenMeteo Precipitation
+resource: "https://api.open-meteo.com/v1/forecast?latitude={{ state_attr('zone.home', 'latitude') }}&longitude={{ state_attr('zone.home', 'longitude') }}&current=precipitation"
+value_template: "{{ value_json.current.precipitation }}"
+unit_of_measurement: "mm"
+scan_interval: 3600 # Update every hour (3600 seconds)
