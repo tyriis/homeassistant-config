@@ -22,7 +22,7 @@ icon: >
     {% if value_json.current.precipitation > 0 %}
       mdi:weather-rainy
     {% else %}
-        mdi:weather-sunny
+      mdi:weather-sunny
     {% endif %}
   {% else %}
     mdi:cloud-off-outline

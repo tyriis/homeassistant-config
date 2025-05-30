@@ -29,7 +29,7 @@ icon: >
     {% if value_json.daily.temperature_2m_max > 28 %}
       mdi:sun-thermometer
     {% else %}
-        mdi:thermometer
+      mdi:thermometer
     {% endif %}
   {% else %}
     mdi:thermometer-alert
