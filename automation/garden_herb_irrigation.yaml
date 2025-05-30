@@ -1,13 +1,13 @@
 ---
-alias: Garden Tomato Irrigation
-id: garden_tomato_irrigation
-description: Water tomatoes after sunrise and during hot days, with lock tracking
+alias: Garden Herb Irrigation
+id: garden_herb_irrigation
+description: Water herbs after sunrise and during hot days, with lock tracking
 mode: single
 triggers:
   # Morning watering after sunrise
   - platform: sun
     event: sunrise
-    offset: "+00:30:00" # 30 minutes after sunrise
+    offset: "+01:00:00" # 30 minutes after sunrise
     id: morning_watering
 
   # Check every hour during the day for additional watering
@@ -26,8 +26,8 @@ actions:
           - condition: template
             value_template: "{{ not (states('sensor.openmeteo_precipitation') | float(0) > 0) }}"
           - condition: template
-            value_template: "{{ states('sensor.woox_irrigation_garden2_automation_block_status') == 'allowed' }}"
+            value_template: "{{ states('sensor.woox_irrigation_garden_automation_block_status') == 'allowed' }}"
         sequence:
-          - service: script.start_tomato_watering
+          - service: script.start_herb_watering
             data:
-              reason: Morning watering after sunrise
+              reason: "Morning watering after sunrise"

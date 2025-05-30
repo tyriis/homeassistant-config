@@ -13,5 +13,5 @@ actions:
   - service: system_log.write
     data:
       level: info
-      message: "Reset daily tomato watering counter"
-      logger: homeassistant.components.automation.garden_tomato_irrigation
+      message: Reset daily tomato watering counter
+      logger: homeassistant.components.automation.reset_daily_tomato_watering_counter

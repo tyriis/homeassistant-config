@@ -1,0 +1,6 @@
+---
+daily_herb_watering_count:
+  name: Daily Herb Watering Count
+  icon: mdi:watering-can
+  initial: 0
+  restore: true
