@@ -15,12 +15,18 @@ triggers:
     entity_id: switch.woox_irrigation_garden2
     to: "on"
     id: manual_on
+    # Prevent triggering on startup by requiring a minimum duration in previous state
+    for:
+      seconds: 2
 
   # Manual switch turned off
   - platform: state
     entity_id: switch.woox_irrigation_garden2
     to: "off"
     id: manual_off
+    # Prevent triggering on startup by requiring a minimum duration in previous state
+    for:
+      seconds: 2
 
 conditions:
   # Only trigger if this is a manual change (not from our automation system)
@@ -47,6 +53,14 @@ conditions:
         true
       {% endif %}
 
+  # Prevent execution during Home Assistant startup
+  # Check that the previous state existed for more than 30 seconds (not a startup restoration)
+  - condition: template
+    value_template: >
+      {{  trigger.from_state is not none and
+          trigger.from_state.last_changed is not none and
+          (as_timestamp(now()) - as_timestamp(trigger.from_state.last_changed)) > 30 }}
+
 actions:
   # Debug logging to understand the context
   - service: system_log.write
@@ -67,6 +81,11 @@ actions:
           - condition: trigger
             id: manual_on
         sequence:
+          # Release any existing lock first to prevent conflicts
+          - service: rest_command.release_lock
+            data:
+              key: "woox_irrigation_garden2"
+
           # Create 30-minute watering lock
           - service: rest_command.create_lock
             data:
@@ -91,6 +110,11 @@ actions:
           - condition: trigger
             id: manual_off
         sequence:
+          # Release any existing lock first to prevent conflicts
+          - service: rest_command.release_lock
+            data:
+              key: "woox_irrigation_garden2"
+
           # Create 1-hour automation block lock (replaces any existing lock)
           - service: rest_command.create_lock
             data:
