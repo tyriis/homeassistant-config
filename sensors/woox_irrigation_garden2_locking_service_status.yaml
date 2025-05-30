@@ -24,8 +24,6 @@ json_attributes:
 scan_interval: 15
 force_update: true
 verify_ssl: false
-availability_template: >-
-  {{ value_json is defined }}
 icon: >-
   {% if value_json is defined %}
     {% if value_json != "" and value_json.expireAt is defined %}
