@@ -61,47 +61,47 @@
 #      entity_id:
 #        - light.office_light
 
-- alias: Update Configuration on Gitlab Push Event
-  id: update_config_gitlab_push_event
+# - alias: Update Configuration on Gitlab Push Event
+#   id: update_config_gitlab_push_event
 
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_id
-      allowed_methods:
-        - POST
-        - PUT
-      local_only: true
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_id
+#       allowed_methods:
+#         - POST
+#         - PUT
+#       local_only: true
 
-  action:
-    - service: shell_command.update_config
-    - service: homeassistant.restart
+# action:
+#   - service: shell_command.update_config
+#   - service: homeassistant.restart
 
-- alias: Count Motion Active Minutes Aqara Office
-  id: count_motion_active_minutes_aqara_office
-  description: Increments the motion active minutes counter every minute
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.aqara_motion_office_occupancy
-      state: "on"
-  action:
-    - service: input_number.increment
-      target:
-        entity_id: input_number.count_motion_time
-  mode: single
+# - alias: Count Motion Active Minutes Aqara Office
+#   id: count_motion_active_minutes_aqara_office
+#   description: Increments the motion active minutes counter every minute
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/1"
+#   condition:
+#     - condition: state
+#       entity_id: binary_sensor.aqara_motion_office_occupancy
+#       state: "on"
+#   action:
+#     - service: input_number.increment
+#       target:
+#         entity_id: input_number.count_motion_time
+#   mode: single
 
-- alias: Reset Motion Active Minutes
-  id: reset_motion_active_minutes
-  description: Resets the motion active minutes counter each hour
-  trigger:
-    - platform: time_pattern
-      minutes: 0
-  action:
-    - service: input_number.set_value
-      target:
-        entity_id: input_number.count_motion_time
-      data:
-        value: 0
-  mode: single
+# - alias: Reset Motion Active Minutes
+#   id: reset_motion_active_minutes
+#   description: Resets the motion active minutes counter each hour
+#   trigger:
+#     - platform: time_pattern
+#       minutes: 0
+#   action:
+#     - service: input_number.set_value
+#       target:
+#         entity_id: input_number.count_motion_time
+#     data:
+#       value: 0
+# mode: single
