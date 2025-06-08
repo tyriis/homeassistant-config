@@ -84,34 +84,17 @@ triggers:
 conditions:
   - condition: template
     value_template: >
-      {% macro is_manual_control(context_id, user_id) %}
-        {# Manual UI/App control - user_id is present #}
-        {% if user_id is not none %}
-          true
-        {# Physical button or external control - context.id is None #}
-        {% elif context_id is none %}
-          true
-        {# Exclude our own automation contexts #}
-        {% elif 'office_light' in (context_id or '') %}
-          false
-        {# Allow other automations to be treated as manual #}
-        {% else %}
-          true
-        {% endif %}
-      {% endmacro %}
-
-      {% if trigger.id == 'scene_change' %}
-        {# Scene change event #}
-        {{ is_manual_control(trigger.event.context.id, trigger.event.context.user_id) }}
-      {% elif trigger.id in ['light_on', 'light_off'] %}
-        {# Light state change - check valid transitions and manual control #}
-        {% set valid_transition = trigger.from_state is not none and
-                                  trigger.from_state.state in ['on', 'off'] and
-                                  trigger.to_state.state in ['on', 'off'] and
-                                  trigger.from_state.state != trigger.to_state.state %}
-        {{ valid_transition and is_manual_control(trigger.to_state.context.id, trigger.to_state.context.user_id) }}
+      {% set context_id = trigger.to_state.context.id %}
+      {% set user_id = trigger.to_state.context.user_id %}
+      {% set parent_id = trigger.to_state.context.parent_id %}
+      {# Manual UI/App control - user_id is present #}
+      {% if user_id is not none %}
+        true
+      {# Physical button or external control - context.id is None #}
+      {% elif context_id is none %}
+        true
       {% else %}
-        false
+        true
       {% endif %}
 
 actions:
