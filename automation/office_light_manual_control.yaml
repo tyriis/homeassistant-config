@@ -84,15 +84,39 @@ triggers:
 conditions:
   - condition: template
     value_template: >
-      {% set context_id = trigger.to_state.context.id %}
-      {% set user_id = trigger.to_state.context.user_id %}
-      {% set parent_id = trigger.to_state.context.parent_id %}
-      {# Manual UI/App control - user_id is present #}
-      {% if user_id is not none %}
-        true
-      {# Physical button or external control - context.id is None #}
-      {% elif context_id is none %}
-        true
+      {% macro is_manual_control(context_id, user_id) %}
+        {# Manual UI/App control - user_id is present #}
+        {% if user_id is not none %}
+          true
+        {# Physical button or external control - context.id is None #}
+        {% elif context_id is none %}
+          true
+        {# Skip if our own automation triggered it #}
+        {% elif context_id and 'office_light' in context_id %}
+          false
+        {% else %}
+          true
+        {% endif %}
+      {% endmacro %}
+
+      {% if trigger.id == 'scene_change' %}
+        {# Event trigger - use trigger.event.context #}
+        {% set context_id = trigger.event.context.id %}
+        {% set user_id = trigger.event.context.user_id %}
+        {{ is_manual_control(context_id, user_id) }}
+      {% elif trigger.id in ['light_on', 'light_off'] %}
+        {# State trigger - use trigger.to_state.context #}
+        {% set context_id = trigger.to_state.context.id %}
+        {% set user_id = trigger.to_state.context.user_id %}
+        {% set from_state = trigger.from_state.state %}
+        {% set to_state = trigger.to_state.state %}
+
+        {# Block startup/reconnection transitions #}
+        {% if from_state in ['unknown', 'unavailable'] %}
+          false
+        {% else %}
+          {{ is_manual_control(context_id, user_id) }}
+        {% endif %}
       {% else %}
         false
       {% endif %}
