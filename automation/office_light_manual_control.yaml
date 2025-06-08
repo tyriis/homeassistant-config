@@ -94,7 +94,7 @@ conditions:
       {% elif context_id is none %}
         true
       {% else %}
-        true
+        false
       {% endif %}
 
 actions:
