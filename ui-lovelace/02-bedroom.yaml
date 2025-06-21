@@ -13,7 +13,7 @@ sections:
         heading: Lights
         heading_style: title
       - type: tile
-        entity: light.skylight_8905
+        entity: light.skylight_9aa7
         icon: mdi:wall-sconce-flat
         name: Nanoleaf Skylight
         state_content:
