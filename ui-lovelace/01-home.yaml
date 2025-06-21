@@ -116,7 +116,7 @@ sections:
         show_entity_picture: false
         state_content: color_temp_kelvin
       - type: tile
-        entity: light.skylight_8905
+        entity: light.skylight_9aa7
         icon_tap_action:
           action: toggle
         hold_action:
@@ -314,7 +314,7 @@ sections:
             entity: sensor.aqara_climate_bedroom_humidity
             color: blue
       - type: tile
-        entity: light.skylight_8905
+        entity: light.skylight_9aa7
         name: Nanoleaf Skylight
         icon: mdi:wall-sconce-flat
         show_entity_picture: false
