@@ -15,11 +15,11 @@ cool_bedroom:
         duration: 20m
     # check if not mode cooling if so set it to cooling
     - if:
-      condition: template
-      value_template: >
-        {{
-          states('climate.hisense_ac_bedroom') != 'cool'
-        }}
+        condition: template
+        value_template: >
+          {{
+            states('climate.hisense_ac_bedroom') != 'cool'
+          }}
       then:
         # set the AC to cooling mode
         - service: climate.set_hvac_mode
@@ -34,12 +34,12 @@ cool_bedroom:
             message: "Set Bedroom AC mode: cooling."
             logger: homeassistant.components.script.cool_bedroom
     - if:
-      # ac is off turn on
-      condition: template
-      value_template: >
-        {{
-          states('climate.hisense_ac_bedroom') == 'off'
-        }}
+        # ac is off turn on
+        condition: template
+        value_template: >
+          {{
+            states('climate.hisense_ac_bedroom') == 'off'
+          }}
       then:
         # turn on the AC
         - service: climate.turn_on
