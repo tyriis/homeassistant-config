@@ -1,0 +1,31 @@
+---
+alias: Climate Bedroom Track Start Time
+id: climate_bedroom_track_start_time
+description: >
+  Updates the climate_bedroom_start_time whenever the bedroom AC changes from off to any active mode
+mode: single
+trigger:
+  - platform: state
+    entity_id: climate.hisense_ac_bedroom
+    from: "off"
+condition:
+  # Only run if changing to any active mode (not to "off" or "unknown")
+  - condition: template
+    value_template: >
+      {{
+        trigger.to_state.state != 'off' and
+        trigger.to_state.state != 'unknown' and
+        trigger.to_state.state != 'unavailable'
+      }}
+action:
+  - service: input_datetime.set_datetime
+    target:
+      entity_id: input_datetime.climate_bedroom_start_time
+    data:
+      datetime: "{{ now() }}"
+  # Log the action
+  - service: system_log.write
+    data:
+      level: info
+      message: "Updated Bedroom AC start time: mode changed from off to {{ trigger.to_state.state }}"
+      logger: homeassistant.components.automation.track_ac_bedroom_start_time
