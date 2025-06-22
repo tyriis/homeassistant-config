@@ -19,7 +19,7 @@ condition:
   # Only act if the climate is currently on, and the temperature is bellow 22°C for more than 5 minutes, and the ac has been running for at least 30 minutes
   - condition: template
     value_template: >
-      {% set ac_last_changed = state_attr('climate.hisense_ac_bedroom', 'last_changed') %}
+      {% set ac_last_changed = states.climate.hisense_ac_bedroom.last_changed %}
       {% set ac_run_time = (as_timestamp(now()) - as_timestamp(ac_last_changed)) / 60 %}
       {{
         states('climate.hisense_ac_bedroom') == 'on'
