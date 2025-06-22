@@ -1,0 +1,6 @@
+---
+climate_bedroom_start_time:
+  name: Climate Bedroom Start Time
+  has_date: true
+  has_time: true
+  icon: mdi:fan-clock
