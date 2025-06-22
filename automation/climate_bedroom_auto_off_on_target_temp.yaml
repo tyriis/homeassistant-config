@@ -1,0 +1,50 @@
+---
+alias: Climate Bedroom Auto Off on Target Temp
+id: climate_bedroom_auto_off_on_target_temp
+description: >
+  Automatically turns off the bedroom AC when the temperature drops below 22°C and the minimum run time has been met.
+mode: single
+trigger:
+  # Check every minute for cleanup opportunities
+  - platform: time_pattern
+    minutes: "/5"
+  # Trigger when the temperature drops below 22°C
+  - platform: numeric_state
+    entity_id: sensor.qingping_bedroom_temperature
+    below: 22
+    for:
+      minutes: 5
+
+condition:
+  # Only act if the climate is currently on, and the temperature is bellow 22°C for more than 5 minutes, and the ac has been running for at least 30 minutes
+  - condition: template
+    value_template: >
+      {% set ac_last_changed = state_attr('climate.hisense_ac_bedroom', 'last_changed') %}
+      {% set ac_run_time = (as_timestamp(now()) - as_timestamp(ac_last_changed)) / 60 %}
+      {{
+        states('climate.hisense_ac_bedroom') == 'on'
+        and states('sensor.qingping_bedroom_temperature') | float < 22
+        and ac_last_changed is not none
+        and ac_run_time > 30
+      }}
+actions:
+  # Release existing lock if it exists
+  - action: rest_command.release_lock
+    data:
+      name: hisense_ac_bedroom
+  # create new lock for 20 minutes
+  - action: rest_command.create_lock
+    data:
+      name: hisense_ac_bedroom
+      owner: homeassistant-automation
+      duration: 20m
+  # Turn off the AC
+  - action: climate.turn_off
+    target:
+      entity_id: climate.hisense_ac_bedroom
+  # Log the action
+  - action: system_log.write
+    data:
+      level: info
+      message: "Bedroom AC turned off due to open window for more than 5 minutes"
+      logger: homeassistant.components.automation.climate_bedroom_auto_off_on_target_temp

@@ -1,0 +1,58 @@
+---
+alias: Climate Bedroom Auto Off on Window Open
+id: climate_bedroom_auto_off_on_window_open
+description: >
+  Automatically turns off the bedroom AC when the window is open for more than 5 minutes.
+  The automation checks every 5 minutes and respects the state of the climate and window sensors.
+mode: single
+trigger:
+  # Check every minute for cleanup opportunities
+  - platform: time_pattern
+    minutes: "/5"
+  # window open for more then 5 minutes
+  - platform: state
+    entity_id: binary_sensor.aqara_contact_window_bedroom_contact
+    to: "on"
+    for:
+      minutes: 5
+
+condition:
+  # Only act if the climate is currently on, window is open, and the window has been open for more than 5 minutes
+  - condition: template
+    value_template: >
+      {% set window_last_changed = state_attr('binary_sensor.aqara_contact_window_bedroom_contact', 'last_changed') %}
+      {{
+        states('climate.hisense_ac_bedroom') == 'on'
+        and states('binary_sensor.aqara_contact_window_bedroom_contact') == 'on'
+        and window_last_changed is not none
+        and (as_timestamp(now()) - as_timestamp(window_last_changed)) > 300
+      }}
+action:
+  - choose:
+      # Case 1: the window is open for more than 5 minutes
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.aqara_contact_window_bedroom_contact
+            state: "on"
+          - condition: template
+            value_template: >
+              {% set window_last_changed = state_attr('binary_sensor.aqara_contact_window_bedroom_contact', 'last_changed') %}
+              {{
+                window_last_changed is not none
+                  and (as_timestamp(now()) - as_timestamp(window_last_changed)) > 300
+              }}
+        sequence:
+          # Release existing lock if it exists
+          - service: rest_command.release_lock
+            data:
+              name: hisense_ac_bedroom
+
+          - service: climate.turn_off
+            target:
+              entity_id: climate.hisense_ac_bedroom
+
+          - service: system_log.write
+            data:
+              level: info
+              message: "Bedroom AC turned off due to open window for more than 5 minutes"
+              logger: homeassistant.components.automation.climate_bedroom_auto_off
