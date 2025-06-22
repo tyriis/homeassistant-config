@@ -25,7 +25,7 @@ condition:
       {{
         states('climate.hisense_ac_bedroom') == 'on'
         and states('sensor.qingping_bedroom_temperature') | float <= 22
-        and ac_run_time > 20
+        and ac_run_time > 30
       }}
 
 actions:
