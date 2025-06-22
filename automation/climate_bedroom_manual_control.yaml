@@ -101,7 +101,7 @@ actions:
             data:
               name: hisense_ac_bedroom
               owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
-              duration: 60m
+              duration: 1h
 
           # Log manual start
           - service: system_log.write
@@ -125,7 +125,7 @@ actions:
             data:
               name: hisense_ac_bedroom
               owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
-              duration: 60m
+              duration: 1h
 
           # Log manual start
           - service: system_log.write
