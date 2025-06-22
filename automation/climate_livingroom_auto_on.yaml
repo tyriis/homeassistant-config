@@ -1,0 +1,44 @@
+# i have a climate climate.hisense_ac_livingroom. and an environment sensor sensor.qingping_livingroom_temperature
+# i have another sensor sensor.weather_forecast_temperature_forecast
+# create a home-assistant automation that:
+# turns on the ac when the temperature is above 24 degrees
+# and turns off the ac when the temperature is below 22 degrees
+# prevent ac on off toggling by using a lock sensor sensor.hisense_ac_livingroom_lock_status the lock should be present for at least 20 minutes, only tun on the ac when the forecats temperature is over 25 degrees
+# check if ac is on before turning it on
+# and check if ac is off before turning it off
+# do not turn on before 7:30 on weekdays and 8:30 on weekends
+# and do not turn on after 22:00 on weekdays and 23:00 on weekends
+# check all 5minutes if the conditions are met
+# and log the actions to the system log
+# and prevent the automation from running if the lock is held by another automation
+# only handle on event in this automation, do not handle off events
+---
+alias: Livingroom AC Auto On
+id: climatge_livingroom_auto_on
+description: >
+  Automatically turns on the livingroom AC when the temperature is above 23°C,
+  and the weather forecast temperature is above 25°C.
+  The automation checks every 5 minutes and respects time constraints.
+mode: single
+trigger:
+  - platform: time_pattern
+    minutes: "/5"
+condition:
+  - condition: template
+    value_template: >
+      {% set current_time = now() %}
+      {% set is_weekend = current_time.weekday() >= 5 %}
+      {% set start_time = '08:30' if is_weekend else '07:30' %}
+      {% set end_time = '23:00' if is_weekend else '22:00' %}
+      {{
+        current_time.strftime('%H:%M') >= start_time
+        and current_time.strftime('%H:%M') < end_time
+        and states('sensor.qingping_livingroom_temperature') | float > 23
+        and states('sensor.weather_forecast_temperature_forecast') | float > 25
+        and states('sensor.hisense_ac_livingroom_lock_status') != 'locked'
+        and states('sensor.hisense_ac_livingroom_automation_block_status') == 'allowed'
+      }}
+actions:
+  - action: script.cool_livingroom
+    data:
+      reason: hot day and livingroom temperature to high

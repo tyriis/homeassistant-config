@@ -1,8 +1,8 @@
 ---
-alias: Climate Bedroom Auto Off on Target Temp
-id: climate_bedroom_auto_off_on_target_temp
+alias: Climate Livingroom Auto Off on Target Temp
+id: climate_livingroom_auto_off_on_target_temp
 description: >
-  Automatically turns off the bedroom AC when the temperature drops below 22°C
+  Automatically turns off the livingroom AC when the temperature drops below 22°C
   and the minimum run time has been met.
 mode: single
 trigger:
@@ -11,7 +11,7 @@ trigger:
     minutes: "/5"
   # Trigger when the temperature drops below 22°C
   - platform: numeric_state
-    entity_id: sensor.qingping_bedroom_temperature
+    entity_id: sensor.qingping_livingroom_temperature
     below: 22
     for:
       minutes: 5
@@ -20,32 +20,33 @@ condition:
   # Only act if the climate is currently on, and the temperature is bellow 22°C for more than 5 minutes, and the ac has been running for at least 30 minutes
   - condition: template
     value_template: >
-      {% set ac_last_changed = as_timestamp(states.input_datetime.climate_bedroom_start_time.state) %}
+      {% set ac_last_changed = as_timestamp(states.input_datetime.climate_livingroom_start_time.state) %}
       {% set ac_run_time = (now() - ac_last_changed).total_seconds() / 60 %}
       {{
-        states('climate.hisense_ac_bedroom') == 'cool'
-        and states('sensor.qingping_bedroom_temperature') | float <= 22
+        states('climate.hisense_ac_livingroom') == 'cool'
+        and states('sensor.qingping_livingroom_temperature') | float <= 22
         and ac_run_time > 30
       }}
+
 actions:
   # Release existing lock if it exists
   - action: rest_command.release_lock
     data:
-      name: hisense_ac_bedroom
+      name: hisense_ac_livingroom
   # create new lock for 20 minutes
   - action: rest_command.create_lock
     data:
-      name: hisense_ac_bedroom
+      name: hisense_ac_livingroom
       owner: homeassistant-automation
       duration: 20m
   # Turn off the AC
   - action: climate.turn_off
     target:
-      entity_id: climate.hisense_ac_bedroom
+      entity_id: climate.hisense_ac_livingroom
   # Log the action
   - action: system_log.write
     data:
       level: info
-      message: Bedroom AC turned off due to target temp reached.
+      message: Livingroom AC turned off due to target temp reached.
       logger: >-
-        homeassistant.components.automation.climate_bedroom_auto_off_on_target_temp
+        homeassistant.components.automation.climate_livingroom_auto_off_on_target_temp

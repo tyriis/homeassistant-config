@@ -1,0 +1,18 @@
+---
+platform: template
+sensors:
+  climate_livingroom_runtime:
+    friendly_name: Climate Livingroom Runtime
+    unit_of_measurement: "min"
+    value_template: >
+      {% if is_state('climate.hisense_ac_livingroom', 'cool') %}
+        {{ (now().timestamp() - as_timestamp(states.input_datetime.climate_livingroom_start_time.state)) / 60 }}
+      {% else %}
+        0
+      {% endif %}
+    icon_template: >
+      {% if is_state('climate.hisense_ac_livingroom', 'cool') %}
+        mdi:timer-play-outline
+      {% else %}
+        mdi:timer-off-outline
+      {% endif %}

@@ -1,0 +1,6 @@
+---
+climate_livingroom_start_time:
+  name: Climate Livingroom Start Time
+  has_date: true
+  has_time: true
+  icon: mdi:fan-clock
