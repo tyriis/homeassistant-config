@@ -20,14 +20,12 @@ condition:
   - condition: template
     value_template: >
       {% set ac_last_changed = states.climate.hisense_ac_bedroom.last_changed %}
-      {% set ac_run_time = (as_timestamp(now()) - as_timestamp(ac_last_changed)) / 60 %}
+      {% set ac_run_time = (now() - ac_last_changed).total_seconds() / 60 %}
       {{
         states('climate.hisense_ac_bedroom') == 'on'
-        and states('sensor.qingping_bedroom_temperature') | float < 22
-        and ac_last_changed is not none
-        and ac_run_time > 30
+        and states('sensor.qingping_bedroom_temperature') | float <= 22
+        and ac_run_time > 20
       }}
-actions:
   # Release existing lock if it exists
   - action: rest_command.release_lock
     data:
