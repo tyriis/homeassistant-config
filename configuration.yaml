@@ -38,6 +38,7 @@ group: !include_dir_named groups/
 counter: !include_dir_merge_named counters/
 
 input_number: !include_dir_merge_named input_number/
+input_datetime: !include_dir_merge_named input_datetime/
 # automation: !include automations.yaml
 automation manual: !include_dir_list automation/
 
