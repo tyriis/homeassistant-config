@@ -2,7 +2,8 @@
 alias: Climate Bedroom Auto Off on Target Temp
 id: climate_bedroom_auto_off_on_target_temp
 description: >
-  Automatically turns off the bedroom AC when the temperature drops below 22°C and the minimum run time has been met.
+  Automatically turns off the bedroom AC when the temperature drops below 22°C
+  and the minimum run time has been met.
 mode: single
 trigger:
   # Check every minute for cleanup opportunities
@@ -26,6 +27,8 @@ condition:
         and states('sensor.qingping_bedroom_temperature') | float <= 22
         and ac_run_time > 20
       }}
+
+actions:
   # Release existing lock if it exists
   - action: rest_command.release_lock
     data:
@@ -44,5 +47,6 @@ condition:
   - action: system_log.write
     data:
       level: info
-      message: "Bedroom AC turned off due to open window for more than 5 minutes"
-      logger: homeassistant.components.automation.climate_bedroom_auto_off_on_target_temp
+      message: Bedroom AC turned off due to target temp reached.
+      logger: >-
+        homeassistant.components.automation.climate_bedroom_auto_off_on_target_temp
