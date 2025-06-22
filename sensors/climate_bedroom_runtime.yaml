@@ -5,13 +5,13 @@ sensors:
     friendly_name: Climate Bedroom Runtime
     unit_of_measurement: "min"
     value_template: >
-      {% if is_state('climate.hisense_ac_bedroom', 'on') %}
+      {% if is_state('climate.hisense_ac_bedroom', 'cool') %}
         {{ (now().timestamp() - as_timestamp(states.input_datetime.climate_bedroom_start_time.state)) / 60 }}
       {% else %}
         0
       {% endif %}
     icon_template: >
-      {% if is_state('climate.hisense_ac_bedroom', 'on') %}
+      {% if is_state('climate.hisense_ac_bedroom', 'cool') %}
         mdi:timer-play-outline
       {% else %}
         mdi:timer-off-outline
