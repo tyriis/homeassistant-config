@@ -20,19 +20,19 @@ cool_bedroom:
           {{
             states('climate.hisense_ac_bedroom') != 'cool'
           }}
-        then:
-          # set the AC to cooling mode
-          - service: climate.set_hvac_mode
-            target:
-              entity_id: climate.hisense_ac_bedroom
-            data:
-              hvac_mode: cool
-          # log the action
-          - service: system_log.write
-            data:
-              level: info
-              message: "Set Bedroom AC mode: cooling."
-              logger: homeassistant.components.script.cool_bedroom
+      then:
+        # set the AC to cooling mode
+        - service: climate.set_hvac_mode
+          target:
+            entity_id: climate.hisense_ac_bedroom
+          data:
+            hvac_mode: cool
+        # log the action
+        - service: system_log.write
+          data:
+            level: info
+            message: "Set Bedroom AC mode: cooling."
+            logger: homeassistant.components.script.cool_bedroom
     - if:
         # ac is off turn on
         condition: template
@@ -40,14 +40,14 @@ cool_bedroom:
           {{
             states('climate.hisense_ac_bedroom') == 'off'
           }}
-        then:
-          # turn on the AC
-          - service: climate.turn_on
-            target:
-              entity_id: climate.hisense_ac_bedroom
-          # log the action
-          - service: system_log.write
-            data:
-              level: info
-              message: "Started Bedroom AC: {{ reason | default('Manual') }}."
-              logger: homeassistant.components.script.cool_bedroom
+      then:
+        # turn on the AC
+        - service: climate.turn_on
+          target:
+            entity_id: climate.hisense_ac_bedroom
+        # log the action
+        - service: system_log.write
+          data:
+            level: info
+            message: "Started Bedroom AC: {{ reason | default('Manual') }}."
+            logger: homeassistant.components.script.cool_bedroom
