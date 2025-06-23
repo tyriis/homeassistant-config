@@ -9,5 +9,4 @@ room_picker:
     - Bathroom
     - Office
     - Garden
-  initial:
-    - Livingroom
+  initial: Livingroom
