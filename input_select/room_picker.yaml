@@ -1,0 +1,13 @@
+---
+room_picker:
+  name: Room Picker
+  icon: mdi:view-dashboard
+  options:
+    - Livingroom
+    - Bedroom
+    - Kitchen
+    - Bathroom
+    - Office
+    - Garden
+  initial:
+    - Livingroom
