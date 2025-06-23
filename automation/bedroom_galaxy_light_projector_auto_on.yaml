@@ -16,7 +16,7 @@ trigger:
     for:
       minutes: 5
 condition:
-  # Only act if the light is currently on, and the door was closed after 22:00
+  # Only act if the light is currently off, and the door was closed after 22:00
   - condition: template
     value_template: >
       {{
