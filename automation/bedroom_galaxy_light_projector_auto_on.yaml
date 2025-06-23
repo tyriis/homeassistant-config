@@ -1,0 +1,45 @@
+---
+# i have a light light.galaxy_light_projector_2, i have a binary_sensor.aqara_contact_door_bedroom_contact
+# the first time after 22:00, when the door is closed, turn on the light after 5 minutes
+# only run the automation once per day
+
+alias: Bedroom Galaxy Light Projector Auto On
+id: bedroom_galaxy_light_projector_auto_on
+description: >
+  Automatically turns on the bedroom galaxy light projector after 5 minutes when the door is closed after 22:00.
+mode: single
+trigger:
+  # Trigger when the door is closed
+  - platform: state
+    entity_id: binary_sensor.aqara_contact_door_bedroom_contact
+    to: "off"
+    for:
+      minutes: 5
+condition:
+  # Only act if the light is currently off, and the door was closed after 22:00
+  - condition: template
+    value_template: >
+      {{
+        states('sensor.galaxy_projector_bedroom_lock_status') != 'locked'
+        and states('light.galaxy_light_projector_2') == 'off'
+        and states('binary_sensor.aqara_contact_door_bedroom_contact') == 'off'
+        and (now().hour >= 22 or now.hour <= 1)
+      }}
+action:
+  # Create a lock to prevent re-triggering within the same day
+  - service: rest_command.create_lock
+    data:
+      name: bedroom_galaxy_light_projector
+      owner: homeassistant-automation
+      duration: 9h
+  # Turn on the galaxy light projector
+  - service: light.turn_on
+    target:
+      entity_id: light.galaxy_light_projector_2
+  # Log the action
+  - service: system_log.write
+    data:
+      level: info
+      message: "Bedroom Galaxy Light Projector turned on after door closed at night."
+      logger: >-
+        homeassistant.components.automation.bedroom_galaxy_light_projector_auto_on

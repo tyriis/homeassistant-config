@@ -15,7 +15,7 @@ condition:
       {{
         states('climate.hisense_ac_livingroom') == 'cool'
         and states('sensor.hisense_ac_livingroom_automation_block_status') == 'allowed'
-        and (now().hour >= 23 or now().hour < 8)
+        and (now().hour >= 23 or now().hour < 6)
       }}
 
 actions:
