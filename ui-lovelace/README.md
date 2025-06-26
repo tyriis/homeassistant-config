@@ -13,3 +13,11 @@
 ## Do not overclutter
 
 show only what is needed (auto presence, time based, motion based)
+
+## avoid to create views and dashboards
+
+## avoid scrolling
+
+## Find anything in under 3 seconds
+
+## Maximize speed with dashboard shortcuts

@@ -103,6 +103,8 @@ lovelace:
       type: module
     - url: /hacsfiles/Bubble-Card/bubble-card.js
       type: module
+    - url: /hacsfiles/custom-icon-color/custom-icon-color.js
+      type: module
 
 shell_command:
   update_config: cd /config && git config --global --add safe.directory /config && git pull
