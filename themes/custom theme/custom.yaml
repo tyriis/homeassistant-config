@@ -1,0 +1,21 @@
+---
+Custom Mushroom:
+  modes:
+    light: {}
+    dark: {}
+  # Layout
+  mush-spacing: 6px
+  # Elements
+  mush-icon-border-radius: 6px
+  mush-control-border-radius: 6px
+  # Chips
+  mush-chip-border-radius: 6px
+  # Extra
+  mush-rgb-state-light: 255, 255, 255
+  # Title
+  mush-title-padding: 12px 12px 6px
+  # Home Assistant Override
+  ha-card-box-shadow: inset 0px 0px 0px 1px var(--border-color)
+  ha-card-border-radius: 4px
+  ha-card-border-color: rgba(0,0,0,0)
+  accent-color: "#00ff00"
