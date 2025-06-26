@@ -1,14 +1,14 @@
 ---
-alias: Bedroom Light Switch
-id: bedroom_light_switch
+alias: Bedroom Wall Switch
+id: bedroom_wall_switch
 description: "Control bedroom light with EnOcean switch - continuous dimming while held"
 use_blueprint:
   path: enocean_ptm21xz_continuous_trigger.yaml
   input:
     controller: senic wall switch bedroom
     base_topic: zigbee2mqtt-bridge03
-    hold_delay: 250
-    repeat_interval: 250
+    hold_delay: 400
+    repeat_interval: 400
     ptm216z_selector: false # Set to true if using PTM216Z
     helper_last_controller_event: input_text.senic_wall_switch_bedroom_last_event
 
