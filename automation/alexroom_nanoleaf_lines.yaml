@@ -1,5 +1,5 @@
 ---
-alias: Alexroom Nanoleaf Lines automation
+alias: Alexroom Nanoleaf Lines
 id: alexroom_nanoleaf_lines
 description: Turn on the nanoleaf lines when power consumption is above 50W
 mode: single
