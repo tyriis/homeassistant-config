@@ -19,3 +19,6 @@ Custom Mushroom:
   ha-card-border-radius: 4px
   ha-card-border-color: rgba(0,0,0,0)
   accent-color: "#00ff00"
+
+  # Bubble Card variables
+  bubble-border-radius: 8px
