@@ -8,7 +8,7 @@ mode: single
 triggers:
   - trigger: numeric_state
     entity_id: sensor.aqara_climate_bathroom_humidity
-    bellow: 58
+    below: 58
   # Also check every 5 minutes to ensure we catch the condition
   - trigger: time_pattern
     minutes: "/5"
