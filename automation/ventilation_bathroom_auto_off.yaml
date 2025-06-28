@@ -8,25 +8,20 @@ mode: single
 triggers:
   - trigger: numeric_state
     entity_id: sensor.aqara_climate_bathroom_humidity
-    at_or_below: 58
+    bellow: 58
   # Also check every 5 minutes to ensure we catch the condition
   - trigger: time_pattern
     minutes: "/5"
 
 conditions:
-  # Only act if ventilation is on and humidity is at or below 58%
-  - condition: state
-    entity_id: switch.shelly_1gen4_ventilation_bathroom
-    state: "on"
-  - condition: numeric_state
-    entity_id: sensor.aqara_climate_bathroom_humidity
-    at_or_below: 58
   # Ensure ventilation has been running for at least 15 minutes
   - condition: template
     value_template: >
       {% set last_changed = states.switch.shelly_1gen4_ventilation_bathroom.last_changed %}
       {{
-        last_changed is not none
+        states.switch.shelly_1gen4_ventilation_bathroom.state == 'on'
+        and states.sensor.aqara_climate_bathroom_humidity.state | float <= 58
+        and last_changed is not none
         and (as_timestamp(now()) - as_timestamp(last_changed)) >= 900
       }}
 
