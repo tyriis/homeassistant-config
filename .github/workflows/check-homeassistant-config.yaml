@@ -26,8 +26,9 @@ jobs:
         run: mkdir -p ./data
 
       - name: 🚀 Run Home Assistant Configuration Check
-        uses: frenck/action-home-assistant@v1.4.1
+        uses: worgarside/action-home-assistant@e031fff4aad6adbaa55d83cd764a9636c803ef91
         with:
           path: ./
           secrets: ci-secrets.yaml
           version: stable
+          catch_error_logs: "true"
