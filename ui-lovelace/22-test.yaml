@@ -850,17 +850,17 @@ sections:
 
               **Typical Lux Ranges:**
 
-              - 0–10 lx: Very dark (nighttime or dark room)
+              - 0-10 lx: Very dark (nighttime or dark room)
 
-              - 11–30 lx: Dark
+              - 11-30 lx: Dark
 
-              - 31–100 lx: Dim
+              - 31-100 lx: Dim
 
-              - 101–200 lx: Moderate
+              - 101-200 lx: Moderate
 
-              - 201–400 lx: Bright (well-lit room)
+              - 201-400 lx: Bright (well-lit room)
 
-              - 401–600 lx: Very bright
+              - 401-600 lx: Very bright
 
               - 601+ lx: Direct sunlight or intense artificial light
 
@@ -930,10 +930,10 @@ sections:
 
               **Typical Indoor CO₂ Ranges:**
 
-              - **400–1,000 ppm:** Acceptable and typical for well-ventilated
+              - **400-1,000 ppm:** Acceptable and typical for well-ventilated
               spaces. Indicates good indoor air quality.
 
-              - **1,000–2,500 ppm:** May cause drowsiness, headaches, and
+              - **1,000-2,500 ppm:** May cause drowsiness, headaches, and
               reduced concentration. Indicates insufficient ventilation and
               declining air quality.
 
@@ -1009,14 +1009,14 @@ sections:
 
               **eTVOC Value Ranges:**
 
-              - **0–65 ppb:** Excellent air quality
+              - **0-65 ppb:** Excellent air quality
 
-              - **65–220 ppb:** Good air quality
+              - **65-220 ppb:** Good air quality
 
-              - **220–660 ppb:** Slightly high (may start to notice odors or
+              - **220-660 ppb:** Slightly high (may start to notice odors or
               mild discomfort)
 
-              - **660–2000 ppb:** High (increased risk of irritation, headaches,
+              - **660-2000 ppb:** High (increased risk of irritation, headaches,
               or long-term health effects)
 
               - **2000+ ppb:** Very high (potentially harmful, ventilation or
@@ -1146,11 +1146,11 @@ sections:
               disturbances, and even hearing loss.
 
 
-              - **30–40 dB:** Quiet (library, bedroom at night)
+              - **30-40 dB:** Quiet (library, bedroom at night)
 
-              - **40–60 dB:** Moderate (normal conversation, office)
+              - **40-60 dB:** Moderate (normal conversation, office)
 
-              - **60–80 dB:** Loud (busy street, vacuum cleaner)
+              - **60-80 dB:** Loud (busy street, vacuum cleaner)
 
               - **80+ dB:** Very loud (traffic, loud music, power tools)
 
@@ -1219,7 +1219,7 @@ sections:
 
               **Recommended Indoor Humidity:**
 
-              - **40–60%:** Ideal range for most homes. Supports comfort,
+              - **40-60%:** Ideal range for most homes. Supports comfort,
               reduces allergens, and helps prevent mold growth.
 
               - **Below 30%:** Air is too dry. Can cause dry skin, irritated
@@ -1294,12 +1294,12 @@ sections:
 
               **PM10 Value Ranges:**
 
-              - **0–50 µg/m³:** Excellent air quality, safe for everyone.
+              - **0-50 µg/m³:** Excellent air quality, safe for everyone.
 
-              - **50–100 µg/m³:** Good to moderate; generally acceptable but
+              - **50-100 µg/m³:** Good to moderate; generally acceptable but
               sensitive individuals may begin to notice effects.
 
-              - **100–150 µg/m³:** Slightly elevated; may affect sensitive
+              - **100-150 µg/m³:** Slightly elevated; may affect sensitive
               groups such as children, elderly, or those with respiratory
               conditions.
 
@@ -1374,12 +1374,12 @@ sections:
 
               **PM2.5 Value Ranges:**
 
-              - **0–12 µg/m³:** Excellent air quality, safe for everyone.
+              - **0-12 µg/m³:** Excellent air quality, safe for everyone.
 
-              - **12–35 µg/m³:** Good to moderate; generally acceptable, but
+              - **12-35 µg/m³:** Good to moderate; generally acceptable, but
               unusually sensitive individuals may notice effects.
 
-              - **34–75 µg/m³:** Slightly elevated; may affect sensitive groups
+              - **34-75 µg/m³:** Slightly elevated; may affect sensitive groups
               such as children, elderly, or those with respiratory conditions.
 
               - **Above 75 µg/m³:** Increasingly unhealthy for the general
@@ -1565,10 +1565,10 @@ sections:
 
               **Typical Indoor CO₂ Ranges:**
 
-              - **400–1,000 ppm:** Acceptable and typical for well-ventilated
+              - **400-1,000 ppm:** Acceptable and typical for well-ventilated
               spaces. Indicates good indoor air quality.
 
-              - **1,000–2,500 ppm:** May cause drowsiness, headaches, and
+              - **1,000-2,500 ppm:** May cause drowsiness, headaches, and
               reduced concentration. Indicates insufficient ventilation and
               declining air quality.
 
@@ -1644,14 +1644,14 @@ sections:
 
               **eTVOC Value Ranges:**
 
-              - **0–65 ppb:** Excellent air quality
+              - **0-65 ppb:** Excellent air quality
 
-              - **65–220 ppb:** Good air quality
+              - **65-220 ppb:** Good air quality
 
-              - **220–660 ppb:** Slightly high (may start to notice odors or
+              - **220-660 ppb:** Slightly high (may start to notice odors or
               mild discomfort)
 
-              - **660–2000 ppb:** High (increased risk of irritation, headaches,
+              - **660-2000 ppb:** High (increased risk of irritation, headaches,
               or long-term health effects)
 
               - **2000+ ppb:** Very high (potentially harmful, ventilation or
@@ -1781,11 +1781,11 @@ sections:
               disturbances, and even hearing loss.
 
 
-              - **30–40 dB:** Quiet (library, bedroom at night)
+              - **30-40 dB:** Quiet (library, bedroom at night)
 
-              - **40–60 dB:** Moderate (normal conversation, office)
+              - **40-60 dB:** Moderate (normal conversation, office)
 
-              - **60–80 dB:** Loud (busy street, vacuum cleaner)
+              - **60-80 dB:** Loud (busy street, vacuum cleaner)
 
               - **80+ dB:** Very loud (traffic, loud music, power tools)
 
@@ -1854,7 +1854,7 @@ sections:
 
               **Recommended Indoor Humidity:**
 
-              - **40–60%:** Ideal range for most homes. Supports comfort,
+              - **40-60%:** Ideal range for most homes. Supports comfort,
               reduces allergens, and helps prevent mold growth.
 
               - **Below 30%:** Air is too dry. Can cause dry skin, irritated
@@ -1929,12 +1929,12 @@ sections:
 
               **PM10 Value Ranges:**
 
-              - **0–50 µg/m³:** Excellent air quality, safe for everyone.
+              - **0-50 µg/m³:** Excellent air quality, safe for everyone.
 
-              - **50–100 µg/m³:** Good to moderate; generally acceptable but
+              - **50-100 µg/m³:** Good to moderate; generally acceptable but
               sensitive individuals may begin to notice effects.
 
-              - **100–150 µg/m³:** Slightly elevated; may affect sensitive
+              - **100-150 µg/m³:** Slightly elevated; may affect sensitive
               groups such as children, elderly, or those with respiratory
               conditions.
 
@@ -2009,12 +2009,12 @@ sections:
 
               **PM2.5 Value Ranges:**
 
-              - **0–12 µg/m³:** Excellent air quality, safe for everyone.
+              - **0-12 µg/m³:** Excellent air quality, safe for everyone.
 
-              - **12–35 µg/m³:** Good to moderate; generally acceptable, but
+              - **12-35 µg/m³:** Good to moderate; generally acceptable, but
               unusually sensitive individuals may notice effects.
 
-              - **34–75 µg/m³:** Slightly elevated; may affect sensitive groups
+              - **34-75 µg/m³:** Slightly elevated; may affect sensitive groups
               such as children, elderly, or those with respiratory conditions.
 
               - **Above 75 µg/m³:** Increasingly unhealthy for the general
@@ -2307,17 +2307,17 @@ sections:
 
               **Typical Lux Ranges:**
 
-              - 0–10 lx: Very dark (nighttime or dark room)
+              - 0-10 lx: Very dark (nighttime or dark room)
 
-              - 11–30 lx: Dark
+              - 11-30 lx: Dark
 
-              - 31–100 lx: Dim
+              - 31-100 lx: Dim
 
-              - 101–200 lx: Moderate
+              - 101-200 lx: Moderate
 
-              - 201–400 lx: Bright (well-lit room)
+              - 201-400 lx: Bright (well-lit room)
 
-              - 401–600 lx: Very bright
+              - 401-600 lx: Very bright
 
               - 601+ lx: Direct sunlight or intense artificial light
 
@@ -2387,10 +2387,10 @@ sections:
 
               **Typical Indoor CO₂ Ranges:**
 
-              - **400–1,000 ppm:** Acceptable and typical for well-ventilated
+              - **400-1,000 ppm:** Acceptable and typical for well-ventilated
               spaces. Indicates good indoor air quality.
 
-              - **1,000–2,500 ppm:** May cause drowsiness, headaches, and
+              - **1,000-2,500 ppm:** May cause drowsiness, headaches, and
               reduced concentration. Indicates insufficient ventilation and
               declining air quality.
 
@@ -2466,14 +2466,14 @@ sections:
 
               **eTVOC Value Ranges:**
 
-              - **0–65 ppb:** Excellent air quality
+              - **0-65 ppb:** Excellent air quality
 
-              - **65–220 ppb:** Good air quality
+              - **65-220 ppb:** Good air quality
 
-              - **220–660 ppb:** Slightly high (may start to notice odors or
+              - **220-660 ppb:** Slightly high (may start to notice odors or
               mild discomfort)
 
-              - **660–2000 ppb:** High (increased risk of irritation, headaches,
+              - **660-2000 ppb:** High (increased risk of irritation, headaches,
               or long-term health effects)
 
               - **2000+ ppb:** Very high (potentially harmful, ventilation or
@@ -2603,11 +2603,11 @@ sections:
               disturbances, and even hearing loss.
 
 
-              - **30–40 dB:** Quiet (library, bedroom at night)
+              - **30-40 dB:** Quiet (library, bedroom at night)
 
-              - **40–60 dB:** Moderate (normal conversation, office)
+              - **40-60 dB:** Moderate (normal conversation, office)
 
-              - **60–80 dB:** Loud (busy street, vacuum cleaner)
+              - **60-80 dB:** Loud (busy street, vacuum cleaner)
 
               - **80+ dB:** Very loud (traffic, loud music, power tools)
 
@@ -2676,7 +2676,7 @@ sections:
 
               **Recommended Indoor Humidity:**
 
-              - **40–60%:** Ideal range for most homes. Supports comfort,
+              - **40-60%:** Ideal range for most homes. Supports comfort,
               reduces allergens, and helps prevent mold growth.
 
               - **Below 30%:** Air is too dry. Can cause dry skin, irritated
@@ -2751,12 +2751,12 @@ sections:
 
               **PM10 Value Ranges:**
 
-              - **0–50 µg/m³:** Excellent air quality, safe for everyone.
+              - **0-50 µg/m³:** Excellent air quality, safe for everyone.
 
-              - **50–100 µg/m³:** Good to moderate; generally acceptable but
+              - **50-100 µg/m³:** Good to moderate; generally acceptable but
               sensitive individuals may begin to notice effects.
 
-              - **100–150 µg/m³:** Slightly elevated; may affect sensitive
+              - **100-150 µg/m³:** Slightly elevated; may affect sensitive
               groups such as children, elderly, or those with respiratory
               conditions.
 
@@ -2831,12 +2831,12 @@ sections:
 
               **PM2.5 Value Ranges:**
 
-              - **0–12 µg/m³:** Excellent air quality, safe for everyone.
+              - **0-12 µg/m³:** Excellent air quality, safe for everyone.
 
-              - **12–35 µg/m³:** Good to moderate; generally acceptable, but
+              - **12-35 µg/m³:** Good to moderate; generally acceptable, but
               unusually sensitive individuals may notice effects.
 
-              - **34–75 µg/m³:** Slightly elevated; may affect sensitive groups
+              - **34-75 µg/m³:** Slightly elevated; may affect sensitive groups
               such as children, elderly, or those with respiratory conditions.
 
               - **Above 75 µg/m³:** Increasingly unhealthy for the general
