@@ -31,4 +31,4 @@ jobs:
           path: ./
           secrets: ci-secrets.yaml
           version: stable
-          catch_error_logs: "true"
+          catch_error_logs: true
