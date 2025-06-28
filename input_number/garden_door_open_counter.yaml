@@ -1,7 +1,0 @@
----
-garden_door_open_counter:
-  name: Garden Door Open Counter
-  icon: mdi:air-filter
-  min: 0
-  max: 86400
-  step: 1

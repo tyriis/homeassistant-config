@@ -1,0 +1,9 @@
+---
+platform: history_stats
+name: Window Open Daily Time Domiroom
+unique_id: window_open_daily_time_domiroom
+entity_id: binary_sensor.aqara_contact_window_domiroom_contact
+state: "on"
+type: time
+start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+end: "{{ now() }}"
