@@ -14,6 +14,7 @@ homeassistant:
       name: Authenticator app
     - type: notify
       message: "I almost forget, to get into my clubhouse, you need to say {}"
+  customize: !include_dir_merge_named customizations/
 
 logger:
   default: info
