@@ -4,6 +4,6 @@ name: Bathroom Ventilation Daily Runtime
 unique_id: bathroom_ventilation_daily_runtime
 entity_id: switch.shelly_1gen4_ventilation_bathroom
 state: "on"
-type: times
+type: time
 start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
 end: "{{ now() }}"
