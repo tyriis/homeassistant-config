@@ -1,0 +1,27 @@
+---
+alias: Ventilation Bathroom Auto On
+id: ventilation_bathroom_auto_on
+description: >
+  Automatically turns on bathroom ventilation when humidity exceeds 58%.
+  The ventilation will run for at least 15 minutes before it can be turned off.
+mode: single
+triggers:
+  - trigger: numeric_state
+    entity_id: sensor.aqara_climate_bathroom_humidity
+    above: 58
+
+conditions:
+  # Only turn on if the ventilation is currently off
+  - condition: state
+    entity_id: switch.shelly_1gen4_ventilation_bathroom
+    state: "off"
+
+actions:
+  - action: switch.turn_on
+    target:
+      entity_id: switch.shelly_1gen4_ventilation_bathroom
+  - action: system_log.write
+    data:
+      level: info
+      message: Ventilation turned ON - humidity over threshold
+      logger: homeassistant.components.automation.ventilation_bathroom_auto_on

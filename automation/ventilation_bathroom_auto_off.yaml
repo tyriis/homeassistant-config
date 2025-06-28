@@ -1,0 +1,36 @@
+---
+alias: Ventilation Baathroom Auto Off
+id: ventilation_bathroom_auto_off
+description: >
+  Automatically turns off bathroom ventilation when humidity drops to 58% or below,
+  but only after the ventilation has been running for at least 15 minutes.
+mode: single
+triggers:
+  - trigger: numeric_state
+    entity_id: sensor.aqara_climate_bathroom_humidity
+    below: 58
+  # Also check every 5 minutes to ensure we catch the condition
+  - trigger: time_pattern
+    minutes: "/5"
+
+conditions:
+  # Ensure ventilation has been running for at least 15 minutes
+  - condition: template
+    value_template: >
+      {% set last_changed = states.switch.shelly_1gen4_ventilation_bathroom.last_changed %}
+      {{
+        states.switch.shelly_1gen4_ventilation_bathroom.state == 'on'
+        and states.sensor.aqara_climate_bathroom_humidity.state | float <= 58
+        and last_changed is not none
+        and (as_timestamp(now()) - as_timestamp(last_changed)) >= 900
+      }}
+
+actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.shelly_1gen4_ventilation_bathroom
+  - action: system_log.write
+    data:
+      level: info
+      message: Ventilation turned OFF - humidity normalized
+      logger: homeassistant.components.automation.ventilation_bathroom_auto_off
