@@ -1,0 +1,4 @@
+---
+sensor.ventilation_daily_runtime_bathroom:
+  icon: mdi:fan
+  friendly_name: Ventilation Daily Runtime Bathroom

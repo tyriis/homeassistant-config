@@ -1,7 +1,7 @@
 ---
 platform: history_stats
-name: Bathroom Ventilation Daily Runtime
-unique_id: bathroom_ventilation_daily_runtime
+name: Ventilation Daily Runtime Bathroom
+unique_id: ventilation_daily_runtime_bathroom
 entity_id: switch.shelly_1gen4_ventilation_bathroom
 state: "on"
 type: time
