@@ -3,18 +3,19 @@ alias: Ventilation Bathroom Auto On
 id: ventilation_bathroom_auto_on
 description: >
   Automatically turns on bathroom ventilation when humidity exceeds 58%.
-  The ventilation will run for at least 15 minutes before it can be turned off.
 mode: single
 triggers:
-  - trigger: numeric_state
-    entity_id: sensor.aqara_climate_bathroom_humidity
-    above: 58
+  - trigger: time_pattern
+    minutes: "/5"
 
 conditions:
-  # Only turn on if the ventilation is currently off
-  - condition: state
-    entity_id: switch.shelly_1gen4_ventilation_bathroom
-    state: "off"
+  # Only turn on if the ventilation is currently off and humidity is above threshold
+  - condition: template
+    value_template: >
+      {{
+        states.switch.shelly_1gen4_ventilation_bathroom.state != 'on'
+        and states.sensor.aqara_climate_bathroom_humidity.state | float > 58
+      }}
 
 actions:
   - action: switch.turn_on
