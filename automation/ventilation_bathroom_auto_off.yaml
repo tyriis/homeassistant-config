@@ -24,10 +24,10 @@ conditions:
   # Ensure ventilation has been running for at least 15 minutes
   - condition: template
     value_template: >
-      {% set switch_last_changed = state_attr('switch.shelly_1gen4_ventilation_bathroom', 'last_changed') %}
+      {% set last_changed = states.switch.shelly_1gen4_ventilation_bathroom.last_changed %}
       {{
-        switch_last_changed is not none
-        and (as_timestamp(now()) - as_timestamp(switch_last_changed)) >= 900
+        last_changed is not none
+        and (as_timestamp(now()) - as_timestamp(last_changed)) >= 900
       }}
 
 actions:

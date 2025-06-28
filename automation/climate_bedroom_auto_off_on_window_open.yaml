@@ -20,12 +20,12 @@ condition:
   # Only act if the climate is currently on, window is open, and the window has been open for more than 5 minutes
   - condition: template
     value_template: >
-      {% set window_last_changed = state_attr('binary_sensor.aqara_contact_window_bedroom_contact', 'last_changed') %}
+      {% set last_changed = states.binary_sensor.aqara_contact_window_bedroom_contact.last_changed %}
       {{
         states('climate.hisense_ac_bedroom') == 'on'
         and states('binary_sensor.aqara_contact_window_bedroom_contact') == 'on'
-        and window_last_changed is not none
-        and (as_timestamp(now()) - as_timestamp(window_last_changed)) > 300
+        and last_changed is not none
+        and (as_timestamp(now()) - as_timestamp(last_changed)) > 300
       }}
 action:
   - choose:
@@ -36,10 +36,10 @@ action:
             state: "on"
           - condition: template
             value_template: >
-              {% set window_last_changed = state_attr('binary_sensor.aqara_contact_window_bedroom_contact', 'last_changed') %}
+              {% set last_changed = states.binary_sensor.aqara_contact_window_bedroom_contact.last_changed %}
               {{
-                window_last_changed is not none
-                  and (as_timestamp(now()) - as_timestamp(window_last_changed)) > 300
+                last_changed is not none
+                  and (as_timestamp(now()) - as_timestamp(last_changed)) > 300
               }}
         sequence:
           # Release existing lock if it exists

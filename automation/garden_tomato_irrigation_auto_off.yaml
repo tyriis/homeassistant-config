@@ -38,11 +38,11 @@ action:
       - conditions:
           - condition: template
             value_template: >
-              {% set lock_status = states('sensor.woox_irrigation_garden2_lock_status') %}
-              {% set lock_last_changed = state_attr('sensor.woox_irrigation_garden2_lock_status', 'last_changed') %}
+              {% set lock_status = states.sensor.woox_irrigation_garden2_lock_status.state %}
+              {% set last_changed = states.sensor.woox_irrigation_garden2_lock_status.last_changed %}
               {{  lock_status not in ['locked', 'unlocked'] and
-                  lock_last_changed is not none and
-                  (as_timestamp(now()) - as_timestamp(lock_last_changed)) > 180 }}
+                  last_changed is not none and
+                  (as_timestamp(now()) - as_timestamp(last_changed)) > 180 }}
         sequence:
           - service: switch.turn_off
             target:
