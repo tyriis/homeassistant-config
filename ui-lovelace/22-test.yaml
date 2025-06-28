@@ -1,9 +1,1492 @@
 ---
-title: Test
+type: sections
+max_columns: 4
+icon: mdi:test-tube
 path: test
-# badges:
-#   - entity: binary_sensor.updater
-#   - entity: sensor.hacs
-#   # - entity: sun.sun
+title: test
+sections:
+  - type: grid
+    column_span: 2
+    cards:
+      - type: custom:mushroom-select-card
+        entity: input_select.room_picker
+        fill_container: false
+        layout: horizontal
+        grid_options:
+          columns: 24
+          rows: 1
+        primary_info: name
+        secondary_info: none
+        name: Room
+      - type: vertical-stack
+        visibility:
+          - condition: state
+            entity: input_select.room_picker
+            state: Office
+        cards:
+          - type: heading
+            heading_style: title
+            heading: Lights
+            icon: mdi:lightbulb
+          - features:
+              - type: light-brightness
+            type: tile
+            entity: light.office
+            vertical: false
+            hide_state: false
+            show_entity_picture: false
+            grid_options:
+              rows: 1
+              columns: 12
+            name: spots
+            icon: mdi:lightbulb-spot
+            state_content:
+              - state
+              - brightness
+              - color_temp_kelvin
+            features_position: inline
+          - type: heading
+            heading: Scenes
+            heading_style: title
+            icon: mdi:palette
+            badges: []
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: scene.office_concentration
+                name: Concentration
+                color: primary
+                hide_state: true
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+              - type: tile
+                entity: scene.office_evening
+                name: Evening
+                color: deep-orange
+                hide_state: true
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                features_position: bottom
+                vertical: false
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: scene.office_working
+                color: teal
+                hide_state: true
+                name: Working
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                features_position: bottom
+                vertical: false
+              - type: tile
+                entity: scene.office_relax
+                name: Relax
+                color: amber
+                hide_state: true
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                features_position: bottom
+                vertical: false
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: scene.office_reading
+                color: deep-purple
+                hide_state: true
+                name: Reading
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+                features_position: bottom
+                vertical: false
+              - type: tile
+                entity: scene.office_night
+                hide_state: true
+                name: Night
+                tap_action:
+                  action: toggle
+                hold_action:
+                  action: more-info
+          - type: heading
+            icon: mdi:snowflake
+            heading: Climate
+            heading_style: title
+          - type: custom:mushroom-climate-card
+            entity: climate.hisense_ac_office
+            name: Hisense AC
+            fill_container: false
+            hvac_modes:
+              - cool
+            show_temperature_control: true
+            layout: horizontal
+            collapsible_controls: false
+            visibility:
+              - condition: or
+                conditions:
+                  - condition: and
+                    conditions:
+                      - condition: numeric_state
+                        entity: sensor.weather_forecast_temperature_forecast
+                        above: 25.9
+                      - condition: numeric_state
+                        entity: sensor.qingping_temperature
+                        above: 24.9
+                  - condition: state
+                    entity: climate.office
+                    state_not: "off"
+      - type: vertical-stack
+        visibility:
+          - condition: state
+            entity: input_select.room_picker
+            state: Office
+        cards:
+          - type: heading
+            heading: Presence
+            heading_style: title
+            icon: mdi:motion-sensor
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: binary_sensor.aqara_motion_office_occupancy
+                features_position: bottom
+                vertical: false
+                show_entity_picture: false
+                name: "Jasmin "
+                tap_action:
+                  action: navigate
+                  navigation_path: "#motion_office"
+              - type: tile
+                entity: binary_sensor.mijia_motion_office_occupancy
+                features_position: bottom
+                vertical: false
+                name: Nils
+                tap_action:
+                  action: navigate
+                  navigation_path: "#motion_office"
+          - type: heading
+            heading: Environment
+            heading_style: title
+            icon: mdi:leaf
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.qingping_temperature
+                features_position: bottom
+                vertical: false
+                name: Temperature
+                color: "#E74C3C"
+                tap_action:
+                  action: navigate
+                  navigation_path: "#temperature_office"
+              - type: tile
+                entity: sensor.qingping_humidity
+                features_position: bottom
+                vertical: false
+                name: Humidity
+                color: "#3498DB"
+                tap_action:
+                  action: navigate
+                  navigation_path: "#humidity_office"
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.qingping_co2
+                features_position: bottom
+                vertical: false
+                name: " CO2"
+                tap_action:
+                  action: navigate
+                  navigation_path: "#co2_office"
+              - type: tile
+                entity: sensor.qingping_etvoc
+                features_position: bottom
+                vertical: false
+                name: eTVOC
+                tap_action:
+                  action: navigate
+                  navigation_path: "#etvoc_office"
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.qingping_pm25
+                features_position: bottom
+                vertical: false
+                name: PM25
+                color: "#27ae60"
+                tap_action:
+                  action: navigate
+                  navigation_path: "#pm25_office"
+              - type: tile
+                entity: sensor.qingping_pm10
+                features_position: bottom
+                vertical: false
+                name: PM10
+                color: "#27ae60"
+                tap_action:
+                  action: navigate
+                  navigation_path: "#pm10_office"
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.qingping_noise
+                features_position: bottom
+                vertical: false
+                name: Noise
+                tap_action:
+                  action: navigate
+                  navigation_path: "#noise_office"
+                color: yellow
+              - type: tile
+                entity: sensor.aqara_motion_office_illuminance
+                features_position: bottom
+                vertical: false
+                name: Illuminance
+                tap_action:
+                  action: navigate
+                  navigation_path: "#illuminance_office"
+                color: orange
+  - type: grid
+    cards:
+      - type: custom:digital-clock
+        dateFormat:
+          weekday: long
+          day: 2-digit
+          month: short
+        timeFormat:
+          hour: 2-digit
+          minute: 2-digit
+          hourCycle: h23
+      - type: heading
+        heading: Weather
+        heading_style: title
+        icon: mdi:cloud-outline
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: true
+            entity: weather.home
+            state_content: wind_speed
+            icon: mdi:weather-dust
+            color: teal
+      - show_current: true
+        show_forecast: true
+        type: weather-forecast
+        entity: weather.home
+        forecast_type: daily
+        name: Strasshof
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+  - type: grid
+    cards:
+      - type: heading
+        heading: Controls
+        heading_style: title
+        icon: mdi:plus-circle-multiple-outline
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            color_type: icon
+            color: orange
+            icon: mdi:lightbulb
+            tap_action:
+              action: navigate
+              navigation_path: "#lights"
+            styles:
+              icon:
+                - margin-top: 7px
+                - margin-bottom: 7px
+          - type: custom:button-card
+            color_type: icon
+            color: "#3498db"
+            icon: mdi:snowflake
+            tap_action:
+              action: navigate
+              navigation_path: "#climates"
+            styles:
+              icon:
+                - margin-top: 7px
+                - margin-bottom: 7px
+          - type: custom:button-card
+            color_type: icon
+            color: "#009688"
+            icon: mdi:robot-vacuum
+            tap_action:
+              action: navigate
+              navigation_path: "#roborock"
+            styles:
+              icon:
+                - margin-top: 7px
+                - margin-bottom: 7px
+          - type: custom:button-card
+            color_type: icon
+            color: "#00cfff"
+            icon: mdi:fan
+            tap_action:
+              action: navigate
+              navigation_path: "#fans"
+            styles:
+              icon:
+                - margin-top: 7px
+                - margin-bottom: 7px
+          - type: custom:button-card
+            color_type: icon
+            color: rgb(68, 115, 158)
+            icon: mdi:water
+            tap_action:
+              action: navigate
+              navigation_path: "#irrigation"
+            styles:
+              icon:
+                - margin-top: 7px
+                - margin-bottom: 7px
+  - type: grid
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#illuminance_office"
+            entity: sensor.aqara_motion_office_illuminance
+            name: CO2
+            show_header: false
+            width_desktop: 800px
+            styles: |-
+              .bubble-button-card-container {
+                border-radius: 5px;
+              }
+          - type: heading
+            heading: Illuminance Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.aqara_motion_office_illuminance
+                state_content: state
+                color: orange
+          - type: custom:mini-graph-card
+            name: Illuminance
+            entities:
+              - entity: sensor.aqara_motion_office_illuminance
+                color: orange
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >-
+              ## About the Lux Sensor
 
-type: original-states
+              A lux sensor measures the intensity of visible light in an area,
+              reported in lux (lx). Monitoring light levels helps optimize
+              comfort, energy savings, and plant growth by automating lighting
+              or shading.
+
+
+              **Typical Lux Ranges:**
+
+              - 0-10 lx: Very dark (nighttime or dark room)
+
+              - 11-30 lx: Dark
+
+              - 31-100 lx: Dim
+
+              - 101-200 lx: Moderate
+
+              - 201-400 lx: Bright (well-lit room)
+
+              - 401-600 lx: Very bright
+
+              - 601+ lx: Direct sunlight or intense artificial light
+
+
+              Maintaining suitable light levels improves well-being,
+              productivity, and can support healthy plant development. If your
+              lux readings are too low or too high, consider adjusting lighting
+              or window coverings for optimal conditions.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#co2_office"
+            entity: sensor.qingping_co2
+            name: CO2
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: CO2 Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_co2
+                state_content: state
+                color: green
+          - type: custom:mini-graph-card
+            name: CO2
+            entities:
+              - entity: sensor.qingping_co2
+                color: green
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >-
+              ## About CO₂ Concentration Indoors
+
+
+              Monitoring carbon dioxide (CO₂) levels indoors is important for
+              maintaining good air quality, comfort, and health. CO₂ is
+              naturally present in outdoor air at about 400 ppm, but can rise
+              indoors due to human activity and insufficient ventilation.
+
+
+              **Typical Indoor CO₂ Ranges:**
+
+              - **400-1,000 ppm:** Acceptable and typical for well-ventilated
+              spaces. Indicates good indoor air quality.
+
+              - **1,000-2,500 ppm:** May cause drowsiness, headaches, and
+              reduced concentration. Indicates insufficient ventilation and
+              declining air quality.
+
+              - **Above 2,500 ppm:** High levels can lead to discomfort,
+              impaired cognitive function, and, at very high concentrations,
+              health risks.
+
+
+              Keeping indoor CO₂ levels below 1,000 ppm is recommended for
+              comfort and well-being. If levels are higher, increase ventilation
+              by opening windows or using mechanical systems. Prolonged exposure
+              to elevated CO₂ can affect health and productivity, especially in
+              crowded or poorly ventilated spaces.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#etvoc_office"
+            entity: sensor.qingping_etvoc
+            name: eTVOC
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: eTVOC Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_etvoc
+                state_content: state
+                color: green
+          - type: custom:mini-graph-card
+            name: CO2
+            entities:
+              - entity: sensor.qingping_etvoc
+                color: green
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >
+              ## About eTVOC Values
+
+
+              eTVOC (equivalent Total Volatile Organic Compounds) measures the
+              concentration of various airborne chemicals, such as alcohols,
+              aldehydes, ketones, and hydrocarbons, that can affect indoor air
+              quality. High eTVOC levels may indicate the presence of pollutants
+              from cleaning products, paints, furniture, or human activity.
+
+
+              **eTVOC Value Ranges:**
+
+              - **0-65 ppb:** Excellent air quality
+
+              - **65-220 ppb:** Good air quality
+
+              - **220-660 ppb:** Slightly high (may start to notice odors or
+              mild discomfort)
+
+              - **660-2000 ppb:** High (increased risk of irritation, headaches,
+              or long-term health effects)
+
+              - **2000+ ppb:** Very high (potentially harmful, ventilation or
+              source control recommended)
+
+
+              Maintaining low eTVOC levels helps ensure a healthy indoor
+              environment. If values are elevated, consider increasing
+              ventilation, removing sources of VOCs, or using air purification.
+              Regular monitoring can help you identify trends and take action
+              before air quality becomes a concern.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#temperature_office"
+            entity: sensor.qingping_temperature
+            name: Temperature
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: Temperature Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_temperature
+                state_content: state
+                color: "#E74C3C"
+          - type: custom:mini-graph-card
+            name: CO2
+            entities:
+              - entity: sensor.qingping_temperature
+                color: "#E74C3C"
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >
+              ## Indoor Temperature
+
+
+              Monitoring indoor temperature helps maintain comfort and energy
+              efficiency. The ideal range for most living spaces is typically
+              between 20°C and 24°C. If the temperature is too high or too low,
+              consider adjusting your heating or cooling to create a healthier
+              and more comfortable environment.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#noise_office"
+            entity: sensor.qingping_noise
+            name: Noise
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: Noise Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_noise
+                state_content: state
+                color: yellow
+          - type: custom:mini-graph-card
+            name: Illuminance
+            entities:
+              - entity: sensor.qingping_noise
+                color: yellow
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >
+              ## About Noise Levels (dB)
+
+
+              A noise sensor measures the intensity of sound in decibels (dB),
+              helping you understand how loud your environment is. Monitoring
+              indoor noise is important for comfort, concentration, and health.
+              Prolonged exposure to high noise levels can lead to stress, sleep
+              disturbances, and even hearing loss.
+
+
+              - **30-40 dB:** Quiet (library, bedroom at night)
+
+              - **40-60 dB:** Moderate (normal conversation, office)
+
+              - **60-80 dB:** Loud (busy street, vacuum cleaner)
+
+              - **80+ dB:** Very loud (traffic, loud music, power tools)
+
+
+              If noise levels are consistently high, consider soundproofing,
+              reducing noise sources, or using quiet hours to create a more
+              comfortable indoor environment.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#humidity_office"
+            entity: sensor.qingping_humidity
+            name: Humidity
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: Humidity Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_humidity
+                state_content: state
+                color: "#3498DB"
+          - type: custom:mini-graph-card
+            name: Humidity
+            entities:
+              - entity: sensor.qingping_humidity
+                color: "#3498DB"
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >
+              ## About Indoor Humidity
+
+
+              Humidity measures the amount of moisture in the air and is
+              typically expressed as a percentage (%). Maintaining proper indoor
+              humidity is important for comfort, health, and the protection of
+              your home and belongings.
+
+
+              **Recommended Indoor Humidity:**
+
+              - **40-60%:** Ideal range for most homes. Supports comfort,
+              reduces allergens, and helps prevent mold growth.
+
+              - **Below 30%:** Air is too dry. Can cause dry skin, irritated
+              eyes, and static electricity.
+
+              - **Above 60%:** Air is too humid. Increases the risk of mold,
+              dust mites, and discomfort.
+
+
+              If humidity is outside the ideal range, consider using a
+              humidifier or dehumidifier, or adjusting ventilation to maintain a
+              healthy indoor environment.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#pm10_office"
+            entity: sensor.qingping_pm10
+            name: PM10
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: PM10 Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_pm10
+                state_content: state
+                color: "#27ae60"
+          - type: custom:mini-graph-card
+            name: PM10
+            entities:
+              - entity: sensor.qingping_pm10
+                color: "#27ae60"
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >-
+              ## About the PM10 Sensor
+
+              A PM10 sensor measures the concentration of inhalable particulate
+              matter less than 10 micrometers in diameter, reported in
+              micrograms per cubic meter (µg/m³). PM10 particles come from
+              sources like dust, smoke, construction activities, and vehicle
+              emissions. Because of their small size, these particles can be
+              inhaled deep into the lungs.
+
+
+              **PM10 Value Ranges:**
+
+              - **0-50 µg/m³:** Excellent air quality, safe for everyone.
+
+              - **50-100 µg/m³:** Good to moderate; generally acceptable but
+              sensitive individuals may begin to notice effects.
+
+              - **100-150 µg/m³:** Slightly elevated; may affect sensitive
+              groups such as children, elderly, or those with respiratory
+              conditions.
+
+              - **Above 150 µg/m³:** Increasingly unhealthy for the general
+              population; caution and mitigation recommended.
+
+
+              **Tip:** If PM10 levels are elevated, improve ventilation, reduce
+              indoor pollution sources, or limit outdoor activities during high
+              pollution events to protect your health.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#pm25_office"
+            entity: sensor.qingping_pm25
+            name: PM2.5
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: PM2.5 Office
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.qingping_pm25
+                state_content: state
+                color: "#27ae60"
+          - type: custom:mini-graph-card
+            name: PM2.5
+            entities:
+              - entity: sensor.qingping_pm25
+                color: "#27ae60"
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            hour24: true
+            line_width: 2
+            font_size: 85
+            hours_to_show: 24
+            points_per_hour: 4
+            update_interval: 60
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            show:
+              name: false
+              state: false
+              icon: false
+              extrema: true
+              labels_secondary: false
+          - type: markdown
+            content: >
+              ## About the PM2.5 Sensor
+
+
+              A PM2.5 sensor measures the concentration of fine particulate
+              matter less than 2.5 micrometers in diameter, reported in
+              micrograms per cubic meter (µg/m³). These tiny particles come from
+              sources like vehicle exhaust, industrial emissions, wildfires, and
+              even indoor activities such as cooking or burning candles. Because
+              of their small size, PM2.5 particles can penetrate deeply into the
+              lungs and even enter the bloodstream.
+
+
+              **PM2.5 Value Ranges:**
+
+              - **0-12 µg/m³:** Excellent air quality, safe for everyone.
+
+              - **12-35 µg/m³:** Good to moderate; generally acceptable, but
+              unusually sensitive individuals may notice effects.
+
+              - **34-75 µg/m³:** Slightly elevated; may affect sensitive groups
+              such as children, elderly, or those with respiratory conditions.
+
+              - **Above 75 µg/m³:** Increasingly unhealthy for the general
+              population; caution and mitigation recommended.
+
+
+              **Tip:** If PM2.5 levels are elevated, increase ventilation, use
+              air purifiers, reduce indoor pollution sources, and limit outdoor
+              activities during high pollution events to protect your health.
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#motion_office"
+            entity: binary_sensor.aqara_motion_office_occupancy
+            name: PM2.5
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: Motion aqara
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.aqara_motion_office_occupancy
+                color: green
+                state_content:
+                  - state
+                  - last_changed
+          - type: custom:mini-graph-card
+            name: motion
+            entities:
+              - entity: binary_sensor.aqara_motion_office_occupancy
+                color: "#90EE90"
+                name: aqara
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            aggregate_func: sum
+            hours_to_show: 24
+            line_width: 1
+            font_size: 85
+            points_per_hour: 4
+            smoothing: true
+            hour24: true
+            state_map:
+              - label: Clear
+                value: "off"
+              - label: Detected
+                value: "on"
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            update_interval: 60
+            line_color: "#90EE90"
+            show:
+              state: false
+              icon: false
+              name: false
+              labels: false
+              legend: true
+              labels_secondary: false
+              icon_adaptive_color: true
+              extrema: true
+          - type: heading
+            heading: Motion mijia
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.mijia_motion_office_occupancy
+                color: green
+                state_content:
+                  - state
+                  - last_changed
+          - type: custom:mini-graph-card
+            name: motion
+            entities:
+              - entity: binary_sensor.mijia_motion_office_occupancy
+                color: "#90EE90"
+                name: mijia
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            aggregate_func: sum
+            hours_to_show: 24
+            line_width: 1
+            font_size: 85
+            points_per_hour: 4
+            smoothing: true
+            hour24: true
+            state_map:
+              - label: Clear
+                value: "off"
+              - label: Detected
+                value: "on"
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            update_interval: 60
+            line_color: "#90EE90"
+            show:
+              state: false
+              icon: false
+              name: false
+              labels: false
+              legend: true
+              labels_secondary: false
+              icon_adaptive_color: true
+              extrema: true
+  - type: grid
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#roborock"
+            name: Roborock
+            show_header: false
+            width_desktop: 800px
+          - type: heading
+            heading: Upstairs
+            heading_style: title
+            badges:
+              - type: entity
+                entity: sensor.roborock_upstairs_battery
+              - type: entity
+                entity: binary_sensor.roborock_upstairs_water_shortage
+            icon: mdi:robot-vacuum
+          - type: tile
+            entity: vacuum.roborock_upstairs
+            grid_options:
+              columns: 12
+              rows: 1
+            show_entity_picture: false
+            vertical: false
+            hide_state: false
+            features_position: inline
+            state_content: state
+            name: " "
+            features:
+              - type: vacuum-commands
+                commands:
+                  - return_home
+                  - start_pause
+          - type: heading
+            heading: Downstairs
+            heading_style: title
+            badges:
+              - type: entity
+                entity: sensor.roborock_qrevo_curv_battery
+              - type: entity
+                entity: binary_sensor.roborock_qrevo_curv_water_shortage
+            icon: mdi:robot-vacuum
+          - type: tile
+            entity: vacuum.roborock_qrevo_curv
+            grid_options:
+              columns: 12
+              rows: 1
+            show_entity_picture: false
+            vertical: false
+            hide_state: false
+            features_position: inline
+            state_content: state
+            name: " "
+            features:
+              - type: vacuum-commands
+                commands:
+                  - return_home
+                  - start_pause
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#climates"
+            name: Climates
+            show_header: true
+            width_desktop: 800px
+            icon: mdi:snowflake
+          - type: heading
+            heading: Climates
+            heading_style: title
+            icon: mdi:snowflake
+          - type: custom:mushroom-climate-card
+            entity: climate.hisense_ac_office
+            name: Office
+            fill_container: false
+            hvac_modes:
+              - cool
+            show_temperature_control: false
+            layout: horizontal
+            collapsible_controls: false
+          - type: custom:mushroom-climate-card
+            entity: climate.hisense_ac_livingroom
+            name: Livingroom
+            fill_container: false
+            hvac_modes:
+              - cool
+            show_temperature_control: false
+            layout: horizontal
+            collapsible_controls: false
+          - type: custom:mushroom-climate-card
+            entity: climate.hisense_ac_bedroom
+            name: Bedroom
+            fill_container: false
+            hvac_modes:
+              - cool
+            show_temperature_control: false
+            layout: horizontal
+            collapsible_controls: false
+          - type: custom:mushroom-climate-card
+            entity: climate.hisense_ac_alex
+            name: Alexroom
+            fill_container: false
+            hvac_modes:
+              - cool
+            show_temperature_control: false
+            layout: horizontal
+            collapsible_controls: false
+          - type: custom:mushroom-climate-card
+            entity: climate.hisense_ac_domi
+            name: Domiroom
+            fill_container: false
+            hvac_modes:
+              - cool
+            show_temperature_control: false
+            layout: horizontal
+            collapsible_controls: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#lights"
+            name: Lights
+            show_header: true
+            width_desktop: 800px
+            icon: mdi:lightbulb
+          - type: heading
+            heading: Lights
+            heading_style: title
+            icon: mdi:lightbulb
+          - type: tile
+            entity: light.basement
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Basement
+            icon: mdi:lightbulb-spot
+            show_entity_picture: false
+            state_content: color_temp_kelvin
+          - type: tile
+            entity: light.office
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Office
+            icon: mdi:lightbulb-spot
+            show_entity_picture: false
+            state_content: color_temp_kelvin
+          - type: tile
+            entity: light.skylight_9aa7
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Bedroom
+            icon: mdi:wall-sconce-flat
+            show_entity_picture: false
+            state_content: effect
+            features_position: bottom
+          - type: tile
+            entity: group.lights_downstairs
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Downstairs
+            icon: mdi:lightbulb-spot
+            show_entity_picture: false
+          - type: tile
+            entity: light.led_ceiling_light_domiroom
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Domiroom
+            icon: mdi:lightbulb-variant
+            show_entity_picture: false
+          - type: tile
+            entity: light.led_ceiling_light_alexroom
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Alexroom
+            icon: mdi:lightbulb-variant
+            show_entity_picture: false
+          - type: tile
+            entity: light.skylight_8a41
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            name: Bathroom
+            icon: mdi:wall-sconce-flat
+            show_entity_picture: false
+            state_content: effect
+          - type: tile
+            entity: light.skylight_8a30
+            icon_tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            vertical: false
+            hide_state: false
+            icon: mdi:wall-sconce-flat
+            show_entity_picture: false
+            state_content: color_temp_kelvin
+            name: Kitchen
+            features_position: bottom
+          - type: tile
+            entity: light.rgbic_pro_strip_lights_2
+            color: purple
+            name: LED Strip Bedroom
+            show_entity_picture: false
+            state_content:
+              - state
+              - effect
+            features_position: bottom
+            vertical: false
+          - type: tile
+            entity: light.elements_d689
+            icon: mdi:hexagon-multiple-outline
+            show_entity_picture: false
+            color: accent
+            vertical: false
+            hide_state: false
+            state_content:
+              - state
+              - effect
+            name: Nanoloeaf Elements
+            features_position: bottom
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#irrigation"
+            name: Irrigation
+            show_header: true
+            width_desktop: 800px
+            icon: mdi:water
+          - type: heading
+            heading: Irrigation
+            heading_style: title
+            icon: mdi:water
+          - type: tile
+            entity: switch.woox_irrigation_garden
+            features_position: bottom
+            vertical: false
+            name: Herbs
+            icon: mdi:sprout
+          - type: tile
+            entity: switch.woox_irrigation_garden2
+            features_position: bottom
+            vertical: false
+            name: Tomatoes
+            icon: mdi:sprout
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#fans"
+            name: Fans
+            show_header: true
+            width_desktop: 800px
+            icon: mdi:fan
+          - type: heading
+            heading: Fans
+            heading_style: title
+            icon: mdi:fan
+          - type: tile
+            entity: switch.shelly_1gen4_ventilation_bathroom
+            features_position: bottom
+            vertical: false
+            name: Bathroom
+            icon: mdi:fan
+badges:
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: person.nils
+    color: light-blue
+    show_entity_picture: true
+    visibility:
+      - condition: state
+        entity: person.nils
+        state: home
+      - condition: screen
+        media_query: "(min-width: 0px) and (max-width: 767px)"
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: person.jasmin
+    color: purple
+    show_entity_picture: true
+    visibility:
+      - condition: state
+        entity: person.jasmin
+        state: home
+      - condition: screen
+        media_query: "(min-width: 0px) and (max-width: 767px)"
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: person.crowlex
+    color: red
+    show_entity_picture: true
+    visibility:
+      - condition: state
+        entity: person.crowlex
+        state: home
+      - condition: screen
+        media_query: "(min-width: 0px) and (max-width: 767px)"
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: person.techinik
+    color: primary
+    show_entity_picture: true
+    visibility:
+      - condition: state
+        entity: person.techinik
+        state: home
+      - condition: screen
+        media_query: "(min-width: 0px) and (max-width: 767px)"
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: person.nils
+    color: light-blue
+    name: Nils
+    show_entity_picture: true
+    state_content: state
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: person.jasmin
+    color: purple
+    name: Jasmin
+    icon: mdi:account
+    show_entity_picture: true
+    state_content: state
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: person.techinik
+    color: blue
+    name: Dominik
+    icon: mdi:account
+    show_entity_picture: true
+    state_content: state
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: person.crowlex
+    color: red
+    name: Alex
+    icon: mdi:account
+    show_entity_picture: true
+    state_content: state
+    visibility:
+      - condition: screen
+        media_query: "(min-width: 768px)"
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: lock.nuki
+    color: ""
+    visibility:
+      - condition: state
+        entity: lock.nuki
+        state_not: locked
+  - type: entity
+    show_name: false
+    show_state: true
+    show_icon: true
+    entity: sensor.nuki_battery
+    color: ""
+    visibility:
+      - condition: numeric_state
+        entity: sensor.nuki_battery
+        below: 50
+        above: 0
+    name: Nuki
+    state_content:
+      - name
+      - state
+cards: []
