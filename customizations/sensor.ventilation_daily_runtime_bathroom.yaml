@@ -1,4 +1,4 @@
 ---
 sensor.ventilation_daily_runtime_bathroom:
-  icon: mdi:fan
+  icon: mdi:fan-clock
   friendly_name: Ventilation Daily Runtime Bathroom

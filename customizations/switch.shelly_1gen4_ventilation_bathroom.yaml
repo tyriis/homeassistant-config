@@ -1,4 +1,6 @@
 ---
 switch.shelly_1gen4_ventilation_bathroom:
-  icon: mdi:fan
+  # icon: mdi:fan
   friendly_name: Bathroom Ventilation Fan
+  device_class: fan
+  name: Bathroom Ventilation Fan
