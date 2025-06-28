@@ -327,7 +327,7 @@ sections:
         heading_style: title
         icon: ""
       - type: tile
-        entity: input_number.basement_window_open_counter
+        entity: sensor.window_open_daily_time_basement
         name: Window open time
         hide_state: false
         state_content: state
