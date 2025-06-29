@@ -1,0 +1,9 @@
+---
+platform: history_stats
+name: Woox Irrigation Daily Runtime Garden2
+unique_id: woox_irrigation_daily_runtime_garden2
+entity_id: switch.woox_irrigation_garden2
+state: "on"
+type: time
+start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+end: "{{ now() }}"

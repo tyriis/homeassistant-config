@@ -1,0 +1,3 @@
+---
+sensor.woox_irrigation_daily_runtime_garden:
+  icon: mdi:watering-can
