@@ -1,0 +1,21 @@
+---
+# Computer status based on power consumption
+platform: template
+sensors:
+  tv_domiroom_status:
+    friendly_name: TV Domiroom Status
+    value_template: >-
+      {{
+        states('sensor.aqara_wall_outlet_domiroom_power') | float(0) > 50
+        and states('sensor.aqara_wall_outlet_domiroom_power') | float(0) < 100
+      }}
+    device_class: power
+    icon_template: >-
+      {%
+        if states('sensor.aqara_wall_outlet_domiroom_power') | float(0) > 50
+        and states('sensor.aqara_wall_outlet_domiroom_power') | float(0) < 100
+      %}
+        mdi:television
+      {% else %}
+        mdi:television-off
+      {% endif %}
