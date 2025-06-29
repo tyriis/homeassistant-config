@@ -1,0 +1,9 @@
+---
+- platform: history_stats
+  name: Computer Domiroom Daily Runtime
+  unique_id: computer_domiroom_daily_runtime
+  entity_id: binary_sensor.computer_domiroom_status
+  state: "on"
+  type: time
+  start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+  end: "{{ now() }}"
