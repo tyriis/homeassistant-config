@@ -1,9 +1,9 @@
 ---
-- platform: history_stats
-  name: Computer Domiroom Weekly Runtime
-  unique_id: computer_domiroom_weekly_runtime
-  entity_id: binary_sensor.computer_domiroom_status
-  state: "on"
-  type: time
-  duration:
-    days: 7
+platform: history_stats
+name: Computer Domiroom Weekly Runtime
+unique_id: computer_domiroom_weekly_runtime
+entity_id: binary_sensor.computer_domiroom_status
+state: "on"
+type: time
+duration:
+  days: 7
