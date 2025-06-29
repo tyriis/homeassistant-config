@@ -6,13 +6,13 @@ sensors:
     friendly_name: TV Alexroom Status
     value_template: >-
       {{
-        states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 50
+        states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 44
         and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 100
       }}
     device_class: power
     icon_template: >-
       {%
-        if states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 50
+        if states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 44
         and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 100
       %}
         mdi:television
