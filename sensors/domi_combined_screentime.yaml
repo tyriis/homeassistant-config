@@ -10,4 +10,5 @@ sensors:
       {{ (tv_time + phone_time + computer_time) | round(2) }}
     unit_of_measurement: "h"
     device_class: duration
-    icon: mdi:monitor-eye
+    icon_template: >-
+      mdi:monitor-eye
