@@ -1,0 +1,13 @@
+---
+platform: template
+sensors:
+  domi_combined_screentime:
+    friendly_name: Domi Combined Screentime
+    value_template: >
+      {% set tv_time = states('sensor.tv_domiroom_daily_runtime') | float(0) %}
+      {% set phone_time = states('sensor.a54_domi_daily_screentime') | float(0) %}
+      {% set computer_time = states('sensor.computer_domiroom_daily_runtime') | float(0) %}
+      {{ (tv_time + phone_time + computer_time) | round(2) }}
+    unit_of_measurement: "h"
+    device_class: duration
+    icon: mdi:monitor-eye
