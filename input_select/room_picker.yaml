@@ -3,10 +3,12 @@ room_picker:
   name: Room Picker
   icon: mdi:view-dashboard
   options:
-    - Livingroom
+    - Office
     - Bedroom
+    - Alexroom
+    - Domiroom
+    - Livingroom
     - Kitchen
     - Bathroom
-    - Office
     - Garden
   initial: Livingroom
