@@ -1,0 +1,9 @@
+---
+platform: history_stats
+name: A54 Domi Daily Screentime
+unique_id: a54_domi_daily_sceentime
+entity_id: binary_sensor.a54_techinik_device_locked
+state: "off"
+type: time
+start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+end: "{{ now() }}"
