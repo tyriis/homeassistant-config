@@ -1,0 +1,15 @@
+---
+# Computer status based on power consumption
+- platform: template
+  sensors:
+    computer_domiroom_status:
+      friendly_name: Computer Domiroom Status
+      value_template: >-
+        {{ states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) > 100 }}
+      device_class: power
+      icon_template: >-
+        {% if states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) > 100 %}
+          mdi:power-on
+        {% else %}
+          mdi:power-off
+        {% endif %}
