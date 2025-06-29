@@ -1,0 +1,9 @@
+---
+platform: history_stats
+name: TV Domiroom Daily Runtime
+unique_id: tv_domiroom_daily_runtime
+entity_id: binary_sensor.tv_domiroom_status
+state: "on"
+type: time
+start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+end: "{{ now() }}"
