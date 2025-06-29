@@ -65,6 +65,7 @@ mqtt: !include mqtt.yaml
 
 # Sensor configuration
 sensor: !include_dir_list sensors/
+binary_sensor: !include_dir_list binary_sensors/
 
 # Rest command configuration
 rest_command: !include_dir_merge_named rest_commands/
