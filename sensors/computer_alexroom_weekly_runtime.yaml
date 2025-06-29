@@ -7,3 +7,4 @@ state: "on"
 type: time
 duration:
   days: 7
+end: "{{ now() }}"
