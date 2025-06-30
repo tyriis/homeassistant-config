@@ -13,7 +13,7 @@ triggers:
       - sensor.aqara_wall_outlet_alexroom_power
     for:
       seconds: 10
-    below: 440
+    below: 40
 actions:
   - choose:
       - conditions:
