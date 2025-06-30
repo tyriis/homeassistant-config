@@ -1,0 +1,54 @@
+---
+alias: Livingroom Nanoleaf Elements
+id: livingroom_nanoleaf_elements
+description: >
+  Turn on the nanoleaf when motion downstairs is detected, turn off when no motion is detected for 15 minutes.
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - group.motion_downstairs
+    from: "off"
+    to: "on"
+  - trigger: state
+    entity_id:
+      - group.motion_downstairs
+    to: "off"
+    for:
+      minutes: 15
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: >
+              {{
+                states('light.elements_d689') == 'off'
+                and states('group.motion_downstairs') == 'on'
+              }}
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: light.elements_d689
+          - service: system_log.write
+            data:
+              level: info
+              message: light.elements_d689 turned on
+              logger: homeassistant.components.automation.livingroom_nanoleaf_elements
+      - conditions:
+          - condition: template
+            # also check if the motion sensor is off for at least 15 minutes
+            value_template: >
+              {{
+                states('light.elements_d689') == 'on'
+                and states('group.motion_downstairs') == 'off'
+                and as_timestamp(now()) - as_timestamp(states.group.motion_downstairs.last_changed) >= 900
+              }}
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: light.lines_5c30
+          - service: system_log.write
+            data:
+              level: info
+              message: light.elements_d689 turned off
+              logger: homeassistant.components.automation.livingroom_nanoleaf_elements
