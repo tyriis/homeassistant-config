@@ -7,19 +7,19 @@ triggers:
   - trigger: numeric_state
     entity_id:
       - sensor.aqara_wall_outlet_alexroom_power
-    above: 50
+    above: 40
   - trigger: numeric_state
     entity_id:
       - sensor.aqara_wall_outlet_alexroom_power
     for:
       seconds: 10
-    below: 50
+    below: 440
 actions:
   - choose:
       - conditions:
           - condition: numeric_state
             entity_id: sensor.aqara_wall_outlet_alexroom_power
-            above: 50
+            above: 40
         sequence:
           - action: light.turn_on
             target:
@@ -27,7 +27,7 @@ actions:
       - conditions:
           - condition: numeric_state
             entity_id: sensor.aqara_wall_outlet_alexroom_power
-            below: 50
+            below: 40
         sequence:
           - action: light.turn_off
             target:
