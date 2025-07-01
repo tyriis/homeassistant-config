@@ -7,13 +7,13 @@ sensors:
     value_template: >-
       {{
         states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 40
-        and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 100
+        and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 75
       }}
     device_class: power
     icon_template: >-
       {%
         if states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 40
-        and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 100
+        and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 75
       %}
         mdi:television
       {% else %}

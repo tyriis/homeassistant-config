@@ -5,10 +5,10 @@ sensors:
   computer_alexroom_status:
     friendly_name: Computer Alexroom Status
     value_template: >-
-      {{ states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 70 }}
+      {{ states('sensor.aqara_wall_outlet_alexroom_power') | float(0) >= 75 }}
     device_class: power
     icon_template: >-
-      {% if states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 70 %}
+      {% if states('sensor.aqara_wall_outlet_alexroom_power') | float(0) >= 75 %}
         mdi:power-on
       {% else %}
         mdi:power-off
