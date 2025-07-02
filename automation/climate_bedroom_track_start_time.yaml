@@ -6,7 +6,7 @@ description: >
 mode: single
 trigger:
   - platform: state
-    entity_id: climate.hisense_ac_bedroom
+    entity_id: climate.bedroom
     from: "off"
 condition:
   # Only run if changing to any active mode (not to "off" or "unknown")

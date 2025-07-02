@@ -24,7 +24,7 @@ condition:
       {% set current_timestamp = now().timestamp() %}
       {% set ac_run_time = (current_timestamp - ac_start_timestamp) / 60 %}
       {{
-        states('climate.hisense_ac_livingroom') == 'cool'
+        states('climate.livingroom') == 'cool'
         and states('sensor.qingping_livingroom_temperature') | float <= 22
         and ac_run_time > 30
       }}
@@ -43,7 +43,7 @@ actions:
   # Turn off the AC
   - action: climate.turn_off
     target:
-      entity_id: climate.hisense_ac_livingroom
+      entity_id: climate.livingroom
   # Log the action
   - action: system_log.write
     data:

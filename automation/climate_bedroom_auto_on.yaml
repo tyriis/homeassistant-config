@@ -1,4 +1,4 @@
-# i have a climate climate.hisense_ac_bedroom. and an environment sensor sensor.qingping_bedroom_temperature
+# i have a climate climate.bedroom. and an environment sensor sensor.qingping_bedroom_temperature
 # i have a window contact sensor to check whether the window is open or closed binary_sensor.aqara_contact_window_bedroom_contact, i have another sensor sensor.weather_forecast_temperature_forecast
 # create a home-assistant automation that:
 # turns on the ac when the temperature is above 24 degrees and the window is closed
