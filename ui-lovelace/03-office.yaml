@@ -95,7 +95,7 @@ sections:
             entity: sensor.weather_forecast_temperature_forecast
             above: 24
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_office
+        entity: climate.office
         name: AC
         fill_container: false
         hvac_modes:

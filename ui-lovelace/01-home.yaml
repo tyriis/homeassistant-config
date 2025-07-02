@@ -261,7 +261,7 @@ sections:
           - effect
         name: Nanoloeaf Elements
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_livingroom
+        entity: climate.livingroom
         fill_container: false
         primary_info: name
         hvac_modes:
@@ -344,7 +344,7 @@ sections:
           - last_updated
         name: motion
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_bedroom
+        entity: climate.bedroom
         fill_container: false
         primary_info: name
         hvac_modes:
@@ -431,7 +431,7 @@ sections:
         name: nils
         icon: mdi:motion-sensor
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_office
+        entity: climate.office
         fill_container: false
         primary_info: name
         hvac_modes:
@@ -508,7 +508,7 @@ sections:
           - effect
         name: Nanoleaf Shapes
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_domi
+        entity: climate.domi
         fill_container: false
         primary_info: name
         hvac_modes:
@@ -585,7 +585,7 @@ sections:
         icon: mdi:led-strip-variant
         name: desk light
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_alex
+        entity: climate.alex
         fill_container: false
         primary_info: name
         hvac_modes:

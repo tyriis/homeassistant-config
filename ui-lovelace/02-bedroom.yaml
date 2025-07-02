@@ -48,7 +48,7 @@ sections:
         heading: Climate
         heading_style: title
       - type: custom:mushroom-climate-card
-        entity: climate.hisense_ac_bedroom
+        entity: climate.bedroom
         fill_container: true
         hvac_modes:
           - cool
