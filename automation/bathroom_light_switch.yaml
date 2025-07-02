@@ -9,8 +9,8 @@ use_blueprint:
     base_topic: zigbee2mqtt-bridge03
     hold_delay: 400
     repeat_interval: 400
-    # ptm216z_selector: false # Set to true if using PTM216Z
-    # helper_last_controller_event: input_text.senic_wall_switch_bathroom_last_event
+    ptm216z_selector: true # Set to true if using PTM216Z
+    helper_last_controller_event: input_text.senic_wall_switch_bathroom_last_event
 
     # Button 1 Actions (Brightness Up)
     button_1_pressed:
