@@ -21,13 +21,13 @@ mode: restart
 triggers:
   # Manual switch turned on
   - platform: state
-    entity_id: climate.hisense_ac_bedroom
+    entity_id: climate.bedroom
     to: "on"
     id: manual_on
 
   # Manual switch turned off
   - platform: state
-    entity_id: climate.hisense_ac_bedroom
+    entity_id: climate.bedroom
     to: "off"
     id: manual_off
 

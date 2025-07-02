@@ -1,4 +1,4 @@
-# i have a climate climate.hisense_ac_livingroom. and an environment sensor sensor.qingping_livingroom_temperature
+# i have a climate climate.livingroom. and an environment sensor sensor.qingping_livingroom_temperature
 # i have another sensor sensor.weather_forecast_temperature_forecast
 # create a home-assistant automation that:
 # turns on the ac when the temperature is above 24 degrees
