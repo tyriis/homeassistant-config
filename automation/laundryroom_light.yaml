@@ -1,0 +1,57 @@
+---
+alias: laundryroom_light
+id: laundryroom_light
+description: Laundryroom light motion automation
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.mijia_motion_laundryroom_occupancy
+    to: "on"
+  - trigger: state
+    entity_id:
+      - binary_sensor.mijia_motion_laundryroom_occupancy
+    to: "off"
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.mijia_motion_laundryroom_occupancy
+            state: "on"
+          - condition: state
+            entity_id: switch.shelly_1gen4_light_laundryroom
+            state: "off"
+        sequence:
+          - action: switch.turn_on
+            target:
+              entity_id: switch.shelly_1gen4_light_laundryroom
+          - action: system_log.write
+            data:
+              level: info
+              message: light laundryroom turned on
+              logger: homeassistant.components.automation.laundryroom_light
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.mijia_motion_laundryroom_occupancy
+            state: "off"
+            for:
+              hours: 0
+              minutes: 5
+              seconds: 0
+          - condition: state
+            entity_id: switch.shelly_1gen4_light_laundryroom
+            state: "on"
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id: lswitch.shelly_1gen4_light_laundryroom
+          - action: system_log.write
+            data:
+              level: info
+              message: light laundryroom turned off
+              logger: homeassistant.components.automation.laundryroom_light
