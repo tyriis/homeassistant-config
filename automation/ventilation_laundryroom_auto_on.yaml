@@ -1,0 +1,28 @@
+---
+alias: Ventilation Laundryroom Auto On
+id: ventilation_laundryroom_auto_on
+description: >
+  Automatically turns on laundryroom ventilation when humidity exceeds 58%.
+mode: single
+triggers:
+  - trigger: time_pattern
+    minutes: "/5"
+
+conditions:
+  # Only turn on if the ventilation is currently off and humidity is above threshold
+  - condition: template
+    value_template: >
+      {{
+        states.switch.shelly_1gen4_ventilation_laundryroom.state != 'on'
+        and states.sensor.aqara_climate_laundryroom_humidity.state | float > 58
+      }}
+
+actions:
+  - action: switch.turn_on
+    target:
+      entity_id: switch.shelly_1gen4_ventilation_laundryroom
+  - action: system_log.write
+    data:
+      level: info
+      message: Ventilation turned ON - humidity over threshold
+      logger: homeassistant.components.automation.ventilation_laundryroom_auto_on
