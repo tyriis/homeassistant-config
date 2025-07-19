@@ -1,3 +1,4 @@
 ---
 switch.shelly_1gen4_light_laundryroom:
-  device_class: Light
+  device_class: light
+  friendly_name: shelly 1gen4 Light laundryroom
