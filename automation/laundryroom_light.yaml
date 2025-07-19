@@ -49,7 +49,7 @@ actions:
         sequence:
           - action: switch.turn_off
             target:
-              entity_id: lswitch.shelly_1gen4_light_laundryroom
+              entity_id: switch.shelly_1gen4_light_laundryroom
           - action: system_log.write
             data:
               level: info
