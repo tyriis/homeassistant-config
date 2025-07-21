@@ -1,0 +1,109 @@
+---
+alias: Bedroom Light Switch
+id: laundryroom_light_switch
+description: "Control laundryroom light with EnOcean switch - continuous dimming while held"
+use_blueprint:
+  path: enocean_ptm21xz_continuous_trigger.yaml
+  input:
+    controller: senic wall switch laundryroom
+    base_topic: zigbee2mqtt-bridge03
+    hold_delay: 250
+    repeat_interval: 250
+    ptm216z_selector: false # Set to true if using PTM216Z
+    helper_last_controller_event: input_text.senic_wall_switch_laundryroom_last_event
+
+    # Button 1 Actions (Brightness Up)
+    button_1_pressed:
+      - service: system_log.write
+        data:
+          message: Button 1 pressed
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_1_continuous:
+      - service: system_log.write
+        data:
+          message: Button 1 continous
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_1_held:
+      - service: system_log.write
+        data:
+          message: Button 1 held
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_1_released:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.shelly_1gen4_light_laundryroom
+      - service: system_log.write
+        data:
+          message: Button 1 released - turned on laundryroom light
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    # Button 2 Actions (Brightness Down)
+    button_2_pressed:
+      - service: system_log.write
+        data:
+          message: Button 2 pressed
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_2_continuous:
+      - service: system_log.write
+        data:
+          message: Button 2 continous
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_2_held:
+      - service: system_log.write
+        data:
+          message: Button 2 held
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_2_released:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.shelly_1gen4_light_laundryroom
+      - service: system_log.write
+        data:
+          message: Button 2 released - turned off laundryroom light
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    # Button 3 Actions (Ventilation)
+    button_3_pressed:
+      - service: system_log.write
+        data:
+          message: Button 3 pressed
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_3_continuous:
+      - service: system_log.write
+        data:
+          message: Button 3 continous
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_3_held:
+      - service: system_log.write
+        data:
+          message: Button 3 held
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch
+
+    button_3_released:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.shelly_1gen4_ventilation_laundryroom
+      - service: system_log.write
+        data:
+          message: Button 3 released - turn on ventilation
+          level: info
+          logger: homeassistant.components.automation.laundryroom_light_switch

@@ -11,4 +11,4 @@ trigger:
     local_only: true
 action:
   - service: shell_command.update_config
-  - service: homeassistant.restart
+  # - service: homeassistant.restart
