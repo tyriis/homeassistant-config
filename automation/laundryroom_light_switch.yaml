@@ -26,7 +26,7 @@ actions:
           - condition: template
             value_template: |-
               {{
-                state_attr('event.senic_wall_switch_laundryroom_action', 'event_type') == 'press_1'
+                states.sensor.senic_wall_switch_laundryroom_action.state == 'press_1'
                 and states.switch.shelly_1gen4_light_laundryroom.state == 'off'
               }}
         sequence:
@@ -43,7 +43,7 @@ actions:
           - condition: template
             value_template: |-
               {{
-                state_attr('event.senic_wall_switch_laundryroom_action', 'event_type') == 'press_2'
+                states.sensor.senic_wall_switch_laundryroom_action.state == 'press_2'
                 and states.switch.shelly_1gen4_light_laundryroom.state == 'on'
               }}
         sequence:
@@ -60,7 +60,7 @@ actions:
           - condition: template
             value_template: |-
               {{
-                state_attr('event.senic_wall_switch_laundryroom_action', 'event_type') == 'press_3'
+                states.sensor.senic_wall_switch_laundryroom_action.state == 'press_3'
                 and states.switch.shelly_1gen4_ventilation_laundryroom.state == 'off'
               }}
         sequence:
