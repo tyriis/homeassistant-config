@@ -1,5 +1,5 @@
 ---
-alias: Bedroom Light Switch
+alias: Laundryroom Light Switch
 id: laundryroom_light_switch
 description: "Control laundryroom light with EnOcean switch - continuous dimming while held"
 use_blueprint:
