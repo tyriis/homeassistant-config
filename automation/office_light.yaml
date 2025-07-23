@@ -57,29 +57,20 @@ conditions: []
 actions:
   - choose:
       - conditions:
-          - condition: state
-            entity_id: group.motion_office
-            state: "on"
-          - condition: or
-            conditions:
-              - condition: time
-                after: "23:00:00"
-                before: "06:00:00"
+          - condition: time
+            after: "23:00:00"
+            before: "06:00:00"
           - condition: template
-            value_template: "{{ states('sensor.office_light_automation_block_status') == 'allowed' }}"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.office
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                above: 45 # scene.office_night brightness value
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                below: 45 # scene.office_night brightness value
+            value_template: >-
+              {{
+                states('sensor.office_light_automation_block_status') == 'allowed'
+                and states('group.motion_office') == 'on'
+                and (
+                  states('light.office') == 'off'
+                  or state_attr('light.office', 'brightness') != 45
+                )
+              }}
+            # scene.office_night brightness value = 45
         sequence:
           - action: scene.turn_on
             data: {}
@@ -91,27 +82,20 @@ actions:
               message: scene.office_night turned on
               logger: homeassistant.components.automation.office_light
       - conditions:
-          - condition: state
-            entity_id: group.motion_office
-            state: "on"
           - condition: time
             after: "06:00:00"
             before: "08:00:00"
           - condition: template
-            value_template: "{{ states('sensor.office_light_automation_block_status') == 'allowed' }}"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.office
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                above: 220 # scene.office_reading brightness value
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                below: 220 # scene.office_reading brightness value
+            value_template: >-
+              {{
+                states('sensor.office_light_automation_block_status') == 'allowed'
+                and states('group.motion_office') == 'on'
+                and (
+                  states('light.office') == 'off'
+                  or state_attr('light.office', 'brightness') != 220
+                )
+              }}
+            # scene.office_reading brightness value = 220
         sequence:
           - action: scene.turn_on
             data: {}
@@ -123,9 +107,6 @@ actions:
               message: scene.office_reading turned on
               logger: homeassistant.components.automation.office_light
       - conditions:
-          - condition: state
-            entity_id: group.motion_office
-            state: "on"
           - condition: or
             conditions:
               - condition: time
@@ -135,20 +116,16 @@ actions:
                 after: "14:00:00"
                 before: "21:00:00"
           - condition: template
-            value_template: "{{ states('sensor.office_light_automation_block_status') == 'allowed' }}"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.office
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                above: 235 # scene.office_working brightness value
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                below: 235 # scene.office_working brightness value
+            value_template: >-
+              {{
+                states('sensor.office_light_automation_block_status') == 'allowed'
+                and states('group.motion_office') == 'on'
+                and (
+                  states('light.office') == 'off'
+                  or state_attr('light.office', 'brightness') != 235
+                )
+              }}
+            # scene.office_working brightness value = 235
         sequence:
           - action: scene.turn_on
             data: {}
@@ -160,23 +137,20 @@ actions:
               message: scene.office_working turned on
               logger: homeassistant.components.automation.office_light
       - conditions:
-          - condition: state
-            entity_id: group.motion_office
-            state: "on"
           - condition: time
             after: "12:00:00"
             before: "14:00:00"
           - condition: template
-            value_template: "{{ states('sensor.office_light_automation_block_status') == 'allowed' }}"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.office
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                below: 255 # scene.office_concentration brightness value
+            value_template: >-
+              {{
+                states('sensor.office_light_automation_block_status') == 'allowed'
+                and states('group.motion_office') == 'on'
+                and (
+                  states('light.office') == 'off'
+                  or state_attr('light.office', 'brightness') != 255
+                )
+              }}
+            # scene.office_concentration brightness value = 255
         sequence:
           - action: scene.turn_on
             data: {}
@@ -188,27 +162,20 @@ actions:
               message: scene.office_concentration turned on
               logger: homeassistant.components.automation.office_light
       - conditions:
-          - condition: state
-            entity_id: group.motion_office
-            state: "on"
           - condition: time
             after: "21:00:00"
             before: "23:00:00"
           - condition: template
-            value_template: "{{ states('sensor.office_light_automation_block_status') == 'allowed' }}"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.office
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                below: 170 # scene.office_evening brightness value
-              - condition: numeric_state
-                entity_id: light.office
-                attribute: brightness
-                above: 170 # scene.office_evening brightness value
+            value_template: >-
+              {{
+                states('sensor.office_light_automation_block_status') == 'allowed'
+                and states('group.motion_office') == 'on'
+                and (
+                  states('light.office') == 'off'
+                  or state_attr('light.office', 'brightness') != 170
+                )
+              }}
+            # scene.office_evening brightness value = 170
         sequence:
           - action: scene.turn_on
             data: {}
