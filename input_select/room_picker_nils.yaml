@@ -1,6 +1,6 @@
 ---
 room_picker:
-  name: Room Picker
+  name: Room Picker Nils
   icon: mdi:view-dashboard
   options:
     - Office
@@ -10,4 +10,5 @@ room_picker:
     - Livingroom
     - Kitchen
     - Bathroom
+    - Garden
   initial: Livingroom
