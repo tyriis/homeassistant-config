@@ -18,7 +18,7 @@ triggers:
     entity_id:
       - sensor.senic_wall_switch_alexroom_action
     from: null
-    to: press_4
+    to: press_3
   - trigger: state
     entity_id:
       - sensor.senic_wall_switch_alexroom_action
