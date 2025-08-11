@@ -1,0 +1,45 @@
+---
+mode: single
+alias: Alexroom Light Switch
+id: alexroom_light_switch
+description: Handle actions from the Senic Wall Switch in the lalexroom
+triggers:
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_alexroom_action
+    from: null
+    to: press_1
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_alexroom_action
+    from: null
+    to: press_2
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_alexroom_action
+    from: null
+    to: press_4
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_alexroom_action
+    from: null
+    to: press_4
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                states.sensor.senic_wall_switch_alexroom_action.state == 'press_2'
+              }}
+        sequence:
+          - action: switch.toggle
+            target:
+              entity_id: switch.shelly_1gen4_light_alexroom
+          - action: system_log.write
+            data:
+              level: info
+              message: Light toggled by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.alexroom_light_switch
