@@ -24,6 +24,17 @@ triggers:
       - sensor.senic_wall_switch_alexroom_action
     from: null
     to: press_4
+  # add trigger for Aqara switch actions
+  - trigger: state
+    entity_id:
+      - sensor.aqara_switch_alexroom_action
+    from: null
+    to: single
+  - trigger: state
+    entity_id:
+      - sensor.aqara_switch_alexroom_action
+    from: null
+    to: double
 conditions: []
 actions:
   - choose:
@@ -41,5 +52,22 @@ actions:
             data:
               level: info
               message: Light toggled by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.alexroom_light_switch
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                states.sensor.aqara_switch_alexroom_action.state == 'single'
+                or states.sensor.aqara_switch_alexroom_action.state == 'double'
+              }}
+        sequence:
+          - action: switch.toggle
+            target:
+              entity_id: switch.shelly_1gen4_light_alexroom
+          - action: system_log.write
+            data:
+              level: info
+              message: Light toggled by Aqara Button Switch
               logger: >-
                 homeassistant.components.automation.alexroom_light_switch
