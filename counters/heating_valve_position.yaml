@@ -1,0 +1,6 @@
+---
+heating_valve_position:
+  name: Heating Valve Position
+  icon: mdi:pipe-valve
+  initial: 0
+  restore: true
