@@ -57,8 +57,7 @@ scene: !include_dir_list scenes/
 # Prometheus configuration
 prometheus: !include prometheus.yaml
 
-# MQTT configuration
-mqtt: !include mqtt.yaml
+light: !include_dir_list lights/
 
 # Switch configuration
 # switch: !include_dir_list switches/

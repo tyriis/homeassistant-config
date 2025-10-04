@@ -6,11 +6,11 @@ mode: single
 triggers:
   - trigger: state
     entity_id:
-      - binary_sensor.sensor_bathroom_sr501_pir_motion
+      - binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
     to: "on"
   - trigger: state
     entity_id:
-      - binary_sensor.sensor_bathroom_sr501_pir_motion
+      - binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
     to: "off"
     for:
       hours: 0
@@ -21,7 +21,7 @@ actions:
   - choose:
       - conditions:
           - condition: state
-            entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
+            entity_id: binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
             state: "on"
           - condition: time
             after: "08:00:00"
@@ -42,7 +42,7 @@ actions:
               logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state
-            entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
+            entity_id: binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
             state: "on"
           - condition: time
             after: "00:00:00"
@@ -63,7 +63,7 @@ actions:
               logger: homeassistant.components.automation.bathroom_nanoleaf
       - conditions:
           - condition: state
-            entity_id: binary_sensor.sensor_bathroom_sr501_pir_motion
+            entity_id: binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
             state: "off"
             for:
               hours: 0

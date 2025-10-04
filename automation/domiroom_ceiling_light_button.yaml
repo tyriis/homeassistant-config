@@ -1,0 +1,17 @@
+---
+alias: Domiroom Ceiling Light Button Control
+id: domiroom_ceiling_light_button
+description: Toggle ceiling light with Aqara switch button
+mode: single
+trigger:
+  - platform: state
+    entity_id: sensor.aqara_switch_domiroom_action
+    to: "single"
+  - platform: state
+    entity_id: sensor.aqara_switch_domiroom_action
+    to: "double"
+condition: []
+actions:
+  - action: light.toggle
+    target:
+      entity_id: light.led_ceiling_light_domiroom

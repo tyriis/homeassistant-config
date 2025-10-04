@@ -46,7 +46,7 @@ actions:
         sequence:
           - service: light.turn_off
             target:
-              entity_id: light.lines_5c30
+              entity_id: light.elements_d689
           - service: system_log.write
             data:
               level: info
