@@ -1,0 +1,16 @@
+---
+alias: Domiroom Ceiling Light auto off
+id: domiroom_ceiling_light_auto_off
+description: Turn off the ceiling light when no motion is detected for 30 minutes
+mode: restart
+trigger:
+  - platform: state
+    entity_id: group.motion_domiroom
+    to: "off"
+    for:
+      minutes: 30
+condition: []
+actions:
+  - action: light.turn_off
+    target:
+      entity_id: light.led_ceiling_light_domiroom

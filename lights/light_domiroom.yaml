@@ -1,13 +1,4 @@
 ---
-# platform: mqtt
-name: led ceiling light domiroom
-state_topic: ESPHome/switch_domiroom/switch/switch_domiroom_relay/state
-command_topic: ESPHome/switch_domiroom/switch/switch_domiroom_relay/set
-payload_on: "ON"
-payload_off: "OFF"
-availability_topic: ESPHome/switch_domiroom/state
-payload_available: 1
-payload_not_available: 0
-qos: 2
-optimistic: false
-unique_id: 3d78e38f-576e-34a7-90f6-47ad9974376c # uuid3 led_ceiling_light_domiroom
+platform: switch
+name: LED Ceiling Light Domiroom
+entity_id: switch.switch_domiroom_switch_domiroom_relay
