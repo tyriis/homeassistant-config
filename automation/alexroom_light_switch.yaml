@@ -36,38 +36,88 @@ triggers:
     from: null
     to: double
 conditions: []
+variables:
+  current_brightness: "{{ state_attr('light.skylight_fb1c', 'brightness') | default(120) }}"
 actions:
   - choose:
       - conditions:
           - condition: template
             value_template: |-
               {{
-                states.sensor.senic_wall_switch_alexroom_action.state == 'press_2'
+                states('light.skylight_fb1c') == 'off'
+                and (
+                  states.sensor.senic_wall_switch_alexroom_action.state == 'press_2'
+                  or states.sensor.aqara_switch_alexroom_action.state == 'single'
+                )
               }}
         sequence:
-          - action: switch.toggle
+          - action: light.turn_on
             target:
-              entity_id: switch.shelly_1gen4_light_alexroom
+              entity_id: light.skylight_fb1c
           - action: system_log.write
             data:
               level: info
-              message: Light toggled by Senic Wall Switch
+              message: light.skylight_fb1c turned on by Switch
               logger: >-
                 homeassistant.components.automation.alexroom_light_switch
       - conditions:
           - condition: template
             value_template: |-
               {{
-                states.sensor.aqara_switch_alexroom_action.state == 'single'
-                or states.sensor.aqara_switch_alexroom_action.state == 'double'
+                states('light.skylight_fb1c') == 'on'
+                and (
+                  states.sensor.senic_wall_switch_alexroom_action.state == 'press_2'
+                  or states.sensor.aqara_switch_alexroom_action.state == 'single'
+                )
               }}
         sequence:
-          - action: switch.toggle
+          - action: light.turn_off
             target:
-              entity_id: switch.shelly_1gen4_light_alexroom
+              entity_id: light.skylight_fb1c
           - action: system_log.write
             data:
               level: info
-              message: Light toggled by Aqara Button Switch
+              message: light.skylight_fb1c turned off by Switch
               logger: >-
                 homeassistant.components.automation.alexroom_light_switch
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                states.sensor.aqara_switch_alexroom_action.state == 'double'
+              }}
+        sequence:
+          - choose:
+              # If brightness is ≥ 50, set to 50
+              - conditions:
+                  - condition: template
+                    value_template: "{{ current_brightness >= 50 }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.skylight_fb1c
+                    data:
+                      brightness: 50
+                  - action: system_log.write
+                    data:
+                      level: info
+                      message: light.skylight_fb1c brightness 50 by Aqara Switch
+                      logger: >-
+                        homeassistant.components.automation.alexroom_light_switch
+
+              # If brightness is < 50, set to 120
+              - conditions:
+                  - condition: template
+                    value_template: "{{ current_brightness < 50 }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.skylight_fb1c
+                    data:
+                      brightness: 120
+                  - action: system_log.write
+                    data:
+                      level: info
+                      message: light.skylight_fb1c brightness 120 by Aqara Switch
+                      logger: >-
+                        homeassistant.components.automation.alexroom_light_switch
