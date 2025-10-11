@@ -1,0 +1,9 @@
+---
+platform: history_stats
+name: Door Open Daily Time Garden
+unique_id: door_open_daily_time_garden
+entity_id: binary_sensor.aqara_contact_door_garden_contact
+state: "on"
+type: time
+start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+end: "{{ now() }}"
