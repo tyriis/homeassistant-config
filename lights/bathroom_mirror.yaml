@@ -1,0 +1,4 @@
+---
+platform: switch
+name: Bathroom Mirror
+entity_id: switch.shelly_1gen4_light_bathroom

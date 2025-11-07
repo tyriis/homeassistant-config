@@ -1,0 +1,57 @@
+---
+alias: bathroom_mirror
+id: bathroom_mirror
+description: Bathroom Mirror Light motion automation
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
+    to: "on"
+  - trigger: state
+    entity_id:
+      - binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
+    to: "off"
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
+            state: "on"
+          - condition: state
+            entity_id: light.bathroom_mirror
+            state: "off"
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.bathroom_mirror
+          - action: system_log.write
+            data:
+              level: info
+              message: light.bathroom_mirror turned on
+              logger: homeassistant.components.automation.bathroom_mirror
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.sensor_bathroom_sensor_bathroom_sr501_pir_motion
+            state: "off"
+            for:
+              hours: 0
+              minutes: 10
+              seconds: 0
+          - condition: state
+            entity_id: light.bathroom_mirror
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.bathroom_mirror
+          - action: system_log.write
+            data:
+              level: info
+              message: light.bathroom_mirror turned off
+              logger: homeassistant.components.automation.bathroom_mirror
