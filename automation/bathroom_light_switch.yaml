@@ -1,117 +1,133 @@
 ---
+mode: single
 alias: Bathroom Light Switch
 id: bathroom_light_switch
-description: "Control bathroom light with EnOcean switch - continuous dimming while held"
-use_blueprint:
-  path: enocean_ptm21xz_continuous_trigger.yaml
-  input:
-    controller: senic wall switch bathroom
-    base_topic: zigbee2mqtt-bridge03
-    hold_delay: 400
-    repeat_interval: 400
-    ptm216z_selector: true # Set to true if using PTM216Z
-    helper_last_controller_event: input_text.senic_wall_switch_bathroom_last_event
-
-    # Button 1 Actions (Brightness Up)
-    button_1_pressed:
-      - service: switch.toggle
-        target:
-          entity_id: switch.shelly_1gen4_light_bathroom
-
-    # button_1_continuous:
-    #   - service: light.turn_on
-    #     target:
-    #       entity_id: light.skylight_9aa7
-    #     data:
-    #       brightness_step_pct: 10 # Increase brightness by 10% each interval
-
-    # button_1_held:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 1 held - starting continuous dimming up
-    #       level: info
-
-    # button_1_released:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 1 released - stopped dimming up
-    #       level: info
-
-    # # Button 2 Actions (Brightness Down)
-    # button_2_pressed:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 2 pressed - starting continuous dimming up
-    #       level: info
-
-    # button_2_continuous:
-    #   - service: light.turn_on
-    #     target:
-    #       entity_id: light.skylight_9aa7
-    #     data:
-    #       brightness_step_pct: -10 # Decrease brightness by 10% each interval
-
-    # button_2_held:
-    #   - service: system_log.write
-    #     data:
-    #       message: "Button 2 held - starting continuous dimming down"
-    #       level: info
-
-    # button_2_released:
-    #   - service: system_log.write
-    #     data:
-    #       message: "Button 2 released - stopped dimming down"
-    #       level: info
-
-    # Button 3 Actions (Brightness Up)
-    # button_3_pressed:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 3 pressed - starting continuous dimming up
-    #       level: info
-
-    button_3_continuous:
-      - service: light.turn_on
-        target:
-          entity_id: light.skylight_8a41
-        data:
-          brightness_step_pct: 5 # Increase brightness by 5% each interval
-
-    # button_3_held:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 3 held - starting continuous dimming up
-    #       level: info
-
-    # button_3_released:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 3 released - stopped dimming up
-    #       level: info
-
-    # # Button 4 Actions (Brightness Down)
-    # button_4_pressed:
-    #   - service: system_log.write
-    #     data:
-    #       message: Button 4 pressed - starting continuous dimming up
-    #       level: info
-
-    button_4_continuous:
-      - service: light.turn_on
-        target:
-          entity_id: light.skylight_8a41
-        data:
-          brightness_step_pct: -5 # Decrease brightness by 5% each interval
-
-
-    # button_4_held:
-    #   - service: system_log.write
-    #     data:
-    #       message: "Button 4 held - starting continuous dimming down"
-    #       level: info
-
-    # button_4_released:
-    #   - service: system_log.write
-    #     data:
-    #       message: "Button 4 released - stopped dimming down"
-    #       level: info
+description: Handle actions from the Senic Wall Switch in the bathroom
+triggers:
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_bathroom_action
+    from: null
+    to: press_1
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_bathroom_action
+    from: null
+    to: press_2
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_bathroom_action
+    from: null
+    to: press_3
+  - trigger: state
+    entity_id:
+      - sensor.senic_wall_switch_bathroom_action
+    from: null
+    to: press_4
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                (
+                  states.sensor.senic_wall_switch_bathroom_action.state == 'press_1'
+                  or states.sensor.senic_wall_switch_bathroom_action.state == 'press_2'
+                )
+                and (
+                  states.switch.shelly_1gen4_light_bathroom.state == 'off'
+                  or states.light.skylight_8a41.state == 'off'
+                )
+              }}
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.skylight_8a41
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a41 turned ON by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.bathroom_light_switch
+          - action: switch.turn_on
+            target:
+              entity_id: switch.shelly_1gen4_light_bathroom
+          - action: system_log.write
+            data:
+              level: info
+              message: switch.shelly_1gen4_light_bathroom turned ON by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.bathroom_light_switch
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                (
+                  states.sensor.senic_wall_switch_bathroom_action.state == 'press_1'
+                  or states.sensor.senic_wall_switch_bathroom_action.state == 'press_2'
+                )
+                and (
+                  states.switch.shelly_1gen4_light_bathroom.state == 'on'
+                  or states.light.skylight_8a41.state == 'on'
+                )
+              }}
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.skylight_8a41
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a41 turned OFF by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.bathroom_light_switch
+          - action: switch.turn_off
+            target:
+              entity_id: switch.shelly_1gen4_light_bathroom
+          - action: system_log.write
+            data:
+              level: info
+              message: switch.shelly_1gen4_light_bathroom turned OFF by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.bathroom_light_switch
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                (
+                  states.sensor.senic_wall_switch_bathroom_action.state == 'press_3'
+                  or states.sensor.senic_wall_switch_bathroom_action.state == 'press_4'
+                )
+                and states.switch.shelly_1gen4_ventilation_bathroom.state == 'off'
+              }}
+        sequence:
+          - action: switch.turn_on
+            target:
+              entity_id: switch.shelly_1gen4_ventilation_bathroom
+          - action: system_log.write
+            data:
+              level: info
+              message: Ventilation turned ON by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.bathroom_light_switch
+      - conditions:
+          - condition: template
+            value_template: |-
+              {{
+                (
+                  states.sensor.senic_wall_switch_bathroom_action.state == 'press_3'
+                  or states.sensor.senic_wall_switch_bathroom_action.state == 'press_4'
+                )
+                and states.switch.shelly_1gen4_ventilation_bathroom.state == 'on'
+              }}
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id: switch.shelly_1gen4_ventilation_bathroom
+          - action: system_log.write
+            data:
+              level: info
+              message: Ventilation turned OFF by Senic Wall Switch
+              logger: >-
+                homeassistant.components.automation.bathroom_light_switch
