@@ -1,0 +1,172 @@
+---
+# create a new automation for homeassistant:
+# group.lights_downstairs should turn on if one of the motion sensors
+# group.motion_downstairs is on and the light is off
+# light.office should switch to the scene concentration between 06:00 and 23:00
+# group.lights_downstairs should switch to the scene night between 23:00 and 06:00
+# when the light is on and there is no motion on the group.motion_downstairs for 10 minutes between 06:00 and 23:00, the light should switch to scene relax
+# when the light is on and there is no motion on the group.motion_downstairs for 15 minutes between 06:00 and 23:00, the light should switch off
+# when the light is on and there is no motion on the group.motion_downstairs for 10 minutes between 23:00 and 06:00, the light should switch off
+
+alias: downstairs_light
+id: downstairs_light
+description: Turn on the downstairs light when motion is detected
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - group.motion_downstairs
+    to: "on"
+  - trigger: state
+    entity_id:
+      - group.motion_downstairs
+    to: "off"
+    for:
+      minutes: 10
+  - trigger: state
+    entity_id:
+      - group.motion_downstairs
+    to: "off"
+    for:
+      minutes: 15
+  - trigger: time
+    at: "06:00:01"
+  - trigger: time
+    at: "23:00:01"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: group.motion_downstairs
+            state: "on"
+          - condition: time
+            after: "06:00:00"
+            before: "23:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: group.lights_downstairs
+                state: "off"
+              - condition: numeric_state
+                entity_id: group.lights_downstairs
+                attribute: brightness
+                below: 255 # scene.downstairs_evening brightness value
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id:
+                - group.lights_downstairs
+            data:
+              brightness: 255
+          - action: scene.turn_on
+            target:
+              entity_id: scene.downstairs_concentration
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.downstairs_concentration turned on
+              logger: homeassistant.components.automation.downstairs_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_downstairs
+            state: "on"
+          - condition: time
+            after: "23:00:00"
+            before: "06:00:00"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: group.lights_downstairs
+                state: "off"
+              - condition: numeric_state
+                entity_id: group.lights_downstairs
+                attribute: brightness
+                below: 45 # scene.downstairs_night brightness value
+                above: 45 # scene.downstairs_night brightness value
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id:
+                - group.lights_downstairs
+            data:
+              brightness: 45
+          - action: scene.turn_on
+            target:
+              entity_id: scene.downstairs_night
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.downstairs_night turned on
+              logger: homeassistant.components.automation.downstairs_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_downstairs
+            state: "off"
+            for:
+              hours: 0
+              minutes: 10
+              seconds: 0
+          - condition: time
+            after: "06:00:00"
+            before: "23:00:00"
+          - condition: state
+            entity_id: group.lights_downstairs
+            state: "on"
+        sequence:
+          - action: scene.turn_on
+            target:
+              entity_id: scene.downstairs_relax
+          - action: system_log.write
+            data:
+              level: info
+              message: scene.downstairs_relax turned on
+              logger: homeassistant.components.automation.downstairs_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_downstairs
+            state: "off"
+            for:
+              hours: 0
+              minutes: 10
+              seconds: 0
+          - condition: time
+            after: "23:00:00"
+            before: "06:00:00"
+          - condition: state
+            entity_id: group.lights_downstairs
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id:
+                - group.lights_downstairs
+          - action: system_log.write
+            data:
+              level: info
+              message: group.lights_downstairs turned off
+              logger: homeassistant.components.automation.downstairs_light
+      - conditions:
+          - condition: state
+            entity_id: group.motion_downstairs
+            state: "off"
+            for:
+              hours: 0
+              minutes: 15
+              seconds: 0
+          - condition: time
+            after: "06:00:00"
+            before: "23:00:00"
+          - condition: state
+            entity_id: group.lights_downstairs
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id:
+                - group.lights_downstairs
+          - action: system_log.write
+            data:
+              level: info
+              message: group.lights_downstairs turned off
+              logger: homeassistant.components.automation.downstairs_light
