@@ -1,0 +1,20 @@
+---
+binary_sensor:
+  - default_entity_id: binary_sensor.a54_alex_wifi_enabled_at_home
+    unique_id: a54_alex_wifi_enabled_at_home
+    name: A54 Alex Wifi enabled at home
+    device_class: connectivity
+    state: >
+      {{
+        is_state('device_tracker.a54_alex', 'home')
+        and is_state('binary_sensor.a54_alex_wi_fi_state', 'on')
+      }}
+    icon: >
+      {%
+        if is_state('device_tracker.a54_alex', 'home')
+        and is_state('binary_sensor.a54_alex_wi_fi_state', 'off')
+      %}
+        mdi:wifi-off
+      {% else %}
+        mdi:wifi
+      {% endif %}
