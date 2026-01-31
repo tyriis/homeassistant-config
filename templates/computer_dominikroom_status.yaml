@@ -13,4 +13,3 @@ binary_sensor:
       {% endif %}
     state: >
       {{ states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) > 100 }}
-
