@@ -1,0 +1,21 @@
+---
+# TV status based on power consumption
+binary_sensor:
+  - default_entity_id: binary_sensor.tv_domiroom_status
+    unique_id: tv_domiroom_status
+    name: TV Domiroom Status
+    device_class: power
+    icon: >
+      {%
+        if states('sensor.aqara_wall_outlet_domiroom_power') | float(0) > 40
+        and states('sensor.aqara_wall_outlet_domiroom_power') | float(0) < 100
+      %}
+        mdi:television
+      {% else %}
+        mdi:television-off
+      {% endif %}
+    state: >
+      {{
+        states('sensor.aqara_wall_outlet_domiroom_power') | float(0) > 40
+        and states('sensor.aqara_wall_outlet_domiroom_power') | float(0) < 100
+      }}
