@@ -293,6 +293,7 @@ triggers:
 conditions:
   and:
     - "{{ trigger.payload_json.action is defined }}"
+    - "{{ trigger.payload_json.action is not none }}"
     - '{{ trigger.topic.split("/")[1] in controller }}'
     - '{{ trigger.payload_json.action.split("_", 1)[0] in ("press", "release") }}'
 actions:
