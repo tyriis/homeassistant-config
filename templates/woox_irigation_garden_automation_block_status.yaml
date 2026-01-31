@@ -1,0 +1,27 @@
+---
+binary_sensor:
+  - default_entity_id: binary_sensor.woox_irrigation_garden_automation_block_status
+    unique_id: woox_irrigation_garden_automation_block_status
+    name: Woox Irrigation Garden Automation Block Status
+    device_class: lock
+    icon: >
+      {% set lock_status = states('sensor.woox_irrigation_garden_lock_status') %}
+      {% set lock_owner = state_attr('sensor.woox_irrigation_garden_lock_status', 'owner') %}
+      {% if lock_status == 'locked' and lock_owner == 'homeassistant-automation' %}
+        mdi:block-helper
+      {% else %}
+        mdi:check-circle
+      {% endif %}
+    state: >
+      {% set lock_status = states('sensor.woox_irrigation_garden_lock_status') %}
+      {% set lock_owner = state_attr('sensor.woox_irrigation_garden_lock_status', 'owner') %}
+      {% if lock_status == 'locked' and lock_owner != 'homeassistant-automation' %}
+        on
+      {% else %}
+        off
+      {% endif %}
+    attributes:
+      lock_owner: >
+        {{ state_attr('sensor.woox_irrigation_garden_lock_status', 'owner') }}
+      lock_expires_at: >
+        {{ state_attr('sensor.woox_irrigation_garden_lock_status', 'expireAt') }}
