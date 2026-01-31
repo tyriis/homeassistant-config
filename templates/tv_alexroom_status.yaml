@@ -1,0 +1,21 @@
+---
+# TV status based on power consumption
+binary_sensor:
+  - default_entity_id: binary_sensor.tv_alexroom_status
+    unique_id: tv_alexroom_status
+    name: TV Alexroom Status
+    device_class: power
+    icon: >
+      {%
+        if states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 40
+        and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 75
+      %}
+        mdi:television
+      {% else %}
+        mdi:television-off
+      {% endif %}
+    state: >
+      {{
+        states('sensor.aqara_wall_outlet_alexroom_power') | float(0) > 40
+        and states('sensor.aqara_wall_outlet_alexroom_power') | float(0) < 75
+      }}
