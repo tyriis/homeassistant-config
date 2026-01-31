@@ -1,17 +1,10 @@
 ---
-platform: template
-sensors:
-  office_light_automation_block_status:
-    friendly_name: Office Light Automation Block Status
-    value_template: >-
-      {% set lock_status = states('sensor.office_light_lock_status') %}
-      {% set lock_owner = state_attr('sensor.office_light_lock_status', 'owner') %}
-      {% if lock_status == 'locked' and lock_owner != 'homeassistant-automation' %}
-        blocked
-      {% else %}
-        allowed
-      {% endif %}
-    icon_template: >-
+binary_sensor:
+  - default_entity_id: binary_sensor.office_light_automation_block_status
+    unique_id: office_light_automation_block_status
+    name: Office Light Automation Block Status
+    device_class: lock
+    icon: >
       {% set lock_status = states('sensor.office_light_lock_status') %}
       {% set lock_owner = state_attr('sensor.office_light_lock_status', 'owner') %}
       {% if lock_status == 'locked' and lock_owner != 'homeassistant-automation' %}
@@ -19,6 +12,16 @@ sensors:
       {% else %}
         mdi:check-circle
       {% endif %}
-    attribute_templates:
-      lock_owner: "{{ state_attr('sensor.office_light_lock_status', 'owner') }}"
-      lock_expires_at: "{{ state_attr('sensor.office_light_lock_status', 'expireAt') }}"
+    state: >
+      {% set lock_status = states('sensor.office_light_lock_status') %}
+      {% set lock_owner = state_attr('sensor.office_light_lock_status', 'owner') %}
+      {% if lock_status == 'locked' and lock_owner != 'homeassistant-automation' %}
+        on
+      {% else %}
+        off
+      {% endif %}
+    attributes:
+      lock_owner: >
+        {{ state_attr('sensor.office_light_lock_status', 'owner') }}
+      lock_expires_at: >
+        {{ state_attr('sensor.office_light_lock_status', 'expireAt') }}
