@@ -1,14 +1,13 @@
 ---
-platform: template
-sensors:
-  alex_combined_screentime:
-    friendly_name: Alex Combined Screentime
-    value_template: >
+sensor:
+  - default_entity_id: sensor.alex_combined_screentime
+    unique_id: alex_combined_screentime
+    name: Alex Combined Screentime
+    device_class: duration
+    unit_of_measurement: h
+    icon: mdi:monitor-eye
+    state: >
       {% set tv_time = states('sensor.tv_alexroom_daily_runtime') | float(0) %}
       {% set phone_time = states('sensor.a54_alex_daily_screentime') | float(0) %}
       {% set computer_time = states('sensor.computer_alexroom_daily_runtime') | float(0) %}
       {{ (tv_time + phone_time + computer_time) | round(2) }}
-    unit_of_measurement: "h"
-    device_class: duration
-    icon_template: >-
-      mdi:monitor-eye
