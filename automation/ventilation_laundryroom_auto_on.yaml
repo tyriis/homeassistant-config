@@ -14,7 +14,7 @@ conditions:
     value_template: >
       {{
         states.switch.shelly_1gen4_ventilation_laundryroom.state != 'on'
-        and states.sensor.aqara_climate_laundryroom_humidity.state | float > 58
+        and states.sensor.aqara_climate_laundryroom_humidity.state | float(0) > 58
       }}
 
 actions:
