@@ -18,11 +18,29 @@ sections:
         primary_info: name
         secondary_info: none
         name: Room
+      - type: custom:mushroom-select-card
+        entity: input_select.room_picker_nils
+        fill_container: false
+        layout: horizontal
+        grid_options:
+          columns: 24
+          rows: 1
+        primary_info: name
+        secondary_info: none
+        name: Room
+        visibility:
+          - condition: user
+            users:
+              - a16555d1af144893b9be6f3a99d8c434
       - type: vertical-stack
         visibility:
-          - condition: state
-            entity: input_select.room_picker
-            state: Office
+          - condition: or
+            conditions:
+              - condition: and
+                conditions:
+                  - condition: state
+                    entity: input_select.room_picker
+                    state: Office
         cards:
           - type: heading
             heading_style: title
@@ -122,7 +140,7 @@ sections:
             heading: Climate
             heading_style: title
           - type: custom:mushroom-climate-card
-            entity: climate.office
+            entity: climate.office_mqtt_hvac
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -180,7 +198,7 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: sensor.qingping_temperature
+                entity: sensor.qingping_office_temperature
                 features_position: bottom
                 vertical: false
                 name: Temperature
@@ -189,7 +207,7 @@ sections:
                   action: navigate
                   navigation_path: "#temperature_office"
               - type: tile
-                entity: sensor.qingping_humidity
+                entity: sensor.qingping_office_humidity
                 features_position: bottom
                 vertical: false
                 name: Humidity
@@ -200,7 +218,7 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: sensor.qingping_co2
+                entity: sensor.qingping_office_co2
                 features_position: bottom
                 vertical: false
                 name: " CO2"
@@ -208,7 +226,7 @@ sections:
                   action: navigate
                   navigation_path: "#co2_office"
               - type: tile
-                entity: sensor.qingping_etvoc
+                entity: sensor.qingping_office_etvoc
                 features_position: bottom
                 vertical: false
                 name: eTVOC
@@ -218,7 +236,7 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: sensor.qingping_pm25
+                entity: sensor.qingping_office_pm25
                 features_position: bottom
                 vertical: false
                 name: PM25
@@ -227,7 +245,7 @@ sections:
                   action: navigate
                   navigation_path: "#pm25_office"
               - type: tile
-                entity: sensor.qingping_pm10
+                entity: sensor.qingping_office_pm10
                 features_position: bottom
                 vertical: false
                 name: PM10
@@ -238,7 +256,7 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: sensor.qingping_noise
+                entity: sensor.qingping_office_noise
                 features_position: bottom
                 vertical: false
                 name: Noise
@@ -405,7 +423,7 @@ sections:
             heading: Climate
             heading_style: title
           - type: custom:mushroom-climate-card
-            entity: climate.livingroom
+            entity: climate.livingroom_mqtt_hvac
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -594,7 +612,7 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: light.rgbic_pro_strip_lights_2
+                entity: light.rgbic_pro_strip_lights
                 color: purple
                 name: Govee LED Strip
                 show_entity_picture: false
@@ -604,7 +622,7 @@ sections:
                 features_position: bottom
                 vertical: false
               - type: tile
-                entity: light.galaxy_light_projector_2
+                entity: light.galaxy_light_projector
                 icon: mdi:projector
                 color: deep-purple
                 state_content:
@@ -617,7 +635,7 @@ sections:
             heading: Climate
             heading_style: title
           - type: custom:mushroom-climate-card
-            entity: climate.bedroom
+            entity: climate.bedroom_mqtt_hvac
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -756,17 +774,21 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: light.led_ceiling_light_alexroom
-                icon_tap_action:
-                  action: toggle
+                entity: light.skylight_fb1c
+                name: Light
+                icon: mdi:wall-sconce-flat
+                vertical: false
                 hold_action:
                   action: none
-                icon: mdi:lightbulb-variant
-                name: Light
+                icon_tap_action:
+                  action: toggle
+                features_position: bottom
               - type: tile
-                entity: light.ambient_desk_alex
+                entity: light.ambient_desk_alexroom
                 icon: mdi:led-strip-variant
                 name: Desk Light
+                features_position: bottom
+                vertical: false
           - type: horizontal-stack
             cards:
               - type: tile
@@ -803,7 +825,7 @@ sections:
                     entity: climate.alex
                     state_not: "off"
           - type: custom:mushroom-climate-card
-            entity: climate.alex
+            entity: climate.alex_mqtt_hvac
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -950,6 +972,8 @@ sections:
                   action: none
                 icon: mdi:lightbulb-variant
                 name: Light
+                features_position: bottom
+                vertical: false
               - type: tile
                 entity: light.shapes_a6dc
                 icon: mdi:hexagon-multiple
@@ -958,6 +982,21 @@ sections:
                   - effect
                 name: Nanoleaf Shapes
                 color: teal
+                features_position: bottom
+                vertical: false
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: light.4d_b3fa
+                name: Naoleaf 4D
+                icon: mdi:television
+                vertical: false
+                hold_action:
+                  action: none
+                icon_tap_action:
+                  action: toggle
+                features_position: bottom
+              - type: custom:mushroom-empty-card
           - type: heading
             icon: mdi:snowflake
             heading: Climate
@@ -977,7 +1016,7 @@ sections:
                     entity: climate.domi
                     state_not: "off"
           - type: custom:mushroom-climate-card
-            entity: climate.domi
+            entity: climate.domi_mqtt_hvac
             name: Hisense HVAC
             hvac_modes:
               - cool
@@ -1370,7 +1409,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#co2_office"
-            entity: sensor.qingping_co2
+            entity: sensor.qingping_office_co2
             name: CO2
             show_header: false
             width_desktop: 800px
@@ -1381,13 +1420,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_co2
+                entity: sensor.qingping_office_co2
                 state_content: state
                 color: green
           - type: custom:mini-graph-card
             name: CO2
             entities:
-              - entity: sensor.qingping_co2
+              - entity: sensor.qingping_office_co2
                 color: green
               - entity: sun.sun
                 color: gray
@@ -1448,7 +1487,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#etvoc_office"
-            entity: sensor.qingping_etvoc
+            entity: sensor.qingping_office_etvoc
             name: eTVOC
             show_header: false
             width_desktop: 800px
@@ -1459,13 +1498,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_etvoc
+                entity: sensor.qingping_office_etvoc
                 state_content: state
                 color: green
           - type: custom:mini-graph-card
             name: CO2
             entities:
-              - entity: sensor.qingping_etvoc
+              - entity: sensor.qingping_office_etvoc
                 color: green
               - entity: sun.sun
                 color: gray
@@ -1529,7 +1568,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#temperature_office"
-            entity: sensor.qingping_temperature
+            entity: sensor.qingping_office_temperature
             name: Temperature
             show_header: false
             width_desktop: 800px
@@ -1540,13 +1579,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_temperature
+                entity: sensor.qingping_office_temperature
                 state_content: state
                 color: "#E74C3C"
           - type: custom:mini-graph-card
             name: CO2
             entities:
-              - entity: sensor.qingping_temperature
+              - entity: sensor.qingping_office_temperature
                 color: "#E74C3C"
               - entity: sun.sun
                 color: gray
@@ -1587,7 +1626,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#noise_office"
-            entity: sensor.qingping_noise
+            entity: sensor.qingping_office_noise
             name: Noise
             show_header: false
             width_desktop: 800px
@@ -1598,13 +1637,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_noise
+                entity: sensor.qingping_office_noise
                 state_content: state
                 color: yellow
           - type: custom:mini-graph-card
             name: Illuminance
             entities:
-              - entity: sensor.qingping_noise
+              - entity: sensor.qingping_office_noise
                 color: yellow
               - entity: sun.sun
                 color: gray
@@ -1659,7 +1698,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#humidity_office"
-            entity: sensor.qingping_humidity
+            entity: sensor.qingping_office_humidity
             name: Humidity
             show_header: false
             width_desktop: 800px
@@ -1670,13 +1709,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_humidity
+                entity: sensor.qingping_office_humidity
                 state_content: state
                 color: "#3498DB"
           - type: custom:mini-graph-card
             name: Humidity
             entities:
-              - entity: sensor.qingping_humidity
+              - entity: sensor.qingping_office_humidity
                 color: "#3498DB"
               - entity: sun.sun
                 color: gray
@@ -1733,7 +1772,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#pm10_office"
-            entity: sensor.qingping_pm10
+            entity: sensor.qingping_office_pm10
             name: PM10
             show_header: false
             width_desktop: 800px
@@ -1744,13 +1783,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_pm10
+                entity: sensor.qingping_office_pm10
                 state_content: state
                 color: "#27ae60"
           - type: custom:mini-graph-card
             name: PM10
             entities:
-              - entity: sensor.qingping_pm10
+              - entity: sensor.qingping_office_pm10
                 color: "#27ae60"
               - entity: sun.sun
                 color: gray
@@ -1811,7 +1850,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#pm25_office"
-            entity: sensor.qingping_pm25
+            entity: sensor.qingping_office_pm25
             name: PM2.5
             show_header: false
             width_desktop: 800px
@@ -1822,13 +1861,13 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_pm25
+                entity: sensor.qingping_office_pm25
                 state_content: state
                 color: "#27ae60"
           - type: custom:mini-graph-card
             name: PM2.5
             entities:
-              - entity: sensor.qingping_pm25
+              - entity: sensor.qingping_office_pm25
                 color: "#27ae60"
               - entity: sun.sun
                 color: gray
@@ -5222,6 +5261,10 @@ sections:
                 color: orange !important;
               }
             bg_color: rgb(51. 43. 37)
+            button_type: name
+            sub_button:
+              main: []
+              bottom: []
           - type: horizontal-stack
             cards:
               - type: tile
@@ -5233,6 +5276,8 @@ sections:
                 name: Office
                 icon: mdi:lightbulb-spot
                 state_content: color_temp_kelvin
+                features_position: bottom
+                vertical: false
               - type: tile
                 entity: light.basement
                 icon_tap_action:
@@ -5242,16 +5287,20 @@ sections:
                 name: Basement
                 icon: mdi:lightbulb-spot
                 state_content: color_temp_kelvin
+                features_position: bottom
+                vertical: false
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: light.led_ceiling_light_alexroom
-                icon_tap_action:
-                  action: toggle
+                entity: light.skylight_fb1c
+                name: Alexroom
+                icon: mdi:wall-sconce-flat
+                vertical: false
                 hold_action:
                   action: none
-                name: Alexroom
-                icon: mdi:lightbulb-variant
+                icon_tap_action:
+                  action: toggle
+                features_position: bottom
               - type: tile
                 entity: light.led_ceiling_light_domiroom
                 icon_tap_action:
@@ -5260,6 +5309,8 @@ sections:
                   action: none
                 name: Domiroom
                 icon: mdi:lightbulb-variant
+                features_position: bottom
+                vertical: false
           - type: horizontal-stack
             cards:
               - type: tile
@@ -5271,13 +5322,17 @@ sections:
                 name: Bedroom
                 icon: mdi:wall-sconce-flat
                 state_content: effect
+                features_position: bottom
+                vertical: false
               - type: tile
-                entity: light.rgbic_pro_strip_lights_2
+                entity: light.rgbic_pro_strip_lights
                 color: purple
                 name: LED Strip Bedroom
                 state_content:
                   - state
                   - effect
+                features_position: bottom
+                vertical: false
           - type: horizontal-stack
             cards:
               - type: tile
@@ -5372,12 +5427,21 @@ sections:
             heading_style: title
             badges:
               - type: entity
-                entity: sensor.roborock_qrevo_curv_battery
+                show_state: true
+                show_icon: true
+                entity: sensor.roborock_downstairs_battery
               - type: entity
-                entity: binary_sensor.roborock_qrevo_curv_water_shortage
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.roborock_downstairs_water_shortage
             icon: mdi:robot-vacuum
-          - type: tile
-            entity: vacuum.roborock_qrevo_curv
+          - features:
+              - type: vacuum-commands
+                commands:
+                  - return_home
+                  - start_pause
+            type: tile
+            entity: vacuum.roborock_downstairs
             grid_options:
               columns: 12
               rows: 1
@@ -5387,11 +5451,6 @@ sections:
             features_position: inline
             state_content: state
             name: " "
-            features:
-              - type: vacuum-commands
-                commands:
-                  - return_home
-                  - start_pause
       - type: vertical-stack
         cards:
           - type: custom:bubble-card
@@ -5406,7 +5465,7 @@ sections:
             heading_style: title
             icon: mdi:snowflake
           - type: custom:mushroom-climate-card
-            entity: climate.office
+            entity: climate.office_mqtt_hvac
             name: Office
             fill_container: false
             hvac_modes:
@@ -5415,7 +5474,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.livingroom
+            entity: climate.livingroom_mqtt_hvac
             name: Livingroom
             fill_container: false
             hvac_modes:
@@ -5424,7 +5483,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.bedroom
+            entity: climate.bedroom_mqtt_hvac
             name: Bedroom
             fill_container: false
             hvac_modes:
@@ -5433,7 +5492,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.alex
+            entity: climate.alex_mqtt_hvac
             name: Alexroom
             fill_container: false
             hvac_modes:
@@ -5442,7 +5501,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.domi
+            entity: climate.domi_mqtt_hvac
             name: Domiroom
             fill_container: false
             hvac_modes:
@@ -5510,7 +5569,7 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.qingping_humidity
+                entity: sensor.qingping_office_humidity
                 state_content: state
                 color: "#3498DB"
           - type: horizontal-stack
@@ -5664,6 +5723,11 @@ sections:
                 features_position: bottom
                 vertical: false
                 name: Door
+              - type: tile
+                entity: sensor.door_open_daily_time_garden
+                features_position: bottom
+                vertical: false
+                name: Today
           - type: heading
             heading: Kitchen
             heading_style: title
@@ -5776,7 +5840,7 @@ badges:
     show_name: false
     show_state: false
     show_icon: true
-    entity: person.crowlex
+    entity: person.alex
     color: red
     show_entity_picture: true
     visibility:
@@ -5789,12 +5853,12 @@ badges:
     show_name: false
     show_state: false
     show_icon: true
-    entity: person.techinik
+    entity: person.dominik
     color: primary
     show_entity_picture: true
     visibility:
       - condition: state
-        entity: person.techinik
+        entity: person.dominik
         state: home
       - condition: screen
         media_query: "(min-width: 0px) and (max-width: 767px)"
@@ -5827,7 +5891,7 @@ badges:
     show_name: true
     show_state: true
     show_icon: true
-    entity: person.techinik
+    entity: person.dominik
     color: blue
     name: Dominik
     icon: mdi:account
@@ -5840,7 +5904,7 @@ badges:
     show_name: true
     show_state: true
     show_icon: true
-    entity: person.crowlex
+    entity: person.alex
     color: red
     name: Alex
     icon: mdi:account
@@ -5853,8 +5917,7 @@ badges:
     show_name: false
     show_state: true
     show_icon: true
-    entity: lock.nuki
-    color: ""
+    entity: lock.nuki_2
     visibility:
       - condition: state
         entity: lock.nuki
@@ -5864,7 +5927,6 @@ badges:
     show_state: true
     show_icon: true
     entity: sensor.nuki_battery
-    color: ""
     visibility:
       - condition: numeric_state
         entity: sensor.nuki_battery
