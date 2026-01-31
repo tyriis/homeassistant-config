@@ -1,0 +1,37 @@
+---
+# a given sequence of actions to perform: turn on two IR heating panels in the office for 5 min, let them run for 5 min, then turn them off
+# and wait 5 minutes, then reevaluate the condition again.
+# if sensor.qingping_office_temperature is below 25°C turn on switch.tuya_a1z_irpanel1_office and switch.tuya_a1z_irpanel2_office for 5 minutes, wait 5 minutes and reevaluate
+
+alias: Office IR Heating
+id: office_ir_heating
+description: Activate IR heating in the office based on conditions
+mode: single
+triggers:
+  - trigger: time_pattern
+    minutes: "/1"
+conditions:
+  - condition: numeric_state
+    entity_id: sensor.qingping_office_temperature
+    below: 25
+actions:
+  - action: switch.turn_on
+    target:
+      entity_id:
+        - switch.tuya_a1z_irpanel1_office
+        - switch.tuya_a1z_irpanel2_office
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - action: switch.turn_off
+    target:
+      entity_id:
+        - switch.tuya_a1z_irpanel1_office
+        - switch.tuya_a1z_irpanel2_office
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
