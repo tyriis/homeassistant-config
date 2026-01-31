@@ -26,7 +26,7 @@ actions:
           - condition: template
             value_template: "{{ not (states('sensor.openmeteo_precipitation') | float(0) > 0) }}"
           - condition: template
-            value_template: "{{ states('sensor.woox_irrigation_garden_automation_block_status') == 'allowed' }}"
+            value_template: "{{ states('binary_sensor.woox_irrigation_garden_automation_block_status') == 'off' }}"
         sequence:
           - service: script.start_herb_watering
             data:

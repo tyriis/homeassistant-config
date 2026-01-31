@@ -14,7 +14,7 @@ condition:
     value_template: >
       {{
         states('climate.bedroom') == 'cool'
-        and states('sensor.hisense_ac_bedroom_automation_block_status') == 'allowed'
+        and states('binary_sensor.hisense_ac_bedroom_automation_block_status') == 'off'
         and (now().hour >= 23 or now().hour < 6)
       }}
 

@@ -36,7 +36,7 @@ condition:
         and states('sensor.qingping_livingroom_temperature') | float > 23
         and states('sensor.weather_forecast_temperature_forecast') | float > 25
         and states('sensor.hisense_ac_livingroom_lock_status') != 'locked'
-        and states('sensor.hisense_ac_livingroom_automation_block_status') == 'allowed'
+        and states('binary_sensor.hisense_ac_livingroom_automation_block_status') == 'off'
       }}
 actions:
   - action: script.cool_livingroom

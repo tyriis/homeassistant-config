@@ -37,7 +37,7 @@ condition:
         and states('binary_sensor.aqara_contact_window_bedroom_contact') == 'off'
         and states('sensor.weather_forecast_temperature_forecast') | float > 25
         and states('sensor.hisense_ac_bedroom_lock_status') != 'locked'
-        and states('sensor.hisense_ac_bedroom_automation_block_status') == 'allowed'
+        and states('binary_sensor.hisense_ac_bedroom_automation_block_status') == 'off'
       }}
 actions:
   - action: script.cool_bedroom
