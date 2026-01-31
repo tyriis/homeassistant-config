@@ -1,14 +1,15 @@
 ---
-# Configure a default setup of Home Assistant (frontend, api, etc)
+# Loads default set of integrations. Do not remove.
 default_config:
 
-# Frontend configuration for themes
+# Load frontend themes from the themes folder
 frontend:
-  themes: !include_dir_merge_named themes/
+  themes: !include_dir_merge_named themes
 
+# Configure Home Assistant
 homeassistant:
-  allowlist_external_dirs:
-    - /data
+  # allowlist_external_dirs:
+  #   - /data
   auth_mfa_modules:
     - type: totp
       name: Authenticator app
@@ -28,138 +29,61 @@ http:
   trusted_proxies:
     - 192.168.1.0/24
     - 192.168.20.0/24
+    - 192.168.100.0/24
+    - 192.168.101.0/24
     - 10.42.0.0/16
     - 10.244.0.0/16
 
-recorder: !include recorder.yaml
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
 
-# Text to speech
-tts:
-  - platform: google_translate
+# recorder: !include recorder.yaml
 
-# Group configuration
 group: !include_dir_named groups/
-
-# Counter configuration for tracking events
 counter: !include_dir_merge_named counters/
-
-input_number: !include_dir_merge_named input_number/
-input_datetime: !include_dir_merge_named input_datetime/
-input_select: !include_dir_merge_named input_select/
-# automation: !include automations.yaml
-automation manual: !include_dir_list automation/
-
-automation ui: !include automations.yaml
-
-# Scene configuration
-scene: !include_dir_list scenes/
-
-# Prometheus configuration
-prometheus: !include prometheus.yaml
-
-light: !include_dir_list lights/
-
-# Switch configuration
-# switch: !include_dir_list switches/
+input_number: !include_dir_merge_named input_numbers/
+input_datetime: !include_dir_merge_named input_datetimes/
+input_select: !include_dir_merge_named input_selects/
+rest_command: !include_dir_merge_named rest_commands/
 
 # Sensor configuration
 sensor: !include_dir_list sensors/
 binary_sensor: !include_dir_list binary_sensors/
+template: !include_dir_list templates/
 
-# Rest command configuration
-rest_command: !include_dir_merge_named rest_commands/
+# MQTT configuration
+# mqtt: !include mqtt.yaml
 
-# Script configuration
-script: !include_dir_merge_named scripts/
+light: !include_dir_list lights/
 
-# binary_sensor: !include_dir_list binary_sensors/
+automation manual: !include_dir_list automation/
+automation ui: !include automations.yaml
 
-# light: !include_dir_list lights/
-# camera: !include_dir_list cameras/
-
-wake_on_lan:
+script: !include scripts.yaml
+scene: !include_dir_list scenes/
 
 lovelace:
   mode: yaml
   resources:
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
-    - url: /hacsfiles/zigbee2mqtt-networkmap/zigbee2mqtt-networkmap.js
-      type: module
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
-    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
-      type: module
+    # - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+    #   type: module
     - url: /hacsfiles/vacuum-card/vacuum-card.js
       type: module
-    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
-      type: module
+    # - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+    #   type: module
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
-    - url: /hacsfiles/ha-heatmap-card/heatmap-card.js
-      type: module
     - url: /hacsfiles/Bubble-Card/bubble-card.js
       type: module
-    - url: /hacsfiles/apexcharts-card/apexcharts-card.js
-      type: module
+    # - url: /hacsfiles/apexcharts-card/apexcharts-card.js
+    #   type: module
     - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
       type: module
-
-shell_command:
-  update_config: cd /config && git config --global --add safe.directory /config && git pull
-
-# assist_pipeline:
-#   debug_recording_dir: /share/assist_pipeline
-
-ffmpeg:
-  ffmpeg_bin: /usr/bin/ffmpeg
-
-# https://rhasspy.readthedocs.io/en/latest/usage/#home-assistant
-intent:
-
-conversation:
-  intents:
-    EventCountToday:
-      - "How many meetings do I have today"
-    EventWeatherToday:
-      - "What's the weather like today"
-      - "What's the weather today"
-    EventBabeToday:
-      - "How is my babe today"
-
-# https://www.home-assistant.io/integrations/intent_script
-intent_script:
-  EventCountToday:
-    action:
-      - action: calendar.get_events
-        target:
-          entity_id: calendar.my_calendar
-        data_template:
-          start_date_time: "{{ today_at('00:00') }}"
-          duration: { "hours": 24 }
-        response_variable: result # get action response
-      - stop: ""
-        response_variable: result # and return it
-    speech:
-      text: "{{ action_response['calendar.my_calendar'].events | length }}" # use the action's response
-
-  EventWeatherToday:
-    action:
-      - action: weather.get_forecasts
-        target:
-          entity_id: weather.home
-        data:
-          type: daily
-        response_variable: result # get action response
-      - stop: ""
-        response_variable: result # and return it
-    speech:
-      text: "The weather today is {{ action_response['weather.home']['forecast'][0].temperature }} degrees and {{ action_response['weather.home']['forecast'][0].condition }}" # use the action's response
-
-  EventBabeToday:
-    speech:
-      text: "Your babe is doing great today"
