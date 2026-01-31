@@ -1,0 +1,34 @@
+---
+alias: Entrance door-outside NFC scanned
+id: entrance_door_outside_nfc_scanned
+description: Open Nuki lock when the NFC on the door is scanned
+triggers:
+  - trigger: event
+    event_type: tag_scanned
+conditions:
+  - condition: template
+    value_template: >
+      {% set tag_id = trigger.event.data.tag_id %}
+      {% set tag = (states.tag | selectattr('attributes.tag_id', '==', tag_id)) | list %}
+      {% set tag_name = "unknown" if not tag else state_attr((tag | first).entity_id, "friendly_name") %}
+
+      {{ tag_name == "entrance-door-outside" }}
+actions:
+  - action: lock.unlock
+    target:
+      entity_id: lock.nuki_2
+  - action: system_log.write
+    data:
+      level: info
+      message: >
+        {% set user_id = trigger.event.context.user_id %}
+        {% set triggered_by = (states.person | selectattr('attributes.user_id','==', user_id)) | list %}
+        {% set user_name = "System" if not triggered_by else state_attr((triggered_by | first).entity_id, "friendly_name") %}
+
+        {% set device_id = trigger.event.data.device_id %}
+        {% set trigger_device = device_attr(device_id, "name") %}
+        {% set device_name = "unknown" if not trigger_device else trigger_device %}
+
+        NUKI opened with {{ device_name }} by {{ user_name }}.
+      logger: homeassistant.components.automation.entrance_door_outside_nfc_scanned
+mode: single

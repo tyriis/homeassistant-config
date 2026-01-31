@@ -12,14 +12,14 @@ triggers:
       seconds: 30
   # Second trigger: Lock has been unlocked
   - platform: state
-    entity_id: lock.nuki
+    entity_id: lock.nuki_2
     to: unlocked
     for:
       minutes: 2
 conditions:
   # Conditions for the door closed trigger
   - condition: state
-    entity_id: lock.nuki
+    entity_id: lock.nuki_2
     state: unlocked
   - condition: state
     entity_id: binary_sensor.aqara_contact_door_entrance_contact
@@ -27,4 +27,4 @@ conditions:
 actions:
   - service: lock.lock
     target:
-      entity_id: lock.nuki
+      entity_id: lock.nuki_2
