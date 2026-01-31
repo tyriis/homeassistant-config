@@ -1,72 +1,71 @@
 ---
-# # given the sensor sensor.sensor_heating_sensor_heating_temperature_max and the sensor sensor.sensor_heating_sensor_heating_temperature_min
-# # sensor.sensor_heating_sensor_heating_temperature_flow_groundfloor and sensor.sensor_heating_sensor_heating_temperature_flow_upstairs
-# # and the switch switch.aqara_heating_valve_l1 and switch.aqara_heating_valve_l2 controlling a valve, while l2 is closing the valve when activated, l1 is opening the valve.
-# # assure only one of the switches is on at a time, and control the flow temperature to be between min and max
-# # only switch l1 or l2 on for max 5seconds to avoid overheating or overcooling
-# # re-evaluate each minute, assure valve get closed if for some reason like a restart the valce is still on?!
-# # create a homeassistant automation
-# alias: Floor Heating Control
-# description: Control floor heating based on temperature sensors and valve switches
-# trigger:
-#   - platform: time_pattern
-#     minutes: /1
-# condition: []
-# action:
-#   - choose:
-#       - conditions:
-#           - condition: template
-#             value_template: >-
-#               {{
-#                 states('sensor.sensor_heating_sensor_heating_temperature_flow_groundfloor') | float
-#                 < states('sensor.sensor_heating_sensor_heating_temperature_min') | float
-#               }}
-#         sequence:
-#           - service: switch.turn_on
-#             target:
-#               entity_id: switch.aqara_heating_valve_l1
-#           - action: system_log.write
-#             data:
-#               level: info
-#               message: START floor heating valve opening
-#               logger: homeassistant.components.automation.floor_heating
-#           - delay: "00:00:05"
-#           - service: switch.turn_off
-#             target:
-#               entity_id: switch.aqara_heating_valve_l1
-#           - action: system_log.write
-#             data:
-#               level: info
-#               message: STOP floor heating valve opening
-#               logger: homeassistant.components.automation.floor_heating
-#           - action: counter.increment
-#             target:
-#               entity_id: counter.heating_valve_position
-#       - conditions:
-#           - condition: template
-#             value_template: >-
-#               {{
-#                 states('sensor.sensor_heating_sensor_heating_temperature_flow_groundfloor') | float
-#                 > states('sensor.sensor_heating_sensor_heating_temperature_max') | float
-#               }}
-#         sequence:
-#           - service: switch.turn_on
-#             target:
-#               entity_id: switch.aqara_heating_valve_l2
-#           - action: system_log.write
-#             data:
-#               level: info
-#               message: START floor heating valve closing
-#               logger: homeassistant.components.automation.floor_heating
-#           - delay: "00:00:05"
-#           - service: switch.turn_off
-#             target:
-#               entity_id: switch.aqara_heating_valve_l2
-#           - action: system_log.write
-#             data:
-#               level: info
-#               message: STOP floor heating valve closing
-#               logger: homeassistant.components.automation.floor_heating
-#           - action: counter.decrement
-#             target:
-#               entity_id: counter.heating_valve_position
+# given the sensor sensor.sensor_heating_sensor_heating_temperature_max and the sensor sensor.sensor_heating_sensor_heating_temperature_min
+# sensor.sensor_heating_sensor_heating_temperature_flow_groundfloor and sensor.sensor_heating_sensor_heating_temperature_flow_upstairs
+# and the switch switch.aqara_heating_valve_l1 and switch.aqara_heating_valve_l2 controlling a valve, while l2 is closing the valve when activated, l1 is opening the valve.
+# assure only one of the switches is on at a time, and control the flow temperature to be between min and max
+# only switch l1 or l2 on for max 5seconds to avoid overheating or overcooling
+# re-evaluate each minute, assure valve get closed if for some reason like a restart the valce is still on?!
+alias: Floor Heating Control
+description: Control floor heating based on temperature sensors and valve switches
+triggers:
+  - minutes: /1
+    trigger: time_pattern
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: >
+              {{
+                states('sensor.sensor_heating_sensor_heating_temperature_flow_groundfloor') | float
+                < states('sensor.sensor_heating_sensor_heating_temperature_min') | float
+              }}
+        sequence:
+          - target:
+              entity_id: switch.aqara_heating_valve_l1
+            action: switch.turn_on
+          - action: system_log.write
+            data:
+              level: info
+              message: START floor heating valve opening
+              logger: homeassistant.components.automation.floor_heating
+          - delay: 00:00:05
+          - target:
+              entity_id: switch.aqara_heating_valve_l1
+            action: switch.turn_off
+          - action: system_log.write
+            data:
+              level: info
+              message: STOP floor heating valve opening
+              logger: homeassistant.components.automation.floor_heating
+          - action: counter.increment
+            target:
+              entity_id: counter.heating_valve_position
+      - conditions:
+          - condition: template
+            value_template: >
+              {{
+                states('sensor.sensor_heating_sensor_heating_temperature_flow_groundfloor') | float
+                > states('sensor.sensor_heating_sensor_heating_temperature_max') | float
+              }}
+        sequence:
+          - target:
+              entity_id: switch.aqara_heating_valve_l2
+            action: switch.turn_on
+          - action: system_log.write
+            data:
+              level: info
+              message: START floor heating valve closing
+              logger: homeassistant.components.automation.floor_heating
+          - delay: 00:00:05
+          - target:
+              entity_id: switch.aqara_heating_valve_l2
+            action: switch.turn_off
+          - action: system_log.write
+            data:
+              level: info
+              message: STOP floor heating valve closing
+              logger: homeassistant.components.automation.floor_heating
+          - action: counter.decrement
+            target:
+              entity_id: counter.heating_valve_position
