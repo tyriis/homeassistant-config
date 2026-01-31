@@ -1,0 +1,16 @@
+---
+# Computer status based on power consumption
+binary_sensor:
+  - default_entity_id: binary_sensor.computer_domiroom_status
+    unique_id: computer_domiroom_status
+    name: Computer Domiroom Status
+    device_class: power
+    icon: >
+      {% if states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) > 100 %}
+        mdi:power-on
+      {% else %}
+        mdi:power-off
+      {% endif %}
+    state: >
+      {{ states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) > 100 }}
+
