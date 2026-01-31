@@ -1,0 +1,19 @@
+---
+sensor:
+  - default_entity_id: sensor.climate_bedroom_runtime
+    unique_id: climate_bedroom_runtime
+    name: Climate Bedroom Runtime
+    device_class: duration
+    unit_of_measurement: min
+    icon: >
+      {% if is_state('climate.bedroom', 'cool') %}
+        mdi:timer-play-outline
+      {% else %}
+        mdi:timer-off-outline
+      {% endif %}
+    state: >
+      {% if is_state('climate.bedroom', 'cool') %}
+        {{ (now().timestamp() - as_timestamp(states.input_datetime.climate_bedroom_start_time.state)) / 60 }}
+      {% else %}
+        0
+      {% endif %}
