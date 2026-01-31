@@ -13,10 +13,9 @@ conditions:
   - condition: template
     value_template: >
       {{
-        states.switch.shelly_1gen4_ventilation_bathroom.state != 'on'
-        and states.sensor.aqara_climate_bathroom_humidity.state | float > 58
+        states('switch.shelly_1gen4_ventilation_bathroom') != 'on'
+        and states('sensor.sensor_bathroom_sensor_bathroom_htu21d_humidity') | float(0) > 58
       }}
-
 actions:
   - action: switch.turn_on
     target:
