@@ -4,30 +4,30 @@ id: domiroom_nanoleaf
 description: Turn on the nanoleaf shape when computer is on
 mode: single
 triggers:
-  - trigger: numeric_state
-    entity_id:
-      - sensor.aqara_wall_outlet_dominikroom_power
-    above: 100
-  - trigger: numeric_state
-    entity_id:
-      - sensor.aqara_wall_outlet_dominikroom_power
+  # Trigger when power goes ABOVE 100
+  - trigger: template
+    value_template: >
+      {{ states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) > 100 }}
+    id: pc_on
+  # Trigger when power goes BELOW 100 for 10 seconds
+  - trigger: template
+    value_template: >
+      {{ states('sensor.aqara_wall_outlet_dominikroom_power') | float(0) < 100 }}
     for:
       seconds: 10
-    below: 100
+    id: pc_off
 actions:
   - choose:
       - conditions:
-          - condition: numeric_state
-            entity_id: sensor.aqara_wall_outlet_dominikroom_power
-            above: 100
+          - condition: trigger
+            id: pc_on
         sequence:
           - action: light.turn_on
             target:
               entity_id: light.shapes_a6dc
       - conditions:
-          - condition: numeric_state
-            entity_id: sensor.aqara_wall_outlet_dominikroom_power
-            below: 100
+          - condition: trigger
+            id: pc_off
         sequence:
           - action: light.turn_off
             target:
