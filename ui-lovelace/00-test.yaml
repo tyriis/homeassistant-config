@@ -273,6 +273,18 @@ sections:
                   action: navigate
                   navigation_path: "#illuminance_office"
                 color: orange
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: sensor.bt_proxy_office_radon
+                features_position: bottom
+                vertical: false
+                name: Radon
+                tap_action:
+                  action: navigate
+                  navigation_path: "#radon_office"
+                color: orange
+              - type: custom:mushroom-empty-card
       - type: vertical-stack
         visibility:
           - condition: state
@@ -446,7 +458,7 @@ sections:
                     entity: climate.livingroom
                     state_not: "off"
           - type: media-control
-            entity: media_player.shield_android_tv
+            entity: media_player.nvidia_shield
             visibility:
               - condition: state
                 entity: media_player.shield_android_tv
@@ -2037,6 +2049,154 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: "#radon_office"
+            entity: sensor.bt_proxy_office_radon
+            name: Radon
+            show_header: false
+            width_desktop: 800px
+            button_type: name
+            sub_button:
+              main: []
+              bottom: []
+          - type: heading
+            heading: Radoneye
+            heading_style: title
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: sensor.bt_proxy_office_radon
+                color: orange
+                state_content:
+                  - state
+                  - last_changed
+          - type: custom:mini-graph-card
+            name: radon
+            entities:
+              - entity: sensor.bt_proxy_office_radon
+                color: orange
+                name: radoneye
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            aggregate_func: sum
+            hours_to_show: 24
+            line_width: 1
+            font_size: 85
+            points_per_hour: 4
+            smoothing: true
+            hour24: true
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            update_interval: 60
+            line_color: orange
+            show:
+              state: false
+              icon: false
+              name: false
+              labels: false
+              legend: true
+              labels_secondary: false
+              icon_adaptive_color: true
+              extrema: true
+          - type: custom:mini-graph-card
+            name: radon long term
+            entities:
+              - entity: sensor.bt_proxy_office_radon_long_term
+                color: orange
+                name: radoneye
+              - entity: sun.sun
+                color: gray
+                name: Sun
+                show_line: false
+                show_points: false
+                show_legend: false
+                y_axis: secondary
+            aggregate_func: sum
+            hours_to_show: 24
+            line_width: 1
+            font_size: 85
+            points_per_hour: 4
+            smoothing: true
+            hour24: true
+            state_map:
+              - value: below_horizon
+                label: Night
+              - value: above_horizon
+                label: Day
+            update_interval: 60
+            line_color: orange
+            show:
+              state: false
+              icon: false
+              name: false
+              labels: false
+              legend: true
+              labels_secondary: false
+              icon_adaptive_color: true
+              extrema: true
+          - type: markdown
+            content: >
+              ## About Radon Concentration
+
+
+              Monitoring radon levels in your basement is critical because it is
+              the primary way this radioactive gas enters a home. Radon is a
+              naturally occurring gas that is colorless, odorless, and
+              tasteless; it is produced by the decay of uranium in soil and
+              rocks. While it dilutes to harmless levels outdoors, it can
+              accumulate to dangerous concentrations in enclosed spaces like
+              basements, where it is often highest due to direct contact with
+              the ground.
+
+
+              ### Typical Indoor Radon Ranges:
+
+
+              - **Below 100 Bq/m³**: Generally considered the target level for
+              safety. The World Health Organization (WHO) recommends staying
+              below this threshold to minimize long-term health risks.
+
+
+              - **100–148 Bq/m³**: A moderate range where action is often
+              recommended. The EPA suggests considering a fix, especially if
+              levels are consistently in this upper bracket.
+
+
+              - **Above 148 Bq/m³**: The official "Action Level." Exposure at
+              this level significantly increases the risk of lung cancer over
+              time. Professional radon mitigation is strongly recommended for
+              any space exceeding this limit.
+
+
+              ### Why It Matters:
+
+
+              Radon is the second leading cause of lung cancer globally and the
+              leading cause among non-smokers. Unlike CO₂, which causes
+              immediate symptoms like headaches, radon exposure has no
+              short-term symptoms; its damage occurs at a cellular level over
+              years of inhalation.
+
+
+              ### What to Do:
+
+
+              If your basement tests high, you can temporarily reduce levels by
+              increasing ventilation, but for long-term safety, the CDC
+              recommends installing a radon mitigation system (such as active
+              soil depressurization) and sealing cracks in the foundation.
   - type: grid
     cards:
       - type: vertical-stack
@@ -5845,7 +6005,7 @@ badges:
     show_entity_picture: true
     visibility:
       - condition: state
-        entity: person.crowlex
+        entity: device_tracker.a54_alex
         state: home
       - condition: screen
         media_query: "(min-width: 0px) and (max-width: 767px)"
