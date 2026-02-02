@@ -388,10 +388,10 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: scene.downstairs_working
-                color: teal
+                entity: scene.downstairs_heartwarming
+                color: pink
                 hide_state: true
-                name: Working
+                name: Heartwarming
                 tap_action:
                   action: toggle
                 hold_action:

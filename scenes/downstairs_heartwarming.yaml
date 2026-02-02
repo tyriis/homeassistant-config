@@ -1,0 +1,8 @@
+---
+name: Downstairs Heartwarming
+icon: mdi:heart-outline
+entities:
+  group.lights_downstairs:
+    state: "on"
+    brightness: 255 # 100%
+    color_temp: 312 # 3200K - Warm white

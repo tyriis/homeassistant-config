@@ -1,0 +1,8 @@
+---
+name: Livingroom Heartwarming
+icon: mdi:heart-outline
+entities:
+  light.livingroom:
+    state: "on"
+    brightness: 255 # 100%
+    color_temp: 312 # 3200K - Warm white

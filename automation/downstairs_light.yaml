@@ -61,11 +61,11 @@ actions:
               brightness: 255
           - action: scene.turn_on
             target:
-              entity_id: scene.downstairs_concentration
+              entity_id: scene.downstairs_heartwarming
           - action: system_log.write
             data:
               level: info
-              message: scene.downstairs_concentration turned on
+              message: scene.downstairs_heartwarming turned on
               logger: homeassistant.components.automation.downstairs_light
       - conditions:
           - condition: state
