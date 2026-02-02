@@ -60,7 +60,7 @@ light: !include_dir_list lights/
 automation manual: !include_dir_list automation/
 automation ui: !include automations.yaml
 
-script: !include_dir_list scripts/
+script: !include_dir_merge_named scripts/
 scene: !include_dir_list scenes/
 
 lovelace:
