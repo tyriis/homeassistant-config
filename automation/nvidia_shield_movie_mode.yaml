@@ -9,32 +9,29 @@ triggers:
   - trigger: state
     entity_id:
       - media_player.nvidia_shield
-    to: "playing"
+    to: playing
+    id: shield_on
   - trigger: state
     entity_id:
       - media_player.nvidia_shield
-    to: "paused"
+    to: paused
+    id: shield_on
   - trigger: state
     entity_id:
       - media_player.nvidia_shield
-    from: "playing"
-    to: "idle"
-  - trigger: state
-    entity_id:
-      - media_player.nvidia_shield
-    from: "paused"
-    to: "idle"
+    to: idle
+    id: shield_on
   - trigger: state
     entity_id:
       - media_player.nvidia_shield
     to: "off"
+    id: shield_off
 conditions: []
 actions:
   - choose:
       - conditions:
-          - condition: state
-            entity_id: media_player.nvidia_shield
-            state: "playing"
+          - condition: trigger
+            id: shield_on
         sequence:
           - action: input_boolean.turn_on
             target:
@@ -42,27 +39,17 @@ actions:
           - action: system_log.write
             data:
               level: info
-              message: Movie mode enabled - Shield is playing
-              logger: homeassistant.components.automation.media_shield_movie_mode
+              message: Movie mode enabled - Shield is on
+              logger: homeassistant.components.automation.nvidia_shield_movie_mode
       - conditions:
-          - condition: state
-            entity_id: media_player.nvidia_shield
-            state: "paused"
+          - condition: trigger
+            id: shield_off
         sequence:
-          - action: input_boolean.turn_on
+          - action: input_boolean.turn_off
             target:
               entity_id: input_boolean.movie_mode
           - action: system_log.write
             data:
               level: info
-              message: Movie mode enabled - Shield is paused
-              logger: homeassistant.components.automation.media_shield_movie_mode
-    default:
-      - action: input_boolean.turn_off
-        target:
-          entity_id: input_boolean.movie_mode
-      - action: system_log.write
-        data:
-          level: info
-          message: Movie mode disabled - Shield is off/idle
-          logger: homeassistant.components.automation.media_shield_movie_mode
+              message: Movie mode disabled - Shield is off
+              logger: homeassistant.components.automation.nvidia_shield_movie_mode
