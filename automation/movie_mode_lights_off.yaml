@@ -1,0 +1,26 @@
+---
+alias: Movie Mode Lights Off
+id: movie_mode_lights_off
+description: >
+  Turn off downstairs lights when movie mode is enabled for optimal viewing experience.
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - input_boolean.movie_mode
+    to: "on"
+    id: movie_mode_on
+conditions: []
+actions:
+  - action: light.turn_off
+    target:
+      entity_id:
+        - light.table
+        - light.livingroom
+        - light.skylight_8a30
+        - light.tv_light
+  - action: system_log.write
+    data:
+      level: info
+      message: Downstairs lights turned off for movie mode
+      logger: homeassistant.components.automation.movie_mode_lights_off
