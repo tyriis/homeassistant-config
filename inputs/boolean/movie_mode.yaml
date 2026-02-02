@@ -1,0 +1,5 @@
+---
+movie_mode:
+  name: Movie Mode
+  icon: mdi:movie-open
+  initial: false

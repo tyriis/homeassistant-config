@@ -40,6 +40,9 @@ actions:
           - condition: state
             entity_id: group.motion_downstairs
             state: "on"
+          - condition: state
+            entity_id: input_boolean.movie_mode
+            state: "off"
           - condition: time
             after: "06:00:00"
             before: "23:00:00"
@@ -71,6 +74,9 @@ actions:
           - condition: state
             entity_id: group.motion_downstairs
             state: "on"
+          - condition: state
+            entity_id: input_boolean.movie_mode
+            state: "off"
           - condition: time
             after: "23:00:00"
             before: "06:00:00"

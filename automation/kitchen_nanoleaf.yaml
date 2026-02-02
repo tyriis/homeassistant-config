@@ -28,6 +28,9 @@ actions:
           - condition: state
             entity_id: binary_sensor.mijia_motion_kitchen_occupancy
             state: "on"
+          - condition: state
+            entity_id: input_boolean.movie_mode
+            state: "off"
           - condition: time
             after: "07:00:00"
             before: "00:00:00"
@@ -56,6 +59,9 @@ actions:
           - condition: state
             entity_id: binary_sensor.mijia_motion_kitchen_occupancy
             state: "on"
+          - condition: state
+            entity_id: input_boolean.movie_mode
+            state: "off"
           - condition: time
             after: "00:00:00"
             before: "07:00:00"

@@ -41,6 +41,7 @@ ffmpeg:
 
 group: !include_dir_named groups/
 counter: !include_dir_merge_named counters/
+input_boolean: !include_dir_merge_named inputs/boolean/
 input_number: !include_dir_merge_named inputs/numbers/
 input_datetime: !include_dir_merge_named inputs/datetime/
 input_select: !include_dir_merge_named inputs/select/
