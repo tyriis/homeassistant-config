@@ -1,0 +1,4 @@
+---
+platform: switch
+name: TV Light
+entity_id: switch.nous_a1z_tv_light
