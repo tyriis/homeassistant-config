@@ -41,9 +41,9 @@ ffmpeg:
 
 group: !include_dir_named groups/
 counter: !include_dir_merge_named counters/
-input_number: !include_dir_merge_named input_numbers/
-input_datetime: !include_dir_merge_named input_datetimes/
-input_select: !include_dir_merge_named input_selects/
+input_number: !include_dir_merge_named inputs/numbers/
+input_datetime: !include_dir_merge_named inputs/datetime/
+input_select: !include_dir_merge_named inputs/select/
 rest_command: !include_dir_merge_named rest_commands/
 
 # Sensor configuration
