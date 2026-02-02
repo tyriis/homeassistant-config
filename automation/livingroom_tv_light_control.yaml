@@ -1,0 +1,105 @@
+---
+alias: Livingroom TV Light Control
+id: livingroom_tv_light_control
+description: >
+  Turn on TV light when movement is detected or someone is close (< 1m),
+  turn off when no presence detected. Respects movie mode for movement-based triggers.
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - sensor.aqara_presence_livingroom_movement
+    id: movement_detected
+  - trigger: numeric_state
+    entity_id:
+      - sensor.aqara_presence_livingroom_target_distance
+    below: 1
+    id: close_proximity
+  - trigger: numeric_state
+    entity_id:
+      - sensor.aqara_presence_livingroom_target_distance
+    above: 1
+    for:
+      seconds: 30
+    id: far_away
+  - trigger: state
+    entity_id:
+      - binary_sensor.aqara_presence_livingroom_presence
+    to: "off"
+    for:
+      seconds: 30
+    id: no_presence
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: movement_detected
+          - condition: template
+            value_template: >
+              {{
+                states('light.tv_light') == 'off'
+                and states('input_boolean.movie_mode') == 'off'
+              }}
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.tv_light
+          - action: system_log.write
+            data:
+              level: info
+              message: TV light turned on - movement detected
+              logger: homeassistant.components.automation.livingroom_tv_light_control
+      - conditions:
+          - condition: trigger
+            id: close_proximity
+          - condition: template
+            value_template: >
+              {{
+                states('light.tv_light') == 'off'
+              }}
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.tv_light
+          - action: system_log.write
+            data:
+              level: info
+              message: TV light turned on - close proximity detected
+              logger: homeassistant.components.automation.livingroom_tv_light_control
+      - conditions:
+          - condition: trigger
+            id: far_away
+          - condition: template
+            value_template: >
+              {{
+                states('light.tv_light') == 'on'
+                and states('input_boolean.movie_mode') == 'on'
+              }}
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.tv_light
+          - action: system_log.write
+            data:
+              level: info
+              message: TV light turned off - far away during movie mode
+              logger: homeassistant.components.automation.livingroom_tv_light_control
+      - conditions:
+          - condition: trigger
+            id: no_presence
+          - condition: template
+            value_template: >
+              {{
+                states('light.tv_light') == 'on'
+                and states('binary_sensor.aqara_presence_livingroom_presence') == 'off'
+              }}
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.tv_light
+          - action: system_log.write
+            data:
+              level: info
+              message: TV light turned off - no presence detected
+              logger: homeassistant.components.automation.livingroom_tv_light_control
