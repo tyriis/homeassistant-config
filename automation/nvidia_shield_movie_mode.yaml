@@ -1,0 +1,68 @@
+---
+alias: Nvidia Shield Movie Mode
+id: nvidia_shield_movie_mode
+description: >
+  Automatically enable movie mode when Nvidia Shield is playing,
+  which prevents downstairs light automations from triggering.
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - media_player.shield_android_tv
+    to: "playing"
+  - trigger: state
+    entity_id:
+      - media_player.shield_android_tv
+    to: "paused"
+  - trigger: state
+    entity_id:
+      - media_player.shield_android_tv
+    from: "playing"
+    to: "idle"
+  - trigger: state
+    entity_id:
+      - media_player.shield_android_tv
+    from: "paused"
+    to: "idle"
+  - trigger: state
+    entity_id:
+      - media_player.shield_android_tv
+    to: "off"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: media_player.shield_android_tv
+            state: "playing"
+        sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.movie_mode
+          - action: system_log.write
+            data:
+              level: info
+              message: Movie mode enabled - Shield is playing
+              logger: homeassistant.components.automation.media_shield_movie_mode
+      - conditions:
+          - condition: state
+            entity_id: media_player.shield_android_tv
+            state: "paused"
+        sequence:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.movie_mode
+          - action: system_log.write
+            data:
+              level: info
+              message: Movie mode enabled - Shield is paused
+              logger: homeassistant.components.automation.media_shield_movie_mode
+    default:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.movie_mode
+      - action: system_log.write
+        data:
+          level: info
+          message: Movie mode disabled - Shield is off/idle
+          logger: homeassistant.components.automation.media_shield_movie_mode
