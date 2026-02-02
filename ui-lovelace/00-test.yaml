@@ -461,7 +461,7 @@ sections:
             entity: media_player.nvidia_shield
             visibility:
               - condition: state
-                entity: media_player.shield_android_tv
+                entity: media_player.nvidia_shield
                 state_not: "off"
       - type: vertical-stack
         visibility:

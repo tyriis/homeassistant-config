@@ -8,32 +8,32 @@ mode: single
 triggers:
   - trigger: state
     entity_id:
-      - media_player.shield_android_tv
+      - media_player.nvidia_shield
     to: "playing"
   - trigger: state
     entity_id:
-      - media_player.shield_android_tv
+      - media_player.nvidia_shield
     to: "paused"
   - trigger: state
     entity_id:
-      - media_player.shield_android_tv
+      - media_player.nvidia_shield
     from: "playing"
     to: "idle"
   - trigger: state
     entity_id:
-      - media_player.shield_android_tv
+      - media_player.nvidia_shield
     from: "paused"
     to: "idle"
   - trigger: state
     entity_id:
-      - media_player.shield_android_tv
+      - media_player.nvidia_shield
     to: "off"
 conditions: []
 actions:
   - choose:
       - conditions:
           - condition: state
-            entity_id: media_player.shield_android_tv
+            entity_id: media_player.nvidia_shield
             state: "playing"
         sequence:
           - action: input_boolean.turn_on
@@ -46,7 +46,7 @@ actions:
               logger: homeassistant.components.automation.media_shield_movie_mode
       - conditions:
           - condition: state
-            entity_id: media_player.shield_android_tv
+            entity_id: media_player.nvidia_shield
             state: "paused"
         sequence:
           - action: input_boolean.turn_on
