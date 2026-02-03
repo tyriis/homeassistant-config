@@ -7,73 +7,60 @@ triggers:
   - trigger: state
     entity_id:
       - binary_sensor.mijia_motion_kitchen_occupancy
+      - binary_sensor.mijia_motion_table_occupancy
     to: "on"
+    id: motion_on
   - trigger: state
     entity_id:
       - binary_sensor.mijia_motion_kitchen_occupancy
     to: "off"
     for:
       minutes: 5
+    id: kitchen_idle
   - trigger: state
     entity_id:
       - group.motion_downstairs
     to: "off"
     for:
-      minutes: 20
+      minutes: 15
+    id: all_motion_off
 conditions: []
 actions:
   - choose:
       - conditions:
-          # turn light on if motion in the kitchen between 8:00 and 00:00
-          - condition: state
-            entity_id: binary_sensor.mijia_motion_kitchen_occupancy
-            state: "on"
-          - condition: state
-            entity_id: input_boolean.movie_mode
-            state: "off"
-          - condition: time
-            after: "07:00:00"
-            before: "00:00:00"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.skylight_8a30
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.skylight_8a30
-                attribute: brightness
-                below: 255
+          - condition: trigger
+            id: motion_on
+          - condition: template
+            value_template: >
+              {{
+                states('input_boolean.movie_mode') == 'off'
+                and (
+                  states('light.skylight_8a30') == 'off'
+                  or state_attr('light.skylight_8a30', 'brightness') | int(0) < (51 if now().hour >= 0 and now().hour < 7 else 255)
+                )
+              }}
         sequence:
           - action: light.turn_on
             target:
               entity_id: light.skylight_8a30
             data:
-              brightness: 255
+              brightness: >
+                {{ 51 if now().hour >= 0 and now().hour < 7 else 255 }}
           - action: system_log.write
             data:
               level: info
-              message: light.skylight_8a30 turned on (brightness=255)
+              message: "light.skylight_8a30 turned on (brightness={{ 51 if now().hour >= 0 and now().hour < 7 else 255 }})"
               logger: homeassistant.components.automation.kitchen_nanoleaf
       - conditions:
-          # turn on light dimmed if motion is detected in the kitchen between 00:00 and 07:00
-          - condition: state
-            entity_id: binary_sensor.mijia_motion_kitchen_occupancy
-            state: "on"
-          - condition: state
-            entity_id: input_boolean.movie_mode
-            state: "off"
-          - condition: time
-            after: "00:00:00"
-            before: "07:00:00"
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: light.skylight_8a30
-                state: "off"
-              - condition: numeric_state
-                entity_id: light.skylight_8a30
-                attribute: brightness
-                above: 51
+          - condition: trigger
+            id: kitchen_idle
+          - condition: template
+            value_template: >
+              {{
+                states('light.skylight_8a30') == 'on'
+                and states('binary_sensor.mijia_motion_table_occupancy') == 'off'
+                and state_attr('light.skylight_8a30', 'brightness') | int(0) > 51
+              }}
         sequence:
           - action: light.turn_on
             target:
@@ -83,42 +70,11 @@ actions:
           - action: system_log.write
             data:
               level: info
-              message: light.skylight_8a30 turned on (brightness=51)
+              message: light.skylight_8a30 dimmed to 51 - kitchen idle
               logger: homeassistant.components.automation.kitchen_nanoleaf
       - conditions:
-          # dimm light if no motion for 5 minutes in the kitchen
-          - condition: state
-            entity_id: binary_sensor.mijia_motion_kitchen_occupancy
-            state: "off"
-            for:
-              hours: 0
-              minutes: 5
-              seconds: 0
-          - condition: state
-            entity_id: light.skylight_8a30
-            state: "on"
-          - condition: numeric_state
-            entity_id: light.skylight_8a30
-            attribute: brightness
-            above: 51
-        sequence:
-          - action: light.turn_on
-            target:
-              entity_id: light.skylight_8a30
-            data:
-              brightness: 51
-          - action: system_log.write
-            data:
-              level: info
-              message: light.skylight_8a30 turned on (brightness=51)
-              logger: homeassistant.components.automation.kitchen_nanoleaf
-      - conditions:
-          # turn light off if group.motion_downstairs is off for 15 minutes
-          - condition: state
-            entity_id: group.motion_downstairs
-            state: "off"
-            for:
-              minutes: 15
+          - condition: trigger
+            id: all_motion_off
           - condition: state
             entity_id: light.skylight_8a30
             state: "on"
@@ -129,5 +85,5 @@ actions:
           - action: system_log.write
             data:
               level: info
-              message: light.skylight_8a30 turned off
+              message: light.skylight_8a30 turned off - no motion downstairs
               logger: homeassistant.components.automation.kitchen_nanoleaf
