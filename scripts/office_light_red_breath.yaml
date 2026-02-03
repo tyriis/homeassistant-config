@@ -20,12 +20,12 @@ office_light_red_breath:
         entity_id: light.office
       data:
         rgb_color: [255, 0, 0]
-        brightness: 255
-        transition: 1.5
+        # brightness: 255
+        transition: 3
 
     # Wait for fade to complete + hold red briefly
     - delay:
-        seconds: 1.5
+        seconds: 0.7
 
     # Fade back to original state over 1.5 seconds
     - action: light.turn_on
@@ -34,4 +34,4 @@ office_light_red_breath:
       data:
         brightness: "{{ original_brightness }}"
         rgb_color: "{{ original_rgb if original_rgb else [255, 255, 255] }}"
-        transition: 1.5
+        transition: 3
