@@ -1,0 +1,30 @@
+---
+alias: Office Radon Alert
+id: office_radon_alert
+description: >
+  Trigger red breathing effect on office light every 5 minutes when radon level
+  exceeds 100 Bq/m³ and window is closed
+mode: single
+triggers:
+  - trigger: numeric_state
+    entity_id:
+      - sensor.bt_proxy_office_radon
+    above: 100
+    id: radon_high
+  - trigger: time_pattern
+    minutes: "/5"
+    id: check_periodic
+conditions: []
+actions:
+  - condition: template
+    value_template: >
+      {{
+        states('sensor.bt_proxy_office_radon') | float(0) > 100
+        and states('binary_sensor.aqara_contact_window_office_contact') == 'off'
+      }}
+  - action: script.office_light_red_breath
+  - action: system_log.write
+    data:
+      level: warning
+      message: "Radon level exceeded 100 Bq/m³: {{ states('sensor.bt_proxy_office_radon') }} - window closed"
+      logger: homeassistant.components.automation.office_radon_alert
