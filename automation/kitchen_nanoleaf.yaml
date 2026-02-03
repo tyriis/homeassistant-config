@@ -33,11 +33,8 @@ actions:
           - condition: template
             value_template: >
               {{
-                states('input_boolean.movie_mode') == 'off'
-                and (
-                  states('light.skylight_8a30') == 'off'
-                  or state_attr('light.skylight_8a30', 'brightness') | int(0) < (51 if now().hour >= 0 and now().hour < 7 else 255)
-                )
+                states('light.skylight_8a30') == 'off'
+                or state_attr('light.skylight_8a30', 'brightness') | int(0) < (51 if now().hour >= 0 and now().hour < 7 else 255)
               }}
         sequence:
           - action: light.turn_on
@@ -57,7 +54,26 @@ actions:
           - condition: template
             value_template: >
               {{
-                states('light.skylight_8a30') == 'on'
+                states('input_boolean.movie_mode') == 'on'
+                and states('light.skylight_8a30') == 'on'
+              }}
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.skylight_8a30
+          - action: system_log.write
+            data:
+              level: info
+              message: light.skylight_8a30 turned off - movie mode auto-off
+              logger: homeassistant.components.automation.kitchen_nanoleaf
+      - conditions:
+          - condition: trigger
+            id: kitchen_idle
+          - condition: template
+            value_template: >
+              {{
+                states('input_boolean.movie_mode') == 'off'
+                and states('light.skylight_8a30') == 'on'
                 and states('binary_sensor.mijia_motion_table_occupancy') == 'off'
                 and state_attr('light.skylight_8a30', 'brightness') | int(0) > 51
               }}
@@ -75,9 +91,11 @@ actions:
       - conditions:
           - condition: trigger
             id: all_motion_off
-          - condition: state
-            entity_id: light.skylight_8a30
-            state: "on"
+          - condition: template
+            value_template: >
+              {{
+                states('light.skylight_8a30') == 'on'
+              }}
         sequence:
           - action: light.turn_off
             target:
