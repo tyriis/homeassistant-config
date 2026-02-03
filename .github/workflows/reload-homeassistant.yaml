@@ -10,7 +10,7 @@ on:
 jobs:
   call-webhook:
     runs-on:
-      - arc-runner-set-homeassistant-config
+      - tyriis-homeassistant-config-runner
     steps:
       - name: Call webhook
         run: curl -X POST ${{ secrets.WEBHOOK_URL }}
