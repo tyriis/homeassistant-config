@@ -4,7 +4,7 @@ mode: single
 id: update_config_on_webhook
 trigger:
   - platform: webhook
-    webhook_id: eaf49648a849dae20475647586a5047285e1159481b76f72ab3d9f0a523893b3
+    webhook_id: KwAR7V2aBqSzdLFr1yV2ztRuzbibNvtNaGNiYCPuvHcR
     allowed_methods:
       - POST
     local_only: true
