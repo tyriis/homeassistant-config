@@ -25,7 +25,7 @@ office_light_red_breath:
 
     # Wait for fade to complete + hold red briefly
     - delay:
-        seconds: 0.7
+        seconds: 3
 
     # Fade back to original state over 1.5 seconds
     - action: light.turn_on
