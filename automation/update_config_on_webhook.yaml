@@ -11,3 +11,8 @@ trigger:
 action:
   - service: shell_command.update_config
   # - service: homeassistant.restart
+  - service: system_log.write
+    data:
+      level: info
+      message: Home Assistant configuration updated via webhook
+      logger: homeassistant.components.automation.update_config_on_webhook
