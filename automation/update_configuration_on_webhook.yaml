@@ -1,7 +1,7 @@
 ---
 alias: Update Configuration on Webhook
 mode: single
-id: update_config_on_webhook
+id: update_configuration_on_webhook
 trigger:
   - platform: webhook
     webhook_id: KwAR7V2aBqSzdLFr1yV2ztRuzbibNvtNaGNiYCPuvHcR
