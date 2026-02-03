@@ -88,3 +88,6 @@ lovelace:
     #   type: module
     - url: /hacsfiles/lovelace-digital-clock/digital-clock.js
       type: module
+
+shell_command:
+  update_config: cd /config && git config --global --add safe.directory /config && git pull

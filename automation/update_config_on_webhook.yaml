@@ -1,0 +1,13 @@
+---
+alias: Update Configuration on Webhook
+mode: single
+id: update_config_on_webhook
+trigger:
+  - platform: webhook
+    webhook_id: eaf49648a849dae20475647586a5047285e1159481b76f72ab3d9f0a523893b3
+    allowed_methods:
+      - POST
+    local_only: true
+action:
+  - service: shell_command.update_config
+  # - service: homeassistant.restart
