@@ -1,0 +1,13 @@
+---
+livingroom_lights_fade_in:
+  alias: Livingroom Lights Fade In
+  mode: single
+  sequence:
+    - action: light.turn_on
+      target:
+        entity_id:
+          - light.table
+          - light.livingroom
+      data:
+        brightness: 255
+        transition: 30
