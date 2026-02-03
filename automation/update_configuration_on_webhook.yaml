@@ -15,4 +15,4 @@ action:
     data:
       level: info
       message: Home Assistant configuration updated via webhook
-      logger: homeassistant.components.automation.update_config_on_webhook
+      logger: homeassistant.components.automation.update_configuration_on_webhook
