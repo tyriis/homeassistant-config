@@ -1,7 +1,8 @@
 ---
 # a given sequence of actions to perform: turn on two IR heating panels in the office for 5 min, let them run for 5 min, then turn them off
 # and wait 5 minutes, then reevaluate the condition again.
-# if sensor.qingping_office_temperature is below 25°C turn on switch.tuya_a1z_irpanel1_office and switch.tuya_a1z_irpanel2_office for 5 minutes, wait 5 minutes and reevaluate
+# if sensor.qingping_office_temperature is below 25°C and both office and basement windows are closed,
+# turn on switch.tuya_a1z_irpanel1_office and switch.tuya_a1z_irpanel2_office for 5 minutes, wait 5 minutes and reevaluate
 
 alias: Office IR Heating
 id: office_ir_heating
@@ -14,12 +15,23 @@ conditions:
   - condition: numeric_state
     entity_id: sensor.qingping_office_temperature
     below: 25
+  - condition: state
+    entity_id: binary_sensor.aqara_contact_window_office_contact
+    state: "off"
+  - condition: state
+    entity_id: binary_sensor.aqara_contact_window_basement_contact
+    state: "off"
 actions:
   - action: switch.turn_on
     target:
       entity_id:
         - switch.tuya_a1z_irpanel1_office
         - switch.tuya_a1z_irpanel2_office
+  - action: system_log.write
+    data:
+      level: info
+      message: Office IR heating panels turned on due to temperature below threshold
+      logger: homeassistant.components.automation.office_ir_heating
   - delay:
       hours: 0
       minutes: 5
@@ -30,6 +42,11 @@ actions:
       entity_id:
         - switch.tuya_a1z_irpanel1_office
         - switch.tuya_a1z_irpanel2_office
+  - action: system_log.write
+    data:
+      level: info
+      message: Office IR heating panels turned off after 5 min cycle
+      logger: homeassistant.components.automation.office_ir_heating
   - delay:
       hours: 0
       minutes: 5
