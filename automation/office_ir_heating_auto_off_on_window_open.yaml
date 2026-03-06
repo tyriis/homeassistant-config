@@ -19,4 +19,4 @@ actions:
     data:
       level: info
       message: Office IR heating panels turned off due to window opened
-      logger: homeassistant.components.automation.office_ir_heating_window_off
+      logger: homeassistant.components.automation.office_ir_heating_auto_off_on_window_open
