@@ -1,9 +1,7 @@
 ---
-# turn off IR heating panels immediately when the office or basement window is opened
-
-alias: Office IR Heating Auto Off
-id: office_ir_heating_auto_off
-description: Turn off office IR heating panels when office or basement window is opened
+alias: Office IR Heating Auto Off on Window Open
+id: office_ir_heating_auto_off_on_window_open
+description: Automatically turns off the IR heating when the office or basement window is opened.
 mode: single
 triggers:
   - trigger: state
