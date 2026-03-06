@@ -1,0 +1,24 @@
+---
+# turn off IR heating panels immediately when the office or basement window is opened
+
+alias: Office IR Heating Window Off
+id: office_ir_heating_window_off
+description: Turn off office IR heating panels when office or basement window is opened
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.aqara_contact_window_office_contact
+      - binary_sensor.aqara_contact_window_basement_contact
+    to: "on"
+actions:
+  - action: switch.turn_off
+    target:
+      entity_id:
+        - switch.tuya_a1z_irpanel1_office
+        - switch.tuya_a1z_irpanel2_office
+  - action: system_log.write
+    data:
+      level: info
+      message: "Office IR heating panels turned off due to window opened ({{ trigger.to_state.name }})"
+      logger: homeassistant.components.automation.office_ir_heating_window_off
