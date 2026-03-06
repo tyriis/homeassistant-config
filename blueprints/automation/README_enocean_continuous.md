@@ -81,17 +81,14 @@ data:
 ### Execution Flow
 
 1. **Button Press Detected**:
-
    - Immediate execution of "Pressed" action
    - Start hold delay timer
 
 2. **After Hold Delay**:
-
    - Execute "Held" action once
    - Start continuous loop with repeat interval
 
 3. **Continuous Loop**:
-
    - Execute "Continuous" action
    - Wait for repeat interval
    - Repeat until button released

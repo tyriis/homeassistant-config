@@ -1,11 +1,9 @@
 ---
 # see https://yamllint.readthedocs.io/en/stable/index.html for more options
-ignore: |
-  gotk-components.yaml
 extends: default
 rules:
   truthy:
-    allowed-values: ["true", "false", "on"]
+    allowed-values: ["true", "false", "on", "yes"]
 
   line-length:
     max: 120
