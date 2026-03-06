@@ -30,7 +30,7 @@ actions:
   - action: system_log.write
     data:
       level: info
-      message: "Office IR heating panels turned on (temperature: {{ states('sensor.qingping_office_temperature') }}°C)"
+      message: Office IR heating panels turned on due to temperature below threshold
       logger: homeassistant.components.automation.office_ir_heating
   - delay:
       hours: 0
@@ -45,7 +45,7 @@ actions:
   - action: system_log.write
     data:
       level: info
-      message: "Office IR heating panels turned off after 5 min cycle"
+      message: Office IR heating panels turned off after 5 min cycle
       logger: homeassistant.components.automation.office_ir_heating
   - delay:
       hours: 0

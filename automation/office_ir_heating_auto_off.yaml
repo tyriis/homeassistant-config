@@ -1,8 +1,8 @@
 ---
 # turn off IR heating panels immediately when the office or basement window is opened
 
-alias: Office IR Heating Window Off
-id: office_ir_heating_window_off
+alias: Office IR Heating Auto Off
+id: office_ir_heating_auto_off
 description: Turn off office IR heating panels when office or basement window is opened
 mode: single
 triggers:
@@ -20,5 +20,5 @@ actions:
   - action: system_log.write
     data:
       level: info
-      message: "Office IR heating panels turned off due to window opened ({{ trigger.to_state.name }})"
+      message: Office IR heating panels turned off due to window opened
       logger: homeassistant.components.automation.office_ir_heating_window_off
