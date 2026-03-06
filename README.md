@@ -1,11 +1,5 @@
-<div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -15,6 +9,9 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+[![pre-commit][pre-commit-shield]][pre-commit-url]
+[![taskfile][taskfile-shield]][taskfile-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -32,19 +29,15 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<!--
 <details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-  </ol>
-</details>
--->
+  <summary style="font-size:1.2em;">Table of Contents</summary>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-<!-- ABOUT THE PROJECT -->
+- [About The Project](#about-the-project)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+</details>
 
 ## About The Project
 
@@ -67,3 +60,10 @@ This repo was heavily inspired by [budimanjojo][budimanjojo-blog], thanks a lot 
 
 [product-overview]: docu/gitops-home-assistant-white.png
 [budimanjojo-blog]: https://budimanjojo.com/2021/11/04/gitops-home-assistant-configurations/
+
+<!-- Badges -->
+
+[pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit
+[pre-commit-url]: https://github.com/pre-commit/pre-commit
+[taskfile-url]: https://taskfile.dev/
+[taskfile-shield]: https://img.shields.io/badge/Taskfile-Enabled-brightgreen?logo=task
