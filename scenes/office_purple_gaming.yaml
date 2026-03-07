@@ -1,0 +1,24 @@
+---
+name: Purple Gaming
+icon: mdi:controller
+entities:
+  light.tradfri_color_spot_01:
+    state: "on"
+    brightness: 3 # 1%
+    rgb_color: [128, 0, 255]
+  light.tradfri_color_spot_02:
+    state: "off"
+  light.tradfri_color_spot_03:
+    state: "off"
+  light.tradfri_color_spot_04:
+    state: "on"
+    brightness: 3 # 1%
+    rgb_color: [128, 0, 255]
+  light.tradfri_color_spot_05:
+    state: "on"
+    brightness: 3 # 1%
+    rgb_color: [128, 0, 255]
+  light.tradfri_color_spot_06:
+    state: "on"
+    brightness: 3 # 1%
+    rgb_color: [128, 0, 255]
