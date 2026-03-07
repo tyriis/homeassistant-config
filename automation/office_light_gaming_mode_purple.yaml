@@ -1,0 +1,27 @@
+---
+alias: Office Light Gaming Mode Purple
+id: office_light_gaming_mode_purple
+description: Block office light automation when gaming mode on purple is activated
+mode: single
+triggers:
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+      service_data:
+        entity_id: scene.office_purple_gaming
+actions:
+  - service: rest_command.release_lock
+    data:
+      name: office_light
+  - service: rest_command.create_lock
+    data:
+      name: office_light
+      owner: homeassistant-gaming-purple
+      duration: 4h
+  - service: system_log.write
+    data:
+      level: info
+      message: Office light automation blocked for gaming mode on purple
+      logger: homeassistant.components.automation.office_light_gaming_mode_purple

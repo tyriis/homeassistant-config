@@ -4,5 +4,5 @@ icon: mdi:book-open-page-variant-outline
 entities:
   light.office:
     state: "on"
-    brightness: 220 # 86%
-    color_temp: 300 # Balanced neutral (~ 3300K)
+    brightness: 204 # 80%
+    color_temp: 345 # 2900K - Warm white

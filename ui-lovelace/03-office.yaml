@@ -85,6 +85,16 @@ sections:
           action: toggle
         hold_action:
           action: more-info
+      - type: tile
+        entity: scene.office_purple_gaming
+        name: Purple Gaming
+        color: deep-purple
+        hide_state: true
+        icon: mdi:controller
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
   - type: grid
     cards:
       - type: heading
