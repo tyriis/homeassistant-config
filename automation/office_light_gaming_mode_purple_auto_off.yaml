@@ -1,0 +1,27 @@
+---
+alias: Office Light Gaming Mode Purple Auto Off
+id: office_light_gaming_mode_purple_auto_off
+description: >
+  Turn off gaming mode after 30 minutes of no motion at the purple gaming desk and restore office reading scene
+mode: single
+triggers:
+  - trigger: state
+    entity_id: binary_sensor.aqara_motion_office_occupancy
+    to: "off"
+    for:
+      minutes: 30
+conditions:
+  - condition: template
+    value_template: "{{ state_attr('sensor.office_light_lock_status', 'owner') == 'homeassistant-gaming-purple' }}"
+actions:
+  - service: rest_command.release_lock
+    data:
+      name: office_light
+  - action: scene.turn_on
+    target:
+      entity_id: scene.office_reading
+  - service: system_log.write
+    data:
+      level: info
+      message: Office light gaming mode purple auto-released after 30 minutes of no motion, restored reading scene
+      logger: homeassistant.components.automation.office_light_gaming_mode_purple_auto_off
