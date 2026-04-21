@@ -65,7 +65,14 @@ script: !include_dir_merge_named scripts/
 scene: !include_dir_list scenes/
 
 lovelace:
-  mode: yaml
+  resource_mode: yaml
+  dashboards:
+    lovelave-test:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Dashboard
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
   resources:
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
