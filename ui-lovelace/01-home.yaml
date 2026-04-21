@@ -769,6 +769,30 @@ sections:
       - type: tile
         entity: sensor.innr_sp_120_fridge_power
         name: fridge
+      - type: tile
+        entity: sensor.coffee_machine_auto_off_remaining_minutes
+        name: coffee time left
+        icon: mdi:coffee-outline
+      - type: custom:bar-card
+        name: Coffee Machine Auto-Off
+        entities:
+          - entity: sensor.coffee_machine_auto_off_progress_percent
+        height: 26px
+        positions:
+          icon: "off"
+          indicator: "off"
+        min: 0
+        max: 100
+        severity:
+          - from: 66
+            to: 100
+            color: "#2e7d32"
+          - from: 33
+            to: 65
+            color: "#f9a825"
+          - from: 0
+            to: 32
+            color: "#c62828"
   - type: grid
     cards:
       - type: heading
