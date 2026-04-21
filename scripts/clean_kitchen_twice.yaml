@@ -1,0 +1,14 @@
+---
+clean_kitchen_twice:
+  alias: Clean Kitchen Twice
+  mode: single
+  sequence:
+    - action: vacuum.send_command
+      target:
+        entity_id: vacuum.saros_10r
+      data:
+        command: app_segment_clean
+        params:
+          - segments:
+              - 5
+            repeat: 2

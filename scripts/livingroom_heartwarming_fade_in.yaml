@@ -1,0 +1,12 @@
+---
+livingroom_heartwarming_fade_in:
+  alias: Livingroom Heartwarming Fade In
+  mode: single
+  sequence:
+    - action: light.turn_on
+      target:
+        entity_id: light.livingroom
+      data:
+        brightness: 255
+        color_temp: 312
+        transition: 30
