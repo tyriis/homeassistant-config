@@ -1,0 +1,19 @@
+---
+alias: Coffee Machine Auto On 09:00
+id: coffee_machine_auto_on_0900
+description: Turn on coffee machine at 09:00 only if it has not been on yet today
+mode: single
+trigger:
+  - platform: time
+    at: "09:00:00"
+condition:
+  - condition: state
+    entity_id: switch.nous_a1z_coffee_machine
+    state: "off"
+  - condition: numeric_state
+    entity_id: sensor.coffee_machine_daily_runtime
+    below: 0.01
+action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.nous_a1z_coffee_machine

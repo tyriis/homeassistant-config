@@ -1,0 +1,51 @@
+---
+alias: Coffee Machine Auto Off Timer
+id: coffee_machine_auto_off_timer
+description: Start/cancel countdown for coffee machine auto-off and expose remaining time to dashboard
+mode: restart
+trigger:
+  - platform: state
+    # Update this entity_id if your coffee machine switch has a different name.
+    entity_id: switch.nous_a1z_coffee_machine
+    to: "on"
+    id: coffee_on
+
+  - platform: state
+    entity_id: switch.nous_a1z_coffee_machine
+    to: "off"
+    id: coffee_off
+
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.coffee_machine_auto_off
+    id: timer_finished
+
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: coffee_on
+        sequence:
+          - service: timer.start
+            target:
+              entity_id: timer.coffee_machine_auto_off
+
+      - conditions:
+          - condition: trigger
+            id: coffee_off
+        sequence:
+          - service: timer.cancel
+            target:
+              entity_id: timer.coffee_machine_auto_off
+
+      - conditions:
+          - condition: trigger
+            id: timer_finished
+          - condition: state
+            entity_id: switch.nous_a1z_coffee_machine
+            state: "on"
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.nous_a1z_coffee_machine

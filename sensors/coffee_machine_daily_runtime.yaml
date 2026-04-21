@@ -1,0 +1,9 @@
+---
+platform: history_stats
+name: Coffee Machine Daily Runtime
+unique_id: coffee_machine_daily_runtime
+entity_id: switch.nous_a1z_coffee_machine
+state: "on"
+type: time
+start: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0) }}"
+end: "{{ now() }}"

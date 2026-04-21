@@ -1,0 +1,4 @@
+---
+coffee_machine_auto_off:
+  name: Coffee Machine Auto Off
+  duration: "00:30:00"
