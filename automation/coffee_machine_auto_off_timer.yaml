@@ -5,15 +5,12 @@ description: Start/cancel countdown for coffee machine auto-off and expose remai
 mode: restart
 trigger:
   - platform: state
-    # Update this entity_id if your coffee machine switch has a different name.
     entity_id: switch.nous_a1z_coffee_machine
-    to: "on"
-    id: coffee_on
+    id: relay_state_changed
 
-  - platform: state
-    entity_id: switch.nous_a1z_coffee_machine
-    to: "off"
-    id: coffee_off
+  - platform: homeassistant
+    event: start
+    id: ha_start
 
   - platform: event
     event_type: timer.finished
@@ -25,22 +22,6 @@ action:
   - choose:
       - conditions:
           - condition: trigger
-            id: coffee_on
-        sequence:
-          - service: timer.start
-            target:
-              entity_id: timer.coffee_machine_auto_off
-
-      - conditions:
-          - condition: trigger
-            id: coffee_off
-        sequence:
-          - service: timer.cancel
-            target:
-              entity_id: timer.coffee_machine_auto_off
-
-      - conditions:
-          - condition: trigger
             id: timer_finished
           - condition: state
             entity_id: switch.nous_a1z_coffee_machine
@@ -49,3 +30,21 @@ action:
           - service: switch.turn_off
             target:
               entity_id: switch.nous_a1z_coffee_machine
+
+      - conditions:
+          - condition: state
+            entity_id: switch.nous_a1z_coffee_machine
+            state: "on"
+        sequence:
+          - service: timer.start
+            target:
+              entity_id: timer.coffee_machine_auto_off
+
+      - conditions:
+          - condition: state
+            entity_id: switch.nous_a1z_coffee_machine
+            state: "off"
+        sequence:
+          - service: timer.cancel
+            target:
+              entity_id: timer.coffee_machine_auto_off
