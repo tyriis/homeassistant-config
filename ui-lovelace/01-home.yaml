@@ -769,10 +769,6 @@ sections:
       - type: tile
         entity: sensor.innr_sp_120_fridge_power
         name: fridge
-      - type: tile
-        entity: sensor.coffee_machine_auto_off_remaining_minutes
-        name: coffee time left
-        icon: mdi:coffee-outline
       - type: custom:timer-bar-card
         name: Coffee Machine Auto-Off
         entities:
