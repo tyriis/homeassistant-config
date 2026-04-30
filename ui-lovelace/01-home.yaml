@@ -773,7 +773,7 @@ sections:
         entity: sensor.coffee_machine_auto_off_remaining_minutes
         name: coffee time left
         icon: mdi:coffee-outline
-      - type: custom:bar-card
+      - type: custom:timer-bar-card
         name: Coffee Machine Auto-Off
         entities:
           - entity: sensor.coffee_machine_auto_off_progress_percent
