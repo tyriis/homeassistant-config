@@ -8,6 +8,7 @@ frontend:
 
 # Configure Home Assistant
 homeassistant:
+  external_url: !env_var HASS_URL
   # allowlist_external_dirs:
   #   - /data
   auth_mfa_modules:
