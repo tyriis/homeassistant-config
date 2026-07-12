@@ -7,10 +7,6 @@ entities:
     brightness: 40 # 16%
     color_temp: 300 # Balanced neutral (~ 3300K)
   light.tradfri_color_spot_02:
-    state: "on"
-    brightness: 40 # 16%
-    color_temp: 300 # Balanced neutral (~ 3300K)
+    state: "off"
   light.tradfri_color_spot_03:
-    state: "on"
-    brightness: 40 # 16%
-    color_temp: 300 # Balanced neutral (~ 3300K)
+    state: "off"
