@@ -48,7 +48,7 @@ sections:
         heading: Climate
         heading_style: title
       - type: custom:mushroom-climate-card
-        entity: climate.bedroom
+        entity: climate.bedroom_mqtt_hvac
         fill_container: true
         hvac_modes:
           - cool
