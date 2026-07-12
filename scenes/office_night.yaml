@@ -4,5 +4,6 @@ icon: mdi:weather-night
 entities:
   light.office:
     state: "on"
-    brightness: 45 # 18%
-    color_temp: 454 # Warmest possible (~ 2200K)
+    brightness: 51 # 20%
+    color_temp_kelvin: 2202 # Warmest possible
+    transition: 1

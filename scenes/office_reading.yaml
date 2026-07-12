@@ -1,8 +1,0 @@
----
-name: Office Reading
-icon: mdi:book-open-page-variant-outline
-entities:
-  light.office:
-    state: "on"
-    brightness: 204 # 80%
-    color_temp: 345 # 2900K - Warm white
