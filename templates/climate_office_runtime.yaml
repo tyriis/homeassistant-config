@@ -1,0 +1,19 @@
+---
+sensor:
+  - default_entity_id: sensor.climate_office_runtime
+    unique_id: climate_office_runtime
+    name: Climate Office Runtime
+    device_class: duration
+    unit_of_measurement: min
+    icon: >
+      {% if is_state('climate.office_mqtt_hvac', 'cool') %}
+        mdi:timer-play-outline
+      {% else %}
+        mdi:timer-off-outline
+      {% endif %}
+    state: >
+      {% if is_state('climate.office_mqtt_hvac', 'cool') %}
+        {{ (now().timestamp() - as_timestamp(states.input_datetime.climate_office_start_time.state)) / 60 }}
+      {% else %}
+        0
+      {% endif %}
