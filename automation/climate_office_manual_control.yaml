@@ -3,7 +3,7 @@
 # |---------------------|--------------------------------------------------------------------------|--------------------|
 # | UI/App Control      | user_id is present                                                       | ✅ Treat as manual |
 # | Physical Button     | context.id is None                                                       | ✅ Treat as manual |
-# | Our Automation      | context.id contains "climate_livingroom_auto_on" or "cool_livingroom"          | ❌ Ignore          |
+# | Our Automation      | context.id contains "climate_office_auto_on" or "cool_office"            | ❌ Ignore          |
 # | Other Automations   | Other context.id values                                                  | ✅ Treat as manual |
 #
 # | Scenario            | Previous State      | Action      |
@@ -14,20 +14,20 @@
 # | Genuine manual use  | off → cool (stable) | ✅ Allowed  |
 # | Physical button     | cool → off (stable) | ✅ Allowed  |
 
-alias: Climate Livingroom Manual Control
-id: climate_livingroom_manual_control
+alias: Climate Office Manual Control
+id: climate_office_manual_control
 description: Handle manual AC button presses and override automation
 mode: restart
 triggers:
   # Manual switch turned on
   - platform: state
-    entity_id: climate.livingroom_mqtt_hvac
+    entity_id: climate.office_mqtt_hvac
     from: "off"
     id: manual_on
 
   # Manual switch turned off
   - platform: state
-    entity_id: climate.livingroom_mqtt_hvac
+    entity_id: climate.office_mqtt_hvac
     to: "off"
     id: manual_off
 
@@ -57,13 +57,13 @@ conditions:
       {% elif context_id is none %}
         true
       {# Exclude our own automation contexts #}
-      {% elif 'climate_livingroom_auto_off_on_window_open' in (context_id or '') %}
+      {% elif 'climate_office_auto_off_on_window_open' in (context_id or '') %}
         false
-      {% elif 'climate_livingroom_auto_off_on_target_temp' in (context_id or '') %}
+      {% elif 'climate_office_auto_off_on_target_temp' in (context_id or '') %}
         false
-      {% elif 'climate_livingroom_auto_on' in (context_id or '') %}
+      {% elif 'climate_office_auto_on' in (context_id or '') %}
         false
-      {% elif 'cool_livingroom' in (context_id or '') %}
+      {% elif 'cool_office' in (context_id or '') %}
         false
       {# Allow other automations to be treated as manual (e.g., other cooling scripts) #}
       {% else %}
@@ -82,7 +82,7 @@ actions:
         Parent ID: {{ trigger.to_state.context.parent_id }},
         New state: {{ trigger.to_state.state }},
         Old state: {{ trigger.from_state.state }}
-      logger: homeassistant.components.automation.climate_livingroom_manual_control
+      logger: homeassistant.components.automation.climate_office_manual_control
 
   - choose:
       # Manual switch turned ON
@@ -93,21 +93,21 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              name: hisense_ac_livingroom
+              name: hisense_ac_office
 
           # Create 1-hour automation block lock (replaces any existing lock)
           - service: rest_command.create_lock
             data:
-              name: hisense_ac_livingroom
+              name: hisense_ac_office
               owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
-              duration: 60m
+              duration: 1h
 
           # Log manual start
           - service: system_log.write
             data:
               level: info
-              message: Livingroom cooling manually started by user
-              logger: homeassistant.components.automation.climate_livingroom_manual_control
+              message: Office cooling manually started by user
+              logger: homeassistant.components.automation.climate_office_manual_control
 
       # Manual switch turned OFF
       - conditions:
@@ -117,18 +117,18 @@ actions:
           # Release any existing lock first to prevent conflicts
           - service: rest_command.release_lock
             data:
-              name: hisense_ac_livingroom
+              name: hisense_ac_office
 
           # Create 1-hour automation block lock (replaces any existing lock)
           - service: rest_command.create_lock
             data:
-              name: hisense_ac_livingroom
+              name: hisense_ac_office
               owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
-              duration: 60m
+              duration: 1h
 
           # Log manual start
           - service: system_log.write
             data:
               level: info
-              message: Livingroom cooling manually stopped by user
-              logger: homeassistant.components.automation.climate_livingroom_manual_control
+              message: Office cooling manually stopped by user
+              logger: homeassistant.components.automation.climate_office_manual_control

@@ -81,7 +81,7 @@ actions:
         User ID: {{ trigger.to_state.context.user_id }},
         Parent ID: {{ trigger.to_state.context.parent_id }},
         New state: {{ trigger.to_state.state }},
-        Old state: {{ trigger.from_state.state }}}
+        Old state: {{ trigger.from_state.state }}
       logger: homeassistant.components.automation.climate_bedroom_manual_control
 
   - choose:
@@ -106,7 +106,7 @@ actions:
           - service: system_log.write
             data:
               level: info
-              message: Bedroom cooling manual started by user
+              message: Bedroom cooling manually started by user
               logger: homeassistant.components.automation.climate_bedroom_manual_control
 
       # Manual switch turned OFF
@@ -130,5 +130,5 @@ actions:
           - service: system_log.write
             data:
               level: info
-              message: Bedroom cooling manual stoped by user
+              message: Bedroom cooling manually stopped by user
               logger: homeassistant.components.automation.climate_bedroom_manual_control

@@ -1,0 +1,36 @@
+---
+alias: Climate Office Auto Off At Night
+id: climate_office_auto_off_at_night
+description: >
+  Automatically turns off the office AC after 23:00
+mode: single
+trigger:
+  - platform: time_pattern
+    minutes: "/5"
+
+condition:
+  # Only act if the climate is currently on, and there is no manual override
+  - condition: template
+    value_template: >
+      {{
+        states('climate.office_mqtt_hvac') == 'cool'
+        and states('binary_sensor.hisense_ac_office_automation_block_status') == 'off'
+        and (now().hour >= 23 or now().hour < 6)
+      }}
+
+actions:
+  # Release existing lock if it exists
+  - action: rest_command.release_lock
+    data:
+      name: hisense_ac_office
+  # Turn off the AC
+  - action: climate.turn_off
+    target:
+      entity_id: climate.office_mqtt_hvac
+  # Log the action
+  - action: system_log.write
+    data:
+      level: info
+      message: Office AC turned off after 23:00.
+      logger: >-
+        homeassistant.components.automation.climate_office_auto_off_at_night

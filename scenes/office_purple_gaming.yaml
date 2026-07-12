@@ -1,5 +1,5 @@
 ---
-name: Purple Gaming
+name: Office Purple Gaming
 icon: mdi:controller
 entities:
   light.tradfri_color_spot_01:
