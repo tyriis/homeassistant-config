@@ -117,10 +117,11 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: scene.office_reading
+                entity: scene.office_purple_gaming
                 color: deep-purple
                 hide_state: true
-                name: Reading
+                name: Purple Gaming
+                icon: mdi:controller
                 tap_action:
                   action: toggle
                 hold_action:
