@@ -42,15 +42,6 @@ sections:
         hold_action:
           action: more-info
       - type: tile
-        entity: scene.office_evening
-        name: Evening
-        color: deep-orange
-        hide_state: true
-        tap_action:
-          action: toggle
-        hold_action:
-          action: more-info
-      - type: tile
         entity: scene.office_working
         color: teal
         hide_state: true
@@ -60,19 +51,10 @@ sections:
         hold_action:
           action: more-info
       - type: tile
-        entity: scene.office_relax
-        name: Relax
-        color: amber
+        entity: scene.office_heartwarming
+        name: Heartwarming
+        color: pink
         hide_state: true
-        tap_action:
-          action: toggle
-        hold_action:
-          action: more-info
-      - type: tile
-        entity: scene.office_reading
-        color: deep-purple
-        hide_state: true
-        name: Reading
         tap_action:
           action: toggle
         hold_action:
