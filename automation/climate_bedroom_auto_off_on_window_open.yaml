@@ -22,7 +22,7 @@ condition:
     value_template: >
       {% set last_changed = states.binary_sensor.aqara_contact_window_bedroom_contact.last_changed %}
       {{
-        states('climate.bedroom') == 'on'
+        states('climate.bedroom_mqtt_hvac') == 'on'
         and states('binary_sensor.aqara_contact_window_bedroom_contact') == 'on'
         and last_changed is not none
         and (as_timestamp(now()) - as_timestamp(last_changed)) > 300
@@ -49,7 +49,7 @@ action:
 
           - service: climate.turn_off
             target:
-              entity_id: climate.bedroom
+              entity_id: climate.bedroom_mqtt_hvac
 
           - service: system_log.write
             data:

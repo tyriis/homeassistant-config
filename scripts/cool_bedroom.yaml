@@ -18,13 +18,13 @@ cool_bedroom:
         condition: template
         value_template: >
           {{
-            states('climate.bedroom') != 'cool'
+            states('climate.bedroom_mqtt_hvac') != 'cool'
           }}
       then:
         # set the AC to cooling mode
         - service: climate.set_hvac_mode
           target:
-            entity_id: climate.bedroom
+            entity_id: climate.bedroom_mqtt_hvac
           data:
             hvac_mode: cool
         # log the action
@@ -38,13 +38,13 @@ cool_bedroom:
         condition: template
         value_template: >
           {{
-            states('climate.bedroom') == 'off'
+            states('climate.bedroom_mqtt_hvac') == 'off'
           }}
       then:
         # turn on the AC
         - service: climate.turn_on
           target:
-            entity_id: climate.bedroom
+            entity_id: climate.bedroom_mqtt_hvac
         # log the action
         - service: system_log.write
           data:

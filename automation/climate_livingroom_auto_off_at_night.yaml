@@ -13,7 +13,7 @@ condition:
   - condition: template
     value_template: >
       {{
-        states('climate.livingroom') == 'cool'
+        states('climate.livingroom_mqtt_hvac') == 'cool'
         and states('binary_sensor.hisense_ac_livingroom_automation_block_status') == 'off'
         and (now().hour >= 23 or now().hour < 6)
       }}
@@ -26,7 +26,7 @@ actions:
   # Turn off the AC
   - action: climate.turn_off
     target:
-      entity_id: climate.livingroom
+      entity_id: climate.livingroom_mqtt_hvac
   # Log the action
   - action: system_log.write
     data:
