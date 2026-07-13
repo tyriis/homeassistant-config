@@ -12,7 +12,7 @@ repos:
       - id: check-useless-excludes
 
   - repo: https://github.com/thlorenz/doctoc
-    rev: v2.3.0
+    rev: v2.5.0
     hooks:
       - id: doctoc
         args:
@@ -25,6 +25,7 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+      # general
       - id: check-added-large-files
       - id: check-case-conflict
       - id: check-executables-have-shebangs
@@ -34,14 +35,11 @@ repos:
       - id: check-symlinks
       - id: check-vcs-permalinks
       - id: destroyed-symlinks
-      - id: detect-aws-credentials
-        args:
-          - --allow-missing-credentials
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
-      # - id: no-commit-to-branch
       - id: mixed-line-ending
+      # - id: no-commit-to-branch
       - id: trailing-whitespace
       # format-specific
       - id: check-json
@@ -51,7 +49,6 @@ repos:
         args:
           - --allow-multiple-documents
           - --unsafe
-      - id: pretty-format-json
 
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.38.0
@@ -75,7 +72,7 @@ repos:
       - id: forbid-bidi-controls
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.48.0
+    rev: v0.49.0
     hooks:
       - id: markdownlint-fix
         args:
@@ -83,7 +80,7 @@ repos:
           - .markdownlint.yaml
 
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.8.1
+    rev: v3.9.5
     hooks:
       - id: prettier
         args:
@@ -98,6 +95,6 @@ repos:
       - id: forbid-secrets
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.30.0
+    rev: v8.30.1
     hooks:
       - id: gitleaks
