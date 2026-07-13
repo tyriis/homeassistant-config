@@ -1,6 +1,6 @@
 [tools]
 "aqua:pre-commit/pre-commit" = "4.5.1"
-"aqua:go-task/task" = "3.48.0"
+"aqua:go-task/task" = "3.52.0"
 # https://direnv.net/
 direnv = "2.37.1"
 # https://gitleaks.io/
