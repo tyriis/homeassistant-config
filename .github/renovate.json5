@@ -1,0 +1,15 @@
+{
+  enabled: true,
+  extends: ["github>techtales-io/renovate-config:base.json5"],
+  ignorePaths: [],
+  rebaseWhen: "conflicted",
+  ansible: {
+    enabled: false,
+  },
+  jenkins: {
+    enabled: false,
+  },
+  vulnerabilityAlerts: {
+    enabled: true,
+  },
+}
