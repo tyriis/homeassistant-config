@@ -12,6 +12,9 @@ triggers:
   - trigger: time_pattern
     minutes: "/1"
 conditions:
+  - condition: state
+    entity_id: input_boolean.heating_season
+    state: "on"
   - condition: numeric_state
     entity_id: sensor.qingping_office_temperature
     below: 25

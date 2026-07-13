@@ -15,7 +15,7 @@ condition:
       {{
         states('climate.livingroom_mqtt_hvac') == 'cool'
         and states('binary_sensor.hisense_ac_livingroom_automation_block_status') == 'off'
-        and (now().hour >= 23 or now().hour < 6)
+        and (now().hour >= 22 or now().hour < 8)
       }}
 
 actions:
