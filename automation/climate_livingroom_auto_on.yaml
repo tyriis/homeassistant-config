@@ -14,7 +14,7 @@
 # only handle on event in this automation, do not handle off events
 ---
 alias: Livingroom AC Auto On
-id: climatge_livingroom_auto_on
+id: climate_livingroom_auto_on
 description: >
   Automatically turns on the livingroom AC when the temperature is above 23°C,
   and the weather forecast temperature is above 25°C.
