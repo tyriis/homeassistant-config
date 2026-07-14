@@ -1,0 +1,9 @@
+---
+name: Office Evening
+icon: mdi:weather-sunset-down
+entities:
+  light.office:
+    state: "on"
+    brightness: 170 # 67%
+    color_temp_kelvin: 2850 # Warm evening
+    transition: 1

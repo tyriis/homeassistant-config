@@ -1,0 +1,9 @@
+---
+name: Office Relax
+icon: mdi:sofa
+entities:
+  light.office:
+    state: "on"
+    brightness: 115 # 45%
+    color_temp_kelvin: 2500 # Very warm - relaxing
+    transition: 1
