@@ -1,12 +1,12 @@
 ---
 # Office light automation:
 # - Motion detected (group.motion_office) turns on appropriate scene based on time:
-#   - 23:00-08:00: scene.office_night
-#   - 08:00-21:00: scene.office_working
-#   - 21:00-23:00: scene.office_heartwarming
+#   - 00:00-06:00: scene.office_night
+#   - 06:00-21:00: scene.office_working
+#   - 21:00-00:00: scene.office_heartwarming
 # - No motion timeout behavior:
-#   - 21:00-08:00: Turn off after 10 minutes
-#   - 08:00-21:00: Switch to scene.office_heartwarming after 15 minutes, turn off after 20 minutes
+#   - 21:00-06:00: Turn off after 10 minutes
+#   - 06:00-21:00: Switch to scene.office_heartwarming after 15 minutes, turn off after 20 minutes
 # - Automation can be blocked via binary_sensor.office_light_automation_block_status
 
 alias: office_light
@@ -37,11 +37,11 @@ triggers:
     for:
       minutes: 20
   - trigger: time
-    at: "08:00:01"
+    at: "06:00:01"
   - trigger: time
     at: "21:00:01"
   - trigger: time
-    at: "23:00:01"
+    at: "00:00:01"
 conditions: []
 actions:
   - choose:
@@ -49,9 +49,9 @@ actions:
           - condition: or
             conditions:
               - condition: time
-                after: "23:00:00"
+                after: "00:00:00"
               - condition: time
-                before: "08:00:00"
+                before: "06:00:00"
           - condition: template
             value_template: >-
               {{
@@ -74,7 +74,7 @@ actions:
               logger: homeassistant.components.automation.office_light
       - conditions:
           - condition: time
-            after: "08:00:00"
+            after: "06:00:00"
             before: "21:00:00"
           - condition: template
             value_template: >-
@@ -99,7 +99,7 @@ actions:
       - conditions:
           - condition: time
             after: "21:00:00"
-            before: "23:00:00"
+            before: "00:00:00"
           - condition: template
             value_template: >-
               {{
@@ -131,7 +131,7 @@ actions:
               - condition: time
                 after: "21:00:00"
               - condition: time
-                before: "08:00:00"
+                before: "06:00:00"
           - condition: state
             entity_id: light.office
             state: "on"
@@ -151,7 +151,7 @@ actions:
             for:
               minutes: 15
           - condition: time
-            after: "08:00:00"
+            after: "06:00:00"
             before: "21:00:00"
           - condition: state
             entity_id: light.office
@@ -173,7 +173,7 @@ actions:
             for:
               minutes: 20
           - condition: time
-            after: "08:00:00"
+            after: "06:00:00"
             before: "21:00:00"
           - condition: state
             entity_id: light.office
