@@ -2,9 +2,6 @@
 # see https://yamllint.readthedocs.io/en/stable/index.html for more options
 extends: default
 
-ignore: |
-  **/*.sops.yaml
-
 rules:
   truthy:
     allowed-values: ["true", "false", "on"]
