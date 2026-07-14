@@ -10,9 +10,6 @@ filter:
     - binary_sensor.aqara_contact_door_livingroom_contact
     - binary_sensor.aqara_contact_window_bathroom_contact
     - binary_sensor.aqara_contact_window_bedroom_contact
-    - binary_sensor.sonoff_contact_window_basement_contact
-    - binary_sensor.sonoff_contact_window_livingroom_contact
-    - binary_sensor.sonoff_contact_window_office_contact
     # temperature sensors
     - sensor.aqara_climate_alexroom_temperature
     - sensor.aqara_climate_basement_temperature
@@ -25,19 +22,11 @@ filter:
     - sensor.aqara_climate_laundryroom_temperature
     - sensor.aqara_climate_livingroom_temperature
     - sensor.aqara_climate_office_temperature
-    - sensor.sensor_alexroom_htu21d_temperature
-    - sensor.sensor_basement_htu21d_temperature
     - sensor.sensor_bathroom_htu21d_temperature
-    - sensor.sensor_bedroom_htu21d_temperature
-    - sensor.sensor_domiroom_htu21d_temperature
     - sensor.sensor_heating_temperature_flow_groundfloor
     - sensor.sensor_heating_temperature_flow_upstairs
     - sensor.sensor_heating_temperature_return_groundfloor
     - sensor.sensor_heating_temperature_return_upstairs
-    - sensor.sensor_kitchen_htu21d_temperature
-    - sensor.sensor_livingroom_htu21d_temperature
-    - sensor.sensor_office_htu21d_temperature
-    - sensor.sensor_stairs_htu21d_temperature
     # humidity sensors
     - sensor.aqara_climate_alexroom_humidity
     - sensor.aqara_climate_basement_humidity
@@ -50,15 +39,7 @@ filter:
     - sensor.aqara_climate_laundryroom_humidity
     - sensor.aqara_climate_livingroom_humidity
     - sensor.aqara_climate_office_humidity
-    - sensor.sensor_alexroom_htu21d_humidity
-    - sensor.sensor_basement_htu21d_humidity
     - sensor.sensor_bathroom_htu21d_humidity
-    - sensor.sensor_bderoom_htu21d_humidity
-    - sensor.sensor_domiroom_htu21d_humidity
-    - sensor.sensor_kitchen_htu21d_humidity
-    - sensor.sensor_livingroom_htu21d_humidity
-    - sensor.sensor_office_htu21d_humidity
-    - sensor.sensor_stairs_htu21d_humidity
     # esphome status sensors
     - binary_sensor.light_alexroom_status
     - binary_sensor.light_stairs_status
@@ -92,13 +73,4 @@ filter:
     - binary_sensor.mijia_motion_table_occupancy
     - binary_sensor.mijia_motion_upstairs_1_occupancy
     - binary_sensor.mijia_motion_upstairs_2_occupancy
-    - binary_sensor.sensor_alexroom_sr501_pir_motion
-    - binary_sensor.sensor_basement_sr501_pir_motion
-    - binary_sensor.sensor_bathroom_sr501_pir_motion
-    - binary_sensor.sensor_bedroom_sr501_pir_motion
-    - binary_sensor.sensor_domiroom_sr501_pir_motion
-    - binary_sensor.sensor_kitchen_sr501_pir_motion
-    - binary_sensor.sensor_livingroom_sr501_pir_motion
-    - binary_sensor.sensor_office_sr501_pir_motion
-    - binary_sensor.sensor_stairs_sr501_pir_motion
     - binary_sensor.aqara_motion_office_occupancy
