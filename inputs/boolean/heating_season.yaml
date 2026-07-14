@@ -1,0 +1,5 @@
+---
+heating_season:
+  name: Heating Season
+  icon: mdi:snowflake-thermometer
+  initial: false

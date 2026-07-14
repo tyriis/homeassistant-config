@@ -10,7 +10,10 @@ description: Control floor heating based on temperature sensors and valve switch
 triggers:
   - minutes: /1
     trigger: time_pattern
-conditions: []
+conditions:
+  - condition: state
+    entity_id: input_boolean.heating_season
+    state: "on"
 actions:
   - choose:
       - conditions:
