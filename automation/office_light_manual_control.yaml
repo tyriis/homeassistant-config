@@ -26,7 +26,7 @@ triggers:
       domain: scene
       service: turn_on
       service_data:
-        entity_id: scene.office_reading
+        entity_id: scene.office_concentration
     id: scene_change
   - trigger: event
     event_type: call_service
@@ -42,22 +42,6 @@ triggers:
       domain: scene
       service: turn_on
       service_data:
-        entity_id: scene.office_concentration
-    id: scene_change
-  - trigger: event
-    event_type: call_service
-    event_data:
-      domain: scene
-      service: turn_on
-      service_data:
-        entity_id: scene.office_evening
-    id: scene_change
-  - trigger: event
-    event_type: call_service
-    event_data:
-      domain: scene
-      service: turn_on
-      service_data:
         entity_id: scene.office_night
     id: scene_change
   - trigger: event
@@ -66,7 +50,7 @@ triggers:
       domain: scene
       service: turn_on
       service_data:
-        entity_id: scene.office_relax
+        entity_id: scene.office_heartwarming
     id: scene_change
 
   # Light turned on manually

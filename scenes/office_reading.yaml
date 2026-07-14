@@ -5,4 +5,5 @@ entities:
   light.office:
     state: "on"
     brightness: 204 # 80%
-    color_temp: 345 # 2900K - Warm white
+    color_temp_kelvin: 2900 # Warm white - comfortable reading
+    transition: 1
