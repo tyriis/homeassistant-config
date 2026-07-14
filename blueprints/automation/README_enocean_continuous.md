@@ -46,7 +46,7 @@ service: light.turn_on
 target:
   entity_id: light.bedroom_light
 data:
-  brightness_step_pct: -10  # Dim by 10% each time
+  brightness_step_pct: -10 # Dim by 10% each time
 
 # Button 1 Released
 service: light.turn_off

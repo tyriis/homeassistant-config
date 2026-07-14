@@ -1,7 +1,14 @@
-*recycle
-__pycache__
-*.tar.gz
+# Editors
+.vscode/
 
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__
+
+# Home Assistant
 .HA_VERSION
 .bash_history
 .cache/
@@ -9,7 +16,6 @@ __pycache__
 .code-server/
 .ha_run.lock
 .storage/
-.vscode/
 automations.yaml
 custom_components/
 deps/
@@ -18,3 +24,5 @@ home-assistant_v2.db*
 image/
 tts/
 www/
+*recycle
+*.tar.gz
