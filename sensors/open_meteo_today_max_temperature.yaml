@@ -26,7 +26,7 @@ json_attributes:
   - time
 icon: >
   {% if value_json is defined %}
-    {% if value_json.daily.temperature_2m_max > 28 %}
+    {% if value_json.daily.temperature_2m_max | max > 28 %}
       mdi:sun-thermometer
     {% else %}
       mdi:thermometer
