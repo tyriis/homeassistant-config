@@ -14,7 +14,7 @@
 # only handle on event in this automation, do not handle off events
 ---
 alias: Livingroom AC Auto On
-id: climatge_livingroom_auto_on
+id: climate_livingroom_auto_on
 description: >
   Automatically turns on the livingroom AC when the temperature is above 23°C,
   and the weather forecast temperature is above 25°C.
@@ -28,13 +28,16 @@ condition:
     value_template: >
       {% set current_time = now() %}
       {{
-        current_time.strftime('%H:%M') >= '09:30'
-        and         current_time.strftime('%H:%M') < '22:00'
+        states('input_boolean.heating_season') == 'off'
+        and states('binary_sensor.aqara_contact_window_livingroom_contact') == 'off'
+        and states('binary_sensor.aqara_contact_door_garden_contact') == 'off'
+        and states('binary_sensor.aqara_contact_window_kitchen_contact') == 'off'
+        and current_time.strftime('%H:%M') >= '09:30'
+        and current_time.strftime('%H:%M') < '22:00'
         and states('sensor.qingping_livingroom_temperature') | float > 23
         and states('sensor.weather_forecast_temperature_forecast') | float > 25
         and states('sensor.hisense_ac_livingroom_lock_status') != 'locked'
         and states('binary_sensor.hisense_ac_livingroom_automation_block_status') == 'off'
-        and states('input_boolean.heating_season') == 'off'
       }}
 actions:
   - action: script.cool_livingroom

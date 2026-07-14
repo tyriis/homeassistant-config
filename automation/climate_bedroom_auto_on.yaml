@@ -28,14 +28,14 @@ condition:
     value_template: >
       {% set current_time = now() %}
       {{
-        current_time.strftime('%H:%M') >= '09:30'
-        and         current_time.strftime('%H:%M') < '22:00'
-        and states('sensor.qingping_bedroom_temperature') | float > 23
+        states('input_boolean.heating_season') == 'off'
         and states('binary_sensor.aqara_contact_window_bedroom_contact') == 'off'
+        and current_time.strftime('%H:%M') >= '09:30'
+        and current_time.strftime('%H:%M') < '22:00'
+        and states('sensor.qingping_bedroom_temperature') | float > 23
         and states('sensor.weather_forecast_temperature_forecast') | float > 25
         and states('sensor.hisense_ac_bedroom_lock_status') != 'locked'
         and states('binary_sensor.hisense_ac_bedroom_automation_block_status') == 'off'
-        and states('input_boolean.heating_season') == 'off'
       }}
 actions:
   - action: script.cool_bedroom

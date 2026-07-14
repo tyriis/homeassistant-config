@@ -1,0 +1,69 @@
+---
+alias: Climate Livingroom Auto Off on Window Open
+id: climate_livingroom_auto_off_on_window_open
+description: >
+  Automatically turns off the livingroom AC when a window or door is open for more than 5 minutes.
+  Monitors the livingroom window, garden door, and kitchen window.
+mode: single
+trigger:
+  - platform: time_pattern
+    minutes: "/5"
+  - platform: state
+    entity_id: binary_sensor.aqara_contact_window_livingroom_contact
+    to: "on"
+    for:
+      minutes: 5
+  - platform: state
+    entity_id: binary_sensor.aqara_contact_door_garden_contact
+    to: "on"
+    for:
+      minutes: 5
+  - platform: state
+    entity_id: binary_sensor.aqara_contact_window_kitchen_contact
+    to: "on"
+    for:
+      minutes: 5
+
+condition:
+  - condition: template
+    value_template: >
+      {% set window_lr = states.binary_sensor.aqara_contact_window_livingroom_contact %}
+      {% set door_garden = states.binary_sensor.aqara_contact_door_garden_contact %}
+      {% set window_kitchen = states.binary_sensor.aqara_contact_window_kitchen_contact %}
+      {{
+        states('climate.livingroom_mqtt_hvac') == 'cool'
+        and (
+          (window_lr.state == 'on' and window_lr.last_changed is not none and (as_timestamp(now()) - as_timestamp(window_lr.last_changed)) > 300)
+          or (door_garden.state == 'on' and door_garden.last_changed is not none and (as_timestamp(now()) - as_timestamp(door_garden.last_changed)) > 300)
+          or (window_kitchen.state == 'on' and window_kitchen.last_changed is not none and (as_timestamp(now()) - as_timestamp(window_kitchen.last_changed)) > 300)
+        )
+      }}
+
+action:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: >
+              {% set window_lr = states.binary_sensor.aqara_contact_window_livingroom_contact %}
+              {% set door_garden = states.binary_sensor.aqara_contact_door_garden_contact %}
+              {% set window_kitchen = states.binary_sensor.aqara_contact_window_kitchen_contact %}
+              {{
+                (window_lr.state == 'on' and window_lr.last_changed is not none and (as_timestamp(now()) - as_timestamp(window_lr.last_changed)) > 300)
+                or (door_garden.state == 'on' and door_garden.last_changed is not none and (as_timestamp(now()) - as_timestamp(door_garden.last_changed)) > 300)
+                or (window_kitchen.state == 'on' and window_kitchen.last_changed is not none and (as_timestamp(now()) - as_timestamp(window_kitchen.last_changed)) > 300)
+              }}
+        sequence:
+          - service: rest_command.release_lock
+            data:
+              name: hisense_ac_livingroom
+
+          - service: climate.turn_off
+            target:
+              entity_id: climate.livingroom_mqtt_hvac
+
+          - service: system_log.write
+            data:
+              level: info
+              message: "Livingroom AC turned off due to open window/door for more than 5 minutes"
+              logger: homeassistant.components.automation.climate_livingroom_auto_off
+    default: []
