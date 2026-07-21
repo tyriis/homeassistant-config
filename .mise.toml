@@ -1,4 +1,4 @@
 [tools]
 "aqua:gitleaks/gitleaks" = "8.30.1"
 "aqua:go-task/task" = "3.52.0"
-"aqua:pre-commit/pre-commit" = "4.6.0"
+"aqua:pre-commit/pre-commit" = "4.6.1"
