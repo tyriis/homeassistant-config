@@ -130,7 +130,7 @@ sections:
             heading: Climate
             heading_style: title
           - type: custom:mushroom-climate-card
-            entity: climate.office_mqtt_hvac
+            entity: climate.office
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -5615,7 +5615,7 @@ sections:
             heading_style: title
             icon: mdi:snowflake
           - type: custom:mushroom-climate-card
-            entity: climate.office_mqtt_hvac
+            entity: climate.office
             name: Office
             fill_container: false
             hvac_modes:
