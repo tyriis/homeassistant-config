@@ -8,7 +8,7 @@ mode: single
 triggers:
   - trigger: numeric_state
     entity_id:
-      - sensor.bt_proxy_office_radon
+      - sensor.fr_ik04re002136_radon
     above: 100
     id: radon_high
   - trigger: time_pattern
@@ -19,12 +19,12 @@ actions:
   - condition: template
     value_template: >
       {{
-        states('sensor.bt_proxy_office_radon') | float(0) > 100
+        states('sensor.fr_ik04re002136_radon') | float(0) > 100
         and states('binary_sensor.aqara_contact_window_office_contact') == 'off'
       }}
   - action: script.office_light_red_breath
   - action: system_log.write
     data:
       level: warning
-      message: "Radon level exceeded 100 Bq/m³: {{ states('sensor.bt_proxy_office_radon') }} - window closed"
+      message: "Radon level exceeded 100 Bq/m³: {{ states('sensor.fr_ik04re002136_radon') }} - window closed"
       logger: homeassistant.components.automation.office_radon_alert
