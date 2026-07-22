@@ -6,7 +6,7 @@ description: >
 mode: single
 trigger:
   - platform: state
-    entity_id: climate.office_mqtt_hvac
+    entity_id: climate.office
     from: "off"
 condition:
   # Only run if changing to any active mode (not to "off" or "unknown")
