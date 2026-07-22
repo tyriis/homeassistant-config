@@ -1,0 +1,37 @@
+---
+alias: Office Light Blue Breath on Window Open
+id: office_light_blue_breath_on_window_open
+description: >
+  Triggers blue breathing effect on office light when basement or office window
+  is open for more than 15 minutes. Re-triggers every 2 minutes while open.
+mode: single
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.aqara_contact_window_office_contact
+      - binary_sensor.aqara_contact_window_basement_contact
+    to: "on"
+    for:
+      minutes: 15
+  - trigger: time_pattern
+    minutes: "/2"
+conditions:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.aqara_contact_window_office_contact
+        state: "on"
+        for:
+          minutes: 15
+      - condition: state
+        entity_id: binary_sensor.aqara_contact_window_basement_contact
+        state: "on"
+        for:
+          minutes: 15
+actions:
+  - action: script.office_light_blue_breath
+  - action: system_log.write
+    data:
+      level: info
+      message: "Office blue breath triggered - window open >15 min"
+      logger: homeassistant.components.automation.office_light_blue_breath_on_window_open
