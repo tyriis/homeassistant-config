@@ -266,7 +266,7 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: sensor.bt_proxy_office_radon
+                entity: sensor.fr_ik04re002136_radon
                 features_position: bottom
                 vertical: false
                 name: Radon
@@ -2044,7 +2044,7 @@ sections:
           - type: custom:bubble-card
             card_type: pop-up
             hash: "#radon_office"
-            entity: sensor.bt_proxy_office_radon
+            entity: sensor.fr_ik04re002136_radon
             name: Radon
             show_header: false
             width_desktop: 800px
@@ -2059,7 +2059,7 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: sensor.bt_proxy_office_radon
+                entity: sensor.fr_ik04re002136_radon
                 color: orange
                 state_content:
                   - state
@@ -2067,7 +2067,7 @@ sections:
           - type: custom:mini-graph-card
             name: radon
             entities:
-              - entity: sensor.bt_proxy_office_radon
+              - entity: sensor.fr_ik04re002136_radon
                 color: orange
                 name: radoneye
               - entity: sun.sun
@@ -2101,9 +2101,9 @@ sections:
               icon_adaptive_color: true
               extrema: true
           - type: custom:mini-graph-card
-            name: radon long term
+            name: radon 1day level
             entities:
-              - entity: sensor.bt_proxy_office_radon_long_term
+              - entity: sensor.fr_ik04re002136_radon_1_day_level
                 color: orange
                 name: radoneye
               - entity: sun.sun
