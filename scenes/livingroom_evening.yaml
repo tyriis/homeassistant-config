@@ -5,4 +5,5 @@ entities:
   light.livingroom:
     state: "on"
     brightness: 170 # 67%
-    color_temp: 313 # ~3200K - Warm white, relaxing
+    color_temp_kelvin: 2850 # Warm evening
+    transition: 1
