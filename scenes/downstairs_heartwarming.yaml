@@ -4,5 +4,6 @@ icon: mdi:heart-outline
 entities:
   group.lights_downstairs:
     state: "on"
-    brightness: 255 # 100%
-    color_temp: 312 # 3200K - Warm white
+    brightness: 160 # 63%
+    color_temp_kelvin: 2700 # Warm white - cozy
+    transition: 1

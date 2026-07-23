@@ -54,14 +54,14 @@ actions:
               - condition: numeric_state
                 entity_id: light.table
                 attribute: brightness
-                below: 255 # scene.downstairs_evening brightness value
+                below: 160 # scene.downstairs_heartwarming brightness value
         sequence:
           - action: light.turn_on
             target:
               entity_id:
                 - group.lights_downstairs
             data:
-              brightness: 255
+              brightness: 160
           - action: scene.turn_on
             target:
               entity_id: scene.downstairs_heartwarming
@@ -88,15 +88,15 @@ actions:
               - condition: numeric_state
                 entity_id: light.table
                 attribute: brightness
-                below: 45 # scene.downstairs_night brightness value
-                above: 45 # scene.downstairs_night brightness value
+                below: 51 # scene.downstairs_night brightness value
+                above: 51 # scene.downstairs_night brightness value
         sequence:
           - action: light.turn_on
             target:
               entity_id:
                 - group.lights_downstairs
             data:
-              brightness: 45
+              brightness: 51
           - action: scene.turn_on
             target:
               entity_id: scene.downstairs_night
