@@ -4,5 +4,6 @@ icon: mdi:head-snowflake-outline
 entities:
   light.basement:
     state: "on"
-    brightness: 255 # 100%
-    color_temp: 250 # Coolest white - most energizing (~ 4000K)
+    brightness: 230 # 90%
+    color_temp_kelvin: 4000 # Coolest white - most energizing
+    transition: 1
