@@ -4,5 +4,6 @@ icon: mdi:briefcase
 entities:
   light.kitchen:
     state: "on"
-    brightness: 235 # 92%
-    color_temp: 200 # ~5000K - Cool white, good for productivity
+    brightness: 204 # 80%
+    color_temp_kelvin: 3500 # Neutral white - general daytime
+    transition: 1
