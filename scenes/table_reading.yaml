@@ -4,5 +4,6 @@ icon: mdi:book-open-page-variant-outline
 entities:
   light.table:
     state: "on"
-    brightness: 220 # 86%
-    color_temp: 238 # ~4200K - Neutral white, easy on eyes
+    brightness: 204 # 80%
+    color_temp_kelvin: 2900 # Warm white - comfortable reading
+    transition: 1
