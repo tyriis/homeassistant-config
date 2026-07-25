@@ -24,7 +24,7 @@ condition:
       {% set current_timestamp = now().timestamp() %}
       {% set ac_run_time = (current_timestamp - ac_start_timestamp) / 60 %}
       {{
-        states('climate.office_mqtt_hvac') == 'cool'
+        states('climate.office') == 'cool'
         and states('sensor.qingping_office_temperature') | float <= 22
         and ac_run_time > 30
       }}
@@ -43,7 +43,7 @@ actions:
   # Turn off the AC
   - action: climate.turn_off
     target:
-      entity_id: climate.office_mqtt_hvac
+      entity_id: climate.office
   # Log the action
   - action: system_log.write
     data:

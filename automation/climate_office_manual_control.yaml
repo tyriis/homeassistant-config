@@ -21,13 +21,13 @@ mode: restart
 triggers:
   # Manual switch turned on
   - platform: state
-    entity_id: climate.office_mqtt_hvac
+    entity_id: climate.office
     from: "off"
     id: manual_on
 
   # Manual switch turned off
   - platform: state
-    entity_id: climate.office_mqtt_hvac
+    entity_id: climate.office
     to: "off"
     id: manual_off
 
