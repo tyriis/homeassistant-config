@@ -5,4 +5,5 @@ entities:
   light.basement:
     state: "on"
     brightness: 115 # 45%
-    color_temp: 400 # Very warm (~ 2500K)
+    color_temp_kelvin: 2500 # Very warm - relaxing
+    transition: 1

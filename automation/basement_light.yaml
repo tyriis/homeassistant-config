@@ -39,8 +39,8 @@ actions:
               - condition: numeric_state
                 entity_id: light.basement
                 attribute: brightness
-                below: 235 # scene.basement_working brightness value
-                above: 235 # scene.basement_working brightness value
+                below: 204 # scene.basement_working brightness value
+                above: 204 # scene.basement_working brightness value
         sequence:
           - action: light.turn_on
             target:
