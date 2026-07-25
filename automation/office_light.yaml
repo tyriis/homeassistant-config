@@ -46,12 +46,9 @@ conditions: []
 actions:
   - choose:
       - conditions:
-          - condition: or
-            conditions:
-              - condition: time
-                after: "00:00:00"
-              - condition: time
-                before: "06:00:00"
+          - condition: time
+            after: "00:00:00"
+            before: "06:00:00"
           - condition: template
             value_template: >-
               {{
