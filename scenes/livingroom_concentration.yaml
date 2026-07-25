@@ -4,5 +4,6 @@ icon: mdi:head-snowflake-outline
 entities:
   light.livingroom:
     state: "on"
-    brightness: 255 # 100%
-    color_temp: 167 # ~6000K - Very cool white, energizing
+    brightness: 230 # 90%
+    color_temp_kelvin: 4000 # Coolest white - most energizing
+    transition: 1
