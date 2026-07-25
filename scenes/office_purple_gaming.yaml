@@ -5,7 +5,8 @@ entities:
   light.tradfri_color_spot_01:
     state: "on"
     brightness: 40 # 16%
-    color_temp: 300 # Balanced neutral (~ 3300K)
+    color_temp_kelvin: 2700 # Warm white - cozy
+    transition: 1
   light.tradfri_color_spot_02:
     state: "off"
   light.tradfri_color_spot_03:

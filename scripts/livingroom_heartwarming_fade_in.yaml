@@ -8,5 +8,5 @@ livingroom_heartwarming_fade_in:
         entity_id: light.livingroom
       data:
         brightness: 255
-        color_temp: 312
+        color_temp_kelvin: 3200
         transition: 30
