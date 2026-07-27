@@ -5,4 +5,5 @@ entities:
   light.table:
     state: "on"
     brightness: 220 # 86%
-    color_temp: 238 # ~4200K - Neutral white, easy on eyes
+    color_temp_kelvin: 4200 # Neutral white, easy on eyes
+    transition: 1
