@@ -5,4 +5,5 @@ entities:
   group.lights_downstairs:
     state: "on"
     brightness: 255 # 100%
-    color_temp: 167 # ~6000K - Very cool white, energizing
+    color_temp_kelvin: 6000 # Very cool white, energizing
+    transition: 1
