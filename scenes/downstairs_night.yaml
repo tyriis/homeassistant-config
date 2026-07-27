@@ -5,4 +5,5 @@ entities:
   group.lights_downstairs:
     state: "on"
     brightness: 45 # 18%
-    color_temp: 454 # ~2200K - Extra warm, minimal blue light
+    color_temp_kelvin: 2200 # Extra warm, minimal blue light
+    transition: 1

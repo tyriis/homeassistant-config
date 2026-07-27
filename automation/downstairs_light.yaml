@@ -54,7 +54,7 @@ actions:
               - condition: numeric_state
                 entity_id: light.table
                 attribute: brightness
-                below: 255 # scene.downstairs_evening brightness value
+                below: 255 # scene.downstairs_heartwarming brightness value
         sequence:
           - action: light.turn_on
             target:
