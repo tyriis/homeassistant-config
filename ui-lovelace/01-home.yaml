@@ -261,7 +261,7 @@ sections:
           - effect
         name: Nanoloeaf Elements
       - type: custom:mushroom-climate-card
-        entity: climate.livingroom_mqtt_hvac
+        entity: climate.livingroom
         fill_container: false
         primary_info: name
         hvac_modes:
@@ -344,7 +344,7 @@ sections:
           - last_updated
         name: motion
       - type: custom:mushroom-climate-card
-        entity: climate.bedroom_mqtt_hvac
+        entity: climate.bedroom
         fill_container: false
         primary_info: name
         hvac_modes:

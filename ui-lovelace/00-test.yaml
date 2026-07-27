@@ -425,7 +425,7 @@ sections:
             heading: Climate
             heading_style: title
           - type: custom:mushroom-climate-card
-            entity: climate.livingroom_mqtt_hvac
+            entity: climate.livingroom
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -445,7 +445,7 @@ sections:
                         entity: sensor.qingping_livingroom_temperature
                         above: 24.9
                   - condition: state
-                    entity: climate.livingroom_mqtt_hvac
+                    entity: climate.livingroom
                     state_not: "off"
           - type: media-control
             entity: media_player.nvidia_shield
@@ -637,7 +637,7 @@ sections:
             heading: Climate
             heading_style: title
           - type: custom:mushroom-climate-card
-            entity: climate.bedroom_mqtt_hvac
+            entity: climate.bedroom
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -827,7 +827,7 @@ sections:
                     entity: climate.alex
                     state_not: "off"
           - type: custom:mushroom-climate-card
-            entity: climate.alex_mqtt_hvac
+            entity: climate.alex
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -1018,7 +1018,7 @@ sections:
                     entity: climate.domi
                     state_not: "off"
           - type: custom:mushroom-climate-card
-            entity: climate.domi_mqtt_hvac
+            entity: climate.domi
             name: Hisense HVAC
             hvac_modes:
               - cool
@@ -5624,7 +5624,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.livingroom_mqtt_hvac
+            entity: climate.livingroom
             name: Livingroom
             fill_container: false
             hvac_modes:
@@ -5633,7 +5633,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.bedroom_mqtt_hvac
+            entity: climate.bedroom
             name: Bedroom
             fill_container: false
             hvac_modes:
@@ -5642,7 +5642,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.alex_mqtt_hvac
+            entity: climate.alex
             name: Alexroom
             fill_container: false
             hvac_modes:
@@ -5651,7 +5651,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.domi_mqtt_hvac
+            entity: climate.domi
             name: Domiroom
             fill_container: false
             hvac_modes:
