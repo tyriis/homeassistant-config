@@ -508,7 +508,7 @@ sections:
           - effect
         name: Nanoleaf Shapes
       - type: custom:mushroom-climate-card
-        entity: climate.domi
+        entity: climate.domiroom
         fill_container: false
         primary_info: name
         hvac_modes:
@@ -585,7 +585,7 @@ sections:
         icon: mdi:led-strip-variant
         name: desk light
       - type: custom:mushroom-climate-card
-        entity: climate.alex
+        entity: climate.alexroom
         fill_container: false
         primary_info: name
         hvac_modes:

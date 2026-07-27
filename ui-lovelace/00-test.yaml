@@ -824,10 +824,10 @@ sections:
                         entity: sensor.qingping_alexroom_temperature
                         above: 24.9
                   - condition: state
-                    entity: climate.alex
+                    entity: climate.alexroom
                     state_not: "off"
           - type: custom:mushroom-climate-card
-            entity: climate.alex
+            entity: climate.alexroom
             name: Hisense AC
             fill_container: false
             hvac_modes:
@@ -847,7 +847,7 @@ sections:
                         entity: sensor.qingping_alexroom_temperature
                         above: 24.9
                   - condition: state
-                    entity: climate.alex
+                    entity: climate.alexroom
                     state_not: "off"
       - type: vertical-stack
         visibility:
@@ -1015,10 +1015,10 @@ sections:
                         entity: sensor.qingping_domiroom_temperature
                         above: 24.9
                   - condition: state
-                    entity: climate.domi
+                    entity: climate.domiroom
                     state_not: "off"
           - type: custom:mushroom-climate-card
-            entity: climate.domi
+            entity: climate.domiroom
             name: Hisense HVAC
             hvac_modes:
               - cool
@@ -1037,7 +1037,7 @@ sections:
                         entity: sensor.qingping_domiroom_temperature
                         above: 24.9
                   - condition: state
-                    entity: climate.domi
+                    entity: climate.domiroom
                     state_not: "off"
       - type: vertical-stack
         visibility:
@@ -5642,7 +5642,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.alex
+            entity: climate.alexroom
             name: Alexroom
             fill_container: false
             hvac_modes:
@@ -5651,7 +5651,7 @@ sections:
             layout: horizontal
             collapsible_controls: false
           - type: custom:mushroom-climate-card
-            entity: climate.domi
+            entity: climate.domiroom
             name: Domiroom
             fill_container: false
             hvac_modes:
