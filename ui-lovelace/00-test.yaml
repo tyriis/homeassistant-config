@@ -1171,6 +1171,36 @@ sections:
                   - effect
                   - brightness
               - type: custom:mushroom-empty-card
+          - type: heading
+            heading_style: title
+            heading: Coffee
+            icon: mdi:coffee
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: switch.nous_a1z_coffee_machine
+                name: Coffee Machine
+                icon: mdi:coffee-maker
+                color: brown
+                show_entity_picture: false
+                vertical: false
+                features_position: bottom
+              - type: vertical-stack
+                cards:
+                  - type: custom:mushroom-empty-card
+                visibility:
+                  - condition: state
+                    entity: timer.coffee_machine_auto_off
+                    state: idle
+              - type: vertical-stack
+                cards:
+                  - type: custom:timer-bar-card
+                    entity: timer.coffee_machine_auto_off
+                    mushroom: null
+                visibility:
+                  - condition: state
+                    entity: timer.coffee_machine_auto_off
+                    state: active
       - type: vertical-stack
         visibility:
           - condition: state
