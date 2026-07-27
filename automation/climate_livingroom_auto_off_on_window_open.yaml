@@ -31,7 +31,7 @@ condition:
       {% set door_garden = states.binary_sensor.aqara_contact_door_garden_contact %}
       {% set window_kitchen = states.binary_sensor.aqara_contact_window_kitchen_contact %}
       {{
-        states('climate.livingroom_mqtt_hvac') == 'cool'
+        states('climate.livingroom') == 'cool'
         and (
           (window_lr.state == 'on' and window_lr.last_changed is not none and (as_timestamp(now()) - as_timestamp(window_lr.last_changed)) > 300)
           or (door_garden.state == 'on' and door_garden.last_changed is not none and (as_timestamp(now()) - as_timestamp(door_garden.last_changed)) > 300)
@@ -59,7 +59,7 @@ action:
 
           - service: climate.turn_off
             target:
-              entity_id: climate.livingroom_mqtt_hvac
+              entity_id: climate.livingroom
 
           - service: system_log.write
             data:
