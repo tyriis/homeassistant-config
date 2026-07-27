@@ -125,6 +125,7 @@ sections:
                   action: more-info
                 features_position: bottom
                 vertical: false
+              - type: custom:mushroom-empty-card
           - type: heading
             icon: mdi:snowflake
             heading: Climate
