@@ -10,16 +10,18 @@ on:
       - opened
       - synchronize
     paths-ignore:
-      - .github/**
       - .taskfiles/**
       - docu/**
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   home-assistant:
     name: Home Assistant Core Configuration Check
     runs-on: ubuntu-latest
     steps:
-      # https://github.com/marketplace/actions/checkout
       - name: ⤵️ Check out configuration from GitHub
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -35,10 +37,64 @@ jobs:
       - name: Create files
         run: touch automations.yaml
 
-      # https://github.com/marketplace/actions/frenck-s-home-assistant-core-configuration-check
+      - name: Resolve Home Assistant version
+        id: haversion
+        run: |
+          version="stable"
+          if [[ -f "./.HA_VERSION" ]]; then
+            version=$(<"./.HA_VERSION")
+          fi
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          docker pull -q "ghcr.io/home-assistant/home-assistant:${version}"
+
+      - name: Stage CI secrets
+        run: |
+          if [[ -f "ci-secrets.yaml" ]]; then
+            cp ci-secrets.yaml ./secrets.yaml
+          fi
+
       - name: 🚀 Run Home Assistant Configuration Check
-        uses: frenck/action-home-assistant@941d5d917f4c1c7a7e7d4087526daf90d53f4437 # v1.4.1
-        with:
-          path: ./
-          secrets: ci-secrets.yaml
-          version: stable
+        id: check
+        run: |
+          set +e
+          docker run --rm \
+            --entrypoint "" \
+            -v "$(pwd):/github/workspace" \
+            --workdir /github/workspace \
+            "ghcr.io/home-assistant/home-assistant:${{ steps.haversion.outputs.version }}" \
+            python -m homeassistant --config "." --script check_config \
+            2>&1 | tee ha-check.log
+          grep -qE '^(ERROR|Platform error|Invalid config for)' ha-check.log && echo "status=failure" >> "$GITHUB_OUTPUT" || echo "status=success" >> "$GITHUB_OUTPUT"
+
+      - name: ❌ Fail on configuration errors
+        if: steps.check.outputs.status == 'failure'
+        run: |
+          echo "::error::Home Assistant configuration check found errors"
+          grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log
+          exit 1
+
+      - name: 💬 Comment failure on PR
+        if: github.event_name == 'pull_request' && steps.check.outputs.status == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          {
+            echo "## ❌ Home Assistant Config Check Failed"
+            echo
+            echo "<details><summary>Error output</summary>"
+            echo
+            echo '```'
+            grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log
+            echo '```'
+            echo
+            echo "</details>"
+          } > comment.md
+          existing=$(gh pr view "$PR_NUMBER" --json comments --jq \
+            '.comments[] | select(.body | startswith("## ❌ Home Assistant Config Check Failed")) | .id' \
+            | head -n1)
+          if [[ -n "$existing" ]]; then
+            gh pr comment "$PR_NUMBER" --edit "$existing" --body-file comment.md
+          else
+            gh pr comment "$PR_NUMBER" --body-file comment.md
+          fi
