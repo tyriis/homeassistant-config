@@ -116,6 +116,9 @@ actions:
           - condition: state
             entity_id: input_boolean.auto_block
             state: "off"
+          - condition: state
+            entity_id: timer.auto_block
+            state: "active"
         sequence:
           - if:
               - condition: template
