@@ -2,7 +2,7 @@
 alias: laundryroom_light
 id: laundryroom_light
 description: Laundryroom light motion automation
-mode: single
+mode: restart
 triggers:
   - trigger: state
     entity_id:
