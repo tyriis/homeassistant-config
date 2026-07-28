@@ -40,6 +40,7 @@ condition:
         and states('binary_sensor.hisense_ac_livingroom_automation_block_status') == 'off'
       }}
 actions:
-  - action: script.cool_livingroom
+  - action: script.cool_room
     data:
+      zone: livingroom
       reason: hot day and livingroom temperature to high

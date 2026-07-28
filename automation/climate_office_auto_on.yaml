@@ -24,6 +24,7 @@ condition:
         and states('binary_sensor.hisense_ac_office_automation_block_status') == 'off'
       }}
 actions:
-  - action: script.cool_office
+  - action: script.cool_room
     data:
+      zone: office
       reason: hot day and office temperature to high

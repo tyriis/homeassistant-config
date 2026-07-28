@@ -38,6 +38,7 @@ condition:
         and states('binary_sensor.hisense_ac_bedroom_automation_block_status') == 'off'
       }}
 actions:
-  - action: script.cool_bedroom
+  - action: script.cool_room
     data:
+      zone: bedroom
       reason: hot day and bedroom temperature to high
