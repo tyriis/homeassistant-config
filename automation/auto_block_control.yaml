@@ -1,0 +1,126 @@
+---
+alias: Auto Block Control
+id: auto_block_control
+description: Manage the office light auto-block lock lifecycle with a manual countdown timer
+mode: restart
+triggers:
+  - trigger: state
+    entity_id: input_boolean.auto_block
+    id: auto_block_toggle
+  - trigger: homeassistant
+    event: start
+    id: ha_start
+  - trigger: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.auto_block
+    id: timer_finished
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: timer_finished
+        sequence:
+          - service: rest_command.release_lock
+            data:
+              name: office_light
+          - service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.auto_block
+
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.auto_block
+            state: "on"
+        sequence:
+          - service: rest_command.release_lock
+            data:
+              name: office_light
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: input_select.auto_block_duration
+                    state: "15 min"
+                sequence:
+                  - service: rest_command.create_lock
+                    data:
+                      name: office_light
+                      owner: homeassistant-auto-block
+                      duration: 15m
+                  - service: timer.start
+                    data:
+                      duration: "00:15:00"
+                    target:
+                      entity_id: timer.auto_block
+              - conditions:
+                  - condition: state
+                    entity_id: input_select.auto_block_duration
+                    state: "30 min"
+                sequence:
+                  - service: rest_command.create_lock
+                    data:
+                      name: office_light
+                      owner: homeassistant-auto-block
+                      duration: 30m
+                  - service: timer.start
+                    data:
+                      duration: "00:30:00"
+                    target:
+                      entity_id: timer.auto_block
+              - conditions:
+                  - condition: state
+                    entity_id: input_select.auto_block_duration
+                    state: "45 min"
+                sequence:
+                  - service: rest_command.create_lock
+                    data:
+                      name: office_light
+                      owner: homeassistant-auto-block
+                      duration: 45m
+                  - service: timer.start
+                    data:
+                      duration: "00:45:00"
+                    target:
+                      entity_id: timer.auto_block
+              - conditions:
+                  - condition: state
+                    entity_id: input_select.auto_block_duration
+                    state: "1 hour"
+                sequence:
+                  - service: rest_command.create_lock
+                    data:
+                      name: office_light
+                      owner: homeassistant-auto-block
+                      duration: 1h
+                  - service: timer.start
+                    data:
+                      duration: "01:00:00"
+                    target:
+                      entity_id: timer.auto_block
+              - conditions:
+                  - condition: state
+                    entity_id: input_select.auto_block_duration
+                    state: "2 hours"
+                sequence:
+                  - service: rest_command.create_lock
+                    data:
+                      name: office_light
+                      owner: homeassistant-auto-block
+                      duration: 2h
+                  - service: timer.start
+                    data:
+                      duration: "02:00:00"
+                    target:
+                      entity_id: timer.auto_block
+
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.auto_block
+            state: "off"
+        sequence:
+          - service: rest_command.release_lock
+            data:
+              name: office_light
+          - service: timer.cancel
+            target:
+              entity_id: timer.auto_block
