@@ -1,0 +1,54 @@
+---
+cool_room:
+  alias: Cool Room
+  mode: single
+  fields:
+    zone:
+      required: true
+      selector:
+        select:
+          options:
+            - bedroom
+            - livingroom
+            - office
+    reason:
+      selector:
+        text:
+  sequence:
+    - variables:
+        lock_name: "hisense_ac_{{ zone }}"
+        ac_entity: "climate.{{ zone }}"
+    - service: rest_command.release_lock
+      data:
+        name: "{{ lock_name }}"
+    - service: rest_command.create_lock
+      data:
+        name: "{{ lock_name }}"
+        owner: homeassistant-automation
+        duration: 20m
+    - if:
+        - condition: template
+          value_template: "{{ states(ac_entity) != 'cool' }}"
+      then:
+        - service: climate.set_hvac_mode
+          target:
+            entity_id: "{{ ac_entity }}"
+          data:
+            hvac_mode: cool
+        - service: system_log.write
+          data:
+            level: info
+            message: "Set {{ zone }} AC mode: cooling."
+            logger: homeassistant.components.script.cool_room
+    - if:
+        - condition: template
+          value_template: "{{ states(ac_entity) == 'off' }}"
+      then:
+        - service: climate.turn_on
+          target:
+            entity_id: "{{ ac_entity }}"
+        - service: system_log.write
+          data:
+            level: info
+            message: "Started {{ zone }} AC: {{ reason | default('Manual') }}."
+            logger: homeassistant.components.script.cool_room
