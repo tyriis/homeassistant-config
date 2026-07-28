@@ -35,82 +35,23 @@ actions:
             entity_id: input_boolean.auto_block
             state: "on"
         sequence:
-          - choose:
-              - conditions:
-                  - condition: state
-                    entity_id: input_select.auto_block_duration
-                    state: "15 min"
-                sequence:
-                  - service: rest_command.create_lock
-                    data:
-                      name: office_light
-                      owner: homeassistant-auto-block
-                      duration: 15m
-                  - service: timer.start
-                    data:
-                      duration: "00:15:00"
-                    target:
-                      entity_id: timer.auto_block
-              - conditions:
-                  - condition: state
-                    entity_id: input_select.auto_block_duration
-                    state: "30 min"
-                sequence:
-                  - service: rest_command.create_lock
-                    data:
-                      name: office_light
-                      owner: homeassistant-auto-block
-                      duration: 30m
-                  - service: timer.start
-                    data:
-                      duration: "00:30:00"
-                    target:
-                      entity_id: timer.auto_block
-              - conditions:
-                  - condition: state
-                    entity_id: input_select.auto_block_duration
-                    state: "45 min"
-                sequence:
-                  - service: rest_command.create_lock
-                    data:
-                      name: office_light
-                      owner: homeassistant-auto-block
-                      duration: 45m
-                  - service: timer.start
-                    data:
-                      duration: "00:45:00"
-                    target:
-                      entity_id: timer.auto_block
-              - conditions:
-                  - condition: state
-                    entity_id: input_select.auto_block_duration
-                    state: "1 hour"
-                sequence:
-                  - service: rest_command.create_lock
-                    data:
-                      name: office_light
-                      owner: homeassistant-auto-block
-                      duration: 1h
-                  - service: timer.start
-                    data:
-                      duration: "01:00:00"
-                    target:
-                      entity_id: timer.auto_block
-              - conditions:
-                  - condition: state
-                    entity_id: input_select.auto_block_duration
-                    state: "2 hours"
-                sequence:
-                  - service: rest_command.create_lock
-                    data:
-                      name: office_light
-                      owner: homeassistant-auto-block
-                      duration: 2h
-                  - service: timer.start
-                    data:
-                      duration: "02:00:00"
-                    target:
-                      entity_id: timer.auto_block
+          - variables:
+              minutes: >
+                {% set m = {"15 min": 15, "30 min": 30, "45 min": 45,
+                             "1 hour": 60, "2 hours": 120} %}
+                {{ m.get(states('input_select.auto_block_duration'), 60) }}
+          - service: rest_command.create_lock
+            data:
+              name: office_light
+              owner: homeassistant-auto-block
+              duration: >
+                {{ (minutes // 60 ~ 'h') if minutes % 60 == 0 and minutes >= 60
+                   else (minutes ~ 'm') }}
+          - service: timer.start
+            data:
+              duration: "{{ '%02d:%02d:00' | format(minutes // 60, minutes % 60) }}"
+            target:
+              entity_id: timer.auto_block
 
       - conditions:
           - condition: state
