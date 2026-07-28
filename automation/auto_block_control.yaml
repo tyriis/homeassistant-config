@@ -7,9 +7,6 @@ triggers:
   - trigger: state
     entity_id: input_boolean.auto_block
     id: auto_block_toggle
-  - trigger: homeassistant
-    event: start
-    id: ha_start
   - trigger: event
     event_type: timer.finished
     event_data:
