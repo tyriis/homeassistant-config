@@ -72,4 +72,4 @@ actions:
           - service: timer.cancel
             target:
               entity_id: timer.auto_block
-      - default: []
+    default: []
