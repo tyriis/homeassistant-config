@@ -21,9 +21,14 @@ actions:
           - condition: trigger
             id: timer_finished
         sequence:
-          - service: rest_command.release_lock
-            data:
-              name: office_light
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ state_attr('sensor.office_light_lock_status', 'owner') == 'homeassistant-auto-block' }}
+            then:
+              - service: rest_command.release_lock
+                data:
+                  name: office_light
           - service: input_boolean.turn_off
             target:
               entity_id: input_boolean.auto_block
@@ -33,9 +38,6 @@ actions:
             entity_id: input_boolean.auto_block
             state: "on"
         sequence:
-          - service: rest_command.release_lock
-            data:
-              name: office_light
           - choose:
               - conditions:
                   - condition: state
@@ -118,9 +120,14 @@ actions:
             entity_id: input_boolean.auto_block
             state: "off"
         sequence:
-          - service: rest_command.release_lock
-            data:
-              name: office_light
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ state_attr('sensor.office_light_lock_status', 'owner') == 'homeassistant-auto-block' }}
+            then:
+              - service: rest_command.release_lock
+                data:
+                  name: office_light
           - service: timer.cancel
             target:
               entity_id: timer.auto_block
