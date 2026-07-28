@@ -49,7 +49,7 @@ actions:
                    else (minutes ~ 'm') }}
           - service: timer.start
             data:
-              duration: "{{ '{:02d}:{:02d}:00' | format(minutes // 60, minutes % 60) }}"
+              duration: "{{ '%02d:%02d:00' | format(minutes // 60, minutes % 60) }}"
             target:
               entity_id: timer.auto_block
 
