@@ -84,13 +84,14 @@ jobs:
             echo "<!-- ha-config:pr-${PR_NUMBER} -->"
             echo "### 🏠 Home Assistant Config Check"
             echo
-            echo "> [!CAUTION]"
+            echo "> [!NOTE]"
             echo "> Configuration check failed"
             echo
-            grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log | \
-              sed 's/^ERROR:/**ERROR:** /' | \
-              sed 's/^Platform error:/**Platform error:** /' | \
-              sed 's/^Invalid config for/**Invalid config for** /'
+            grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log | while read -r line; do
+              echo
+              echo "> [!CAUTION]"
+              echo "> ${line}"
+            done
             echo
             echo "<sub>HA config check · blocks merge</sub>"
           } > comment.md
