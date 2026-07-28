@@ -1,0 +1,4 @@
+---
+alias: test_ci_failure
+id: test_ci_failure_broken
+triggers: []
