@@ -167,6 +167,8 @@ sections:
                 vertical: false
                 show_entity_picture: false
                 features_position: bottom
+          - type: vertical-stack
+            cards:
               - type: custom:mushroom-select-card
                 entity: input_select.auto_block_duration
                 fill_container: false
@@ -174,19 +176,19 @@ sections:
                 primary_info: name
                 secondary_info: none
                 name: Duration
-                visibility:
-                  - condition: state
-                    entity: timer.auto_block
-                    state: idle
-              - type: vertical-stack
-                cards:
-                  - type: custom:timer-bar-card
-                    entity: timer.auto_block
-                    mushroom: null
-                visibility:
-                  - condition: state
-                    entity: timer.auto_block
-                    state: active
+            visibility:
+              - condition: state
+                entity: timer.auto_block
+                state: idle
+          - type: vertical-stack
+            cards:
+              - type: custom:timer-bar-card
+                entity: timer.auto_block
+                mushroom: null
+            visibility:
+              - condition: state
+                entity: timer.auto_block
+                state: active
       - type: vertical-stack
         visibility:
           - condition: state
