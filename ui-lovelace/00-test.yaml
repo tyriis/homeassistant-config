@@ -153,6 +153,43 @@ sections:
                   - condition: state
                     entity: climate.office
                     state_not: "off"
+          - type: heading
+            heading_style: title
+            heading: Auto Block
+            icon: mdi:block-helper
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: input_boolean.auto_block
+                name: Auto Block
+                icon: mdi:shield-lock
+                color: red
+                vertical: false
+                show_entity_picture: false
+                features_position: bottom
+              - type: custom:mushroom-select-card
+                entity: input_select.auto_block_duration
+                fill_container: false
+                layout: horizontal
+                primary_info: name
+                secondary_info: none
+                name: Duration
+          - type: vertical-stack
+            cards:
+              - type: custom:timer-bar-card
+                entity: timer.auto_block
+                mushroom: null
+            visibility:
+              - condition: state
+                entity: timer.auto_block
+                state: active
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-empty-card
+            visibility:
+              - condition: state
+                entity: timer.auto_block
+                state: idle
       - type: vertical-stack
         visibility:
           - condition: state

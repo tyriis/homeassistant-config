@@ -1,0 +1,75 @@
+---
+alias: Auto Block Control
+id: auto_block_control
+description: Manage the office light auto-block lock lifecycle with a manual countdown timer
+mode: restart
+triggers:
+  - trigger: state
+    entity_id: input_boolean.auto_block
+    id: auto_block_toggle
+  - trigger: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.auto_block
+    id: timer_finished
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: timer_finished
+        sequence:
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ state_attr('sensor.office_light_lock_status', 'owner') == 'homeassistant-auto-block' }}
+            then:
+              - service: rest_command.release_lock
+                data:
+                  name: office_light
+          - service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.auto_block
+
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.auto_block
+            state: "on"
+        sequence:
+          - variables:
+              minutes: >
+                {% set m = {"15 min": 15, "30 min": 30, "45 min": 45,
+                             "1 hour": 60, "2 hours": 120} %}
+                {{ m.get(states('input_select.auto_block_duration'), 60) }}
+          - service: rest_command.create_lock
+            data:
+              name: office_light
+              owner: homeassistant-auto-block
+              duration: >
+                {{ (minutes // 60 ~ 'h') if minutes % 60 == 0 and minutes >= 60
+                   else (minutes ~ 'm') }}
+          - service: timer.start
+            data:
+              duration: "{{ '%02d:%02d:00' | format(minutes // 60, minutes % 60) }}"
+            target:
+              entity_id: timer.auto_block
+
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.auto_block
+            state: "off"
+          - condition: state
+            entity_id: timer.auto_block
+            state: "active"
+        sequence:
+          - if:
+              - condition: template
+                value_template: >-
+                  {{ state_attr('sensor.office_light_lock_status', 'owner') == 'homeassistant-auto-block' }}
+            then:
+              - service: rest_command.release_lock
+                data:
+                  name: office_light
+          - service: timer.cancel
+            target:
+              entity_id: timer.auto_block
+      - default: []

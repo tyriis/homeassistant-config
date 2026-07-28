@@ -1,0 +1,5 @@
+---
+auto_block:
+  name: Auto Block
+  duration: "01:00:00"
+  restore: true

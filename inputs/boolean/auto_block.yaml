@@ -1,0 +1,5 @@
+---
+auto_block:
+  name: Auto Block
+  icon: mdi:shield-lock
+  initial: false

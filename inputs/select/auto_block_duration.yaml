@@ -1,0 +1,11 @@
+---
+auto_block_duration:
+  name: Auto Block Duration
+  icon: mdi:timer-outline
+  options:
+    - "15 min"
+    - "30 min"
+    - "45 min"
+    - "1 hour"
+    - "2 hours"
+  initial: "1 hour"
