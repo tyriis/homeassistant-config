@@ -92,7 +92,7 @@ jobs:
               sed 's/^Platform error:/**Platform error:**/' | \
               sed 's/^Invalid config for/**Invalid config for/'
             echo
-            echo "<sub>HA config check · advisory, not a gate</sub>"
+            echo "<sub>HA config check · blocks merge</sub>"
           } > comment.md
           existing=$(gh pr view "$PR_NUMBER" --json comments --jq \
             '.comments[] | select(.body | startswith("<!-- ha-config:")) | .id' \
