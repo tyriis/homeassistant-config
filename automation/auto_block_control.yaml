@@ -39,7 +39,7 @@ actions:
               minutes: >
                 {% set m = {"15 min": 15, "30 min": 30, "45 min": 45,
                              "1 hour": 60, "2 hours": 120} %}
-                {{ m.get(states('input_select.auto_block_duration'), 60) }}
+                {{- m.get(states('input_select.auto_block_duration'), 60) -}}
           - service: rest_command.create_lock
             data:
               name: office_light
