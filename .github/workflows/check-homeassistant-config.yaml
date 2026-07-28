@@ -95,11 +95,4 @@ jobs:
             echo
             echo "<sub>HA config check · blocks merge</sub>"
           } > comment.md
-          existing=$(gh pr view "$PR_NUMBER" --json comments --jq \
-            '.comments[] | select(.body | startswith("<!-- ha-config:")) | .id' \
-            | head -n1)
-          if [[ -n "$existing" ]]; then
-            gh pr comment "$PR_NUMBER" --edit "$existing" --body-file comment.md
-          else
-            gh pr comment "$PR_NUMBER" --body-file comment.md
-          fi
+          gh pr comment "$PR_NUMBER" --edit-last --create-if-none --body-file comment.md
