@@ -88,9 +88,9 @@ jobs:
             echo "> Configuration check failed"
             echo
             grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log | \
-              sed 's/^ERROR:/**ERROR:**/' | \
-              sed 's/^Platform error:/**Platform error:**/' | \
-              sed 's/^Invalid config for/**Invalid config for/'
+              sed 's/^ERROR:/**ERROR:** /' | \
+              sed 's/^Platform error:/**Platform error:** /' | \
+              sed 's/^Invalid config for/**Invalid config for** /'
             echo
             echo "<sub>HA config check · blocks merge</sub>"
           } > comment.md
