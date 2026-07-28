@@ -75,24 +75,27 @@ jobs:
           exit 1
 
       - name: 💬 Comment failure on PR
-        if: ${{ always() && github.event_name == 'pull_request' && steps.check.outputs.status == 'failure' }}
+        if: always() && github.event_name == 'pull_request' && steps.check.outputs.status == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           {
-            echo "## ❌ Home Assistant Config Check Failed"
+            echo "<!-- ha-config:pr-${PR_NUMBER} -->"
+            echo "### 🏠 Home Assistant Config Check"
             echo
-            echo "<details><summary>Error output</summary>"
+            echo "> [!CAUTION]"
+            echo "> Configuration check failed"
             echo
-            echo '```'
-            grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log
-            echo '```'
+            grep -E '^(ERROR|Platform error|Invalid config for)' ha-check.log | \
+              sed 's/^ERROR:/**ERROR:**/' | \
+              sed 's/^Platform error:/**Platform error:**/' | \
+              sed 's/^Invalid config for/**Invalid config for/'
             echo
-            echo "</details>"
+            echo "<sub>HA config check · advisory, not a gate</sub>"
           } > comment.md
           existing=$(gh pr view "$PR_NUMBER" --json comments --jq \
-            '.comments[] | select(.body | startswith("## ❌ Home Assistant Config Check Failed")) | .id' \
+            '.comments[] | select(.body | startswith("<!-- ha-config:")) | .id' \
             | head -n1)
           if [[ -n "$existing" ]]; then
             gh pr comment "$PR_NUMBER" --edit "$existing" --body-file comment.md
