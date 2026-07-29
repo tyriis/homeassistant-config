@@ -2,7 +2,7 @@
 alias: Climate Office Auto Off on Target Temp
 id: climate_office_auto_off_on_target_temp
 description: >
-  Automatically turns off the office AC when the temperature drops below 24°C
+  Automatically turns off the office AC when the temperature drops below 23°C
   and the minimum run time has been met.
 mode: single
 trigger:
@@ -12,12 +12,12 @@ trigger:
   # Trigger when the temperature drops below 22°C
   - platform: numeric_state
     entity_id: sensor.qingping_office_temperature
-    below: 24
+    below: 23
     for:
       minutes: 5
 
 condition:
-  # Only act if the climate is currently on, and the temperature is bellow 24°C for more than 5 minutes, and the ac has been running for at least 30 minutes
+  # Only act if the climate is currently on, and the temperature is bellow 23°C for more than 5 minutes, and the ac has been running for at least 30 minutes
   - condition: template
     value_template: >
       {% set ac_start_timestamp = as_timestamp(states.input_datetime.climate_office_start_time.state) %}
@@ -25,7 +25,7 @@ condition:
       {% set ac_run_time = (current_timestamp - ac_start_timestamp) / 60 %}
       {{
         states('climate.office') == 'cool'
-        and states('sensor.qingping_office_temperature') | float <= 24
+        and states('sensor.qingping_office_temperature') | float <= 23
         and ac_run_time > 30
       }}
 
