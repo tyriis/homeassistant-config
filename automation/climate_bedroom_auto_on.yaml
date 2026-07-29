@@ -16,7 +16,7 @@
 alias: Bedroom AC Auto On
 id: climatge_bedroom_auto_on
 description: >
-  Automatically turns on the bedroom AC when the temperature is above 23°C,
+  Automatically turns on the bedroom AC when the temperature is above 24°C,
   the window is closed, and the weather forecast temperature is above 25°C.
   The automation checks every 5 minutes and respects time constraints.
 mode: single
@@ -32,7 +32,7 @@ condition:
         and states('binary_sensor.aqara_contact_window_bedroom_contact') == 'off'
         and current_time.strftime('%H:%M') >= '09:30'
         and current_time.strftime('%H:%M') < '22:00'
-        and states('sensor.qingping_bedroom_temperature') | float > 23
+        and states('sensor.qingping_bedroom_temperature') | float > 24
         and states('sensor.weather_forecast_temperature_forecast') | float > 25
         and states('sensor.hisense_ac_bedroom_lock_status') != 'locked'
         and states('binary_sensor.hisense_ac_bedroom_automation_block_status') == 'off'

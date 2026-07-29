@@ -16,7 +16,7 @@
 alias: Livingroom AC Auto On
 id: climate_livingroom_auto_on
 description: >
-  Automatically turns on the livingroom AC when the temperature is above 23°C,
+  Automatically turns on the livingroom AC when the temperature is above 25°C,
   and the weather forecast temperature is above 25°C.
   The automation checks every 5 minutes and respects time constraints.
 mode: single
@@ -34,7 +34,7 @@ condition:
         and states('binary_sensor.aqara_contact_window_kitchen_contact') == 'off'
         and current_time.strftime('%H:%M') >= '09:30'
         and current_time.strftime('%H:%M') < '22:00'
-        and states('sensor.qingping_livingroom_temperature') | float > 23
+        and states('sensor.qingping_livingroom_temperature') | float > 25
         and states('sensor.weather_forecast_temperature_forecast') | float > 25
         and states('sensor.hisense_ac_livingroom_lock_status') != 'locked'
         and states('binary_sensor.hisense_ac_livingroom_automation_block_status') == 'off'
