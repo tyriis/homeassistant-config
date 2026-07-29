@@ -2,7 +2,7 @@
 alias: Climate Livingroom Auto Off on Target Temp
 id: climate_livingroom_auto_off_on_target_temp
 description: >
-  Automatically turns off the livingroom AC when the temperature drops below 22°C
+  Automatically turns off the livingroom AC when the temperature drops below 24°C
   and the minimum run time has been met.
 mode: single
 trigger:
@@ -12,12 +12,12 @@ trigger:
   # Trigger when the temperature drops below 22°C
   - platform: numeric_state
     entity_id: sensor.qingping_livingroom_temperature
-    below: 22
+    below: 24
     for:
       minutes: 5
 
 condition:
-  # Only act if the climate is currently on, and the temperature is bellow 22°C for more than 5 minutes, and the ac has been running for at least 30 minutes
+  # Only act if the climate is currently on, and the temperature is bellow 24°C for more than 5 minutes, and the ac has been running for at least 30 minutes
   - condition: template
     value_template: >
       {% set ac_start_timestamp = as_timestamp(states.input_datetime.climate_livingroom_start_time.state) %}
@@ -25,7 +25,7 @@ condition:
       {% set ac_run_time = (current_timestamp - ac_start_timestamp) / 60 %}
       {{
         states('climate.livingroom') == 'cool'
-        and states('sensor.qingping_livingroom_temperature') | float <= 22
+        and states('sensor.qingping_livingroom_temperature') | float <= 24
         and ac_run_time > 30
       }}
 
