@@ -153,10 +153,12 @@ actions:
     data:
       name: office_light
       owner: >
-        {% if trigger.id == 'scene_change' %}
+        {% if trigger.id == 'scene_change' and trigger.event.context.user_id is not none %}
           homeassistant-{{ trigger.event.context.user_id }}
-        {% else %}
+        {% elif trigger.to_state.context.user_id is not none %}
           homeassistant-{{ trigger.to_state.context.user_id }}
+        {% else %}
+          homeassistant-automation
         {% endif %}
       duration: 1h
 

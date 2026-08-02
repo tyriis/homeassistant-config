@@ -96,7 +96,7 @@ actions:
           - service: rest_command.create_lock
             data:
               name: woox_irrigation_garden
-              owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
+              owner: "homeassistant-{{ 'automation' if trigger.to_state.context.user_id is none else trigger.to_state.context.user_id }}"
               duration: 15m
 
           # Increment daily counter
@@ -125,7 +125,7 @@ actions:
           - service: rest_command.create_lock
             data:
               name: woox_irrigation_garden
-              owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
+              owner: "homeassistant-{{ 'automation' if trigger.to_state.context.user_id is none else trigger.to_state.context.user_id }}"
               duration: 1h
 
           # Log manual stop
