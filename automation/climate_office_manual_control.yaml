@@ -99,7 +99,7 @@ actions:
           - service: rest_command.create_lock
             data:
               name: hisense_ac_office
-              owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
+              owner: "homeassistant-{{ 'automation' if trigger.to_state.context.user_id is none else trigger.to_state.context.user_id }}"
               duration: 1h
 
           # Log manual start
@@ -123,7 +123,7 @@ actions:
           - service: rest_command.create_lock
             data:
               name: hisense_ac_office
-              owner: "homeassistant-{{ trigger.to_state.context.user_id }}"
+              owner: "homeassistant-{{ 'automation' if trigger.to_state.context.user_id is none else trigger.to_state.context.user_id }}"
               duration: 1h
 
           # Log manual start

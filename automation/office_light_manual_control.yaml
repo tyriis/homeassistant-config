@@ -152,12 +152,13 @@ actions:
   - service: rest_command.create_lock
     data:
       name: office_light
-      owner: >
-        {% if trigger.id == 'scene_change' %}
-          homeassistant-{{ trigger.event.context.user_id }}
-        {% else %}
-          homeassistant-{{ trigger.to_state.context.user_id }}
-        {% endif %}
+      owner: >-
+        {%- if trigger.id == 'scene_change' -%}
+          {% set uid = trigger.event.context.user_id -%}
+        {%- else -%}
+          {% set uid = trigger.to_state.context.user_id -%}
+        {%- endif -%}
+        homeassistant-{{ 'automation' if uid is none else uid }}
       duration: 1h
 
   - service: system_log.write
