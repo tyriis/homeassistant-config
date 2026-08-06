@@ -1,0 +1,30 @@
+---
+alias: Alexroom AC Auto On
+id: climate_alexroom_auto_on
+description: >
+  Automatically turns on the alexroom AC when the temperature is above 25°C,
+  the window is closed, and the weather forecast temperature is above 25°C.
+  The automation checks every 5 minutes and respects time constraints.
+mode: single
+trigger:
+  - platform: time_pattern
+    minutes: "/5"
+condition:
+  - condition: template
+    value_template: >
+      {% set current_time = now() %}
+      {{
+        states('input_boolean.heating_season') == 'off'
+        and states('binary_sensor.aqara_contact_window_alexroom_contact') == 'off'
+        and current_time.strftime('%H:%M') >= '09:30'
+        and current_time.strftime('%H:%M') < '22:00'
+        and states('sensor.qingping_alexroom_temperature') | float > 25
+        and states('sensor.weather_forecast_temperature_forecast') | float > 25
+        and states('sensor.hisense_ac_alexroom_lock_status') != 'locked'
+        and states('binary_sensor.hisense_ac_alexroom_automation_block_status') == 'off'
+      }}
+actions:
+  - action: script.cool_room
+    data:
+      zone: alexroom
+      reason: hot day and alexroom temperature to high
