@@ -25,16 +25,6 @@ logger:
   #   homeassistant.util.aiohttp: debug
   #   aiohttp.access: debug
 
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 192.168.1.0/24
-    - 192.168.20.0/24
-    - 192.168.100.0/24
-    - 192.168.101.0/24
-    - 10.42.0.0/16
-    - 10.244.0.0/16
-
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
 
