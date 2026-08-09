@@ -1,0 +1,57 @@
+---
+alias: rack_led
+id: rack_led
+description: Rack LED motion automation
+mode: restart
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.mijia_motion_rack_occupancy
+    to: "on"
+  - trigger: state
+    entity_id:
+      - binary_sensor.mijia_motion_rack_occupancy
+    to: "off"
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.mijia_motion_rack_occupancy
+            state: "on"
+          - condition: state
+            entity_id: light.govee_light_rack
+            state: "off"
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.govee_light_rack
+          - action: system_log.write
+            data:
+              level: info
+              message: light rack led turned on
+              logger: homeassistant.components.automation.rack_led
+      - conditions:
+          - condition: state
+            entity_id: binary_sensor.mijia_motion_rack_occupancy
+            state: "off"
+            for:
+              hours: 0
+              minutes: 15
+              seconds: 0
+          - condition: state
+            entity_id: light.govee_light_rack
+            state: "on"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.govee_light_rack
+          - action: system_log.write
+            data:
+              level: info
+              message: light rack led turned off
+              logger: homeassistant.components.automation.rack_led
