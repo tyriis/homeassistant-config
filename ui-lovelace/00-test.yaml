@@ -522,15 +522,6 @@ sections:
           - type: horizontal-stack
             cards:
               - type: tile
-                entity: binary_sensor.mijia_motion_garden_occupancy
-                features_position: bottom
-                vertical: false
-                show_entity_picture: false
-                name: Couche
-                tap_action:
-                  action: navigate
-                  navigation_path: "#motion_livingroom"
-              - type: tile
                 entity: binary_sensor.mijia_motion_table_occupancy
                 features_position: bottom
                 vertical: false
@@ -538,20 +529,21 @@ sections:
                 tap_action:
                   action: navigate
                   navigation_path: "#motion_livingroom"
-          - type: horizontal-stack
-            cards:
               - type: tile
                 entity: binary_sensor.mijia_motion_kitchen_occupancy
                 name: Kitchen
                 tap_action:
                   action: navigate
                   navigation_path: "#motion_livingroom"
+          - type: horizontal-stack
+            cards:
               - type: tile
                 entity: binary_sensor.mijia_motion_stairs_occupancy
                 name: Stairs
                 tap_action:
                   action: navigate
                   navigation_path: "#motion_livingroom"
+              - type: custom:mushroom-empty-card
           - type: heading
             heading: Environment
             heading_style: title
@@ -2882,24 +2874,11 @@ sections:
               - type: entity
                 show_state: true
                 show_icon: true
-                entity: binary_sensor.mijia_motion_garden_occupancy
+                entity: binary_sensor.aqara_presence_livingroom_presence
                 color: green
                 state_content:
                   - state
                   - last_changed
-          - type: custom:mini-graph-card
-            name: motion
-            entities:
-              - entity: binary_sensor.mijia_motion_garden_occupancy
-                color: "#90EE90"
-                name: mijia
-              - entity: sun.sun
-                color: gray
-                name: Sun
-                show_line: false
-                show_points: false
-                show_legend: false
-                y_axis: secondary
             aggregate_func: sum
             hours_to_show: 24
             line_width: 1
