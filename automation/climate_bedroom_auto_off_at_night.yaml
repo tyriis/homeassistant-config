@@ -2,7 +2,7 @@
 alias: Climate Bedroom Auto Off At Night
 id: climate_bedroom_auto_off_at_night
 description: >
-  Automatically turns off the bedroom AC after 23:00
+  Automatically turns off the bedroom AC after midnight (00:00)
 mode: single
 trigger:
   - platform: time_pattern
@@ -15,7 +15,7 @@ condition:
       {{
         states('climate.bedroom') == 'cool'
         and states('binary_sensor.hisense_ac_bedroom_automation_block_status') == 'off'
-        and (now().hour >= 22 or now().hour < 8)
+        and now().hour < 8
       }}
 
 actions:
@@ -31,6 +31,6 @@ actions:
   - action: system_log.write
     data:
       level: info
-      message: Bedroom AC turned off after 23:00.
+      message: Bedroom AC turned off after 00:00.
       logger: >-
         homeassistant.components.automation.climate_bedroom_auto_off_at_night
