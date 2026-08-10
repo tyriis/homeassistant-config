@@ -11,6 +11,8 @@ cool_room:
             - bedroom
             - livingroom
             - office
+            - alexroom
+            - domiroom
     reason:
       selector:
         text:
