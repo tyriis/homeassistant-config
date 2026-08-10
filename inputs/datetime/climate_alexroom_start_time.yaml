@@ -1,0 +1,6 @@
+---
+climate_alexroom_start_time:
+  name: Climate Alexroom Start Time
+  has_date: true
+  has_time: true
+  icon: mdi:fan-clock
