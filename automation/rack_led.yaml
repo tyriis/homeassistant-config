@@ -23,9 +23,6 @@ actions:
           - condition: state
             entity_id: binary_sensor.mijia_motion_rack_occupancy
             state: "on"
-          - condition: state
-            entity_id: light.govee_light_rack
-            state: "off"
         sequence:
           - action: light.turn_on
             target:
@@ -43,9 +40,6 @@ actions:
               hours: 0
               minutes: 15
               seconds: 0
-          - condition: state
-            entity_id: light.govee_light_rack
-            state: "on"
         sequence:
           - action: light.turn_off
             target:
