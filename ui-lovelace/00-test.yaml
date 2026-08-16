@@ -1316,19 +1316,54 @@ sections:
         media_query: "(min-width: 768px)"
   - type: grid
     cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: horizontal-buttons-stack
+        auto_order: false
+        1_name: ""
+        1_link: "#lights"
+        1_icon: mdi:lightbulb
+        2_link: "#climates"
+        2_icon: mdi:snowflake
+        3_link: "#roborock"
+        3_icon: mdi:robot-vacuum
+        4_link: "#venting"
+        4_icon: mdi:fan
+        5_link: "#irrigation"
+        5_icon: mdi:water
+        styles: |
+          .bubble-background-color {
+            border: 0px;
+          }
+          .lights .bubble-icon {
+            color: orange;
+          }
+          .climates .bubble-icon {
+            color: #3498db;
+          }
+          .roborock .bubble-icon {
+            color: #009688;
+          }
+          .venting .bubble-icon {
+            color: #00cfff;
+          }
+          .irrigation .bubble-icon {
+            color: rgb(68, 115, 158);
+          }
+  - type: grid
+    column_span: 4
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#illuminance_office"
+        entity: sensor.aqara_motion_office_illuminance
+        name: CO2
+        show_header: false
+        width_desktop: 800px
+        styles: |-
+          .bubble-button-card-container {
+            border-radius: 5px;
+          }
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#illuminance_office"
-            entity: sensor.aqara_motion_office_illuminance
-            name: CO2
-            show_header: false
-            width_desktop: 800px
-            styles: |-
-              .bubble-button-card-container {
-                border-radius: 5px;
-              }
           - type: heading
             heading: Illuminance Office
             heading_style: title
@@ -1399,15 +1434,14 @@ sections:
               productivity, and can support healthy plant development. If your
               lux readings are too low or too high, consider adjusting lighting
               or window coverings for optimal conditions.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#co2_office"
+        entity: sensor.qingping_office_co2
+        name: CO2
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#co2_office"
-            entity: sensor.qingping_office_co2
-            name: CO2
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: CO2 Office
             heading_style: title
@@ -1477,15 +1511,14 @@ sections:
               by opening windows or using mechanical systems. Prolonged exposure
               to elevated CO₂ can affect health and productivity, especially in
               crowded or poorly ventilated spaces.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#etvoc_office"
+        entity: sensor.qingping_office_etvoc
+        name: eTVOC
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#etvoc_office"
-            entity: sensor.qingping_office_etvoc
-            name: eTVOC
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: eTVOC Office
             heading_style: title
@@ -1558,15 +1591,14 @@ sections:
               ventilation, removing sources of VOCs, or using air purification.
               Regular monitoring can help you identify trends and take action
               before air quality becomes a concern.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#temperature_office"
+        entity: sensor.qingping_office_temperature
+        name: Temperature
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#temperature_office"
-            entity: sensor.qingping_office_temperature
-            name: Temperature
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Temperature Office
             heading_style: title
@@ -1616,15 +1648,14 @@ sections:
               between 20°C and 24°C. If the temperature is too high or too low,
               consider adjusting your heating or cooling to create a healthier
               and more comfortable environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#noise_office"
+        entity: sensor.qingping_office_noise
+        name: Noise
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#noise_office"
-            entity: sensor.qingping_office_noise
-            name: Noise
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Noise Office
             heading_style: title
@@ -1688,15 +1719,14 @@ sections:
               If noise levels are consistently high, consider soundproofing,
               reducing noise sources, or using quiet hours to create a more
               comfortable indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#humidity_office"
+        entity: sensor.qingping_office_humidity
+        name: Humidity
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#humidity_office"
-            entity: sensor.qingping_office_humidity
-            name: Humidity
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Humidity Office
             heading_style: title
@@ -1762,15 +1792,14 @@ sections:
               If humidity is outside the ideal range, consider using a
               humidifier or dehumidifier, or adjusting ventilation to maintain a
               healthy indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm10_office"
+        entity: sensor.qingping_office_pm10
+        name: PM10
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm10_office"
-            entity: sensor.qingping_office_pm10
-            name: PM10
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM10 Office
             heading_style: title
@@ -1840,15 +1869,14 @@ sections:
               **Tip:** If PM10 levels are elevated, improve ventilation, reduce
               indoor pollution sources, or limit outdoor activities during high
               pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm25_office"
+        entity: sensor.qingping_office_pm25
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm25_office"
-            entity: sensor.qingping_office_pm25
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM2.5 Office
             heading_style: title
@@ -1919,15 +1947,14 @@ sections:
               **Tip:** If PM2.5 levels are elevated, increase ventilation, use
               air purifiers, reduce indoor pollution sources, and limit outdoor
               activities during high pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#motion_office"
+        entity: binary_sensor.aqara_motion_office_occupancy
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#motion_office"
-            entity: binary_sensor.aqara_motion_office_occupancy
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Motion aqara
             heading_style: title
@@ -2032,19 +2059,15 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#radon_office"
+        entity: sensor.fr_ik04re002136_radon
+        name: Radon
+        show_header: false
+        width_desktop: 800px
+        button_type: name
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#radon_office"
-            entity: sensor.fr_ik04re002136_radon
-            name: Radon
-            show_header: false
-            width_desktop: 800px
-            button_type: name
-            sub_button:
-              main: []
-              bottom: []
           - type: heading
             heading: Radoneye
             heading_style: title
@@ -2180,17 +2203,14 @@ sections:
               increasing ventilation, but for long-term safety, the CDC
               recommends installing a radon mitigation system (such as active
               soil depressurization) and sealing cracks in the foundation.
-  - type: grid
-    cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#co2_livingroom"
+        entity: sensor.qingping_livingroom_co2
+        name: CO2
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#co2_livingroom"
-            entity: sensor.qingping_livingroom_co2
-            name: CO2
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: CO2 Livingroom
             heading_style: title
@@ -2260,15 +2280,14 @@ sections:
               by opening windows or using mechanical systems. Prolonged exposure
               to elevated CO₂ can affect health and productivity, especially in
               crowded or poorly ventilated spaces.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#etvoc_livingroom"
+        entity: sensor.qingping_livingroom_etvoc
+        name: eTVOC
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#etvoc_livingroom"
-            entity: sensor.qingping_livingroom_etvoc
-            name: eTVOC
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: eTVOC Livingroom
             heading_style: title
@@ -2341,15 +2360,14 @@ sections:
               ventilation, removing sources of VOCs, or using air purification.
               Regular monitoring can help you identify trends and take action
               before air quality becomes a concern.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#temperature_livingroom"
+        entity: sensor.qingping_livingroom_temperature
+        name: Temperature
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#temperature_livingroom"
-            entity: sensor.qingping_livingroom_temperature
-            name: Temperature
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Temperature Livingroom
             heading_style: title
@@ -2399,15 +2417,14 @@ sections:
               between 20°C and 24°C. If the temperature is too high or too low,
               consider adjusting your heating or cooling to create a healthier
               and more comfortable environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#noise_livingroom"
+        entity: sensor.qingping_livingroom_noise
+        name: Noise
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#noise_livingroom"
-            entity: sensor.qingping_livingroom_noise
-            name: Noise
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Noise Livingroom
             heading_style: title
@@ -2471,15 +2488,14 @@ sections:
               If noise levels are consistently high, consider soundproofing,
               reducing noise sources, or using quiet hours to create a more
               comfortable indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#humidity_livingroom"
+        entity: sensor.qingping_livingroom_humidity
+        name: Humidity
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#humidity_livingroom"
-            entity: sensor.qingping_livingroom_humidity
-            name: Humidity
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Humidity Livingroom
             heading_style: title
@@ -2545,15 +2561,14 @@ sections:
               If humidity is outside the ideal range, consider using a
               humidifier or dehumidifier, or adjusting ventilation to maintain a
               healthy indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm10_livingroom"
+        entity: sensor.qingping_livingroom_pm10
+        name: PM10
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm10_livingroom"
-            entity: sensor.qingping_livingroom_pm10
-            name: PM10
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM10 Livingroom
             heading_style: title
@@ -2623,15 +2638,14 @@ sections:
               **Tip:** If PM10 levels are elevated, improve ventilation, reduce
               indoor pollution sources, or limit outdoor activities during high
               pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm25_livingroom"
+        entity: sensor.qingping_livingroom_pm25
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm25_livingroom"
-            entity: sensor.qingping_livingroom_pm25
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM2.5 Livingroom
             heading_style: title
@@ -2702,15 +2716,14 @@ sections:
               **Tip:** If PM2.5 levels are elevated, increase ventilation, use
               air purifiers, reduce indoor pollution sources, and limit outdoor
               activities during high pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#motion_livingroom"
+        entity: binary_sensor.aqara_presence_livingroom_presence
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#motion_livingroom"
-            entity: binary_sensor.aqara_presence_livingroom_presence
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Presence TV
             heading_style: title
@@ -2906,21 +2919,18 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
-  - type: grid
-    cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#illuminance_bedroom"
+        entity: sensor.aqara_motion_bedroom_illuminance
+        name: CO2
+        show_header: false
+        width_desktop: 800px
+        styles: |-
+          .bubble-button-card-container {
+            border-radius: 5px;
+          }
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#illuminance_bedroom"
-            entity: sensor.aqara_motion_bedroom_illuminance
-            name: CO2
-            show_header: false
-            width_desktop: 800px
-            styles: |-
-              .bubble-button-card-container {
-                border-radius: 5px;
-              }
           - type: heading
             heading: Illuminance Bedroom
             heading_style: title
@@ -2991,15 +3001,14 @@ sections:
               productivity, and can support healthy plant development. If your
               lux readings are too low or too high, consider adjusting lighting
               or window coverings for optimal conditions.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#co2_bedroom"
+        entity: sensor.qingping_bedroom_co2
+        name: CO2
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#co2_bedroom"
-            entity: sensor.qingping_bedroom_co2
-            name: CO2
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: CO2 Bedroom
             heading_style: title
@@ -3069,15 +3078,14 @@ sections:
               by opening windows or using mechanical systems. Prolonged exposure
               to elevated CO₂ can affect health and productivity, especially in
               crowded or poorly ventilated spaces.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#etvoc_bedroom"
+        entity: sensor.qingping_bedroom_etvoc
+        name: eTVOC
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#etvoc_bedroom"
-            entity: sensor.qingping_bedroom_etvoc
-            name: eTVOC
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: eTVOC Bedroom
             heading_style: title
@@ -3150,30 +3158,29 @@ sections:
               ventilation, removing sources of VOCs, or using air purification.
               Regular monitoring can help you identify trends and take action
               before air quality becomes a concern.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#temperature_bedroom"
+        entity: sensor.qingping_bedroom_temperature
+        name: Temperature Bedroom
+        show_header: true
+        width_desktop: 800px
+        button_type: text
+        icon: mdi:thermometer
+        styles: |-
+
+          .bubble-icon {
+            color: #E74C3C !important;
+          }
+
+          # .bubble-name-container {
+          #   color: #E74C3C !important;
+          # }
+
+          # .bubble-button-card {
+          #   background-color: #E74C3C;
+          # }
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#temperature_bedroom"
-            entity: sensor.qingping_bedroom_temperature
-            name: Temperature Bedroom
-            show_header: true
-            width_desktop: 800px
-            button_type: text
-            icon: mdi:thermometer
-            styles: |-
-
-              .bubble-icon {
-                color: #E74C3C !important;
-              }
-
-              # .bubble-name-container {
-              #   color: #E74C3C !important;
-              # }
-
-              # .bubble-button-card {
-              #   background-color: #E74C3C;
-              # }
           - type: heading
             heading_style: title
             badges:
@@ -3222,15 +3229,14 @@ sections:
               between 20°C and 24°C. If the temperature is too high or too low,
               consider adjusting your heating or cooling to create a healthier
               and more comfortable environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#noise_bedroom"
+        entity: sensor.qingping_bedroom_noise
+        name: Noise
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#noise_bedroom"
-            entity: sensor.qingping_bedroom_noise
-            name: Noise
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Noise Bedroom
             heading_style: title
@@ -3294,15 +3300,14 @@ sections:
               If noise levels are consistently high, consider soundproofing,
               reducing noise sources, or using quiet hours to create a more
               comfortable indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#humidity_bedroom"
+        entity: sensor.qingping_bedroom_humidity
+        name: Humidity
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#humidity_bedroom"
-            entity: sensor.qingping_bedroom_humidity
-            name: Humidity
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Humidity Bedroom
             heading_style: title
@@ -3368,15 +3373,14 @@ sections:
               If humidity is outside the ideal range, consider using a
               humidifier or dehumidifier, or adjusting ventilation to maintain a
               healthy indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm10_bedroom"
+        entity: sensor.qingping_bedroom_pm10
+        name: PM10
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm10_bedroom"
-            entity: sensor.qingping_bedroom_pm10
-            name: PM10
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM10 Bedroom
             heading_style: title
@@ -3446,15 +3450,14 @@ sections:
               **Tip:** If PM10 levels are elevated, improve ventilation, reduce
               indoor pollution sources, or limit outdoor activities during high
               pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm25_bedroom"
+        entity: sensor.qingping_bedroom_pm25
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm25_bedroom"
-            entity: sensor.qingping_bedroom_pm25
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM2.5 Bedroom
             heading_style: title
@@ -3525,15 +3528,14 @@ sections:
               **Tip:** If PM2.5 levels are elevated, increase ventilation, use
               air purifiers, reduce indoor pollution sources, and limit outdoor
               activities during high pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#motion_bedroom"
+        entity: binary_sensor.aqara_motion_bedroom_occupancy
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#motion_bedroom"
-            entity: binary_sensor.aqara_motion_bedroom_occupancy
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Motion bedroom
             heading_style: title
@@ -3586,19 +3588,15 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
-  - type: grid
-    cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#illuminance_alexroom"
+        name: Illuminance
+        show_header: true
+        width_desktop: 800px
+        icon: mdi:white-balance-sunny
+        show_last_changed: false
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#illuminance_alexroom"
-            name: Illuminance
-            show_header: true
-            width_desktop: 800px
-            icon: mdi:white-balance-sunny
-            show_last_changed: false
-            bg_color: ""
           - type: heading
             heading: Alexroom
             heading_style: title
@@ -3669,15 +3667,14 @@ sections:
               productivity, and can support healthy plant development. If your
               lux readings are too low or too high, consider adjusting lighting
               or window coverings for optimal conditions.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#co2_alexroom"
+        entity: sensor.qingping_alexroom_co2
+        name: CO2
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#co2_alexroom"
-            entity: sensor.qingping_alexroom_co2
-            name: CO2
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: CO2 Alexroom
             heading_style: title
@@ -3747,15 +3744,14 @@ sections:
               by opening windows or using mechanical systems. Prolonged exposure
               to elevated CO₂ can affect health and productivity, especially in
               crowded or poorly ventilated spaces.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#etvoc_alexroom"
+        entity: sensor.qingping_alexroom_etvoc
+        name: eTVOC
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#etvoc_alexroom"
-            entity: sensor.qingping_alexroom_etvoc
-            name: eTVOC
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: eTVOC Alexroom
             heading_style: title
@@ -3828,15 +3824,14 @@ sections:
               ventilation, removing sources of VOCs, or using air purification.
               Regular monitoring can help you identify trends and take action
               before air quality becomes a concern.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#temperature_alexroom"
+        entity: sensor.qingping_alexroom_temperature
+        name: Temperature
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#temperature_alexroom"
-            entity: sensor.qingping_alexroom_temperature
-            name: Temperature
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Temperature Alexroom
             heading_style: title
@@ -3886,15 +3881,14 @@ sections:
               between 20°C and 24°C. If the temperature is too high or too low,
               consider adjusting your heating or cooling to create a healthier
               and more comfortable environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#noise_alexroom"
+        entity: sensor.qingping_alexroom_noise
+        name: Noise
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#noise_alexroom"
-            entity: sensor.qingping_alexroom_noise
-            name: Noise
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Noise Alexroom
             heading_style: title
@@ -3958,15 +3952,14 @@ sections:
               If noise levels are consistently high, consider soundproofing,
               reducing noise sources, or using quiet hours to create a more
               comfortable indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#humidity_alexroom"
+        entity: sensor.qingping_alexroom_humidity
+        name: Humidity
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#humidity_alexroom"
-            entity: sensor.qingping_alexroom_humidity
-            name: Humidity
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Humidity Alexroom
             heading_style: title
@@ -4032,15 +4025,14 @@ sections:
               If humidity is outside the ideal range, consider using a
               humidifier or dehumidifier, or adjusting ventilation to maintain a
               healthy indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm10_alexroom"
+        entity: sensor.qingping_alexroom_pm10
+        name: PM10
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm10_alexroom"
-            entity: sensor.qingping_alexroom_pm10
-            name: PM10
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM10 Alexroom
             heading_style: title
@@ -4110,15 +4102,14 @@ sections:
               **Tip:** If PM10 levels are elevated, improve ventilation, reduce
               indoor pollution sources, or limit outdoor activities during high
               pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm25_alexroom"
+        entity: sensor.qingping_alexroom_pm25
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm25_alexroom"
-            entity: sensor.qingping_alexroom_pm25
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM2.5 Alexroom
             heading_style: title
@@ -4189,17 +4180,16 @@ sections:
               **Tip:** If PM2.5 levels are elevated, increase ventilation, use
               air purifiers, reduce indoor pollution sources, and limit outdoor
               activities during high pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#motion_alexroom"
+        name: Presence
+        show_header: true
+        width_desktop: 800px
+        show_state: false
+        show_last_changed: false
+        entity: binary_sensor.aqara_motion_alexroom_occupancy
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#motion_alexroom"
-            name: Presence
-            show_header: true
-            width_desktop: 800px
-            show_state: false
-            show_last_changed: false
-            entity: binary_sensor.aqara_motion_alexroom_occupancy
           - type: heading
             heading: Motion alexroom
             heading_style: title
@@ -4356,19 +4346,15 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
-  - type: grid
-    cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#illuminance_domiroom"
+        name: Illuminance
+        show_header: true
+        width_desktop: 800px
+        icon: mdi:white-balance-sunny
+        show_last_changed: false
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#illuminance_domiroom"
-            name: Illuminance
-            show_header: true
-            width_desktop: 800px
-            icon: mdi:white-balance-sunny
-            show_last_changed: false
-            bg_color: ""
           - type: heading
             heading: Domiroom
             heading_style: title
@@ -4439,15 +4425,14 @@ sections:
               productivity, and can support healthy plant development. If your
               lux readings are too low or too high, consider adjusting lighting
               or window coverings for optimal conditions.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#co2_domiroom"
+        entity: sensor.qingping_domiroom_co2
+        name: CO2
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#co2_domiroom"
-            entity: sensor.qingping_domiroom_co2
-            name: CO2
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: CO2 Domiroom
             heading_style: title
@@ -4517,15 +4502,14 @@ sections:
               by opening windows or using mechanical systems. Prolonged exposure
               to elevated CO₂ can affect health and productivity, especially in
               crowded or poorly ventilated spaces.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#etvoc_domiroom"
+        entity: sensor.qingping_domiroom_etvoc
+        name: eTVOC
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#etvoc_domiroom"
-            entity: sensor.qingping_domiroom_etvoc
-            name: eTVOC
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: eTVOC Domiroom
             heading_style: title
@@ -4598,15 +4582,14 @@ sections:
               ventilation, removing sources of VOCs, or using air purification.
               Regular monitoring can help you identify trends and take action
               before air quality becomes a concern.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#temperature_domiroom"
+        entity: sensor.qingping_domiroom_temperature
+        name: Temperature
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#temperature_domiroom"
-            entity: sensor.qingping_domiroom_temperature
-            name: Temperature
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Temperature Domiroom
             heading_style: title
@@ -4656,15 +4639,14 @@ sections:
               between 20°C and 24°C. If the temperature is too high or too low,
               consider adjusting your heating or cooling to create a healthier
               and more comfortable environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#noise_domiroom"
+        entity: sensor.qingping_domiroom_noise
+        name: Noise
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#noise_domiroom"
-            entity: sensor.qingping_domiroom_noise
-            name: Noise
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Noise Domiroom
             heading_style: title
@@ -4728,15 +4710,14 @@ sections:
               If noise levels are consistently high, consider soundproofing,
               reducing noise sources, or using quiet hours to create a more
               comfortable indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#humidity_domiroom"
+        entity: sensor.qingping_domiroom_humidity
+        name: Humidity
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#humidity_domiroom"
-            entity: sensor.qingping_domiroom_humidity
-            name: Humidity
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Humidity Domiroom
             heading_style: title
@@ -4802,15 +4783,14 @@ sections:
               If humidity is outside the ideal range, consider using a
               humidifier or dehumidifier, or adjusting ventilation to maintain a
               healthy indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm10_domiroom"
+        entity: sensor.qingping_domiroom_pm10
+        name: PM10
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm10_domiroom"
-            entity: sensor.qingping_domiroom_pm10
-            name: PM10
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM10 Domiroom
             heading_style: title
@@ -4880,15 +4860,14 @@ sections:
               **Tip:** If PM10 levels are elevated, improve ventilation, reduce
               indoor pollution sources, or limit outdoor activities during high
               pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#pm25_domiroom"
+        entity: sensor.qingping_domiroom_pm25
+        name: PM2.5
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#pm25_domiroom"
-            entity: sensor.qingping_domiroom_pm25
-            name: PM2.5
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: PM2.5 Domiroom
             heading_style: title
@@ -4959,17 +4938,16 @@ sections:
               **Tip:** If PM2.5 levels are elevated, increase ventilation, use
               air purifiers, reduce indoor pollution sources, and limit outdoor
               activities during high pollution events to protect your health.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#motion_domiroom"
+        name: Presence
+        show_header: true
+        width_desktop: 800px
+        show_state: false
+        show_last_changed: false
+        entity: binary_sensor.aqara_motion_domiroom_occupancy
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#motion_domiroom"
-            name: Presence
-            show_header: true
-            width_desktop: 800px
-            show_state: false
-            show_last_changed: false
-            entity: binary_sensor.aqara_motion_domiroom_occupancy
           - type: heading
             heading: Motion domiroom
             heading_style: title
@@ -5178,17 +5156,14 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
-  - type: grid
-    cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#temperature_kitchen"
+        entity: sensor.aqara_climate_kitchen_temperature
+        name: Temperature
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#temperature_kitchen"
-            entity: sensor.aqara_climate_kitchen_temperature
-            name: Temperature
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Temperature Kitchen
             heading_style: title
@@ -5238,15 +5213,14 @@ sections:
               between 20°C and 24°C. If the temperature is too high or too low,
               consider adjusting your heating or cooling to create a healthier
               and more comfortable environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#humidity_kitchen"
+        entity: sensor.aqara_climate_kitchen_humidity
+        name: Humidity
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#humidity_kitchen"
-            entity: sensor.aqara_climate_kitchen_humidity
-            name: Humidity
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Humidity Kitchen
             heading_style: title
@@ -5312,17 +5286,16 @@ sections:
               If humidity is outside the ideal range, consider using a
               humidifier or dehumidifier, or adjusting ventilation to maintain a
               healthy indoor environment.
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#motion_kitchen"
+        name: Presence Kitchen
+        show_header: true
+        width_desktop: 800px
+        show_state: false
+        show_last_changed: false
+        entity: binary_sensor.mijia_motion_kitchen_occupancy
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#motion_kitchen"
-            name: Presence Kitchen
-            show_header: true
-            width_desktop: 800px
-            show_state: false
-            show_last_changed: false
-            entity: binary_sensor.mijia_motion_kitchen_occupancy
           - type: heading
             heading: Motion Kitchen
             heading_style: title
@@ -5375,26 +5348,20 @@ sections:
               labels_secondary: false
               icon_adaptive_color: true
               extrema: true
-  - type: grid
-    cards:
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#lights"
+        name: Lights
+        show_header: true
+        width_desktop: 800px
+        icon: mdi:lightbulb
+        styles: |
+          .bubble-icon {
+            color: orange !important;
+          }
+        bg_color: rgb(51, 43, 37)
+        button_type: name
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#lights"
-            name: Lights
-            show_header: true
-            width_desktop: 800px
-            icon: mdi:lightbulb
-            styles: |
-              .bubble-icon {
-                color: orange !important;
-              }
-            bg_color: rgb(51. 43. 37)
-            button_type: name
-            sub_button:
-              main: []
-              bottom: []
           - type: horizontal-stack
             cards:
               - type: tile
@@ -5519,14 +5486,13 @@ sections:
                   action: none
                 icon: mdi:mirror-rectangle
                 name: Bathroom Mirror
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#roborock"
+        name: Roborock
+        show_header: false
+        width_desktop: 800px
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#roborock"
-            name: Roborock
-            show_header: false
-            width_desktop: 800px
           - type: heading
             heading: Upstairs
             heading_style: title
@@ -5581,15 +5547,14 @@ sections:
             features_position: inline
             state_content: state
             name: " "
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#climates"
+        name: Climates
+        show_header: true
+        width_desktop: 800px
+        icon: mdi:snowflake
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#climates"
-            name: Climates
-            show_header: true
-            width_desktop: 800px
-            icon: mdi:snowflake
           - type: heading
             heading: Climates
             heading_style: title
@@ -5639,20 +5604,19 @@ sections:
             show_temperature_control: false
             layout: horizontal
             collapsible_controls: false
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#irrigation"
+        name: Irrigation
+        show_header: true
+        width_desktop: 800px
+        icon: mdi:water
+        bg_color: rgb(21, 32, 36)
+        styles: |
+          .bubble-icon {
+            color: rgb(68, 115, 158) !important;
+          }
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#irrigation"
-            name: Irrigation
-            show_header: true
-            width_desktop: 800px
-            icon: mdi:water
-            bg_color: rgb(21. 32, 36)
-            styles: |
-              .bubble-icon {
-                color: rgb(68, 115, 158) !important;
-              }
           - type: horizontal-stack
             cards:
               - type: tile
@@ -5681,16 +5645,15 @@ sections:
                 features_position: bottom
                 vertical: false
                 name: " "
-      - type: vertical-stack
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#venting"
+        name: Venting
+        show_header: true
+        width_desktop: 800px
+        icon: mdi:fan
+        show_state: false
         cards:
-          - type: custom:bubble-card
-            card_type: pop-up
-            hash: "#venting"
-            name: Venting
-            show_header: true
-            width_desktop: 800px
-            icon: mdi:fan
-            show_state: false
           - type: heading
             heading: Office
             heading_style: title
@@ -5904,41 +5867,6 @@ sections:
                 features_position: bottom
                 vertical: false
                 name: Today
-  - type: grid
-    cards:
-      - type: custom:bubble-card
-        card_type: horizontal-buttons-stack
-        auto_order: false
-        1_name: ""
-        1_link: "#lights"
-        1_icon: mdi:lightbulb
-        2_link: "#climates"
-        2_icon: mdi:snowflake
-        3_link: "#roborock"
-        3_icon: mdi:robot-vacuum
-        4_link: "#venting"
-        4_icon: mdi:fan
-        5_link: "#irrigation"
-        5_icon: mdi:water
-        styles: |
-          .bubble-background-color {
-            border: 0px;
-          }
-          .lights .bubble-icon {
-            color: orange;
-          }
-          .climates .bubble-icon {
-            color: #3498db;
-          }
-          .roborock .bubble-icon {
-            color: #009688;
-          }
-          .venting .bubble-icon {
-            color: #00cfff;
-          }
-          .irrigation .bubble-icon {
-            color: rgb(68, 115, 158);
-          }
 badges:
   - type: entity
     show_name: false
