@@ -1356,7 +1356,7 @@ sections:
         card_type: pop-up
         hash: "#illuminance_office"
         entity: sensor.aqara_motion_office_illuminance
-        name: CO2
+        name: Illuminance
         show_header: false
         width_desktop: 800px
         styles: |-
@@ -1951,7 +1951,7 @@ sections:
         card_type: pop-up
         hash: "#motion_office"
         entity: binary_sensor.aqara_motion_office_occupancy
-        name: PM2.5
+        name: Motion
         show_header: false
         width_desktop: 800px
         cards:
@@ -2720,7 +2720,7 @@ sections:
         card_type: pop-up
         hash: "#motion_livingroom"
         entity: binary_sensor.aqara_presence_livingroom_presence
-        name: PM2.5
+        name: Motion
         show_header: false
         width_desktop: 800px
         cards:
@@ -2923,7 +2923,7 @@ sections:
         card_type: pop-up
         hash: "#illuminance_bedroom"
         entity: sensor.aqara_motion_bedroom_illuminance
-        name: CO2
+        name: Illuminance
         show_header: false
         width_desktop: 800px
         styles: |-
@@ -3162,7 +3162,7 @@ sections:
         card_type: pop-up
         hash: "#temperature_bedroom"
         entity: sensor.qingping_bedroom_temperature
-        name: Temperature Bedroom
+        name: Temperature
         show_header: true
         width_desktop: 800px
         button_type: text
@@ -3532,7 +3532,7 @@ sections:
         card_type: pop-up
         hash: "#motion_bedroom"
         entity: binary_sensor.aqara_motion_bedroom_occupancy
-        name: PM2.5
+        name: Motion
         show_header: false
         width_desktop: 800px
         cards:
