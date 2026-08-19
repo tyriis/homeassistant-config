@@ -80,7 +80,7 @@ actions:
                 and states('group.motion_office') == 'on'
                 and (
                   states('light.office') == 'off'
-                  or state_attr('light.office', 'brightness') != 204
+                  or state_attr('light.office', 'brightness') != 230
                 )
               }}
         sequence:
@@ -104,7 +104,7 @@ actions:
                 and states('group.motion_office') == 'on'
                 and (
                   states('light.office') == 'off'
-                  or state_attr('light.office', 'brightness') != 160
+                  or state_attr('light.office', 'brightness') != 200
                 )
               }}
         sequence:
