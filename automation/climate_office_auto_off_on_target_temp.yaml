@@ -25,7 +25,7 @@ condition:
       {% set ac_run_time = (current_timestamp - ac_start_timestamp) / 60 %}
       {{
         states('climate.office') == 'cool'
-        and states('sensor.qingping_office_temperature') | float <= 23
+        and states('sensor.qingping_office_temperature') | float(99) <= 23
         and ac_run_time > 30
       }}
 
