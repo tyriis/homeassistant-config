@@ -18,8 +18,8 @@ condition:
         and states('binary_sensor.aqara_contact_window_domiroom_contact') == 'off'
         and current_time.strftime('%H:%M') >= '09:30'
         and current_time.strftime('%H:%M') < '22:00'
-        and states('sensor.qingping_domiroom_temperature') | float > 24
-        and states('sensor.weather_forecast_temperature_forecast') | float > 25
+        and states('sensor.qingping_domiroom_temperature') | float(0) > 24
+        and states('sensor.weather_forecast_temperature_forecast') | float(0) > 25
         and states('sensor.hisense_ac_domiroom_lock_status') != 'locked'
         and states('binary_sensor.hisense_ac_domiroom_automation_block_status') == 'off'
       }}
