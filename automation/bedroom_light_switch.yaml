@@ -8,25 +8,25 @@ description: >-
 triggers:
   - trigger: state
     target:
-      entity_id: event.senic_wall_switch_bedroom_action
+      entity_id: sensor.senic_wall_switch_bedroom_action
     from: null
     to: press_1
     id: left_up
   - trigger: state
     target:
-      entity_id: event.senic_wall_switch_bedroom_action
+      entity_id: sensor.senic_wall_switch_bedroom_action
     from: null
     to: press_2
     id: left_down
   - trigger: state
     target:
-      entity_id: event.senic_wall_switch_bedroom_action
+      entity_id: sensor.senic_wall_switch_bedroom_action
     from: null
     to: press_3
     id: right_press
   - trigger: state
     target:
-      entity_id: event.senic_wall_switch_bedroom_action
+      entity_id: sensor.senic_wall_switch_bedroom_action
     from: null
     to: press_4
     id: right_press
