@@ -4,6 +4,6 @@ icon: mdi:heart-outline
 entities:
   light.livingroom:
     state: "on"
-    brightness: 160 # 63%
+    brightness: 200 # 78%
     color_temp_kelvin: 2700 # Warm white - cozy
     transition: 1

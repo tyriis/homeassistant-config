@@ -18,8 +18,8 @@ condition:
         and states('binary_sensor.aqara_contact_window_alexroom_contact') == 'off'
         and current_time.strftime('%H:%M') >= '09:30'
         and current_time.strftime('%H:%M') < '22:00'
-        and states('sensor.qingping_alexroom_temperature') | float > 25
-        and states('sensor.weather_forecast_temperature_forecast') | float > 25
+        and states('sensor.qingping_alexroom_temperature') | float(0) > 25
+        and states('sensor.weather_forecast_temperature_forecast') | float(0) > 25
         and states('sensor.hisense_ac_alexroom_lock_status') != 'locked'
         and states('binary_sensor.hisense_ac_alexroom_automation_block_status') == 'off'
       }}

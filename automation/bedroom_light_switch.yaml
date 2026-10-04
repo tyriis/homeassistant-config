@@ -1,65 +1,123 @@
 ---
 alias: Bedroom Light Switch
 id: bedroom_light_switch
-description: "Control bedroom light with EnOcean switch - continuous dimming while held"
-use_blueprint:
-  path: enocean_ptm21xz_continuous_trigger.yaml
-  input:
-    controller: senic wall switch bedroom
-    base_topic: zigbee2mqtt-bridge03
-    hold_delay: 250
-    repeat_interval: 250
-    ptm216z_selector: false # Set to true if using PTM216Z
-    helper_last_controller_event: input_text.senic_wall_switch_bedroom_last_event
+description: >-
+  Senic wall switch in the bedroom. Left rocker cycles the skylight
+  off -> dim -> full -> off (up advances, down steps back); right rocker
+  toggles the Govee LED strip.
+mode: queued
+max_exceeded: silent
 
-    # Button 1 Actions (Brightness Up)
-    button_1_pressed:
-      - service: system_log.write
-        data:
-          message: Button 1 pressed - starting continuous dimming up
-          level: info
+triggers:
+  - trigger: event.received
+    target:
+      entity_id: event.senic_wall_switch_bedroom_action
+    options:
+      event_type:
+        - press_1
+    id: left_up
+  - trigger: event.received
+    target:
+      entity_id: event.senic_wall_switch_bedroom_action
+    options:
+      event_type:
+        - press_2
+    id: left_down
+  - trigger: event.received
+    target:
+      entity_id: event.senic_wall_switch_bedroom_action
+    options:
+      event_type:
+        - press_3
+    id: right_press
+  - trigger: event.received
+    target:
+      entity_id: event.senic_wall_switch_bedroom_action
+    options:
+      event_type:
+        - press_4
+    id: right_press
 
-    button_1_continuous:
-      - service: light.turn_on
-        target:
-          entity_id: light.skylight_9aa7
-        data:
-          brightness_step_pct: 10 # Increase brightness by 10% each interval
+variables:
+  brightness: >-
+    {{ state_attr('light.skylight_9aa7', 'brightness') | default(0) | int(0) }}
+  is_full: "{{ brightness > 128 }}"
 
-    button_1_held:
-      - service: system_log.write
-        data:
-          message: Button 1 held - starting continuous dimming up
-          level: info
+actions:
+  - choose:
+      # Left rocker up: off -> dim, dim -> full, full -> off
+      - conditions:
+          - condition: trigger
+            id: left_up
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.skylight_9aa7
+                    state: "off"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.skylight_9aa7
+                    data:
+                      brightness: 50 # ~20%, same as Aqara double press
+              - conditions:
+                  - condition: state
+                    entity_id: light.skylight_9aa7
+                    state: "on"
+                  - condition: template
+                    value_template: "{{ not is_full }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.skylight_9aa7
+                    data:
+                      brightness: 255
+              - conditions:
+                  - condition: state
+                    entity_id: light.skylight_9aa7
+                    state: "on"
+                  - condition: template
+                    value_template: "{{ is_full }}"
+                sequence:
+                  - action: light.turn_off
+                    target:
+                      entity_id: light.skylight_9aa7
 
-    button_1_released:
-      - service: system_log.write
-        data:
-          message: Button 1 released - stopped dimming up
-          level: info
+      # Left rocker down: full -> dim, dim -> off, off -> nothing
+      - conditions:
+          - condition: trigger
+            id: left_down
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.skylight_9aa7
+                    state: "on"
+                  - condition: template
+                    value_template: "{{ is_full }}"
+                sequence:
+                  - action: light.turn_on
+                    target:
+                      entity_id: light.skylight_9aa7
+                    data:
+                      brightness: 50
+              - conditions:
+                  - condition: state
+                    entity_id: light.skylight_9aa7
+                    state: "on"
+                  - condition: template
+                    value_template: "{{ not is_full }}"
+                sequence:
+                  - action: light.turn_off
+                    target:
+                      entity_id: light.skylight_9aa7
 
-    # Button 2 Actions (Brightness Down)
-    button_2_pressed:
-      - service: system_log.write
-        data:
-          message: Button 2 pressed - starting continuous dimming up
-          level: info
-
-    button_2_continuous:
-      - service: light.turn_on
-        target:
-          entity_id: light.skylight_9aa7
-        data:
-          brightness_step_pct: -10 # Decrease brightness by 10% each interval
-
-    button_2_held:
-      - service: system_log.write
-        data:
-          message: "Button 2 held - starting continuous dimming down"
-          level: info
-
-    button_2_released:
-      - service: system_log.write
-        data:
-          message: "Button 2 released - stopped dimming down"
-          level: info
+      # Right rocker (either button): toggle Govee LED strip
+      - conditions:
+          - condition: trigger
+            id: right_press
+        sequence:
+          - action: light.toggle
+            target:
+              entity_id: light.rgbic_pro_strip_lights_2
