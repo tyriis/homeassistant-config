@@ -5,44 +5,36 @@ description: >-
   Senic wall switch in the bedroom. Left rocker cycles the skylight
   off -> dim -> full -> off (up advances, down steps back); right rocker
   toggles the Govee LED strip.
-mode: queued
-max_exceeded: silent
-
 triggers:
-  - trigger: event.received
+  - trigger: state
     target:
       entity_id: event.senic_wall_switch_bedroom_action
-    options:
-      event_type:
-        - press_1
+    from: null
+    to: press_1
     id: left_up
-  - trigger: event.received
+  - trigger: state
     target:
       entity_id: event.senic_wall_switch_bedroom_action
-    options:
-      event_type:
-        - press_2
+    from: null
+    to: press_2
     id: left_down
-  - trigger: event.received
+  - trigger: state
     target:
       entity_id: event.senic_wall_switch_bedroom_action
-    options:
-      event_type:
-        - press_3
+    from: null
+    to: press_3
     id: right_press
-  - trigger: event.received
+  - trigger: state
     target:
       entity_id: event.senic_wall_switch_bedroom_action
-    options:
-      event_type:
-        - press_4
+    from: null
+    to: press_4
     id: right_press
-
+conditions: []
 variables:
-  brightness: >-
+  current_brightness: >-
     {{ state_attr('light.skylight_9aa7', 'brightness') | default(0) | int(0) }}
-  is_full: "{{ brightness > 128 }}"
-
+  is_full: "{{ current_brightness > 128 }}"
 actions:
   - choose:
       # Left rocker up: off -> dim, dim -> full, full -> off
@@ -120,4 +112,4 @@ actions:
         sequence:
           - action: light.toggle
             target:
-              entity_id: light.rgbic_pro_strip_lights_2
+              entity_id: light.rgbic_pro_strip_lights
