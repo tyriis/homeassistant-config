@@ -25,7 +25,7 @@ sections:
           columns: 12
           rows: 2
       - type: tile
-        entity: light.rgbic_pro_strip_lights_2
+        entity: light.rgbic_pro_strip_lights
         name: Govee LED Strip
         color: purple
         show_entity_picture: false
