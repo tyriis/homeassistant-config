@@ -322,7 +322,7 @@ sections:
           - state
           - effect
       - type: tile
-        entity: light.rgbic_pro_strip_lights_2
+        entity: light.rgbic_pro_strip_lights
         color: purple
         name: Govee LED Strip
         show_entity_picture: false
