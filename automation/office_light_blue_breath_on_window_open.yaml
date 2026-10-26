@@ -4,6 +4,9 @@ id: office_light_blue_breath_on_window_open
 description: >
   Triggers blue breathing effect on office light when basement or office window
   is open for more than 15 minutes. Re-triggers every 2 minutes while open.
+  Skipped while it is cold outside (weather.home below 20 °C) and the office
+  reference temperature (sensor.qingping_office_temperature) is above 24 °C.
+  If either value is unavailable, the reminder keeps running.
 mode: single
 triggers:
   - trigger: state
@@ -16,6 +19,17 @@ triggers:
   - trigger: time_pattern
     minutes: "/2"
 conditions:
+  - condition: not
+    conditions:
+      - condition: and
+        conditions:
+          - condition: numeric_state
+            entity_id: weather.home
+            attribute: temperature
+            below: 20
+          - condition: numeric_state
+            entity_id: sensor.qingping_office_temperature
+            above: 24
   - condition: or
     conditions:
       - condition: state
