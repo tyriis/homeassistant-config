@@ -58,7 +58,7 @@ sections:
         name: AC
     visibility:
       - condition: numeric_state
-        entity: sensor.weather_forecast_temperature_forecast
+        entity: sensor.open_meteo_today_max_temperature
         above: 24
   - type: grid
     cards:

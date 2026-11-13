@@ -145,7 +145,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_temperature
@@ -476,7 +476,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_livingroom_temperature
@@ -680,7 +680,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_bedroom_temperature
@@ -847,7 +847,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_alexroom_temperature
@@ -870,7 +870,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_alexroom_temperature
@@ -1038,7 +1038,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_domiroom_temperature
@@ -1060,7 +1060,7 @@ sections:
                   - condition: and
                     conditions:
                       - condition: numeric_state
-                        entity: sensor.weather_forecast_temperature_forecast
+                        entity: sensor.open_meteo_today_max_temperature
                         above: 25.9
                       - condition: numeric_state
                         entity: sensor.qingping_domiroom_temperature

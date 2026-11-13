@@ -74,7 +74,7 @@ sections:
         heading_style: title
         visibility:
           - condition: numeric_state
-            entity: sensor.weather_forecast_temperature_forecast
+            entity: sensor.open_meteo_today_max_temperature
             above: 24
       - type: custom:mushroom-climate-card
         entity: climate.office
@@ -87,7 +87,7 @@ sections:
         collapsible_controls: false
         visibility:
           - condition: numeric_state
-            entity: sensor.weather_forecast_temperature_forecast
+            entity: sensor.open_meteo_today_max_temperature
             above: 24
       - type: heading
         heading_style: title
