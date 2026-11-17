@@ -26,14 +26,6 @@ logger:
   #   aiohttp.access: debug
 
 influxdb:
-  # v1 write API on InfluxDB 3 Enterprise, in-cluster plain HTTP.
-  # Connection settings live here so the config is code, not UI state.
-  host: influxdb3.influxdb.svc.cluster.local
-  port: 8181
-  ssl: false
-  database: home_assistant
-  username: !secret influxdb_write_token # apiv3_ token, home-ops influxdb3 README step 4
-  password: "" # InfluxDB 3 v1 auth takes the token as username, ignores password
   precision: s # default is ns; seconds compresses far better for sensor data
   max_retries: 3
   tags:
