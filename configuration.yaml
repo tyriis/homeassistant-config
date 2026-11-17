@@ -25,6 +25,22 @@ logger:
   #   homeassistant.util.aiohttp: debug
   #   aiohttp.access: debug
 
+influxdb:
+  precision: s # default is ns; seconds compresses far better for sensor data
+  max_retries: 3
+  tags:
+    source: home-assistant
+  tags_attributes:
+    - device_class
+  exclude:
+    domains:
+      - update
+      - event
+      - automation
+      - script
+      - persistent_notification
+      - zone
+
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
 
