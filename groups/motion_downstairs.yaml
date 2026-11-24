@@ -7,3 +7,4 @@ entities:
   - binary_sensor.mijia_motion_laundryroom_occupancy
   - binary_sensor.mijia_motion_livingroom_occupancy
   - binary_sensor.mijia_motion_table_occupancy
+  - binary_sensor.aqara_presence_livingroom_presence
